@@ -7,66 +7,78 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Footer from "../_components/footer";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const benefits = [
   {
-    title: "System Architecture",
+    title: "Marketing Architecture",
     rows: [
-      ["Focus", "End‑to‑end content pipelines"],
-      ["Why", "Eliminate guesswork, save hours"],
-      ["Outcome", "Weekly posting cadence on autopilot"],
+      ["What", "End‑to‑end content pipelines for video and text."],
+      ["Where", "Code and no-code tools."],
+      ["Why", "Eliminate guesswork and save hours."],
+      ["Outcome", "Daily post cadence, saving you time."],
     ],
   },
   {
-    title: "Audience Growth Engine",
+    title: "Funnel Mastery",
     rows: [
-      ["Focus", "Algorithm‑friendly formats"],
-      ["Why", "Boost reach + engagement"],
-      ["Outcome", "+300 % targeted follower growth"],
+      ["What", "Content and wording formats for conversion."],
+      ["Where", "Advanced tooling."],
+      ["Why", "Boost customer acquisition."],
+      ["Outcome", "+100 % targeted follower growth"],
     ],
   },
   {
-    title: "Conversion Blueprint",
+    title: "Sales Blueprint",
     rows: [
-      ["Focus", "Story‑selling frameworks"],
-      ["Why", "Turn eyeballs into buyers"],
-      ["Outcome", "Higher LTV & faster ROI"],
+      ["What", "Story‑selling frameworks for selling."],
+      ["Where", "A pen, a paper, and a team."],
+      ["Why", "Turn eyeballs into buyers."],
+      ["Outcome", "Keep a steady ROI and high LTCV."],
     ],
   },
   {
     title: "Analytics Mastery",
     rows: [
-      ["Focus", "Signal‑driven iteration"],
-      ["Why", "Cut waste, double down on wins"],
-      ["Outcome", "Compounding performance lifts"],
+      ["What", "Signal‑driven iteration."],
+      ["Where", "Advanced analytics tooling."],
+      ["Why", "Double down on winning strategies."],
+      ["Outcome", "Compounding performance lifts."],
     ],
   },
 ];
 
 function Apply() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a001d] via-[#100013] to-[#1a001d] text-white p-5 flex flex-col items-center">
+    <div className="min-h-screen bg-gradient-to-br from-[#0A000B] to-[#1a001d] text-white p-5 flex flex-col items-center">
       {/* Brand */}
-      <h1 className="font-black text-center text-md text-white/80">USATII MEDIA</h1>
+      <Link href="/"><h1 className="font-black text-center text-md text-white/80 hover:text-white/100">USATII MEDIA</h1></Link>
 
-      <div className="flex flex-row items-center gap-x-4 justify-center w-full mt-10 mb-10">
+      <div className="transform skew-y-[2deg] skew-x-[1deg] flex flex-row items-center gap-x-4 justify-center w-full mt-10 mb-10">
         <Image
           alt="architect logo"
           width={70}
           height={70}
           src={"/architect_logo.png"}
+          className="shadow-lg"
         />
         <h1 className="font-black text-4xl tracking-wider">ARCHITECT.</h1>
       </div>
 
-      <div className="flex flex-row items-center gap-x-2 justify-center text-center max-w-[850px] w-full mb-20">
+      <div className="transform skew-y-[2deg] skew-x-[1deg]  flex flex-row items-center gap-x-2 justify-center text-center max-w-[850px] w-full mb-10">
         <h1 className="font-bold text-6xl tracking-tight">Your business is one step away from growth.</h1>
       </div>
 
+      <div className="transform skew-y-[2deg] skew-x-[1deg] flex flex-col items-center gap-x-2 justify-center text-center max-w-[850px] w-full mb-20 opacity-70 gap-y-5">
+        <h1 className="font-base text-2xl tracking-tight">Systems and support for founders who want to<br />build marketing leverage fast.</h1>
+
+        <Button className="font-semibold border-white border-[2px] bg-transparent hover:bg-transparent hover:border-white opacity-70 hover:opacity-100 text-md px-5 py-5 rounded-[15px] hover:shadow-lg cursor-pointer">COMING SOON.</Button>
+      </div>
+
       {/* Benefits Grid */}
-      <p>Coming soon.</p>
-      {/* <div className="grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8">
+      {/* <p>Coming soon.</p> */}
+      <div className="transform skew-y-[2deg] skew-x-[1deg] grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 gap-8">
         {benefits.map((b, i) => (
           <Card
             key={i}
@@ -93,7 +105,7 @@ function Apply() {
             </CardContent>
           </Card>
         ))}
-      </div> */}
+      </div>
 
       {/* Neon animation */}
       <style jsx global>{`

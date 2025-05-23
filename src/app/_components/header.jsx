@@ -10,7 +10,7 @@ export default function Header() {
       <span className="text-lg sm:text-2xl md:text-3xl font-black tracking-[-1px] italic">USATII&nbsp;MEDIA</span>
 
     <div className="flex flex-row items-center gap-x-2 sm:gap-x-4">
-      <p className="text-xs sm:text-sm">Build a content system.</p>
+      <p className="text-xs sm:text-sm">Build your system today.</p>
       <Link
         href="/apply"
         target="_blank"
