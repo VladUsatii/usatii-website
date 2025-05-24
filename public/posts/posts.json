@@ -1,0 +1,9 @@
+[
+  {
+    "id": "string-unique-slug",
+    "title": "string-title",
+    "excerpt": "string-summary",
+    "body": "string-html-or-markdown",
+    "date": "YYYY-MM-DD"
+  }
+]
