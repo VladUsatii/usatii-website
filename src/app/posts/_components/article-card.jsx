@@ -10,6 +10,7 @@ import {
   DialogTrigger,
   DialogContent,
   DialogClose,
+  DialogTitle,
 } from "@/components/ui/dialog"
 
 function ArticleCard({ post }) {
@@ -18,7 +19,7 @@ function ArticleCard({ post }) {
       <DialogTrigger asChild>
         <Card className="cursor-pointer hover:shadow-lg transition-shadow">
           <CardHeader>
-            <CardTitle className="line-clamp-2">{post.title}</CardTitle>
+            <CardTitle className="font-bold text-2xl">{post.title}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm line-clamp-3">{post.excerpt}</p>
@@ -29,7 +30,7 @@ function ArticleCard({ post }) {
       <DialogContent className="max-w-3xl overflow-y-auto max-h-[90vh]">
         <DialogClose className="absolute top-4 right-4" />
 
-        <h2 className="font-bold text-2xl mb-4">{post.title}</h2>
+        <DialogTitle className="font-bold text-2xl mb-4">{post.title}</DialogTitle>
         <article className="prose dark:prose-invert">
           {post.body}
         </article>

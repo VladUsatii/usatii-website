@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import ArticleCard from './_components/article-card'
 
 // Free, zero‑cost storage: raw JSON hosted on a public GitHub repo (served by GitHub CDN)
-const DATA_URL = 'https://raw.githubusercontent.com/usatii-website/public/posts/posts.json'
+const DATA_URL = 'https://raw.githubusercontent.com/VladUsatii/usatii-website/main/public/posts/posts.json'
 
 function Posts() {
   const [posts, setPosts] = useState([])
@@ -23,13 +23,13 @@ function Posts() {
 
       <h2 className='text-black my-5 text-4xl font-black'>BLOG.</h2>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 grid-cols-1">
         {posts.length === 0 && (
           <p className="text-neutral-400">No posts available.</p>
         )}
 
-        {posts.map((post) => (
-          <ArticleCard post={post} />
+        {posts.map((post, _i) => (
+          <ArticleCard key={_i} post={post} />
         ))}
       </div>
     </div>
