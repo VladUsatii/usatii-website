@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ArticleCard from './_components/article-card'
+import Footer from '../_components/footer'
 
 // Free, zero‑cost storage: raw JSON hosted on a public GitHub repo (served by GitHub CDN)
 const DATA_URL = 'https://raw.githubusercontent.com/VladUsatii/usatii-website/main/public/posts/posts.json'
@@ -32,6 +33,9 @@ function Posts() {
           <ArticleCard key={_i} post={post} />
         ))}
       </div>
+
+        <div className='h-[800px]'/>
+      <Footer />
     </div>
   )
 }
