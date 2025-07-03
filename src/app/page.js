@@ -8,6 +8,7 @@ import HeroThree from "./_components/hero_three";
 import HeroFour from "./_components/hero_four";
 import Link from "next/link";
 import UsatiiMediaCard from "./_components/usatii-media-card";
+import HeroFive from "./_components/hero_five";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <HeroTwo />
         <HeroThree />
         <HeroFour />
+        <HeroFive />
       </main>
       <UsatiiMediaCard />
       <Footer />
