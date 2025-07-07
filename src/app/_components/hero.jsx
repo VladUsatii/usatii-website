@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import AvatarGroup from "./avatar-group";
 import LogoMarquee from "./logo-marquee";
+import CaseStudySwiper from "./case-study-swiper";
 
 export default function Hero() {
   return (
@@ -52,6 +53,8 @@ export default function Hero() {
           unoptimized
         />
       </div>
+
+      <CaseStudySwiper />
     </section>
   );
 }
