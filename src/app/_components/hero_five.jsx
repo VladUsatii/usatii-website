@@ -1,107 +1,131 @@
-import React from "react";
+'use client';
 
-// components/HeroFour.jsx
-export default function HeroFive() {
-  const subFolders = [
-    "LinkedIn Posts",
-    "Short-Form Topic Cookbook",
-    "Instagram Static Mastery",
-    "TikTok FYP Mastery",
-    "Funnel Blueprint",
-  ];
+import React, { useState, useMemo, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Folder, FolderOpen } from 'lucide-react';
 
-  const subFolders2 = [
-    "Brand Strategy",
-    "Content Calendar",
-    "Creative Assets",
-    "Performance Reports",
-    "Onboarding Notes",
-    "Financials",
-    "ROI Tracker"
-  ];
+// Debounce hook for search input
+function useDebounce(value, delay) {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const handler = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+  return debounced;
+}
+
+// Expandable folder component without extra imports
+function ExpandableFolder({ title, items, defaultOpen = true }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
-    <section className="bg-blue-50 p-6 rounded-2xl shadow-md max-w-sm mx-auto font-sans mt-10 mb-20">
-      <h3 className="font-black text-center text-3xl pb-3">Try our <span className="text-indigo-500 tracking-tight">systems</span>.</h3>
-      <h3 className="font-bold text-center text-xl pb-8">A few of our favorite templates.</h3>
-      {/* root folder header */}
-      <div className="flex items-center mb-3 text-gray-700">
-        {/* expanded arrow */}
-        <span className="font-mono text-gray-500">▼</span>
-        {/* folder icon */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 text-yellow-400 ml-1"
-          fill="currentColor"
-          viewBox="0 0 20 20"
+    <div className="mb-6 bg-white dark:bg-gray-800 rounded-lg p-4 shadow-inner">
+      <button
+        onClick={toggle}
+        className="flex items-center w-full text-left space-x-2 focus:outline-none"
+        aria-expanded={isOpen}
+      >
+        <motion.span
+          animate={{ rotate: isOpen ? 0 : -90 }}
+          transition={{ duration: 0.2 }}
+          className="w-5 h-5 text-indigo-500"
         >
-          <path d="M2 4a2 2 0 012-2h5l2 2h5a2 2 0 012 2v2H2V4z" />
-          <path d="M2 8h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8z" />
-        </svg>
-        <span className="ml-2 font-semibold">Content Blueprints</span>
+          <ChevronDown />
+        </motion.span>
+        <Folder className="w-6 h-6 text-yellow-400" />
+        <span className="font-semibold text-gray-800 dark:text-gray-100">
+          {title}
+        </span>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ ease: 'easeInOut', duration: 0.3 }}
+            className="overflow-hidden pl-8 mt-3 space-y-2"
+          >
+            {items.map(item => (
+              <li
+                key={item}
+                className="flex items-center text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition"
+              >
+                <span className="font-mono text-gray-400">├</span>
+                <FolderOpen className="w-4 h-4 ml-1 text-yellow-300" />
+                <span className="ml-2">{item}</span>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// Main hero section
+export default function HeroFive() {
+  const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search, 300);
+
+  const contentBlueprints = useMemo(
+    () => [
+      'LinkedIn Posts',
+      'Short-Form Topic Cookbook',
+      'Instagram Static Mastery',
+      'TikTok FYP Mastery',
+      'Funnel Blueprint'
+    ].filter(item => item.toLowerCase().includes(debouncedSearch.toLowerCase())),
+    [debouncedSearch]
+  );
+
+  const agencyProjectItems = useMemo(
+    () => [
+      'Brand Strategy',
+      'Content Calendar',
+      'Creative Assets',
+      'Performance Reports',
+      'Onboarding Notes',
+      'Financials',
+      'ROI Tracker'
+    ].filter(item => item.toLowerCase().includes(debouncedSearch.toLowerCase())),
+    [debouncedSearch]
+  );
+
+  return (
+    <div className='flex items-center justify-center '>
+    <section className="max-w-3xl mx-2 border-[2px] border-neutral-200 bg-white dark:bg-gray-900 p-8 rounded-2xl mt-8 shadow-lg mb-16 font-sans">
+      <motion.h2
+        className="text-center font-black text-3xl mb-2 text-gray-900 dark:text-gray-100"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 120 }}
+      >
+        Try our systems.
+      </motion.h2>
+      <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
+        A few of our favorite templates.
+      </p>
+
+      <div className="mb-6">
+        <input
+          type="text"
+          placeholder="Search templates..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="w-full bg-gray-100 dark:bg-gray-800 placeholder-gray-500 dark:placeholder-gray-600 rounded-md p-2 focus:outline-none"
+        />
       </div>
 
-      {/* sub-folder list */}
-      <ul className="ml-6 space-y-2">
-        {subFolders.map((name) => (
-          <li key={name} className="flex items-center text-gray-600 hover:text-gray-800 transition-colors">
-            {/* branch symbol */}
-            <span className="font-mono text-gray-400">├─</span>
-            {/* small folder icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 text-yellow-300 ml-1 flex-shrink-0"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M2 4a2 2 0 012-2h5l2 2h5a2 2 0 012 2v2H2V4z" />
-              <path d="M2 8h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8z" />
-            </svg>
-            {/* folder name */}
-            <span className="ml-2">{name}</span>
-          </li>
-        ))}
-      </ul>
+      <ExpandableFolder title="Content Blueprints" items={contentBlueprints} />
+      <ExpandableFolder title="Agency Projects" items={agencyProjectItems} />
 
-      <hr className="my-7"/>
-
-      {/* root folder header */}
-      <div className="flex items-center mb-3 text-gray-700">
-        {/* expanded arrow */}
-        <span className="font-mono text-gray-500">▼</span>
-        {/* folder icon */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 text-yellow-400 ml-1"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M2 4a2 2 0 012-2h5l2 2h5a2 2 0 012 2v2H2V4z" />
-          <path d="M2 8h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8z" />
-        </svg>
-        <span className="ml-2 font-semibold">Agency Project</span>
-      </div>
-
-      {/* sub-folder list */}
-      <ul className="ml-6 space-y-2">
-        {subFolders2.map((name) => (
-          <li key={name} className="flex items-center text-gray-600 hover:text-gray-800 transition-colors">
-            {/* branch symbol */}
-            <span className="font-mono text-gray-400">├─</span>
-            {/* small folder icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 text-yellow-300 ml-1 flex-shrink-0"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M2 4a2 2 0 012-2h5l2 2h5a2 2 0 012 2v2H2V4z" />
-              <path d="M2 8h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8z" />
-            </svg>
-            {/* folder name */}
-            <span className="ml-2">{name}</span>
-          </li>
-        ))}
-      </ul>
+      <footer className="mt-8 text-center text-xs text-gray-500 dark:text-gray-400">
+        Disclaimer: While we leverage advanced strategies and proprietary methodologies to optimize campaign performance, we do not guarantee specific results or outcomes. All projections are illustrative and past performance is not indicative of future returns.
+      </footer>
     </section>
+    </div>
   );
 }

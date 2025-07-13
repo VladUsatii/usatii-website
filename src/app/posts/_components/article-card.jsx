@@ -16,7 +16,7 @@ import Linkify from "linkify-react"
 
 const options = {
   target: '_blank',
-  className: 'underline transition skew-x-2 hover:text-shadow-md text-blue-500',
+  className: 'underline transition skew-x-2  text-blue-500',
   rel: 'noopener noreferrer'
 }
 

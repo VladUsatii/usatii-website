@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'i.postimg.cc',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/VladUsatii/usatii-website/blob/main/public/**',
+      },
     ],
   },
 };

@@ -6,6 +6,7 @@ import React from "react";
 import AvatarGroup from "./avatar-group";
 import LogoMarquee from "./logo-marquee";
 import CaseStudySwiper from "./case-study-swiper";
+import SystemsBentoGrid from "./bento-systems";
 
 export default function Hero() {
   return (
@@ -40,7 +41,7 @@ export default function Hero() {
           "https://i.postimg.cc/YCZSBxWW/SPECTRESIMAGE.png"
         ]} />
 
-      <h3 className="text-3xl font-black mt-16">Here is an example system.</h3>
+      {/* <h3 className="text-3xl font-black mt-16">Here is an example system.</h3>
       <p className="text-md text-muted-foreground max-w-xl mx-auto">
         Proven engines built for founders: from ideation to growth, fully automated.
       </p>
@@ -52,7 +53,8 @@ export default function Hero() {
           height={500}
           unoptimized
         />
-      </div>
+      </div> */}
+      <SystemsBentoGrid />
 
       <CaseStudySwiper />
     </section>

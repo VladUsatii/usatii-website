@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import ArticleCard from './_components/article-card'
 import Footer from '../_components/footer'
 
-// Free, zero‑cost storage: raw JSON hosted on a public GitHub repo (served by GitHub CDN)
 const DATA_URL = 'https://raw.githubusercontent.com/VladUsatii/usatii-website/main/public/posts/posts.json'
 
 function Posts() {
@@ -18,23 +17,32 @@ function Posts() {
   }, [])
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 py-12">
+    <div className="max-w-screen-xl mx-auto px-6 py-16">
       {/* Brand */}
-      <Link href="/"><h1 className="font-black text-center text-md text-black/80 hover:text-black/100">USATII MEDIA</h1></Link>
+      <Link href="/">
+        <h1 className="font-black text-center text-sm text-neutral-700 hover:text-black tracking-tight italic">
+          USATII MEDIA
+        </h1>
+      </Link>
 
-      <h2 className='text-black my-5 text-4xl font-black'>BLOG.</h2>
+      <h2 className="text-black mt-4 mb-2 text-4xl font-black text-center bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent italic">BUILDER BLOG
+      </h2>
 
-      <div className="grid gap-8 grid-cols-1">
+      <p className="text-center text-sm text-neutral-500 max-w-xl mx-auto mb-10">
+        Technical marketing communication and challenges posed to the public.
+      </p>
+
+      <div className="grid gap-10 grid-cols-1">
         {posts.length === 0 && (
-          <p className="text-neutral-400">No posts available.</p>
+          <p className="text-neutral-400 text-center italic">No entries yet. Real insights don’t publish on a schedule.</p>
         )}
 
-        {posts.map((post, _i) => (
-          <ArticleCard key={_i} post={post} />
+        {posts.map((post, i) => (
+          <ArticleCard key={i} post={post} />
         ))}
       </div>
 
-        <div className='h-[800px]'/>
+      <div className="h-[600px]" />
       <Footer />
     </div>
   )
