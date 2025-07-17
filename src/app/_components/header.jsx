@@ -10,12 +10,12 @@ export default function Header() {
       <span className="text-lg sm:text-2xl md:text-3xl font-black tracking-[-1px] italic">USATII&nbsp;MEDIA</span>
 
     <div className="flex flex-row items-center gap-x-2 sm:gap-x-4">
-      <p className="text-xs sm:text-sm">Build your system today.</p>
+      <p className="text-xs sm:text-sm">Consult with me today.</p>
       <Link
-        href="/apply"
+        href="/book"
         target="_blank"
       >
-        <Button className="cursor-pointer bg-white text-black hover:bg-white border-[2px] border-black px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold tranisition hover:scale-105">APPLY NOW</Button>
+        <Button className="cursor-pointer bg-white text-black hover:bg-white border-[2px] border-black px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold tranisition hover:scale-105">BOOK NOW</Button>
       </Link>
     </div>
     </header>

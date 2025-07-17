@@ -54,7 +54,7 @@ function BentoTile({ id, title, desc, Icon, span }) {
 
 export default function SystemsBentoGrid() {
   return (
-    <section className="relative isolate overflow-hidden pt-12 text-black">
+    <section className="relative isolate overflow-hidden pt-[100px] mb-5 text-black">
       <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
         <h3 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
           Extensive growth systems.
