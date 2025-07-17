@@ -54,6 +54,8 @@ export default function Hero() {
           unoptimized
         />
       </div> */}
+
+      
       <SystemsBentoGrid />
 
       <CaseStudySwiper />
