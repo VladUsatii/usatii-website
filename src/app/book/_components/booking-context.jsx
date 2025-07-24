@@ -10,7 +10,7 @@ export function BookingProvider({ children }) {
   const [time, setTime] = useState(null);         // string "HH:MM"
   const [duration, setDuration] = useState(30);   // minutes
   const [details, setDetails] = useState({ name: '', email: '' });
-  const rate = parseFloat(850);
+  const rate = parseFloat(250);
 
   const price = useMemo(() => {
     const raw = (duration / 60) * rate;

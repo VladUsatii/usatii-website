@@ -40,11 +40,20 @@ function BentoTile({ id, title, desc, Icon, span }) {
         </header>
 
       <div className='text-left'>
-        <Link
-          href={`/demos/${id}`}
-          className="self-start items-center gap-1 rounded-lg bg-fuchsia-600/80 px-3 py-1.5 text-sm font-medium text-white shadow transition hover:bg-fuchsia-600"
+      <Link
+        href={id === 1 ? `/demos/${id}` : '#'}
+        onClick={(e) => {
+            if (id !== 1) e.preventDefault();
+        }}
+        aria-disabled={id !== 1}
+        tabIndex={id !== 1 ? -1 : 0}
+        className={`self-start items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium shadow transition ${
+            id === 1
+            ? 'bg-fuchsia-600/80 text-white hover:bg-fuchsia-600'
+            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+        }`}
         >
-          Watch a demo →
+        {id == 1 ? 'Watch a demo →' : 'Coming soon'}
         </Link>
       </div>
       </div>
@@ -60,7 +69,7 @@ export default function SystemsBentoGrid() {
           Extensive growth systems.
         </h3>
         <p className="mt-4 text-lg text-neutral-800">
-          Battle-tested operating systems to turn raw ideas into compounding <span className="font-bold">audience revenue, and brand equity</span> - we engineer it once, maintain it forever.
+          Our battle-tested operating systems turn your value prop into compounding <span className="font-bold">attention and brand equity</span> - we engineer it once, maintain it forever.
         </p>
       </div>
 

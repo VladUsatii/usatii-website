@@ -7,7 +7,7 @@ import React from "react";
 export default function Header() {
   return (
     <header className="flex items-center justify-between px-3 sm:px-6 py-4">
-      <span className="text-lg sm:text-2xl md:text-3xl font-black tracking-[-1px] italic">USATII&nbsp;MEDIA</span>
+      <span className="text-lg sm:text-2xl md:text-3xl font-black tracking-[-1px] italic">USATII MEDIA</span>
 
     <div className="flex flex-row items-center gap-x-2 sm:gap-x-4">
       <p className="text-xs sm:text-sm">Consult with me today.</p>

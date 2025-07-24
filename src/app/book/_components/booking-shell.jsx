@@ -51,11 +51,11 @@ export default function BookingShell() {
 
           {/* Navigation buttons */}
           <div className="flex justify-between pt-4">
-            <Button variant="ghost" disabled={step === 0} onClick={() => setStep(step - 1)}>
+            <Button className="cursor-pointer" variant="ghost" disabled={step === 0} onClick={() => setStep(step - 1)}>
               <ChevronLeft className="mr-1 h-4 w-4" /> Back
             </Button>
             {step < 4 && (
-              <Button onClick={() => setStep(step + 1)} disabled={!ready[step]}>
+              <Button  className="cursor-pointer" onClick={() => setStep(step + 1)} disabled={!ready[step]}>
                 Next <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
             )}

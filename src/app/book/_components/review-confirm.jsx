@@ -50,17 +50,36 @@ export function ReviewConfirm() {
   );
 
   return (
-    <div className="space-y-4">
+    <div className="">
       <h2 className="text-xl font-black tracking-tight italic text-center ">REVIEW YOUR BOOKING</h2>
-      <ul className="space-y-3 text-sm border-[2px] border-neutral-200 p-2 rounded-md divide-y divide-neutral-200 ">
+      <p className='text-sm text-neutral-500 text-center mb-4'>{price} will be billed after the call unless waived by Vlad in writing.</p>
+      <ul className="space-y-3 mb-4 text-sm border-[2px] border-neutral-200 p-2 rounded-md divide-y divide-neutral-200 ">
         <li className='pb-2'><strong>Date:</strong> {date.toLocaleDateString()}</li>
         <li className='pb-2'><strong>Time:</strong> {time}</li>
         <li className='pb-2'><strong>Duration:</strong> {duration} minutes</li>
         <li className='pb-2'><strong>Name:</strong> {details.name}</li>
         <li className='pb-2'><strong>Email:</strong> {details.email}</li>
-        <li><strong>Total:</strong> {price} will be billed after the call, adjusted for actual call minutes.</li>
-      </ul>
-      <Button className="w-full cursor-pointer h-16 bg-white text-purple-500 font-bold border-[2px] border-purple-500 hover:shadow-sm hover:shadow-purple-500/30 hover:bg-white" onClick={handleBook} disabled={loading}>{loading ? 'Booking…' : 'Confirm & Pay Later'}</Button>
-    </div>
+        <li className="flex items-center gap-2 text-lg pb-1">
+            <strong>Total:</strong>
+
+            {/* original price, slashed */}
+            <span className="line-through text-neutral-500">{price}</span>
+
+            {/* new price = $0, loud and proud */}
+            <span className="text-green-600 font-black text-xl">$0</span>
+
+            {/* eye‑catching badge */}
+            <span className="bg-green-100 text-green-700 text-[11px] font-semibold px-2 py-0.5 rounded uppercase tracking-wide">
+            Free&nbsp;with Retainer
+            </span>
+        </li>
+        </ul>
+      <Button
+  className="w-full tracking-tight italic cursor-pointer h-16 bg-white text-purple-500 font-black border-[2px] border-purple-500 hover:shadow-sm hover:shadow-purple-500/30 hover:bg-white animate-[breathe_2.5s_ease-in-out_infinite] [@keyframes_breathe]{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.03);opacity:0.85;}}"
+  onClick={handleBook}
+  disabled={loading}
+>
+  {loading ? 'BOOKING...' : 'CONFIRM'}
+</Button>    </div>
   );
 }

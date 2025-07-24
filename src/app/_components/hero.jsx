@@ -12,20 +12,18 @@ export default function Hero() {
   return (
     <section className="flex flex-col items-center justify-center gap-6 py-20 mx-3 text-center">
       <h1 className="max-w-4xl text-5xl font-black md:text-7xl tracking-tight">
-        We build <span className="text-indigo-600">systems</span> for organic marketing.
+        We build marketing <span className="text-indigo-600"> systems</span> for teams.
       </h1>
 
-      <h3 className="font-bold text-2xl tracking-tight mx-3">Automate content and level up your business.</h3>
+      <h3 className="font-bold text-2xl tracking-tight mx-3">Clients save 30 hrs/week & $10K/yr on software.</h3>
 
       <Link
         id="book"
         href="/book"
         target="_blank"
       >
-        <Button className="cursor-pointer  text-lg font-bold px-6 py-6 rounded-[25px] transition hover:scale-105">Book a discovery call 📓</Button>
+        <Button className="cursor-pointer  text-lg font-bold px-6 py-6 rounded-[25px] transition hover:scale-105">Book a call ☕️</Button>
       </Link>
-
-
         <div className="flex flex-col items-center justify-center gap-y-3 mt-4 p-5 text-sm sm:text-md">
           <AvatarGroup count={5} size={42} />
           <p>Helping 1,000+ other founders achieve their<br />
@@ -55,7 +53,7 @@ export default function Hero() {
         />
       </div> */}
 
-      
+
       <SystemsBentoGrid />
 
       <CaseStudySwiper />

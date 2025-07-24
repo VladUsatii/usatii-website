@@ -19,7 +19,7 @@ export default function HeroTwo() {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <h3 className="font-black text-4xl pb-8">We help your business make <span className="text-green-600 transition animate-pulse">$$$</span> with organic content.</h3>
+      <h3 className="font-black text-4xl pb-8">We help your business make <span className="text-green-600 transition animate-pulse">$$$</span> with organic marketing content and in-house systems.</h3>
       <div className="grid gap-6 md:grid-cols-2">
         {items.map(([title, body]) => (
           <div
