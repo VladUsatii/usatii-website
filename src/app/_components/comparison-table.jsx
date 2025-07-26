@@ -101,7 +101,7 @@ export default function ComparisonTable() {
 
         <p className="text-xs text-neutral-600 rounded-b-[25px] bg-neutral-100 py-5 px-5">
           * Excludes one‑time development fee; hosting on your own systems keeps
-          monthly costs at $0.
+          monthly costs at $0.00
         </p>
       </div>
     </div>

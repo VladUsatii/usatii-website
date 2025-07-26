@@ -17,8 +17,8 @@ export async function GET(request) {
     requestBody: {
       timeMin,                                         
       timeMax,                                         
-      timeZone: tz,                                    
-      items: [{ id: process.env.CALENDAR_ID }]         
+      timeZone: tz,
+      items: [{ id: process.env.CALENDAR_ID }]
     }
   });
 
