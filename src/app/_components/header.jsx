@@ -12,7 +12,7 @@ export default function Header() {
     <div className="flex flex-row items-center gap-x-2 sm:gap-x-4">
       <p className="text-xs sm:text-sm">Consult with me today.</p>
       <Link
-        href="/book"
+        href="https://cal.com/usatii/onboarding"
         target="_blank"
       >
         <Button className="cursor-pointer bg-white text-black hover:bg-white border-[2px] border-black px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold tranisition hover:scale-105">BOOK NOW</Button>

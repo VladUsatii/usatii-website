@@ -3,6 +3,7 @@ import React from 'react';
 import { BookingProvider } from './_components/booking-context';
 import BookingShell from './_components/booking-shell';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function BookPage() {
   return (
@@ -13,9 +14,12 @@ export default function BookPage() {
           USATII MEDIA
         </h1>
       </Link>
-    <BookingProvider>
+    {/* <BookingProvider>
       <BookingShell />
-    </BookingProvider>
+    </BookingProvider> */}
+
+    <h2 className='font-black text-2xl'>Schedule an onboarding call</h2>
+    <Link href="https://cal.com/usatii/onboarding"><Button>Go to Cal.com</Button></Link>
 
     <p className='text-xs text-center text-neutral-500 mt-10'>Built by USATII OS.</p>
     </div>

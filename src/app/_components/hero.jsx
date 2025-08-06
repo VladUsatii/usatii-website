@@ -19,7 +19,7 @@ export default function Hero() {
 
       <Link
         id="book"
-        href="/book"
+        href="https://cal.com/usatii/onboarding"
         target="_blank"
       >
         <Button className="cursor-pointer  text-lg font-bold px-6 py-6 rounded-[25px] transition hover:scale-105">Book a call ☕️</Button>

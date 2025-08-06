@@ -202,7 +202,7 @@ export default function HeroThree() {
                 <DialogClose asChild>
                   <Button variant="outline">Close</Button>
                 </DialogClose>
-                <Link href="/book" target="_blank"><Button className="cursor-pointer">Book a call</Button></Link>
+                <Link href="https://cal.com/usatii/onboarding" target="_blank"><Button className="cursor-pointer">Book a call</Button></Link>
               </DialogFooter>
             </motion.div>
           </DialogContent>
