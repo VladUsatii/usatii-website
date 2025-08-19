@@ -215,7 +215,7 @@ export default function DemoPage() {
           READY TO PLUG OUR SYSTEMS<br />INTO YOUR STACK?
         </h2>
         <Link
-          href="/contact"
+          href="https://www.cal.com/usatii/onboarding"
           className="items-center gap-1 rounded-xl bg-fuchsia-600 px-5 py-3 w-fit text-sm font-bold text-white shadow-md transition hover:bg-fuchsia-500"
         >
           Book a call with Vlad

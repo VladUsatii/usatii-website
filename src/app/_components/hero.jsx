@@ -7,6 +7,7 @@ import AvatarGroup from "./avatar-group";
 import LogoMarquee from "./logo-marquee";
 import CaseStudySwiper from "./case-study-swiper";
 import SystemsBentoGrid from "./bento-systems";
+import DemoGridWithLiveVideo from "./demo-grid-live-video";
 
 export default function Hero() {
   return (
@@ -15,7 +16,7 @@ export default function Hero() {
         We build marketing <span className="text-indigo-600"> systems</span> for teams.
       </h1>
 
-      <h3 className="font-bold text-2xl tracking-tight mx-3">Clients save 30 hrs/week & $10K/yr on software.</h3>
+      <h3 className="font-bold text-xl md:text-2xl tracking-tight mx-3">Clients save 30 hrs/week on content and $10K/yr on software.</h3>
 
       <Link
         id="book"
@@ -27,7 +28,7 @@ export default function Hero() {
         <div className="flex flex-col items-center justify-center gap-y-3 mt-4 p-5 text-sm sm:text-md">
           <AvatarGroup count={5} size={42} />
           <p>Helping 1,000+ other founders achieve their<br />
-          business goals through proven blueprints.</p>
+          business goals through proven systems.</p>
         </div>
 
         <LogoMarquee images={[
@@ -55,6 +56,8 @@ export default function Hero() {
 
 
       <SystemsBentoGrid />
+
+      <DemoGridWithLiveVideo />
 
       <CaseStudySwiper />
     </section>

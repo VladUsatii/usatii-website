@@ -5,58 +5,58 @@ export default function ComparisonTable() {
   const rows = [
     {
       label: 'System type',
-      usatii: 'One-time build + optional content retainer',
-      agency: 'Ongoing full‑service contract',
+      usatii: 'One build + content retainer',
+      agency: 'Full‑service contract',
       saas: 'Subscription toolbox',
-      diy: 'Patchwork of free tools',
+      diy: 'Random free tooling',
     },
     {
       label: 'Monthly fees',
-      usatii: '$0 software* · flex retainer',
-      agency: '$3‑10k service fee',
-      saas: '$400‑1k SaaS stack',
-      diy: '“Free” but hidden time cost',
+      usatii: '$0 software + flex retainer',
+      agency: '$3‑10k fee',
+      saas: '$400‑1k / service',
+      diy: 'Costs time',
     },
     {
-      label: 'SaaS savings / yr',
-      usatii: 'Up to $9.6k',
-      agency: 'None',
-      saas: '—',
-      diy: '—',
+      label: 'Savings/yr',
+      usatii: 'Up to $10K',
+      agency: 'N/A',
+      saas: 'N/A',
+      diy: 'N/A',
     },
     {
       label: 'Content output',
-      usatii: '90+ human‑reviewed videos / mo',
-      agency: '8‑15 assets / mo',
-      saas: 'DIY templates',
-      diy: 'Ad hoc, inconsistent',
+      usatii: '90+ human-made videos/month',
+      agency: '8-15 assets / mo',
+      saas: 'Basic templates',
+      diy: 'Inconsistencies',
     },
     {
       label: 'Booking + CRM built‑in',
-      usatii: '✅ Local‑hosted, fully owned',
-      agency: '➖ (extra cost)',
-      saas: '➖ (add‑on tier)',
-      diy: '❌',
+      usatii: 'Local‑hosted, self-owned, firm-managed',
+      agency: 'Remote-hosted, remote-managed, remote-owned',
+      saas: 'Remote-hosted, remote-managed, remote-owned',
+      diy: 'N/A',
     },
     {
       label: 'Time saved / wk',
       usatii: '20‑30 hrs',
       agency: '5‑10 hrs',
       saas: 'Depends on setup',
-      diy: '0 hrs (extra load)',
+      diy: '-20 hrs',
     },
     {
       label: 'Automation level',
-      usatii: 'Full—capture → chop → post',
+      usatii: 'Full',
       agency: 'Manual heavy',
-      saas: 'Semi‑auto',
+      saas: 'Semi-auto',
       diy: 'None',
     },
     {
-      label: 'Ownership & lock‑in',
-      usatii: 'You own code & data',
-      agency: 'Agency‑hosted',
-      saas: 'Vendor‑locked',
+      label: 'Ownership',
+      usatii: 'You own IP',
+      agency: 'Agency-hosted',
+      saas: 'Vendor-locked',
       diy: 'N/A',
     },
   ];
@@ -77,10 +77,10 @@ export default function ComparisonTable() {
           <thead>
             <tr>
               <th className={headingClasses}></th>
-              <th className={headingClasses}>Usatii Media</th>
-              <th className={headingClasses}>Traditional Agency</th>
-              <th className={headingClasses}>All‑in‑One SaaS</th>
-              <th className={headingClasses}>DIY / Freelancer</th>
+              <th className={headingClasses}>USATII</th>
+              <th className={headingClasses}>Traditional agency</th>
+              <th className={headingClasses}>All‑in‑one SaaS</th>
+              <th className={headingClasses}>Freelance/DIY</th>
             </tr>
           </thead>
 
