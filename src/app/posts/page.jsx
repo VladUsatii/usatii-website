@@ -38,7 +38,7 @@ function Posts() {
         )}
 
         {posts.map((post, i) => (
-          <ArticleCard key={i} post={post} />
+          <ArticleCard key={i} id={i} />
         ))}
       </div>
 
