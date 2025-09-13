@@ -33,11 +33,8 @@ function Posts() {
       </p>
 
       <div className="grid gap-10 grid-cols-1">
-        {posts.length === 0 && (
-          <p className="text-neutral-400 text-center italic">No entries yet. Real insights don’t publish on a schedule.</p>
-        )}
 
-        {posts.map((post, i) => (
+        {[1].map((post, i) => (
           <ArticleCard key={i} id={i} />
         ))}
       </div>

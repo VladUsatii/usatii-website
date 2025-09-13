@@ -1,6 +1,7 @@
 import { useState } from "react"
 import {
   Card,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -18,7 +19,7 @@ export const posts = [
   {
     id: "1",
     title: "Short-form video workflow explained",
-    excerpt: ``,
+    excerpt: `Goal: Educate the client on how content is prepped, from start to finish.`,
     body: `### Market research
 
 To build a content system that speaks to real customer demand, we combine qualitative insight with quantitative signals to choose pillars and cadence that predictably earn attention and drive conversions - even if on only a slightly-better scale.
@@ -30,18 +31,18 @@ At the beginning, we do some basic market research:
 - Clarify ICP and the top “jobs to be done” your audience hires content to solve (learn, compare, decide, justify).
 - Align research to 2–3 business KPIs (e.g., demo requests, CAC-efficient traffic).
 
-Afterwards, our content research includes:
+**Content research**
 
 - Competitor and adjacency audit, where we extract recurring themes, hook formats, retention curves, and CTA patterns from your (and any adjacent) categories.
 - A matrix where we tag topics by \`volume * freshness * differentiation\` to find high-leverage angles competitors underuse.
 
-We quantify demand through the following:
+**Demand quantification**
 
 - Search intent & keywords. We cluster queries into problem, solution, and brand terms, then estimate volume and difficulty to inform long-form and short-form anchors.
 - We capture questions, objections, and phrasing from comments, subreddits, TikTok Q&A, Twitter threads, Discords, and review sites to better understand the space.
 - We identify seasonal spikes, product launch cycles, and news hooks to time campaigns - mostly from adjacent categories.
 
-When it is time to validate hooks:
+**Hook validation**
 
 - We run a hook lab, where we transform insights into 20–40 testable hooks per pillar (promise, pattern interrupt, tension, proof).
 - Rapid A/Bs with polls, small-budget boosts, and community samples to verify interest.
@@ -83,19 +84,25 @@ function ArticleCard({ id }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Card className="cursor-pointer hover:shadow-lg transition-shadow">
+        <div className="flex flex-row items-center justify-center w-full">
+        <Card className="relative cursor-pointer hover:shadow-lg transition-shadow max-w-[700px] w-full">
+          <div className="absolute top-2 right-2 font-bold text-sm bg-black text-white flex items-center justify-center rounded-full w-8 h-8">
+            {id + 1}
+          </div>
           <CardHeader>
             <CardTitle className="font-bold text-2xl">{posts[id].title}</CardTitle>
+            <CardDescription>{posts[id].excerpt}</CardDescription>
           </CardHeader>
         </Card>
+        </div>
       </DialogTrigger>
 
       <DialogContent className="w-full max-w-[750px] sm:max-w-[750px] overflow-y-auto max-h-[90vh]">
         <DialogClose className="absolute top-4 right-4" />
-        <DialogTitle className="font-bold text-2xl">{posts[id].title}</DialogTitle>
+        <DialogTitle className="font-bold text-3xl text-black">{posts[id].title}</DialogTitle>
 
         {/* Preview (plain text / short excerpt) */}
-        <p className="prose text-md text-neutral-600">
+        <p className="prose text-md font-semibold text-black">
           {posts[id].excerpt}
         </p>
 
@@ -108,19 +115,19 @@ function ArticleCard({ id }) {
                 <h1 className="text-3xl font-extrabold mt-6 mb-4" {...props} />
               ),
               h2: ({node, ...props}) => (
-                <h2 className="text-2xl font-bold mt-5 mb-3 text-neutral-800" {...props} />
+                <h2 className="text-2xl font-bold mt-5 mb-3 text-black" {...props} />
               ),
               h3: ({node, ...props}) => (
-                <h3 className="text-xl font-semibold mt-4 mb-2 text-neutral-700" {...props} />
+                <h3 className="text-xl font-semibold mt-4 mb-2 text-black" {...props} />
               ),
               p: ({node, ...props}) => (
-                <p className="leading-relaxed mb-4 text-neutral-600" {...props} />
+                <p className="leading-relaxed mb-4 text-black" {...props} />
               ),
               ul: ({node, ...props}) => (
                 <ul className="list-disc list-inside mb-4 space-y-1" {...props} />
               ),
               li: ({node, ...props}) => (
-                <li className="ml-2 text-neutral-700" {...props} />
+                <li className="ml-2 text-black" {...props} />
               ),
               a: ({node, ...props}) => (
                 <a
