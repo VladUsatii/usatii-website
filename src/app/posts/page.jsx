@@ -34,7 +34,7 @@ function Posts() {
 
       <div className="grid gap-10 grid-cols-1">
 
-        {[1].map((post, i) => (
+        {[1, 2].map((post, i) => (
           <ArticleCard key={i} id={i} />
         ))}
       </div>
