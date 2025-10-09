@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const VIDEO_SRC = "/WELCOME_SMALL.mp4"; // e.g. /reel.mp4 in /public
+const VIDEO_SRC = "/WELCOME.mp4"; // e.g. /reel.mp4 in /public
 const VIDEO_POSTER = "/WELCOME.png"; // optional poster placed in /public (safe to delete if unused)
 const VIDEO_DESCRIPTION = `A quick 3-minute tour of our organic content systems: market intelligence, episodic
 campaigns, and a proprietary short‑form pipeline. This reel highlights how we turn raw footage into powerful content marketing systems.`;
