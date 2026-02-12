@@ -21,7 +21,7 @@
     "linkify-react": "^4.3.1",
     "lucide-react": "^0.511.0",
     "luxon": "^3.7.1",
-    "next": "15.3.2",
+    "next": "15.3.8",
     "react": "^19.0.0",
     "react-day-picker": "^9.8.0",
     "react-dnd": "^16.0.1",
