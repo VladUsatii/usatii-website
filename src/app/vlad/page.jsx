@@ -21,7 +21,7 @@ Currently, I do research on vulnerability classes and have discovered several ze
 
 Outside of research, I run [[usatii.com|https://usatii.com/]] (Usatii Media), North America's largest marketing agency by views and upload volume. We serve 40+ clients in 10+ countries and generate 100M+ views every month for clients.
 
-I've collaborated with the CEO of [[Gamma|https://gamma.app/]] (Series B), [[Airbo|https://www.airbo.com/]], [[TheCPADude|https://thecpadude.com/]], [[UNWD|https://feelkalm.com/]], [[Bishop3DO|https://bishop3do.com/]], [[Rich & Pour Teas|https://richandpourco.com/]], [[Spectres|https://spectres.io/]], [[Kerja.io|https://kerja.io/]], [[MotionElements|https://www.motionelements.com/]], [[Rebuildit Inc.|https://www.rebuilditinc.com/]]. I've worked with multiple celebrities as well (email for details).
+I've collaborated with the CEO of [[Gamma|https://gamma.app/]] (Series B), [[Airbo|https://www.airbo.com/]], [[TheCPADude|https://thecpadude.com/]], [[UNWD|https://feelkalm.com/]], [[Bishop3DO|https://bishop3do.com/]], [[Rich & Pour Teas|https://richandpourco.com/]], [[Spectres|https://spectres.io/]], [[Kerja.io|https://kerja.io/]], [[MotionElements|https://www.motionelements.com/]], [[Rebuildit Inc.|https://www.rebuilditinc.com/]], and over 150 other companies. I've worked with multiple celebrities as well (email for details).
 
 `.trim();
 
