@@ -1,6 +1,8 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import Footer from "../_components/footer";
-import { Github, Linkedin, Twitter, X } from "lucide-react";
+import { FileText, Github, Linkedin, Twitter, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 /**
@@ -21,7 +23,7 @@ Currently, I do research on vulnerability classes and have discovered several ze
 
 Outside of research, I run [[usatii.com|https://usatii.com/]] (Usatii Media), North America's largest marketing agency by views and upload volume. We serve 40+ clients in 10+ countries and generate 100M+ views every month for clients.
 
-I've collaborated with the CEO of [[Gamma|https://gamma.app/]] (Series B), [[Airbo|https://www.airbo.com/]], [[TheCPADude|https://thecpadude.com/]], [[UNWD|https://feelkalm.com/]], [[Bishop3DO|https://bishop3do.com/]], [[Rich & Pour Teas|https://richandpourco.com/]], [[Spectres|https://spectres.io/]], [[Kerja.io|https://kerja.io/]], [[MotionElements|https://www.motionelements.com/]], [[Rebuildit Inc.|https://www.rebuilditinc.com/]], and over 150 other companies. I've worked with multiple celebrities as well (email for details).
+My past clients include the CEO of [[Gamma|https://gamma.app/]] (Series B), [[Airbo|https://www.airbo.com/]], [[SciSpace|https://www.scispace.com/]], [[TheCPADude|https://thecpadude.com/]], [[UNWD|https://feelkalm.com/]], [[Bishop3DO|https://bishop3do.com/]], [[Rich & Pour Teas|https://richandpourco.com/]], [[Spectres|https://spectres.io/]], [[Kerja.io|https://kerja.io/]], [[MotionElements|https://www.motionelements.com/]], [[Rebuildit Inc.|https://www.rebuilditinc.com/]], and over 150 other companies. I've worked with multiple celebrities as well (email for details).
 
 `.trim();
 
@@ -54,6 +56,36 @@ function renderWithLinks(text) {
   return out;
 }
 
+function CvLink() {
+    const [open, setOpen] = useState(false);
+  
+    return (
+      <span
+        className="relative inline-flex"
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+      >
+        <Link href="/vlad-usatii-cv.pdf" target="_blank" rel="noreferrer" aria-label="CV">
+          <FileText />
+        </Link>
+  
+        <AnimatePresence>
+          {open && (
+            <motion.span
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: -10 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.12 }}
+              className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full text-xs"
+            >
+              CV
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </span>
+    );
+  }
+
 export default function VladAbout() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-6 py-16">
@@ -69,6 +101,7 @@ export default function VladAbout() {
             <div className="flex justify-between">
             <h1 className="text-2xl font-bold tracking-tight">Vlad Usatii</h1>
             <div className="flex flex-row gap-x-2">
+            <CvLink />
             <Link href="https://www.github.com/VladUsatii"><Github /></Link>
             <Link href="https://www.linkedin.com/in/vladusatii"><Linkedin /></Link>
             <Link href="https://www.x.com/vladusatii">
@@ -88,28 +121,57 @@ export default function VladAbout() {
             <section className="w-full mt-5">
                 <h2 className="text-xl font-bold tracking-tight">Research</h2>
 
-                <div className="mt-4 space-y-2">
-                    <h3 className="text-sm font-base italic leading-snug">
-                        The Curse of Redundancy: Systemic Inconsistency in DeFi via Multi-Variable State
-                        Desynchronization
-                    </h3>
-                    <h3 className="text-sm font-base italic leading-snug">
-                        <b>V. Usatii</b>, Y. Liu
-                    </h3>
+                <div className="mt-4">
+                    <div className="text-sm leading-snug text-zinc-900">
+                        <span className="font-medium">
+                        The Curse of Redundancy: Systemic Inconsistency in DeFi via Multi-Variable State Desynchronization
+                        </span>
+                        <span className="text-zinc-500">.</span>
+                    </div>
 
-                    <div className="mt-2 text-sm text-zinc-700">USENIX Security 2026 (under review); <a
+                    <div className="mt-0.5 text-sm leading-snug text-zinc-700">
+                        <b>Vlad Usatii</b>, Y. Liu
+                    </div>
+
+                    <div className="mt-1 text-sm text-zinc-600">
+                        <span className="font-medium">USENIX Security</span> <span className="text-zinc-500">2026</span>{" "}
+                        <span className="text-zinc-500">(under review)</span>
+                        <span className="text-zinc-400"> · </span>
+                        <a
                         href="https://example.com/preprint.pdf"
                         target="_blank"
                         rel="noreferrer"
-                        className="underline decoration-blue-500 underline-offset-4 hover:text-blue-600"
+                        className="underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-600"
                         >
-                        Preprint (PDF)
-                        </a></div>
+                        ArXiv
+                        </a>
+                        <span className="text-zinc-400"> · </span>
+                        <a
+                        href="https://example.com/bibtex.txt"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-600"
+                        >
+                        BibTeX
+                        </a>
+                    </div>
                 </div>
+
                 </section>
 
                 <section className="w-full mt-5">
                 <h2 className="text-xl font-bold tracking-tight">Portfolio</h2>
+
+                <div className="mt-4 space-y-2">
+                    <h3 className="text-sm font-base italic leading-snug">
+                        To be added
+                    </h3>
+                </div>
+                </section>
+
+
+                <section className="w-full mt-5">
+                <h2 className="text-xl font-bold tracking-tight">Blog</h2>
 
                 <div className="mt-4 space-y-2">
                     <h3 className="text-sm font-base italic leading-snug">
