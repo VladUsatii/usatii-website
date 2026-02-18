@@ -12,12 +12,45 @@ import {
 } from 'lucide-react';
 
 const tiles = [
-  { id: 1, title: 'Market intelligence', desc: '24⁄7 scraping of industry chatter, social signals, and competitor moves flows into a data bank powering every strategic decision.', Icon: Brain,   span: 'md:col-span-4 md:row-span-2' },
-  { id: 2, title: 'Strategic ideation', desc: 'Our sprints distill plans into episodic campaigns, each pinned to a growth goal.', Icon: Sparkles, span: 'md:col-span-3 md:row-span-1' },
-  { id: 3, title: 'Story engine', desc: 'Our engine atomizes content into shorts and text via our in-house content planning pipeline – great for 10x output.', Icon: Layers,   span: 'md:col-span-5 md:row-span-2', img: 'https://diagrams.helpful.dev/d/d:iTyrxEyZ' },
-  { id: 4, title: 'Syndication systems', desc: 'We syndicate content for every platform with per-algo and last-hour metrics sustaining content variety.', Icon: Share,    span: 'md:col-span-3 md:row-span-2' },
-  { id: 5, title: 'Feedback formula', desc: 'Our clean marketing hubs surface hook-rate, retention curves, and conversion velocity – anomalies trigger retros.', Icon: BarChart2, span: 'md:col-span-4 md:row-span-1' },
-  { id: 6, title: 'Automation loop', desc: 'Zapier + aws lambdas recycle winning patterns into reusable playbooks, shaving ≥20 hrs of operator toil per week.', Icon: RefreshCw, span: 'md:col-span-5 md:row-span-1' },
+  {
+    id: 1,
+    title: 'Market intelligence',
+    desc: '24⁄7 scraping of industry chatter, social signals, and competitor moves flows into a data bank powering every strategic decision.',
+    Icon: Brain,
+    span: 'md:col-span-4 md:row-span-2'
+  },
+  {
+    id: 2,
+    title: 'Strategic ideation',
+    desc: 'Our sprints distill plans into episodic campaigns, each pinned to a growth goal.',
+    Icon: Sparkles, span: 'md:col-span-3 md:row-span-1' },
+  {
+    id: 3,
+    title: 'Usatii Editor',
+    desc: 'Our in-house editing OS allows you to create anything with the use of AI. No more tedious resizing and keyframing.',
+    Icon: Layers,
+    span: 'md:col-span-5 md:row-span-2',
+    img: 'https://diagrams.helpful.dev/d/d:iTyrxEyZ' },
+  {
+    id: 4,
+    title: 'Syndication systems',
+    desc: 'We syndicate content for every platform with per-algo and last-hour metrics sustaining content variety.',
+    Icon: Share,
+    span: 'md:col-span-3 md:row-span-2' },
+  {
+    id: 5,
+    title: 'Feedback formula',
+    desc: 'Our clean marketing hubs surface hook-rate, retention curves, and conversion velocity – anomalies trigger retros.',
+    Icon: BarChart2,
+    span: 'md:col-span-4 md:row-span-1'
+  },
+  {
+    id: 6,
+    title: 'Automation loop',
+    desc: 'Zapier + aws lambdas recycle winning patterns into reusable playbooks, shaving ≥20 hrs of operator toil per week.',
+    Icon: RefreshCw,
+    span: 'md:col-span-5 md:row-span-1'
+  },
 ];
 
 function BentoTile({ id, title, desc, Icon, span, img }) {

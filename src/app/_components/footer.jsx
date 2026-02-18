@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 const productTiles = [
   { id: 1, title: 'Market Intelligence', href: '/demos/1' },
   { id: 2, title: 'Strategic Ideation', href: '/demos/2' },
-  { id: 3, title: 'Story Engine', href: '/demos/3' },
+  { id: 3, title: 'Editor', href: '/editor' },
   { id: 4, title: 'Syndication Systems', href: '/demos/4' },
   { id: 5, title: 'Feedback Formula', href: '/demos/5' },
   { id: 6, title: 'Automation Loop', href: '/demos/6' },
@@ -27,7 +27,7 @@ export default function Footer() {
           <h3 className="text-black font-semibold mb-4">Products</h3>
           <ul className="space-y-2">
           {productTiles.map((tile, index) => {
-            const isFirst = index === 0;
+            const isFirst = index === 0 || index === 2;
             return (
               <li key={tile.id}>
                 <a

@@ -66,119 +66,252 @@ export default function Page() {
           </div>
         </motion.div>
 
-        {/* list */}
-        <div className="mt-10 space-y-10">
-          {/* v1.0.3 */}
-          <motion.section
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-120px" }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="pt-8 border-t border-zinc-200"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <div className="flex items-baseline gap-3">
-                <span className="font-mono text-sm font-semibold text-zinc-950">v1.0.3</span>
-                <span className="text-xs text-zinc-500">February 16, 2026</span>
+        <div className="mx-auto max-w-3xl px-4 py-10">
+          <div className="space-y-6">
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="unreleased"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-lg font-semibold text-slate-900">Unreleased</h3>
+                  <p className="mt-1 text-xs text-slate-500">
+                    Working tree (not committed)
+                  </p>
+                </div>
+                <span className="inline-flex items-center rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-200">
+                  2026-02-18
+                </span>
               </div>
-              <span className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-2 py-0.5 text-xs font-semibold text-zinc-700">
-                Performance
-              </span>
-            </div>
 
-            <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
-              <ul className="space-y-2 text-sm leading-relaxed text-zinc-800">
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-emerald-700">+</span>
-                  <span>Startup time cut ~35%.</span>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>
+                  Added internal Git-style project history: checkpoint manifests/snapshots,
+                  change classification (<span className="font-mono text-xs">major</span> vs{" "}
+                  <span className="font-mono text-xs">style</span>), and progress-pack export.
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-amber-700">~</span>
-                  <span>Export pipeline stabilization (fewer freezes in long sessions).</span>
+                <li>
+                  Added GPU preview architecture for macOS: engine factory + env override,
+                  Qt Quick/QML preview surface, GPU media player pool, and adaptive
+                  playback/layer policy.
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-amber-700">~</span>
-                  <span>Smoother UI on large projects (less jank in panels).</span>
+                <li>Added visual layout utilities for fit/crop/align/pivot/overlay math.</li>
+                <li>
+                  Updated main window, preview, timeline, imports, modification, project
+                  IO/preferences/models for new preview/history flows.
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-rose-700">!</span>
-                  <span>Fixed focus bug when opening recent projects.</span>
+                <li>
+                  Added tests for git history service/classifier, GPU playback policy,
+                  preview engine factory, and visual layout.
                 </li>
+                <li>Updated docs with GPU preview setup/env vars.</li>
               </ul>
-            </div>
-          </motion.section>
+            </section>
 
-          {/* v1.0.2 */}
-          <motion.section
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-120px" }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="pt-8 border-t border-zinc-200"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <div className="flex items-baseline gap-3">
-                <span className="font-mono text-sm font-semibold text-zinc-950">v1.0.2</span>
-                <span className="text-xs text-zinc-500">February 10, 2026</span>
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-18"
+              data-commit="78a5177"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-18</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  78a5177
+                </span>
               </div>
-              <span className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-2 py-0.5 text-xs font-semibold text-zinc-700">
-                Fixes
-              </span>
-            </div>
 
-            <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
-              <ul className="space-y-2 text-sm leading-relaxed text-zinc-800">
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-emerald-700">+</span>
-                  <span>Better keyboard navigation in panels.</span>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Added Face Focus tracking for video clips.</li>
+                <li>Added transform keyframe engine and keyframe UI controls.</li>
+                <li>Added settings window and expanded font assets.</li>
+                <li>
+                  Updated export/media/UI integration around preview/imports/modification/project
+                  selection.
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-rose-700">!</span>
-                  <span>Fixed shortcut collisions inside text inputs.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-amber-700">~</span>
-                  <span>Cleaner export defaults.</span>
-                </li>
+                <li>Added tests for face focus and keyframe behavior.</li>
               </ul>
-            </div>
-          </motion.section>
+            </section>
 
-          {/* v1.0.0 */}
-          <motion.section
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-120px" }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="pt-8 border-t border-zinc-200"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <div className="flex items-baseline gap-3">
-                <span className="font-mono text-sm font-semibold text-zinc-950">v1.0.0</span>
-                <span className="text-xs text-zinc-500">February 1, 2026</span>
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-17"
+              data-commit="c6b4721"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-17</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  c6b4721
+                </span>
               </div>
-              <span className="inline-flex items-center rounded-full border border-zinc-200 bg-white px-2 py-0.5 text-xs font-semibold text-zinc-700">
-                Launch
-              </span>
-            </div>
 
-            <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
-              <ul className="space-y-2 text-sm leading-relaxed text-zinc-800">
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-emerald-700">+</span>
-                  <span>Initial public release.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-emerald-700">+</span>
-                  <span>Local-first projects.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-[12px] text-emerald-700">+</span>
-                  <span>Minimal editing surface + deterministic exports.</span>
-                </li>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Added subtitle transcription pipeline.</li>
+                <li>Added subtitle chunking, sidecar generation, and subtitle store services.</li>
+                <li>Added proxy-generation path for preview/render flows.</li>
+                <li>Updated model/IO/preferences/UI for subtitle workflows.</li>
+                <li>Added tests for transcription/subtitle/proxy services.</li>
               </ul>
-            </div>
-          </motion.section>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-17"
+              data-commit="6fd7035"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-17</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  6fd7035
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Added text layer foundations.</li>
+                <li>Added SVG text builder service.</li>
+                <li>Added export success/loading dialogs and macOS vibrancy support.</li>
+                <li>Updated generation/export/project flow for caption-ready text clips.</li>
+                <li>Added tests for text SVG builder and related model/export paths.</li>
+              </ul>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-16"
+              data-commit="296d60d"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-16</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  296d60d
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>
+                  Added generated media pipeline (“enterprise” flow): renderer, store, and
+                  prompt builder services.
+                </li>
+                <li>Updated export/project/UI paths for generated media.</li>
+                <li>Added generated media pipeline tests.</li>
+              </ul>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-16"
+              data-commit="b15ed7f"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-16</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  b15ed7f
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Fixed preview bugs and improved playback/editing stability.</li>
+                <li>Improved preferences/models/export behavior and connected UI flows.</li>
+                <li>Expanded regression tests for preview/preferences/models/export.</li>
+              </ul>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-16"
+              data-commit="24496bf"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-16</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  24496bf
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Revamped project selection UI.</li>
+                <li>Added project store and window chrome structure.</li>
+                <li>Updated main window/imports/modification/preview/timeline integration.</li>
+                <li>Added project store and UI regression tests.</li>
+              </ul>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-16"
+              data-commit="dba2d2f"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-16</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  dba2d2f
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Fixed split-audio regressions across timeline/preview/model behavior.</li>
+                <li>Added/updated regression tests for these fixes.</li>
+              </ul>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-15"
+              data-commit="44f4989"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-15</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  44f4989
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Added export dialog and export service.</li>
+                <li>Improved modifications/settings behavior across UI.</li>
+                <li>Added initial export tests and updated model/preferences tests.</li>
+              </ul>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-15"
+              data-commit="e0fab98"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-15</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  e0fab98
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Added preferences system (model + persistence store).</li>
+                <li>Added preferences and shortcuts dialogs.</li>
+                <li>Updated commands/theme/project IO/main UI integration.</li>
+                <li>Added tests for preferences and media catalog behavior.</li>
+              </ul>
+            </section>
+
+            <section
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              data-version="2026-02-15"
+              data-commit="ac325e2"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-lg font-semibold text-slate-900">2026-02-15</h3>
+                <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-inset ring-slate-200">
+                  ac325e2
+                </span>
+              </div>
+
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+                <li>Initial project scaffold created.</li>
+                <li>Added core models, project IO, media catalog, generation service.</li>
+                <li>Added four-pane editor UI (Imports, Preview, Modification, Timeline).</li>
+                <li>Added baseline tests and packaging/config setup.</li>
+              </ul>
+            </section>
+          </div>
         </div>
 
         <Footer />

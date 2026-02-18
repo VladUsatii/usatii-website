@@ -65,7 +65,7 @@ export default function Page() {
             </h1>
 
             <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-zinc-600 sm:text-lg">
-                No editing skills required. If you can dream it, you can make it.
+                No editing skills required.<br />If you can dream it, you can edit it.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -74,6 +74,14 @@ export default function Page() {
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-zinc-950 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:shadow-md"
               >
                 Purchase for macOS
+                <span className="transition group-hover:translate-x-0.5">→</span>
+              </a>
+
+              <a
+                href="#download"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white shadow-lg px-4 py-2.5 text-sm font-semibold text-zinc-950 shadow-sm transition hover:shadow-md"
+              >
+                See a demo
                 <span className="transition group-hover:translate-x-0.5">→</span>
               </a>
             </div>
@@ -179,7 +187,7 @@ export default function Page() {
 
               <div className="lg:col-span-4 lg:justify-self-end">
                 <a
-                  href="https://example.com/editor-latest.dmg"
+                  href="#"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-zinc-950 shadow-sm transition hover:shadow-md"
                 >
                   Purchase (coming soon)
