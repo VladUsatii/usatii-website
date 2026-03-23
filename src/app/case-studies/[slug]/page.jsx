@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllCaseStudies, getAllCaseStudySlugs, getCaseStudyBySlug } from "@/lib/case-studies";
+import {
+  getAllCaseStudies,
+  getAllCaseStudySlugs,
+  getCaseStudyBySlug,
+} from "@/lib/case-studies";
 import MarkdownContent from "@/app/_components/MarkdownComponent";
+
+export const runtime = "nodejs";
 
 export function generateStaticParams() {
   return getAllCaseStudySlugs().map((slug) => ({ slug }));
