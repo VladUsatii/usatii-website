@@ -1,101 +1,76 @@
-import fs from "fs";
-import path from "path";
+// lib/case-studies.js
+import "server-only";
+import path from "node:path";
+import { promises as fs } from "node:fs";
 import matter from "gray-matter";
 
 const CASE_STUDIES_DIR = path.join(process.cwd(), "public", "case-studies");
 
-function ensureDir() {
-  if (!fs.existsSync(CASE_STUDIES_DIR)) {
-    return [];
-  }
-  return fs.readdirSync(CASE_STUDIES_DIR);
+function slugFromFilename(filename) {
+  return filename.replace(/\.(md|mdx)$/i, "");
 }
 
-function stripMarkdown(markdown = "") {
-  return markdown
-    .replace(/```[\s\S]*?```/g, "")
-    .replace(/`[^`]*`/g, "")
-    .replace(/\!\[[^\]]*\]\([^)]+\)/g, "")
-    .replace(/\[[^\]]+\]\([^)]+\)/g, "$1")
-    .replace(/^>\s+/gm, "")
-    .replace(/[*_~#>-]/g, "")
-    .replace(/\$\$[\s\S]*?\$\$/g, "")
-    .replace(/\$[^$]*\$/g, "")
-    .replace(/\n+/g, " ")
-    .trim();
+function titleFromSlug(slug) {
+  return slug
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join(" ");
 }
 
-function getExcerpt(content, manualExcerpt) {
-  if (manualExcerpt) return manualExcerpt;
-
-  const cleaned = stripMarkdown(content);
-  if (!cleaned) return "";
-
-  return cleaned.length > 180 ? `${cleaned.slice(0, 177)}...` : cleaned;
+function estimateReadingTime(text) {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
 }
 
-function getReadingTime(content = "") {
-  const text = stripMarkdown(content);
-  const words = text ? text.split(/\s+/).length : 0;
-  return Math.max(1, Math.ceil(words / 220));
+async function getCaseStudyFiles() {
+  const entries = await fs.readdir(CASE_STUDIES_DIR, { withFileTypes: true });
+
+  return entries
+    .filter((entry) => entry.isFile() && /\.(md|mdx)$/i.test(entry.name))
+    .map((entry) => entry.name)
+    .sort();
 }
 
-function normalizeStudy(slug, source) {
-  const { data, content } = matter(source);
-  const date = data.date ? new Date(data.date) : null;
+async function readCaseStudyFile(filename) {
+  const fullPath = path.join(CASE_STUDIES_DIR, filename);
+  const raw = await fs.readFile(fullPath, "utf8");
+  const { data, content } = matter(raw);
+
+  const slug = slugFromFilename(filename);
 
   return {
     slug,
-    title: data.title || slug,
-    excerpt: getExcerpt(content, data.excerpt),
+    title: data.title || titleFromSlug(slug),
+    excerpt: data.excerpt || "",
+    readingTime: Number(data.readingTime) || estimateReadingTime(content),
+    order: typeof data.order === "number" ? data.order : 9999,
     date: data.date || null,
-    dateLabel:
-      date && !Number.isNaN(date.getTime())
-        ? new Intl.DateTimeFormat("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          }).format(date)
-        : null,
-    client: data.client || null,
-    sector: data.sector || null,
-    tags: Array.isArray(data.tags) ? data.tags : [],
-    cover: data.cover || null,
-    featured: Boolean(data.featured),
-    readingTime: getReadingTime(content),
     content,
   };
 }
 
-export function getAllCaseStudySlugs() {
-  return ensureDir()
-    .filter((file) => file.endsWith(".md"))
-    .map((file) => file.replace(/\.md$/, ""));
-}
-
-export function getAllCaseStudies() {
-  const files = ensureDir().filter((file) => file.endsWith(".md"));
-
-  const studies = files.map((file) => {
-    const slug = file.replace(/\.md$/, "");
-    const fullPath = path.join(CASE_STUDIES_DIR, file);
-    const source = fs.readFileSync(fullPath, "utf8");
-    return normalizeStudy(slug, source);
-  });
+export async function getAllCaseStudies() {
+  const files = await getCaseStudyFiles();
+  const studies = await Promise.all(files.map(readCaseStudyFile));
 
   return studies.sort((a, b) => {
-    if (a.featured !== b.featured) return a.featured ? -1 : 1;
-    const aTime = a.date ? new Date(a.date).getTime() : 0;
-    const bTime = b.date ? new Date(b.date).getTime() : 0;
-    return bTime - aTime;
+    if (a.order !== b.order) return a.order - b.order;
+    if (a.date && b.date) return new Date(b.date) - new Date(a.date);
+    return a.title.localeCompare(b.title);
   });
 }
 
-export function getCaseStudyBySlug(slug) {
-  const fullPath = path.join(CASE_STUDIES_DIR, `${slug}.md`);
+export async function getAllCaseStudySlugs() {
+  const files = await getCaseStudyFiles();
+  return files.map(slugFromFilename);
+}
 
-  if (!fs.existsSync(fullPath)) return null;
+export async function getCaseStudyBySlug(slug) {
+  const files = await getCaseStudyFiles();
+  const filename = files.find((file) => slugFromFilename(file) === slug);
 
-  const source = fs.readFileSync(fullPath, "utf8");
-  return normalizeStudy(slug, source);
+  if (!filename) return null;
+
+  return readCaseStudyFile(filename);
 }
