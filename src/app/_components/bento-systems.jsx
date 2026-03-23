@@ -14,8 +14,8 @@ import {
 const tiles = [
   {
     id: 1,
-    title: 'Market intelligence',
-    desc: '24⁄7 scraping of industry chatter, social signals, and competitor moves flows into a data bank powering every strategic decision.',
+    title: 'Market Intelligence',
+    desc: '24⁄7, AI-powered scraping of industry chatter, social signals, and competitor moves that flow straight into your pipeline to power every strategic decision.',
     Icon: Brain,
     span: 'md:col-span-4 md:row-span-2'
   },
@@ -27,10 +27,10 @@ const tiles = [
   {
     id: 3,
     title: 'Usatii Editor',
-    desc: 'Our in-house editing OS allows you to create anything with the use of AI. No more tedious resizing and keyframing.',
+    desc: 'Our in-house editing OS allows you to create anything with the use of AI or by hand. A solid CapCut replacement.',
     Icon: Layers,
     span: 'md:col-span-5 md:row-span-2',
-    img: 'https://diagrams.helpful.dev/d/d:iTyrxEyZ' },
+    img: 'USATII_EDITOR_DEMO.gif' },
   {
     id: 4,
     title: 'Syndication systems',
@@ -72,9 +72,10 @@ function BentoTile({ id, title, desc, Icon, span, img }) {
         <div className="mt-[75px] aspect-video w-full max-w-4xl flex items-center justify-center">
         <img
           alt="diagram"
-          src="https://diagrams.helpful.dev/d/d:iTyrxEyZ"
-          width={500}
+          src="/USATII_EDITOR_DEMO.gif"
+          width={600}
           height={500}
+          className='rounded-[20px] box-shadow-xl'
           // unoptimized
         />
         </div>
@@ -87,19 +88,10 @@ function BentoTile({ id, title, desc, Icon, span, img }) {
 
       <div className='text-left'>
       <Link
-        href={id === 1 ? `/demos/${id}` : '#'}
-        onClick={(e) => {
-            if (id !== 1) e.preventDefault();
-        }}
-        aria-disabled={id !== 1}
-        tabIndex={id !== 1 ? -1 : 0}
-        className={`self-start items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium shadow transition ${
-            id === 1
-            ? 'bg-fuchsia-600/80 text-white hover:bg-fuchsia-600'
-            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-        }`}
+        href={id === 1 ? `/demos/${id}` : id === 2 || id === 4 || id === 5 || id === 6 ? 'https://cal.com/usatii/onboarding' : '/editor'}
+        className={`self-start items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium shadow transition bg-fuchsia-600/80 text-white hover:bg-fuchsia-600`}
         >
-        {id == 1 ? 'Watch a demo →' : 'Coming soon'}
+        {id == 1 ? 'Purchase' : id == 2 || id == 4 || id == 5 || id == 6 ? 'Book Demo' : 'Get Access'}
         </Link>
       </div>
       </div>
@@ -111,11 +103,11 @@ export default function SystemsBentoGrid() {
   return (
     <section className="relative isolate overflow-hidden pt-[100px] mb-5 text-black">
       <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
-        <h3 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
-          Extensive growth systems.
+        <h3 className="text-2xl font-medium tracking-tight sm:text-4xl">
+          What we build today helps you make better decisions <span className='text-indigo-500'>tomorrow</span>.
         </h3>
-        <p className="mt-4 text-lg text-neutral-800">
-          Our battle-tested operating systems turn your value prop into compounding <span className="font-bold">attention and brand equity</span> - we engineer it once, maintain it forever.
+        <p className="mt-4 text-lg text-center text-neutral-800">
+        <span className='text-indigo-500'>Our</span> products track what works in real-time.<br /><span className='text-indigo-500'>Our</span> team builds your marketing strategy.<br /><span className='text-indigo-500'>You</span> use the data to help you power operations.
         </p>
       </div>
 

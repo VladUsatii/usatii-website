@@ -24,7 +24,7 @@ export default function DemoGridWithLiveVideo() {
     <section className="relative isolate overflow-hidden pt-[100px] mb-5">
       {/* Top labels forced black for visibility */}
       <div className="mx-auto max-w-6xl px-6 text-center lg:px-8 text-black">
-        <h3 className="text-3xl font-black tracking-tight sm:text-5xl">
+        <h3 className="text-3xl font-medium tracking-tight sm:text-5xl">
           Content is king.
         </h3>
         <p className="mt-3 text-lg font-medium">

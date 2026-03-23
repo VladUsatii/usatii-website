@@ -8,7 +8,7 @@ import HeroThree from "./_components/hero_three";
 import HeroFour from "./_components/hero_four";
 import Link from "next/link";
 import UsatiiMediaCard from "./_components/usatii-media-card";
-import HeroFive from "./_components/hero_five";
+// import HeroFive from "./_components/hero_five";
 import ComparisonTable from "./_components/comparison-table";
 import Roadmap from "./_components/roadmap";
 
@@ -23,7 +23,7 @@ export default function Home() {
         <HeroThree />
         <ComparisonTable />
         <HeroFour />
-        <HeroFive />
+        {/* <HeroFive /> */}
       </main>
       <UsatiiMediaCard />
       <Footer />

@@ -61,7 +61,8 @@ export default function ReviewCarousel() {
 
   return (
     <div className="w-full overflow-hidden">
-      <h3 className="font-black text-center text-4xl pb-8">What founders are saying</h3>
+      <h3 className="font-medium text-center text-5xl pb-3">What founders are saying</h3>
+      <h3 className="font-base text-center text-lg pb-8">Mostly anonymized, but feel free to reach out if you'd like specific examples pertaining to your niche.</h3>
       <div
         ref={containerRef}
         className="flex gap-6 overflow-x-scroll scroll-smooth px-4 snap-x snap-mandatory"

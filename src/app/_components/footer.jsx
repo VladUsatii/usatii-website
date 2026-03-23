@@ -87,7 +87,7 @@ export default function Footer() {
         <div className="space-y-4">
           <h3 className="text-black font-semibold mb-4">Company</h3>
           <ul className="space-y-2">
-            <li><a href="/about" className="hover:text-black">About Us</a></li>
+            <li><a href="/vlad" className="hover:text-black">Our Founder's Story</a></li>
             <li><a href="/careers" className="hover:text-black">Careers</a></li>
             <li><a href="/referral" className="hover:text-black">Referrals</a></li>
             <li><a href="/privacy" className="hover:text-black">Privacy Policy</a></li>

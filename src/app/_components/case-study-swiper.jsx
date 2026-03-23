@@ -162,46 +162,66 @@ function TinderCard({ cs, index, total, onSwipe }) {
 export default function ComplexCaseStudySwiper() {
   const [cards, setCards] = useState(caseStudies);
 
-  const handleSwipe = (id) => setCards(prev => prev.filter(c => c.id !== id));
+  const handleSwipe = (id) => {
+    setCards((prev) => prev.filter((c) => c.id !== id));
+  };
 
   return (
-    <section className="flex flex-col items-center w-full mt-24">
-      <h2 className="font-black text-3xl sm:text-5xl mb-2">Case studies matter.</h2>
-      <p className="text-center text-md sm:text-lg text-neutral-600 mb-6 max-w-md">
-        Swipe through a few of our past clients.
-      </p>
+    <section className="w-full py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-12 px-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-center lg:gap-16 xl:gap-24">
+        <div className="max-w-xl text-center lg:text-left">
+          <h2 className="text-4xl font-medium leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
+            Case studies
+            <br />
+            matter.
+          </h2>
 
-      <div className={`${onest.className} relative h-[400px] w-full max-w-[420px]`}>
-        <AnimatePresence>
-          {cards.map((cs, idx) => (
-            <TinderCard
-              key={cs.id}
-              cs={cs}
-              index={idx}
-              total={cards.length}
-              onSwipe={handleSwipe}
-            />
-          ))}
-        </AnimatePresence>
+          <p className="mt-4 text-base leading-7 text-neutral-600 sm:text-lg">
+            Swipe through a few of our past clients.
+          </p>
+        </div>
 
-        {cards.length === 0 && (
-          <Button onClick={() => setCards(caseStudies)} className="absolute inset-0 m-auto">
-            Reload Cases ✨
-          </Button>
-        )}
-      </div>
+        <div className="mx-auto flex w-full max-w-[460px] flex-col items-center lg:mx-0 lg:justify-self-end">
+          <div
+            className={`${onest.className} relative h-[420px] w-full sm:h-[440px]`}
+          >
+            <AnimatePresence>
+              {cards.map((cs, idx) => (
+                <TinderCard
+                  key={cs.id}
+                  cs={cs}
+                  index={idx}
+                  total={cards.length}
+                  onSwipe={handleSwipe}
+                />
+              ))}
+            </AnimatePresence>
 
-      <div className="flex mt-8 space-x-2">
-        {caseStudies.map(c => (
-          <span
-            key={c.id}
-            className={`block w-3 h-3 rounded-full ${
-              cards.findIndex(x => x.id === c.id) === -1
-                ? 'bg-gray-300'
-                : 'bg-purple-500'
-            }`}
-          />
-        ))}
+            {cards.length === 0 && (
+              <Button
+                onClick={() => setCards(caseStudies)}
+                className="absolute inset-0 m-auto rounded-full px-5 py-2"
+              >
+                Reload Cases ✨
+              </Button>
+            )}
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {caseStudies.map((c) => {
+              const active = cards.findIndex((x) => x.id === c.id) !== -1;
+
+              return (
+                <span
+                  key={c.id}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    active ? "w-2.5 bg-purple-500" : "w-2.5 bg-neutral-300"
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
