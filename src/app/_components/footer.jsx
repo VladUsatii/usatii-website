@@ -58,8 +58,8 @@ export default function Footer() {
   </li>
   <li>
     <a
-      className="opacity-50 cursor-not-allowed pointer-events-none"
-      aria-disabled="true"
+    href='/case-studies'
+      className=""
     >
       Case Studies
     </a>
