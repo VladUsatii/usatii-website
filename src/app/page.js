@@ -11,6 +11,7 @@ import UsatiiMediaCard from "./_components/usatii-media-card";
 // import HeroFive from "./_components/hero_five";
 import ComparisonTable from "./_components/comparison-table";
 import Roadmap from "./_components/roadmap";
+import WebsiteShowcase from "./_components/websites";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         <Roadmap />
         <HeroTwo />
+        <WebsiteShowcase />
         <HeroThree />
         <ComparisonTable />
         <HeroFour />
