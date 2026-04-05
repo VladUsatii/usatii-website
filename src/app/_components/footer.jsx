@@ -1,14 +1,9 @@
 import React from 'react';
-import { Twitter, Linkedin, Instagram, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Linkedin, Instagram } from 'lucide-react';
 
 const productTiles = [
   { id: 1, title: 'Market Intelligence', href: '/demos/1' },
-  { id: 2, title: 'Strategic Ideation', href: '/demos/2' },
-  { id: 3, title: 'Editor', href: '/editor' },
-  { id: 4, title: 'Syndication Systems', href: '/demos/4' },
-  { id: 5, title: 'Feedback Formula', href: '/demos/5' },
-  { id: 6, title: 'Automation Loop', href: '/demos/6' },
+  { id: 2, title: 'Editor', href: '/editor' },
 ];
 
 export default function Footer() {
@@ -26,24 +21,16 @@ export default function Footer() {
         <div>
           <h3 className="text-black font-semibold mb-4">Products</h3>
           <ul className="space-y-2">
-          {productTiles.map((tile, index) => {
-            const isFirst = index === 0 || index === 2;
-            return (
+          {productTiles.map((tile) => (
               <li key={tile.id}>
                 <a
-                  href={isFirst ? tile.href : undefined}
-                  className={
-                    isFirst
-                      ? "hover:text-black transition-colors"
-                      : "opacity-50 cursor-not-allowed pointer-events-none"
-                  }
-                  {...(!isFirst && { "aria-disabled": "true" })}
+                  href={tile.href}
+                  className="hover:text-black transition-colors"
                 >
                   {tile.title}
                 </a>
               </li>
-            );
-          })}
+            ))}
           </ul>
         </div>
 
@@ -51,35 +38,16 @@ export default function Footer() {
         <div>
           <h3 className="text-black font-semibold mb-4">Resources</h3>
           <ul className="space-y-2">
-          <li>
-    <a href="/posts" className="hover:text-black">
-      Blog
-    </a>
-  </li>
-  <li>
-    <a
-    href='/case-studies'
-      className=""
-    >
-      Case Studies
-    </a>
-  </li>
-  <li>
-    <a
-      className="opacity-50 cursor-not-allowed pointer-events-none"
-      aria-disabled="true"
-    >
-      Documentation
-    </a>
-  </li>
-  <li>
-    <a
-      className="opacity-50 cursor-not-allowed pointer-events-none"
-      aria-disabled="true"
-    >
-      FAQs
-    </a>
-  </li>
+            <li>
+              <a href="/case-studies" className="hover:text-black">
+                Case Studies
+              </a>
+            </li>
+            <li>
+              <a href="/documentation" className="hover:text-black transition-colors">
+                Documentation
+              </a>
+            </li>
           </ul>
         </div>
 

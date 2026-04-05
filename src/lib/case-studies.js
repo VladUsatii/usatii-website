@@ -23,6 +23,45 @@ function estimateReadingTime(text) {
   return Math.max(1, Math.ceil(words / 200));
 }
 
+function toStringOrEmpty(value) {
+  return typeof value === "string" ? value : "";
+}
+
+function toStringOrNull(value) {
+  const str = toStringOrEmpty(value).trim();
+  return str || null;
+}
+
+function toArrayOfStrings(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => (typeof item === "string" ? item.trim() : ""))
+      .filter(Boolean);
+  }
+
+  if (typeof value === "string") {
+    return value
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
+function getDateLabel(date) {
+  if (!date) return null;
+
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return null;
+
+  return parsed.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
 async function getCaseStudyFiles() {
   const entries = await fs.readdir(CASE_STUDIES_DIR, { withFileTypes: true });
 
@@ -41,11 +80,16 @@ async function readCaseStudyFile(filename) {
 
   return {
     slug,
-    title: data.title || titleFromSlug(slug),
-    excerpt: data.excerpt || "",
+    title: toStringOrEmpty(data.title).trim() || titleFromSlug(slug),
+    excerpt: toStringOrEmpty(data.excerpt).trim(),
     readingTime: Number(data.readingTime) || estimateReadingTime(content),
     order: typeof data.order === "number" ? data.order : 9999,
-    date: data.date || null,
+    date: toStringOrNull(data.date),
+    dateLabel: getDateLabel(data.date),
+    client: toStringOrNull(data.client),
+    sector: toStringOrNull(data.sector),
+    cover: toStringOrNull(data.cover),
+    tags: toArrayOfStrings(data.tags),
     content,
   };
 }

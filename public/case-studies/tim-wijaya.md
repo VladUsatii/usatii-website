@@ -1,4 +1,8 @@
-# How we got the founder of Kerja.io 500K+ views in one month with 5 videos
+---
+title: "How we got the founder of Kerja.io 500K+ views in one month with 5 videos"
+excerpt: "Founder-led content case study on hook strategy, script compression, loop architecture, and follower conversion outcomes."
+order: 1
+---
 
 ![Alt text](/case-studies/Tim1.jpeg)
 ![Alt text](/case-studies/Tim2.jpeg)

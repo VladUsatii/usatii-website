@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  async headers() {
+    return [
+      {
+        source: '/documentation/:path*.pdf',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value:
+              'public, max-age=0, s-maxage=31536000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
