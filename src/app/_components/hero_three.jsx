@@ -15,10 +15,13 @@ import {
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 
-const plans = [
+const coreServices = [
   {
-    name: "Organic SMM",
+    name: "Organic Social Media Content Creation & Management",
     price: "Starts at $550 /mo",
+    badge: "Core service",
+    summary:
+      "Consistent short-form and written content systems that keep your brand active, credible, and compounding. The team and I have worked with some of the largest creators on social media and our systems genuinely work. We handle:",
     features: [
       "• Content planning & scripting",
       "• Editing, voiceovers & publishing",
@@ -33,33 +36,43 @@ const plans = [
     ],
   },
   {
-    name: "Paid Marketing (beta 🧾)",
+    name: "Paid Marketing",
     price: "$450 + (1.2 × ad budget) /mo",
+    badge: "Core service",
+    summary:
+      "Performance-driven paid acquisition for brands that need immediate reach, deterministic demand capture, and controlled spend options.",
     features: [
-      "• Meta ads & press releases",
-      "• TV & exclusive web spots",
-      "• Budget optimization",
+      "• Meta ads",
+      "• Paid content creation & management",
+      "• A/B testing and budget optimization",
     ],
     prices: [
       ["$450.00 + (1.2 × ad budget)", "15 creatives (video or text) / campaign"],
-      ["$850.00 + (1.2 × ad budget)", "30 posts (video or text) / campaign"],
-      ["$1,000.00 + (1.2 × ad budget)", "45 posts (video or text) / campaign"],
+      ["$850.00 + (1.2 × ad budget)", "30 creatives (video or text) / campaign"],
+      ["$1,000.00 + (1.2 × ad budget)", "45 creatives (video or text) / campaign"],
     ],
   },
   {
-    name: "Website & Platform Design",
+    name: "Website & Marketing-Informed Operations",
     price: "From $500+/mo",
+    badge: "Core service",
+    summary:
+      "Websites, analytics, and internal marketing-informed software that help businesses turn demand signals into operational decisions.",
     features: [
       "• Static sites ($500/mo)",
-      "• Dynamic w/ 2D animation ($1,500/mo)",
-      "• Full-stack 3D/trick render ($2,500/mo)",
-      "• Next.js, React, PostgreSQL, Tailwind",
+      "• Dynamic sites w/ advanced motion ($1,500/mo)",
+      "• Full-stack builds & internal tools ($2,500+/mo)",
+      "• Marketing analytics & operations software",
     ],
-    prices: [["Custom", "Schedule a call to discuss."]],
+    prices: [["Custom", "Schedule a call to scope the build."]],
   },
+];
+
+const addOns = [
   {
     name: "Community Building",
     price: "$150+/platform",
+    summary: "Optional audience and community support.",
     features: [
       "• Discord, Quora, Reddit support",
       "• Optional $50/mo maintenance",
@@ -73,20 +86,12 @@ const plans = [
   {
     name: "Growth Consulting",
     price: "$50/hr (1st hr free)",
+    summary: "Optional advisory for teams needing strategy input.",
     features: [
       "• Custom growth roadmaps",
       "• Weekly strategy calls",
-      "• Zero→Hero brand scaling",
+      "• Brand and acquisition direction",
     ],
-  },
-  {
-    name: "Full-Service Package",
-    price: "$2,500+/mo",
-    features: [
-      "• Everything above combined",
-      "• End-to-end growth management",
-    ],
-    prices: [["Variable", "Contact Vlad to discuss"]],
   },
 ];
 
@@ -121,7 +126,7 @@ const PriceTable = ({ prices }) => (
   </div>
 );
 
-function PlanCard({ plan, index, onSelect }) {
+function PlanCard({ plan, index, onSelect, featured = false, compact = false }) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -135,20 +140,35 @@ function PlanCard({ plan, index, onSelect }) {
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={reduceMotion ? undefined : { y: -4 }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_12px_40px_rgba(15,23,42,0.06)]"
+      className={[
+        "group relative flex h-full flex-col overflow-hidden bg-white",
+        featured
+          ? "rounded-[30px] border border-indigo-200 shadow-[0_18px_60px_rgba(99,102,241,0.10)]"
+          : "rounded-[24px] border border-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.05)]",
+      ].join(" ")}
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:24px_24px] opacity-30" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/70 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.08),transparent_26%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <div className="relative z-10 flex h-full flex-col p-6">
-        <h3 className="text-xl font-semibold tracking-tight text-slate-900">
+      <div className={["relative z-10 flex h-full flex-col", compact ? "p-5" : "p-6"].join(" ")}>
+        <h3
+          className={
+            compact
+              ? "text-lg font-semibold tracking-tight text-slate-900"
+              : "text-xl font-semibold tracking-tight text-slate-900"
+          }
+        >
           {plan.name}
         </h3>
 
         <p className="mt-2 text-2xl font-bold tracking-tight text-indigo-600">
           {plan.price}
         </p>
+
+        {plan.summary && (
+          <p className="mt-3 text-sm leading-6 text-slate-600">{plan.summary}</p>
+        )}
 
         <ul className="mt-6 flex-1 space-y-0">
           {plan.features.map((feat) => (
@@ -165,15 +185,87 @@ function PlanCard({ plan, index, onSelect }) {
         </ul>
 
         <Button
-          className="mt-6 w-full cursor-pointer rounded-[18px] border border-slate-900 bg-slate-900 text-base font-semibold text-white transition duration-300 hover:scale-[1.015] hover:border-indigo-600 hover:bg-indigo-600"
+          className={[
+            "mt-6 w-full cursor-pointer text-base font-semibold transition duration-300",
+            featured
+              ? "rounded-[18px] border border-slate-900 bg-slate-900 text-white hover:scale-[1.015] hover:border-indigo-600 hover:bg-indigo-600"
+              : "rounded-[16px] border border-slate-300 bg-white text-slate-900 hover:border-slate-900 hover:bg-slate-50",
+          ].join(" ")}
           onClick={() => onSelect(plan)}
         >
-          Select plan
+          {featured ? "Explore service" : "View add-on"}
         </Button>
       </div>
     </motion.div>
   );
 }
+
+function PlanCard2({ plan, index, onSelect, featured = false, compact = false }) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: reduceMotion ? 0 : 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{
+        duration: 0.45,
+        delay: index * 0.04,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      whileHover={reduceMotion ? undefined : { y: -4 }}
+      className={[
+        "group relative flex h-full flex-col overflow-hidden",
+      ].join(" ")}
+    >
+      <div className={["relative z-10 flex h-full flex-col", compact ? "p-5" : "p-6"].join(" ")}>
+        <h3
+          className={
+            compact
+              ? "text-lg font-semibold tracking-tight text-slate-900"
+              : "text-xl font-semibold tracking-tight text-slate-900"
+          }
+        >
+          {plan.name}
+        </h3>
+
+        <p className="mt-2 text-2xl font-bold tracking-tight text-indigo-600">
+          {plan.price}
+        </p>
+
+        {plan.summary && (
+          <p className="mt-3 text-sm leading-6 text-slate-600">{plan.summary}</p>
+        )}
+
+        <ul className="mt-6 flex-1 space-y-0">
+          {plan.features.map((feat) => (
+            <li
+              key={feat}
+              className="grid grid-cols-[14px_1fr] items-start border-t border-slate-100 py-3 text-slate-700 first:border-t"
+            >
+              <span className="mt-[9px] h-1.5 w-1.5 rounded-[2px] bg-indigo-500" />
+              <span className="pr-2 text-[15px] leading-6">
+                {cleanFeature(feat)}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <Button
+          className={[
+            "mt-6 w-full cursor-pointer text-base font-semibold transition duration-300",
+            featured
+              ? "rounded-[18px] border border-slate-900 bg-slate-900 text-white hover:scale-[1.015] hover:border-indigo-600 hover:bg-indigo-600"
+              : "rounded-[16px] border border-slate-300 bg-white text-slate-900 hover:border-slate-900 hover:bg-slate-50",
+          ].join(" ")}
+          onClick={() => onSelect(plan)}
+        >Explore add-on
+        </Button>
+      </div>
+    </motion.div>
+  );
+}
+
 
 export default function HeroThree() {
   const [open, setOpen] = useState(false);
@@ -187,19 +279,48 @@ export default function HeroThree() {
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-16">
-      <h2 className="mb-8 text-center text-3xl font-medium tracking-tight text-slate-900 sm:text-4xl">
-        Growth Plans
-      </h2>
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Our Services
+        </h2>
+        <p className="mt-4 text-left text-md leading-7 text-slate-500">
+          We are content-first -- businesses don't grow today without strong content pipelines. After that, we
+          help you expand your paid ads channel through fast-acting campaigns.
+          After your content and advertising is squared away, we help you build a strong marketing-informed operations website.
+          Our systems weave together and work as a feedback lifecycle for businesses at any stage.
+        </p>
+      </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {plans.map((plan, index) => (
+      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        {coreServices.map((plan, index) => (
           <PlanCard
             key={plan.name}
             plan={plan}
             index={index}
             onSelect={handleSelect}
+            featured
           />
         ))}
+      </div>
+
+      <div className="mt-16 rounded-[30px] ">
+        <div className="text-center">
+          <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-700">
+            Add-on services
+          </h3>
+        </div>
+
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
+          {addOns.map((plan, index) => (
+            <PlanCard2
+              key={plan.name}
+              plan={plan}
+              index={index}
+              onSelect={handleSelect}
+              compact
+            />
+          ))}
+        </div>
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
@@ -236,6 +357,12 @@ export default function HeroThree() {
                       {selectedPlan.price}
                     </DialogDescription>
                   </DialogHeader>
+
+                  {selectedPlan.summary && (
+                    <p className="mt-4 text-sm leading-6 text-slate-600">
+                      {selectedPlan.summary}
+                    </p>
+                  )}
 
                   <ul className="mt-6 space-y-0">
                     {selectedPlan.features.map((f) => (

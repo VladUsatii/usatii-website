@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
@@ -129,6 +130,40 @@ function Markdown({ content }) {
             );
           },
           p({ children, ...props }) {
+            const nodes = React.Children.toArray(children).filter((child) => {
+              return !(typeof child === "string" && child.trim() === "");
+            });
+
+            const isImageLike = (child) => {
+              if (!React.isValidElement(child)) return false;
+
+              if (typeof child.props?.src === "string") return true;
+
+              const nested = React.Children.toArray(child.props?.children).filter(
+                (node) => !(typeof node === "string" && node.trim() === "")
+              );
+
+              return (
+                nested.length === 1 &&
+                React.isValidElement(nested[0]) &&
+                typeof nested[0].props?.src === "string"
+              );
+            };
+
+            const imageOnlyParagraph =
+              nodes.length > 0 && nodes.every((child) => isImageLike(child));
+
+            if (imageOnlyParagraph) {
+              return (
+                <div
+                  className="my-8 grid grid-cols-2 gap-4 md:grid-cols-4 [&_img]:my-0"
+                  {...props}
+                >
+                  {nodes}
+                </div>
+              );
+            }
+
             return (
               <p className="my-5 text-[17px] leading-8 text-slate-700" {...props}>
                 {children}

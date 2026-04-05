@@ -15,7 +15,7 @@ const DEMOS = [
   {
     id: '1',
     title: 'Market intelligence.',
-    tagline: '24⁄7 scraping of industry chatter, social signals, and competitor moves flows into a data bank powering every strategic decision. In this video, Vlad explains our market intelligence system and how it can benefit you.',
+    tagline: 'Vlad built a 24/7 scraper that can aid your marketing team. It works by collecting industry chatter, social signals (what are people posting, what are people reacting to, what does engagement look like?), and what sort of content would work well at some temporal/strategic point. These adversarial moves flow into a data bank powering every strategic decision for your business. This is a feature that we embed into our product pipeline, so if you purchase content from us, for example, we use this to make high-performing video content.',
     video: '/',
     bullets: [
       'Autonomous scrapers monitor ~100 sources every 5 minutes for maximal topic relevancy.',
@@ -132,18 +132,18 @@ export default function DemoPage() {
         </motion.h1>
         <div className='flex items-center justify-center'>
         <div className='max-w-[650px] w-full'>
-          <p className="mt-4 text-center text-md text-neutral-500">{demo.tagline}</p>
+          <p className="mt-8 text-left text-md leading-7 text-neutral-500">{demo.tagline}</p>
         </div>
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.15, type: 'spring', stiffness: 90 }}
           className="mx-auto mt-12"
         >
           <Media src={demo.video} />
-        </motion.div>
+        </motion.div> */}
       </section>
 
       {/* bullets */}
@@ -195,7 +195,7 @@ export default function DemoPage() {
       {/* faq */}
       <section className="mx-auto mt-24 max-w-3xl px-6 lg:px-8">
         <h2 className="text-2xl font-black italic">GENERAL FAQ</h2>
-        <p className='text-sm text-neutral-100'>Don't be left in the dark. Ask good questions, get good answers. Read <Link className='text-neutral-400 underline hover:text-neutral-600' href="http://www.catb.org/~esr/faqs/hacker-howto.html">this</Link> and <Link className='text-neutral-400 underline hover:text-neutral-600' href="http://www.catb.org/~esr/faqs/smart-questions.html">this</Link> to understand what a good question looks like. If you have such a question, please email vladusatii@gmail.com, our founder, for assistance.</p>
+        <p className='text-sm text-neutral-100'>We function as a content-first, media marketing company. Our services start with content pipelines and use engagement to inform your business operations strategy. Thus, our services scope expands to (a) building enterprise marketing tools and (b) full web pipelines (website, admin, ACLs, authentication, operations, telemetry, pixels, and AI hubs). Book a meeting to speak with us about your individual business needs.</p>
         <div className="mt-6 divide-y divide-neutral-700/50">
           {demo.faqs.map(({ q, a }, i) => (
             <details key={q} className="group py-4 transition-colors hover:bg-white/5 hover:backdrop-blur-md">

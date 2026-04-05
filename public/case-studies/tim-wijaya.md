@@ -1,5 +1,10 @@
 # How we got the founder of Kerja.io 500K+ views in one month with 5 videos
 
+![Alt text](/case-studies/Tim1.jpeg)
+![Alt text](/case-studies/Tim2.jpeg)
+![Alt text](/case-studies/Tim3.jpeg)
+![Alt text](/case-studies/Tim4.jpeg)
+
 After working with over 100 clients personally and tackling their content game head-first, I'd give myself a pat on the back when I say "congratulations on getting Tim 500K views." This is a long time in the making. Contrary to popular belief, the growth process on social media is leaning towards determinism. It is not stochastic, random, linked to trends, etc., but rather a game that requires an articulate funnel and engagement strategy.
 
 This case study examines how we helped consumer-tech founder **Tim Wijaya** turn his first serious founder video into a breakout organic result: **200K views and 2,000+ new followers on the first video**, with the campaign team later reporting that a later video reached roughly **130K**. Those hard performance figures are campaign-reported. Publicly, Tim presents himself as a founder building apps like Relay. Some of his content themes reflect statements like **“I’m building a global startup from Indonesia…”**, **“Many Indonesian tech startups are dead. Here’s why:”**, and **“I’m flying to Tokyo to launch my app.”**

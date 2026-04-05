@@ -188,8 +188,7 @@ export default function WebsiteShowcase() {
               className="max-w-2xl text-lg leading-8 text-slate-300"
             >
               Landing pages, product/service sites, and operations infrastructure,
-              complete with branching, ACLs, compliance measures, and logs for each
-              decision and employee.
+              complete with branching, ACLs, compliance measures, and logs for each decision.
             </motion.p>
           </div>
 
@@ -250,13 +249,12 @@ export default function WebsiteShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="relative mt-8 overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl"
+            className="relative mt-8 overflow-hidden "
           >
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(139,92,246,0.08),transparent_35%,transparent_65%,rgba(99,102,241,0.08))]" />
 
             <div className="relative flex flex-col gap-y-5 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-xl font-medium text-white">
+                <h3 className="text-xl font-bold text-white">
                   Ready to use marketing to inform business operations?
                 </h3>
               </div>

@@ -32,7 +32,7 @@ export default async function CaseStudiesIndexPage() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-7 text-slate-600 sm:text-lg">
-          Right now, it is just a test post, but I&apos;ll have posts here soon.
+          Learn how we took creators and businesses from zero to hero quickly by leveraging systems to capture attention through content and design.
         </p>
       </div>
 
