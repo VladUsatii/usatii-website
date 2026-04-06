@@ -38,25 +38,27 @@ export default function DocumentationCarousel({ docs }) {
         className="absolute inset-0 h-full w-full border-0 bg-white"
       />
 
-      <div className="absolute right-4 top-4 z-30 flex items-center gap-2">
-        <div className="rounded-full border border-slate-300 bg-white/95 px-3 py-1 text-xs font-semibold text-slate-700">
-          {activeDoc.index}/{docs.length}
+      {docs.length > 1 ? (
+        <div className="absolute right-4 top-4 z-30 flex items-center gap-2">
+          <div className="rounded-full border border-slate-300 bg-white/95 px-3 py-1 text-xs font-semibold text-slate-700">
+            {activeDoc.index}/{docs.length}
+          </div>
+          <button
+            type="button"
+            onClick={goPrev}
+            className="rounded-full border border-slate-300 bg-white/95 px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-slate-400"
+          >
+            Previous
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="rounded-full border border-slate-300 bg-white/95 px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-slate-400"
+          >
+            Next
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={goPrev}
-          className="rounded-full border border-slate-300 bg-white/95 px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-slate-400"
-        >
-          Previous
-        </button>
-        <button
-          type="button"
-          onClick={goNext}
-          className="rounded-full border border-slate-300 bg-white/95 px-3 py-2 text-xs font-semibold text-slate-800 transition hover:border-slate-400"
-        >
-          Next
-        </button>
-      </div>
+      ) : null}
 
       <aside className="absolute left-4 top-4 z-30 hidden w-[min(420px,calc(100vw-2rem))] rounded-2xl border border-slate-300/90 bg-white/92 p-5 text-slate-900 shadow-[0_18px_48px_rgba(15,23,42,0.22)] backdrop-blur-md sm:block">
         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">

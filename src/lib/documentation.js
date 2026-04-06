@@ -5,18 +5,6 @@ import { promises as fs } from "node:fs";
 const DOCUMENTATION_DIR = path.join(process.cwd(), "public", "documentation");
 
 const DOC_METADATA = {
-  "01-strategy-system-overview.pdf": {
-    title: "Strategy System Overview",
-    summary:
-      "High-level architecture of the USATII growth system, from offer design to distribution loops.",
-    purpose:
-      "Use this to align stakeholders on what gets built first, why it matters, and how execution compounds.",
-    highlights: [
-      "System map across strategy, production, and distribution",
-      "Delivery checkpoints and ownership boundaries",
-      "Expected timeline from setup to measurable output",
-    ],
-  },
   "02-client-onboarding-workflow.pdf": {
     title: "Client Onboarding Workflow",
     summary:
@@ -27,18 +15,6 @@ const DOC_METADATA = {
       "Intake structure and scope lock process",
       "Asset collection and communication cadence",
       "Approval path before content production starts",
-    ],
-  },
-  "03-content-ops-kpis.pdf": {
-    title: "Content Ops KPI Framework",
-    summary:
-      "Core metrics and review structure for short-form systems that need predictable output.",
-    purpose:
-      "Use this to track what actually drives growth, diagnose bottlenecks, and improve weekly decisions.",
-    highlights: [
-      "Primary and secondary KPI definitions",
-      "Weekly performance review template",
-      "Iteration triggers for hooks, scripts, and distribution",
     ],
   },
 };
