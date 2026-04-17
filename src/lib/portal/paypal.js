@@ -312,6 +312,104 @@ function transactionEmail(row) {
   );
 }
 
+function mapPurchaseState(status) {
+  if (status === 'PAID') return 'fully_paid';
+  if (status === 'PARTIALLY PAID') return 'semi_paid';
+  if (
+    status === 'UNPAID' ||
+    status === 'OVERDUE' ||
+    status === 'PENDING' ||
+    status === 'SENT'
+  ) {
+    return 'active';
+  }
+
+  return 'other';
+}
+
+function purchaseStateLabel(state) {
+  if (state === 'fully_paid') return 'Fully Paid';
+  if (state === 'semi_paid') return 'Semi-Paid';
+  if (state === 'active') return 'Active';
+  return 'Other';
+}
+
+export async function getPayPalClientInvoicesSnapshot({ clientEmail = null } = {}) {
+  const normalizedClientEmail = String(clientEmail || '').trim().toLowerCase();
+  const nowUtc = toDayEndUtc(new Date());
+  const invoiceRows = await fetchAllInvoices();
+
+  const invoices = invoiceRows
+    .map((row) => {
+      const createdAt = parseDate(
+        row?.metadata?.create_time ||
+        row?.create_time ||
+        row?.detail?.invoice_date
+      );
+
+      const dueDate = parseDate(
+        row?.detail?.payment_term?.due_date ||
+        row?.detail?.due_date
+      );
+
+      const normalizedStatus = normalizeInvoiceStatus(row?.status, dueDate, nowUtc);
+      const purchaseState = mapPurchaseState(normalizedStatus);
+
+      return {
+        id: row?.id || '',
+        invoiceNumber: row?.detail?.invoice_number || row?.id || '',
+        recipientEmail: invoiceRecipientEmail(row),
+        status: normalizedStatus,
+        purchaseState,
+        purchaseStateLabel: purchaseStateLabel(purchaseState),
+        totalCents: invoiceTotalCents(row),
+        currency: invoiceCurrency(row),
+        createdAt: createdAt ? createdAt.toISOString() : null,
+        dueDate: dueDate ? dueDate.toISOString() : null,
+      };
+    })
+    .filter((row) => {
+      if (!row.createdAt) return false;
+      if (!normalizedClientEmail) return true;
+      return row.recipientEmail.toLowerCase() === normalizedClientEmail;
+    })
+    .sort((left, right) => {
+      const leftDate = parseDate(left.createdAt)?.getTime() || 0;
+      const rightDate = parseDate(right.createdAt)?.getTime() || 0;
+      return rightDate - leftDate;
+    });
+
+  const currency = invoices[0]?.currency || 'USD';
+
+  const summary = invoices.reduce(
+    (acc, invoice) => {
+      acc.totalCount += 1;
+      acc.totalCents += invoice.totalCents;
+
+      if (invoice.purchaseState === 'active') acc.activeCount += 1;
+      if (invoice.purchaseState === 'semi_paid') acc.semiPaidCount += 1;
+      if (invoice.purchaseState === 'fully_paid') acc.fullyPaidCount += 1;
+      if (invoice.purchaseState === 'other') acc.otherCount += 1;
+
+      return acc;
+    },
+    {
+      totalCount: 0,
+      activeCount: 0,
+      semiPaidCount: 0,
+      fullyPaidCount: 0,
+      otherCount: 0,
+      totalCents: 0,
+      currency,
+    }
+  );
+
+  return {
+    summary,
+    invoices,
+  };
+}
+
 export async function getPayPalRevenueSnapshot({
   startDate,
   endDate,
