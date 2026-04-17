@@ -87,12 +87,19 @@ export async function POST(request) {
   const password = String(body.password || '');
   const displayName = trimValue(body.displayName, 120);
   const company = trimValue(body.company, 160) || null;
-  const driveFolderId = trimValue(body.driveFolderId, 255);
+  const driveFolderId = trimValue(body.driveFolderId, 255) || null;
   const driveFolderUrlInput = trimValue(body.driveFolderUrl, 500) || null;
 
-  if (!email || !password || !displayName || !driveFolderId) {
+  if (!email || !password || !displayName) {
     return NextResponse.json(
-      { error: 'Email, password, display name, and Drive folder ID are required.' },
+      { error: 'Email, password, and display name are required.' },
+      { status: 400 }
+    );
+  }
+
+  if (driveFolderUrlInput && !driveFolderId) {
+    return NextResponse.json(
+      { error: 'Drive folder URL requires a Drive folder ID.' },
       { status: 400 }
     );
   }
@@ -107,20 +114,31 @@ export async function POST(request) {
   }
 
   try {
-    const drive = getDriveClient();
+    let resolvedDriveFolderId = null;
+    let resolvedDriveFolderUrl = null;
 
-    const folderMetaResponse = await drive.files.get({
-      fileId: driveFolderId,
-      fields: 'id, mimeType, webViewLink',
-      includeItemsFromAllDrives: true,
-      supportsAllDrives: true,
-    });
+    if (driveFolderId) {
+      const drive = getDriveClient();
 
-    if (folderMetaResponse.data.mimeType !== FOLDER_MIME_TYPE) {
-      return NextResponse.json(
-        { error: 'Drive folder ID must point to a Google Drive folder.' },
-        { status: 400 }
-      );
+      const folderMetaResponse = await drive.files.get({
+        fileId: driveFolderId,
+        fields: 'id, mimeType, webViewLink',
+        includeItemsFromAllDrives: true,
+        supportsAllDrives: true,
+      });
+
+      if (folderMetaResponse.data.mimeType !== FOLDER_MIME_TYPE) {
+        return NextResponse.json(
+          { error: 'Drive folder ID must point to a Google Drive folder.' },
+          { status: 400 }
+        );
+      }
+
+      resolvedDriveFolderId = driveFolderId;
+      resolvedDriveFolderUrl =
+        driveFolderUrlInput ||
+        folderMetaResponse.data.webViewLink ||
+        `https://drive.google.com/drive/folders/${driveFolderId}`;
     }
 
     await ensurePortalTables();
@@ -156,8 +174,8 @@ export async function POST(request) {
           ${userId},
           ${displayName},
           ${company},
-          ${driveFolderId},
-          ${driveFolderUrlInput || folderMetaResponse.data.webViewLink || `https://drive.google.com/drive/folders/${driveFolderId}`}
+          ${resolvedDriveFolderId},
+          ${resolvedDriveFolderUrl}
         )
       `;
     } catch (profileInsertError) {
@@ -174,7 +192,8 @@ export async function POST(request) {
           email: createdUser.rows[0].email,
           displayName,
           company,
-          driveFolderId,
+          driveFolderId: resolvedDriveFolderId,
+          driveFolderUrl: resolvedDriveFolderUrl,
         },
       },
       { status: 201 }

@@ -73,11 +73,16 @@ export async function ensurePortalTables() {
             user_id BIGINT PRIMARY KEY REFERENCES portal_users(id) ON DELETE CASCADE,
             display_name VARCHAR(120) NOT NULL,
             company VARCHAR(160),
-            drive_folder_id VARCHAR(255) NOT NULL UNIQUE,
+            drive_folder_id VARCHAR(255) UNIQUE,
             drive_folder_url TEXT,
             created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
             updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
           )
+        `;
+
+        await portalSql`
+          ALTER TABLE client_profiles
+          ALTER COLUMN drive_folder_id DROP NOT NULL
         `;
 
         await portalSql`

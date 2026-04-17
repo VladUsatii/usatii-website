@@ -2,11 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import AdminNotesPane from '@/app/admin/_components/admin-notes-pane';
 
 const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
   { id: 'clients', label: 'Clients' },
   { id: 'revenue', label: 'Revenue' },
+  { id: 'notes', label: 'Notes' },
   { id: 'settings', label: 'Settings' },
 ];
 
@@ -83,6 +85,23 @@ function matchSearch(query, values) {
   if (!query) return true;
   const normalized = query.toLowerCase();
   return values.some((value) => toSearchBlob(value).includes(normalized));
+}
+
+function ownerNameFromEmail(email) {
+  const normalized = String(email || '').trim();
+  if (!normalized) return 'Owner';
+
+  const [handle] = normalized.split('@');
+  const cleaned = String(handle || '')
+    .replace(/[._-]+/g, ' ')
+    .trim();
+
+  if (!cleaned) return 'Owner';
+
+  return cleaned
+    .split(/\s+/)
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+    .join(' ');
 }
 
 async function fetchJson(url, options = {}) {
@@ -186,7 +205,7 @@ function TableHeader({ columns }) {
 function HintTooltip({ text }) {
   return (
     <span className="group relative inline-flex items-center">
-      <span className="cursor-help rounded-full bg-neutral-900 px-1.5 py-0.5 text-[10px] font-semibold text-white">?</span>
+      <span className="flex h-5 w-5 cursor-help items-center justify-center rounded-full bg-neutral-900 text-[10px] font-semibold text-white">?</span>
       <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-1 w-max -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-[11px] text-white opacity-0 transition group-hover:opacity-100">
         {text}
       </span>
@@ -226,6 +245,13 @@ export default function OwnerDashboard({ adminEmail }) {
   const [provisionLoading, setProvisionLoading] = useState(false);
   const [provisionError, setProvisionError] = useState('');
   const [provisionSuccess, setProvisionSuccess] = useState('');
+  const [driveWorkspaceForm, setDriveWorkspaceForm] = useState({
+    driveFolderId: '',
+    driveFolderUrl: '',
+  });
+  const [driveWorkspaceLoading, setDriveWorkspaceLoading] = useState(false);
+  const [driveWorkspaceError, setDriveWorkspaceError] = useState('');
+  const [driveWorkspaceSuccess, setDriveWorkspaceSuccess] = useState('');
 
   const [systemErrorBanner, setSystemErrorBanner] = useState('');
 
@@ -263,6 +289,7 @@ export default function OwnerDashboard({ adminEmail }) {
   }, [paypalRevenue, globalSearch]);
 
   const totalAlerts = filteredAttentionRows.length;
+  const ownerLabel = ownerNameFromEmail(adminEmail);
 
   const setDatabaseBannerFromError = useCallback((error) => {
     if (error?.code === 'portal_db_not_configured') {
@@ -385,6 +412,25 @@ export default function OwnerDashboard({ adminEmail }) {
     loadPayPalRevenue();
   }, [activeNav, loadPayPalRevenue]);
 
+  useEffect(() => {
+    if (!selectedClient) {
+      setDriveWorkspaceForm({
+        driveFolderId: '',
+        driveFolderUrl: '',
+      });
+      setDriveWorkspaceError('');
+      setDriveWorkspaceSuccess('');
+      return;
+    }
+
+    setDriveWorkspaceForm({
+      driveFolderId: selectedClient.driveFolderId || '',
+      driveFolderUrl: selectedClient.driveFolderUrl || '',
+    });
+    setDriveWorkspaceError('');
+    setDriveWorkspaceSuccess('');
+  }, [selectedClient?.driveFolderId, selectedClient?.driveFolderUrl, selectedClient?.userId]);
+
   async function handleLogout() {
     await fetch('/api/portal/auth/logout', { method: 'POST' });
     router.push('/admin/login');
@@ -416,6 +462,57 @@ export default function OwnerDashboard({ adminEmail }) {
     } finally {
       setProvisionLoading(false);
     }
+  }
+
+  async function handleDriveWorkspaceUpdate(nextDriveFolderId, nextDriveFolderUrl = '') {
+    if (!selectedClient) return;
+
+    setDriveWorkspaceLoading(true);
+    setDriveWorkspaceError('');
+    setDriveWorkspaceSuccess('');
+
+    try {
+      const payload = await fetchJson(`/api/admin/clients/${selectedClient.userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          driveFolderId: nextDriveFolderId,
+          driveFolderUrl: nextDriveFolderUrl,
+        }),
+      });
+
+      setDriveWorkspaceForm({
+        driveFolderId: payload.client?.driveFolderId || '',
+        driveFolderUrl: payload.client?.driveFolderUrl || '',
+      });
+      setDriveWorkspaceSuccess(
+        payload.client?.driveFolderId
+          ? 'Drive workspace updated.'
+          : 'Drive workspace removed. You can add one at any time.'
+      );
+
+      await Promise.all([loadSelectorClients(), loadClients(), loadOverview(), loadClientDetail()]);
+    } catch (error) {
+      setDriveWorkspaceError(error.message || 'Unable to update Drive workspace.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setDriveWorkspaceLoading(false);
+    }
+  }
+
+  async function handleDriveWorkspaceSubmit(event) {
+    event.preventDefault();
+
+    await handleDriveWorkspaceUpdate(
+      driveWorkspaceForm.driveFolderId,
+      driveWorkspaceForm.driveFolderUrl
+    );
+  }
+
+  async function handleDriveWorkspaceClear() {
+    await handleDriveWorkspaceUpdate('', '');
   }
 
   function getBreadcrumb() {
@@ -623,6 +720,69 @@ export default function OwnerDashboard({ adminEmail }) {
               <MetricCard label="Blocked" value={String(selectedClient.blockedWork)} tone={selectedClient.blockedWork > 0 ? 'red' : 'green'} />
               <MetricCard label="Late" value={String(selectedClient.lateWork)} tone={selectedClient.lateWork > 0 ? 'yellow' : 'green'} />
               <MetricCard label="Unpaid" value={formatMoneyFromCents(selectedClient.unpaidAmountCents)} tone={selectedClient.unpaidAmountCents > 0 ? 'red' : 'green'} />
+            </div>
+
+            <div className="mb-4 rounded-lg border border-neutral-200 p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Drive Workspace</p>
+                <HintTooltip text="Optional. You can add, change, or remove this at any time." />
+              </div>
+
+              <form onSubmit={handleDriveWorkspaceSubmit} className="space-y-2">
+                <input
+                  value={driveWorkspaceForm.driveFolderId}
+                  onChange={(event) =>
+                    setDriveWorkspaceForm((previous) => ({
+                      ...previous,
+                      driveFolderId: event.target.value,
+                    }))
+                  }
+                  className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm outline-none focus:border-black"
+                  placeholder="Drive folder ID (optional)"
+                />
+                <input
+                  value={driveWorkspaceForm.driveFolderUrl}
+                  onChange={(event) =>
+                    setDriveWorkspaceForm((previous) => ({
+                      ...previous,
+                      driveFolderUrl: event.target.value,
+                    }))
+                  }
+                  className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm outline-none focus:border-black"
+                  placeholder="Drive folder URL (optional)"
+                />
+
+                {driveWorkspaceError ? (
+                  <p className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-700">
+                    {driveWorkspaceError}
+                  </p>
+                ) : null}
+
+                {driveWorkspaceSuccess ? (
+                  <p className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-700">
+                    {driveWorkspaceSuccess}
+                  </p>
+                ) : null}
+
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <button
+                    type="submit"
+                    disabled={driveWorkspaceLoading}
+                    className="cursor-pointer rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {driveWorkspaceLoading ? 'Saving...' : 'Save Drive workspace'}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleDriveWorkspaceClear}
+                    disabled={driveWorkspaceLoading}
+                    className="cursor-pointer rounded-md border border-neutral-300 px-3 py-2 text-xs font-semibold text-neutral-700 transition hover:border-neutral-400 hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </form>
             </div>
 
             {clientDetailError ? (
@@ -978,8 +1138,7 @@ export default function OwnerDashboard({ adminEmail }) {
               value={provisionForm.driveFolderId}
               onChange={(event) => setProvisionForm((previous) => ({ ...previous, driveFolderId: event.target.value }))}
               className="rounded-lg border border-neutral-300 px-3 py-2 text-sm outline-none focus:border-black"
-              placeholder="Drive folder ID"
-              required
+              placeholder="Drive folder ID (optional)"
             />
             <input
               value={provisionForm.driveFolderUrl}
@@ -987,6 +1146,10 @@ export default function OwnerDashboard({ adminEmail }) {
               className="rounded-lg border border-neutral-300 px-3 py-2 text-sm outline-none focus:border-black"
               placeholder="Drive folder URL (optional)"
             />
+
+            <p className="md:col-span-2 text-xs text-neutral-500">
+              Drive workspace is optional during creation. You can add, change, or remove it later from the client workspace card.
+            </p>
 
             {provisionError ? (
               <p className="md:col-span-2 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">
@@ -1013,10 +1176,15 @@ export default function OwnerDashboard({ adminEmail }) {
     );
   }
 
+  function renderNotesSection() {
+    return <AdminNotesPane />;
+  }
+
   function renderMainPanel() {
     if (activeNav === 'command') return renderCommandCenter();
     if (activeNav === 'clients') return renderClientsSection();
     if (activeNav === 'revenue') return renderRevenueSection();
+    if (activeNav === 'notes') return renderNotesSection();
     if (activeNav === 'settings') return renderSettingsSection();
     return renderCommandCenter();
   }
@@ -1024,9 +1192,9 @@ export default function OwnerDashboard({ adminEmail }) {
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-[1500px] items-center gap-3 px-4 py-3">
-          <div className="min-w-[100px]">
-            <span className="text-sm font-black tracking-wide">USATII</span>
+        <div className="flex flex-wrap items-center gap-3 px-4 py-3">
+          <div className="min-w-[140px]">
+            <span className="text-sm font-black tracking-tight sm:text-base">USATII MEDIA</span>
           </div>
 
           <select
@@ -1068,18 +1236,30 @@ export default function OwnerDashboard({ adminEmail }) {
             Next Up ({totalAlerts})
           </button>
 
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="cursor-pointer rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm font-semibold text-neutral-800 transition hover:border-neutral-400"
-          >
-            Vlad
-          </button>
+          <details className="relative">
+            <summary className="cursor-pointer list-none rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm font-semibold text-neutral-800 transition hover:border-neutral-400 [&::-webkit-details-marker]:hidden">
+              <span className="inline-flex items-center gap-2">
+                {ownerLabel}
+                <span className="text-[10px] text-neutral-500">▼</span>
+              </span>
+            </summary>
+
+            <div className="absolute right-0 z-50 mt-2 w-52 rounded-md border border-neutral-200 bg-white p-1 shadow-lg">
+              <p className="truncate px-3 py-2 text-xs text-neutral-500">{adminEmail}</p>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="cursor-pointer w-full rounded-md px-3 py-2 text-left text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100"
+              >
+                Sign out
+              </button>
+            </div>
+          </details>
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-[1500px] grid-cols-1 lg:grid-cols-[240px_1fr]">
-        <aside className="border-b border-neutral-200 bg-white lg:min-h-[calc(100vh-61px)] lg:border-b-0 lg:border-r">
+      <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr]">
+        <aside className="border-b border-neutral-200 bg-white lg:sticky lg:top-[61px] lg:h-[calc(100vh-61px)] lg:overflow-y-auto lg:border-b-0 lg:border-r">
           <nav className="space-y-3 p-3">
             <div className="space-y-1">
               {ACTIVE_NAV_ITEMS.map((item) => (
@@ -1100,14 +1280,10 @@ export default function OwnerDashboard({ adminEmail }) {
           </nav>
         </aside>
 
-        <main className="space-y-5 px-4 py-5 sm:px-6">
-          <div className="rounded-xl border border-neutral-200 bg-white p-4">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="text-xs uppercase tracking-[0.14em] text-neutral-500">{getBreadcrumb()}</p>
-                <h1 className="mt-2 text-2xl font-semibold tracking-tight text-neutral-950">{getHeaderTitle()}</h1>
-              </div>
-            </div>
+        <main className="space-y-5 px-4 py-5 sm:px-6 lg:px-8">
+          <div>
+            <p className="text-sm text-neutral-500">{getBreadcrumb()}</p>
+            <h1 className="mt-1 text-2xl font-semibold tracking-tight text-neutral-950">{getHeaderTitle()}</h1>
           </div>
 
           {systemErrorBanner ? (
