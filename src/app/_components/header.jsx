@@ -17,6 +17,12 @@ export default function Header() {
       >
         <Button className="cursor-pointer bg-white text-black hover:bg-white border-[2px] border-black px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold tranisition hover:scale-105">Book now</Button>
       </Link>
+      <Link
+        href="/portal/login"
+        target="_blank"
+        className="cursor-pointer text-black hover:underline pr-2 sm:pr-5 py-3 text-xs sm:text-sm font-semibold transition hover:scale-105"
+      >Client login
+      </Link>
     </div>
     </header>
   );

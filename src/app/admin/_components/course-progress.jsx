@@ -156,7 +156,7 @@ export default function CourseProgress() {
         <SheetTitle></SheetTitle>
       {/* mobile hamburger button */}
       <SheetTrigger asChild>
-        <button className="flex flex-col h-fit border-[3px] p-2 mx-2 mt-5 rounded-md hover:bg-accent/20 md:hidden">
+        <button className="cursor-pointer flex flex-col h-fit border-[3px] p-2 mx-2 mt-5 rounded-md hover:bg-accent/20 md:hidden">
           <Menu className="w-6 h-6 text-foreground" />
         </button>
       </SheetTrigger>
@@ -183,7 +183,7 @@ export default function CourseProgress() {
                   new Event('click', { bubbles: true })
                 );
               }}
-              className={`w-full p-4 rounded-lg text-left transition-all duration-200 hover:bg-accent group ${
+              className={`cursor-pointer w-full p-4 rounded-lg text-left transition-all duration-200 hover:bg-accent group ${
                 currentLesson === lesson.id 
                   ? 'bg-accent border border-primary/20 shadow-sm' 
                   : 'hover:bg-accent/50'
