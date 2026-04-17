@@ -59,8 +59,8 @@ export async function POST(request) {
       return NextResponse.json({ error: 'This account does not have admin access.' }, { status: 403 });
     }
 
-    if (mode === 'client' && user.role !== 'client') {
-      return NextResponse.json({ error: 'Use the admin login for this account.' }, { status: 403 });
+    if (mode === 'client' && !['client', 'admin'].includes(user.role)) {
+      return NextResponse.json({ error: 'This account cannot access the portal.' }, { status: 403 });
     }
 
     const session = await createPortalSession({
