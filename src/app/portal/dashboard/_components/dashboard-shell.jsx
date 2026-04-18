@@ -10,6 +10,7 @@ const CLIENT_NAV_ITEMS = [
   { id: 'workspace', label: 'Workspace' },
   { id: 'request', label: 'Request' },
   { id: 'invoices', label: 'Invoices' },
+  { id: 'progress', label: 'Progress' },
 ];
 
 function flattenFolders(node, map = {}) {
@@ -65,6 +66,13 @@ function invoiceTone(state) {
   if (state === 'fully_paid') return 'green';
   if (state === 'semi_paid') return 'blue';
   if (state === 'active') return 'yellow';
+  return 'gray';
+}
+
+function stepTone(stepStatus) {
+  if (stepStatus === 'completed') return 'green';
+  if (stepStatus === 'quality_assurance') return 'blue';
+  if (stepStatus === 'in_progress') return 'yellow';
   return 'gray';
 }
 
@@ -259,6 +267,9 @@ export default function DashboardShell({ user, checkoutState }) {
   const [invoicesData, setInvoicesData] = useState(null);
   const [invoicesLoading, setInvoicesLoading] = useState(true);
   const [invoicesError, setInvoicesError] = useState('');
+  const [progressData, setProgressData] = useState(null);
+  const [progressLoading, setProgressLoading] = useState(true);
+  const [progressError, setProgressError] = useState('');
 
   const foldersById = useMemo(() => flattenFolders(driveData?.tree || null, {}), [driveData]);
 
@@ -311,9 +322,30 @@ export default function DashboardShell({ user, checkoutState }) {
     }
   }
 
+  async function loadProgress() {
+    setProgressLoading(true);
+    setProgressError('');
+
+    try {
+      const response = await fetch('/api/portal/progress', { cache: 'no-store' });
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload.error || 'Unable to load progress.');
+      }
+
+      setProgressData(payload);
+    } catch (error) {
+      setProgressError(error.message || 'Unable to load progress.');
+    } finally {
+      setProgressLoading(false);
+    }
+  }
+
   useEffect(() => {
     loadDriveTree();
     loadInvoices();
+    loadProgress();
   }, []);
 
   function upsertUpload(uploadId, partial) {
@@ -841,10 +873,149 @@ export default function DashboardShell({ user, checkoutState }) {
     );
   }
 
+  function renderProgressSection() {
+    const summary = progressData?.summary || {
+      invoiceCount: 0,
+      packCount: 0,
+      totalItems: 0,
+      completedItems: 0,
+    };
+
+    if (progressLoading && !progressData) {
+      return (
+        <EmptyState
+          title="Loading progress"
+          description="Fetching your deliverables status now."
+        />
+      );
+    }
+
+    if (progressError) {
+      return (
+        <EmptyState
+          title="Progress unavailable"
+          description={progressError}
+          actionLabel="Retry"
+          onAction={loadProgress}
+        />
+      );
+    }
+
+    if (progressData?.configured === false) {
+      return (
+        <EmptyState
+          title="Progress not connected"
+          description={progressData?.message || 'Billing sync is not configured right now.'}
+          actionLabel="Retry"
+          onAction={loadProgress}
+        />
+      );
+    }
+
+    return (
+      <div className="space-y-4">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <MetricCard label="Invoices" value={String(summary.invoiceCount)} tone="gray" />
+          <MetricCard label="Packs" value={String(summary.packCount)} tone="blue" />
+          <MetricCard label="Deliverables" value={String(summary.totalItems)} tone="gray" />
+          <MetricCard
+            label="Completed"
+            value={String(summary.completedItems)}
+            helper={summary.totalItems > 0 ? `${Math.round((summary.completedItems / summary.totalItems) * 100)}% done` : '0% done'}
+            tone={summary.completedItems > 0 ? 'green' : 'gray'}
+          />
+        </div>
+
+        <div className="rounded-xl border border-neutral-200 bg-white p-4">
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Deliverables Progress</p>
+            <button
+              type="button"
+              onClick={loadProgress}
+              disabled={progressLoading}
+              className="cursor-pointer rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {progressLoading ? 'Refreshing...' : 'Refresh'}
+            </button>
+          </div>
+
+          {(progressData?.invoices || []).length === 0 ? (
+            <EmptyState
+              title="No tracked progress yet"
+              description="Progress appears here once a partially paid or fully paid invoice has deliverables."
+            />
+          ) : (
+            <div className="space-y-3">
+              {progressData.invoices.map((invoice) => (
+                <div
+                  key={invoice.invoiceId}
+                  className="rounded-xl border border-neutral-200 bg-[linear-gradient(135deg,#ffffff,#f8fafc_55%,#f0f9ff)] p-4"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <p className="text-sm font-semibold text-neutral-900">
+                        {invoice.invoiceNumber || invoice.invoiceId}
+                      </p>
+                      <p className="text-xs text-neutral-600">
+                        {formatDate(invoice.createdAt)} • Due {formatDate(invoice.dueDate)}
+                      </p>
+                    </div>
+                    <StatusPill tone={invoiceTone(invoice.purchaseState)}>
+                      {invoice.purchaseStateLabel || 'Other'}
+                    </StatusPill>
+                  </div>
+
+                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-neutral-200">
+                    <div
+                      className="h-full bg-neutral-900 transition-all"
+                      style={{ width: `${invoice.progressPercent || 0}%` }}
+                    />
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-600">
+                    {invoice.completedItems}/{invoice.totalItems} completed
+                  </p>
+
+                  <div className="mt-3 space-y-3">
+                    {(invoice.packs || []).map((pack) => (
+                      <div key={pack.id} className="rounded-lg border border-neutral-200 bg-white p-3">
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-xs font-semibold text-neutral-900">
+                            {pack.packTypeLabel} • {pack.sourceLineLabel || pack.sourceLineKey}
+                          </p>
+                          <p className="text-[11px] text-neutral-500">
+                            {pack.completedCount}/{pack.quantity}
+                          </p>
+                        </div>
+
+                        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                          {(pack.items || []).map((item) => (
+                            <div key={item.id} className="rounded-md border border-neutral-200 px-2 py-2">
+                              <p className="text-[11px] font-semibold text-neutral-800">Deliverable {item.itemIndex}</p>
+                              <div className="mt-1">
+                                <StatusPill tone={stepTone(item.stepStatus)}>
+                                  {item.stepLabel}
+                                </StatusPill>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   function renderMainPanel() {
     if (activeNav === 'workspace') return renderWorkspaceSection();
     if (activeNav === 'request') return renderRequestSection();
     if (activeNav === 'invoices') return renderInvoicesSection();
+    if (activeNav === 'progress') return renderProgressSection();
     return renderWorkspaceSection();
   }
 

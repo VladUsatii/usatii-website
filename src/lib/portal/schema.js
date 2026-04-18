@@ -163,6 +163,38 @@ export async function ensurePortalTables() {
         `;
 
         await portalSql`
+          CREATE TABLE IF NOT EXISTS deliverable_packs (
+            id BIGSERIAL PRIMARY KEY,
+            client_user_id BIGINT NOT NULL REFERENCES portal_users(id) ON DELETE CASCADE,
+            source_invoice_id VARCHAR(255) NOT NULL,
+            source_line_key VARCHAR(255) NOT NULL,
+            source_invoice_number VARCHAR(255),
+            source_line_label TEXT,
+            pack_type VARCHAR(32) NOT NULL CHECK (pack_type IN ('video_pack', 'website_pack')),
+            quantity INTEGER NOT NULL CHECK (quantity > 0),
+            origin VARCHAR(32) NOT NULL DEFAULT 'manual' CHECK (origin IN ('manual', 'auto_inferred')),
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            UNIQUE (client_user_id, source_invoice_id, source_line_key, pack_type)
+          )
+        `;
+
+        await portalSql`
+          CREATE TABLE IF NOT EXISTS deliverable_items (
+            id BIGSERIAL PRIMARY KEY,
+            pack_id BIGINT NOT NULL REFERENCES deliverable_packs(id) ON DELETE CASCADE,
+            item_index INTEGER NOT NULL CHECK (item_index > 0),
+            step_status VARCHAR(32) NOT NULL DEFAULT 'not_started' CHECK (
+              step_status IN ('not_started', 'queued', 'in_progress', 'quality_assurance', 'completed')
+            ),
+            completed_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            UNIQUE (pack_id, item_index)
+          )
+        `;
+
+        await portalSql`
           CREATE TABLE IF NOT EXISTS employee_work_records (
             id BIGSERIAL PRIMARY KEY,
             employee_name VARCHAR(120) NOT NULL,
@@ -258,6 +290,16 @@ export async function ensurePortalTables() {
         await portalSql`
           CREATE INDEX IF NOT EXISTS idx_invoices_client_status_due
           ON invoices (client_user_id, status, due_date)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_deliverable_packs_client_invoice
+          ON deliverable_packs (client_user_id, source_invoice_id, updated_at DESC)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_deliverable_items_pack_status
+          ON deliverable_items (pack_id, step_status, item_index)
         `;
 
         await portalSql`

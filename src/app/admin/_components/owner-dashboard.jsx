@@ -29,6 +29,19 @@ const PROVISION_INITIAL_STATE = {
   driveFolderUrl: '',
 };
 
+const DELIVERABLE_PACK_TYPE_OPTIONS = [
+  { value: 'video_pack', label: 'Video Pack' },
+  { value: 'website_pack', label: 'Website Pack' },
+];
+
+const DELIVERABLE_STEP_OPTIONS = [
+  { value: 'not_started', label: 'Not Started' },
+  { value: 'queued', label: 'Queued' },
+  { value: 'in_progress', label: 'In Progress' },
+  { value: 'quality_assurance', label: 'Quality Assurance' },
+  { value: 'completed', label: 'Completed' },
+];
+
 function formatMoneyFromCents(value, currency = 'USD') {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -74,6 +87,13 @@ function getPaymentStatusTone(status) {
   if (normalized === 'D' || normalized === 'DENIED' || normalized === 'FAILED' || normalized === 'REVERSED' || normalized === 'REFUNDED') {
     return 'red';
   }
+  return 'gray';
+}
+
+function getPurchaseStateTone(state) {
+  if (state === 'fully_paid') return 'green';
+  if (state === 'semi_paid') return 'blue';
+  if (state === 'active') return 'yellow';
   return 'gray';
 }
 
@@ -240,6 +260,13 @@ export default function OwnerDashboard({ adminEmail }) {
   const [clientDetail, setClientDetail] = useState(null);
   const [clientDetailLoading, setClientDetailLoading] = useState(false);
   const [clientDetailError, setClientDetailError] = useState('');
+  const [deliverablesData, setDeliverablesData] = useState(null);
+  const [deliverablesLoading, setDeliverablesLoading] = useState(false);
+  const [deliverablesError, setDeliverablesError] = useState('');
+  const [deliverablesNotice, setDeliverablesNotice] = useState('');
+  const [deliverablesMutating, setDeliverablesMutating] = useState(false);
+  const [manualPackForms, setManualPackForms] = useState({});
+  const [packDrafts, setPackDrafts] = useState({});
 
   const [provisionForm, setProvisionForm] = useState(PROVISION_INITIAL_STATE);
   const [provisionLoading, setProvisionLoading] = useState(false);
@@ -370,6 +397,31 @@ export default function OwnerDashboard({ adminEmail }) {
     }
   }, [selectedClientId, setDatabaseBannerFromError]);
 
+  const loadDeliverables = useCallback(async () => {
+    if (selectedClientId === 'all') {
+      setDeliverablesData(null);
+      setDeliverablesError('');
+      setDeliverablesNotice('');
+      setManualPackForms({});
+      setPackDrafts({});
+      return;
+    }
+
+    setDeliverablesLoading(true);
+    setDeliverablesError('');
+    setDeliverablesNotice('');
+
+    try {
+      const payload = await fetchJson(`/api/admin/clients/${selectedClientId}/deliverables`);
+      setDeliverablesData(payload);
+    } catch (error) {
+      setDeliverablesError(error.message || 'Unable to load deliverables.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setDeliverablesLoading(false);
+    }
+  }, [selectedClientId, setDatabaseBannerFromError]);
+
   const loadPayPalRevenue = useCallback(async () => {
     setPaypalLoading(true);
     setPaypalError('');
@@ -408,6 +460,10 @@ export default function OwnerDashboard({ adminEmail }) {
   }, [loadClientDetail]);
 
   useEffect(() => {
+    loadDeliverables();
+  }, [loadDeliverables]);
+
+  useEffect(() => {
     if (activeNav !== 'revenue') return;
     loadPayPalRevenue();
   }, [activeNav, loadPayPalRevenue]);
@@ -430,6 +486,47 @@ export default function OwnerDashboard({ adminEmail }) {
     setDriveWorkspaceError('');
     setDriveWorkspaceSuccess('');
   }, [selectedClient?.driveFolderId, selectedClient?.driveFolderUrl, selectedClient?.userId]);
+
+  useEffect(() => {
+    if (!deliverablesData?.invoices) {
+      setManualPackForms({});
+      setPackDrafts({});
+      return;
+    }
+
+    setManualPackForms((previous) => {
+      const next = { ...previous };
+
+      for (const invoice of deliverablesData.invoices) {
+        if (next[invoice.invoiceId]) continue;
+        const firstLine = invoice.lineOptions?.[0];
+        next[invoice.invoiceId] = {
+          sourceLineKey: firstLine?.lineKey || 'invoice_text',
+          sourceLineLabel: firstLine?.label || 'Invoice details',
+          packType: 'video_pack',
+          quantity: 1,
+        };
+      }
+
+      return next;
+    });
+
+    setPackDrafts((previous) => {
+      const next = { ...previous };
+
+      for (const invoice of deliverablesData.invoices) {
+        for (const pack of invoice.packs || []) {
+          if (next[pack.id]) continue;
+          next[pack.id] = {
+            packType: pack.packType,
+            quantity: String(pack.quantity),
+          };
+        }
+      }
+
+      return next;
+    });
+  }, [deliverablesData]);
 
   async function handleLogout() {
     await fetch('/api/portal/auth/logout', { method: 'POST' });
@@ -513,6 +610,167 @@ export default function OwnerDashboard({ adminEmail }) {
 
   async function handleDriveWorkspaceClear() {
     await handleDriveWorkspaceUpdate('', '');
+  }
+
+  function setManualPackFormValue(invoiceId, key, value) {
+    setManualPackForms((previous) => ({
+      ...previous,
+      [invoiceId]: {
+        ...(previous[invoiceId] || {}),
+        [key]: value,
+      },
+    }));
+  }
+
+  function setPackDraftValue(packId, key, value) {
+    setPackDrafts((previous) => ({
+      ...previous,
+      [packId]: {
+        ...(previous[packId] || {}),
+        [key]: value,
+      },
+    }));
+  }
+
+  async function handleManualPackCreate(invoice) {
+    if (!selectedClient) return;
+
+    const form = manualPackForms[invoice.invoiceId] || {};
+    const lineOption = (invoice.lineOptions || []).find((line) => line.lineKey === form.sourceLineKey);
+
+    setDeliverablesMutating(true);
+    setDeliverablesError('');
+    setDeliverablesNotice('');
+
+    try {
+      await fetchJson(`/api/admin/clients/${selectedClient.userId}/deliverables/packs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sourceInvoiceId: invoice.invoiceId,
+          sourceInvoiceNumber: invoice.invoiceNumber,
+          sourceLineKey: form.sourceLineKey || 'invoice_text',
+          sourceLineLabel: lineOption?.label || form.sourceLineLabel || 'Invoice details',
+          packType: form.packType || 'video_pack',
+          quantity: Number.parseInt(String(form.quantity || '1'), 10) || 1,
+        }),
+      });
+
+      setDeliverablesNotice('Manual deliverable pack created.');
+      await loadDeliverables();
+    } catch (error) {
+      setDeliverablesError(error.message || 'Unable to create manual deliverable pack.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setDeliverablesMutating(false);
+    }
+  }
+
+  async function handlePackSave(pack) {
+    if (!selectedClient) return;
+
+    const draft = packDrafts[pack.id] || {
+      packType: pack.packType,
+      quantity: String(pack.quantity),
+    };
+
+    setDeliverablesMutating(true);
+    setDeliverablesError('');
+    setDeliverablesNotice('');
+
+    try {
+      await fetchJson(`/api/admin/clients/${selectedClient.userId}/deliverables/packs/${pack.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          packType: draft.packType,
+          quantity: Number.parseInt(String(draft.quantity || pack.quantity), 10) || pack.quantity,
+        }),
+      });
+
+      setDeliverablesNotice('Deliverable pack updated.');
+      await loadDeliverables();
+    } catch (error) {
+      setDeliverablesError(error.message || 'Unable to update deliverable pack.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setDeliverablesMutating(false);
+    }
+  }
+
+  async function handlePackDelete(pack) {
+    if (!selectedClient) return;
+
+    setDeliverablesMutating(true);
+    setDeliverablesError('');
+    setDeliverablesNotice('');
+
+    try {
+      await fetchJson(`/api/admin/clients/${selectedClient.userId}/deliverables/packs/${pack.id}`, {
+        method: 'DELETE',
+      });
+
+      setDeliverablesNotice('Deliverable pack deleted.');
+      await loadDeliverables();
+    } catch (error) {
+      setDeliverablesError(error.message || 'Unable to delete deliverable pack.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setDeliverablesMutating(false);
+    }
+  }
+
+  async function handleItemStepChange(item, nextStepStatus) {
+    if (!selectedClient) return;
+
+    setDeliverablesMutating(true);
+    setDeliverablesError('');
+    setDeliverablesNotice('');
+
+    try {
+      await fetchJson(`/api/admin/clients/${selectedClient.userId}/deliverables/items/${item.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          stepStatus: nextStepStatus,
+        }),
+      });
+
+      await loadDeliverables();
+    } catch (error) {
+      setDeliverablesError(error.message || 'Unable to update item step.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setDeliverablesMutating(false);
+    }
+  }
+
+  async function handleInvoiceFulfill(invoice) {
+    if (!selectedClient) return;
+
+    setDeliverablesMutating(true);
+    setDeliverablesError('');
+    setDeliverablesNotice('');
+
+    try {
+      await fetchJson(`/api/admin/clients/${selectedClient.userId}/deliverables/invoices/${encodeURIComponent(invoice.invoiceId)}/fulfill`, {
+        method: 'POST',
+      });
+
+      setDeliverablesNotice('Invoice deliverables marked as completed.');
+      await loadDeliverables();
+    } catch (error) {
+      setDeliverablesError(error.message || 'Unable to fulfill this invoice.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setDeliverablesMutating(false);
+    }
   }
 
   function getBreadcrumb() {
@@ -640,6 +898,283 @@ export default function OwnerDashboard({ adminEmail }) {
               ))}
             </div>
           )}
+        </div>
+      </div>
+    );
+  }
+
+  function renderDeliverablesTracking() {
+    const summary = deliverablesData?.summary || {
+      invoiceCount: 0,
+      packCount: 0,
+      totalItems: 0,
+      completedItems: 0,
+    };
+
+    return (
+      <div className="mt-4 rounded-lg border border-neutral-200 p-3">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Deliverables Tracking</p>
+            <HintTooltip text="Auto-syncs inferred packs from recent invoices and lets you manually track every deliverable step." />
+          </div>
+
+          <button
+            type="button"
+            onClick={loadDeliverables}
+            disabled={deliverablesLoading || deliverablesMutating}
+            className="cursor-pointer rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {deliverablesLoading ? 'Syncing...' : 'Sync now'}
+          </button>
+        </div>
+
+        <div className="mb-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <MetricCard label="Invoices" value={String(summary.invoiceCount)} />
+          <MetricCard label="Packs" value={String(summary.packCount)} />
+          <MetricCard label="Deliverables" value={String(summary.totalItems)} />
+          <MetricCard
+            label="Completed"
+            value={String(summary.completedItems)}
+            helper={summary.totalItems > 0 ? `${Math.round((summary.completedItems / summary.totalItems) * 100)}% done` : '0% done'}
+            tone={summary.completedItems > 0 ? 'green' : 'gray'}
+          />
+        </div>
+
+        {deliverablesData?.syncedAt ? (
+          <p className="mb-2 text-[11px] text-neutral-500">
+            Last synced {formatDate(deliverablesData.syncedAt)}
+            {deliverablesData.insertedCount > 0 ? ` • ${deliverablesData.insertedCount} auto-created` : ''}
+          </p>
+        ) : null}
+
+        {deliverablesData?.warnings?.length > 0 ? (
+          <p className="mb-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-700">
+            {deliverablesData.warnings[0]}
+          </p>
+        ) : null}
+
+        {deliverablesError ? (
+          <p className="mb-2 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-700">
+            {deliverablesError}
+          </p>
+        ) : null}
+
+        {deliverablesNotice ? (
+          <p className="mb-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-700">
+            {deliverablesNotice}
+          </p>
+        ) : null}
+
+        {deliverablesLoading && !deliverablesData ? (
+          <LoadingGrid />
+        ) : null}
+
+        {!deliverablesLoading && (!deliverablesData?.invoices || deliverablesData.invoices.length === 0) ? (
+          <EmptyState
+            title="No deliverable packs yet"
+            description="When invoice text contains numeric quantities, packs are auto-created. You can still create packs manually."
+          />
+        ) : null}
+
+        <div className="space-y-3">
+          {(deliverablesData?.invoices || []).map((invoice) => {
+            const form = manualPackForms[invoice.invoiceId] || {};
+            return (
+              <div key={invoice.invoiceId} className="rounded-lg border border-neutral-200 bg-white p-3">
+                <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <p className="text-sm font-semibold text-neutral-900">
+                      {invoice.invoiceNumber || invoice.invoiceId}
+                    </p>
+                    <p className="text-xs text-neutral-600">
+                      {formatDate(invoice.createdAt)} • Due {formatDate(invoice.dueDate)}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <StatusPill tone={getPurchaseStateTone(invoice.purchaseState)}>
+                      {invoice.purchaseStateLabel || invoice.purchaseState || 'Other'}
+                    </StatusPill>
+                    <button
+                      type="button"
+                      onClick={() => handleInvoiceFulfill(invoice)}
+                      disabled={deliverablesMutating || invoice.packCount === 0}
+                      className="cursor-pointer rounded-md border border-neutral-300 px-2 py-1.5 text-xs font-semibold text-neutral-700 transition hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      Mark Invoice Fulfilled
+                    </button>
+                  </div>
+                </div>
+
+                <div className="mb-3 h-2 overflow-hidden rounded-full bg-neutral-200">
+                  <div
+                    className="h-full bg-neutral-900 transition-all"
+                    style={{ width: `${invoice.progressPercent || 0}%` }}
+                  />
+                </div>
+                <p className="mb-3 text-xs text-neutral-600">
+                  {invoice.completedItems}/{invoice.totalItems} deliverables completed
+                </p>
+
+                {(invoice.inferred || []).length > 0 ? (
+                  <div className="mb-3 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2">
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Auto inference</p>
+                    <div className="mt-1 space-y-1">
+                      {invoice.inferred.map((inferred, index) => (
+                        <p key={`${invoice.invoiceId}-${inferred.lineKey}-${inferred.packType}-${index}`} className="text-xs text-neutral-700">
+                          {inferred.quantity} {inferred.packType === 'video_pack' ? 'video' : 'website feature'} deliverable(s) from{' '}
+                          <span className="font-medium">{inferred.lineLabel || inferred.lineKey}</span>
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="mb-3 text-xs text-neutral-500">No numeric inference matched this invoice.</p>
+                )}
+
+                <div className="mb-3 rounded-lg border border-dashed border-neutral-300 p-3">
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Manual pack</p>
+                  <div className="mt-2 grid gap-2 md:grid-cols-4">
+                    <select
+                      value={form.sourceLineKey || 'invoice_text'}
+                      onChange={(event) => {
+                        const selectedLine = (invoice.lineOptions || []).find((line) => line.lineKey === event.target.value);
+                        setManualPackFormValue(invoice.invoiceId, 'sourceLineKey', event.target.value);
+                        setManualPackFormValue(invoice.invoiceId, 'sourceLineLabel', selectedLine?.label || 'Invoice details');
+                      }}
+                      className="cursor-pointer rounded-md border border-neutral-300 bg-white px-2 py-2 text-xs outline-none focus:border-black"
+                    >
+                      {(invoice.lineOptions || []).map((line) => (
+                        <option key={line.lineKey} value={line.lineKey}>
+                          {line.label}
+                        </option>
+                      ))}
+                    </select>
+
+                    <select
+                      value={form.packType || 'video_pack'}
+                      onChange={(event) => setManualPackFormValue(invoice.invoiceId, 'packType', event.target.value)}
+                      className="cursor-pointer rounded-md border border-neutral-300 bg-white px-2 py-2 text-xs outline-none focus:border-black"
+                    >
+                      {DELIVERABLE_PACK_TYPE_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+
+                    <input
+                      type="number"
+                      min={1}
+                      value={form.quantity || 1}
+                      onChange={(event) => setManualPackFormValue(invoice.invoiceId, 'quantity', event.target.value)}
+                      className="rounded-md border border-neutral-300 px-2 py-2 text-xs outline-none focus:border-black"
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => handleManualPackCreate(invoice)}
+                      disabled={deliverablesMutating}
+                      className="cursor-pointer rounded-md border border-neutral-300 bg-white px-3 py-2 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      Add Manual Pack
+                    </button>
+                  </div>
+                </div>
+
+                {(invoice.packs || []).length === 0 ? (
+                  <p className="text-xs text-neutral-500">No packs tracked for this invoice yet.</p>
+                ) : (
+                  <div className="space-y-3">
+                    {(invoice.packs || []).map((pack) => {
+                      const draft = packDrafts[pack.id] || {
+                        packType: pack.packType,
+                        quantity: String(pack.quantity),
+                      };
+
+                      return (
+                        <div key={pack.id} className="rounded-lg border border-neutral-200 p-3">
+                          <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                            <div>
+                              <p className="text-xs font-semibold text-neutral-900">
+                                {pack.packTypeLabel} • {pack.sourceLineLabel || pack.sourceLineKey}
+                              </p>
+                              <p className="text-[11px] text-neutral-500">
+                                {pack.origin === 'auto_inferred' ? 'Auto-inferred' : 'Manual'} • {pack.completedCount}/{pack.quantity} complete
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <select
+                                value={draft.packType}
+                                onChange={(event) => setPackDraftValue(pack.id, 'packType', event.target.value)}
+                                className="cursor-pointer rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs outline-none focus:border-black"
+                              >
+                                {DELIVERABLE_PACK_TYPE_OPTIONS.map((option) => (
+                                  <option key={option.value} value={option.value}>
+                                    {option.label}
+                                  </option>
+                                ))}
+                              </select>
+                              <input
+                                type="number"
+                                min={1}
+                                value={draft.quantity}
+                                onChange={(event) => setPackDraftValue(pack.id, 'quantity', event.target.value)}
+                                className="w-20 rounded-md border border-neutral-300 px-2 py-1.5 text-xs outline-none focus:border-black"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => handlePackSave(pack)}
+                                disabled={deliverablesMutating}
+                                className="cursor-pointer rounded-md border border-neutral-300 px-2 py-1.5 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-60"
+                              >
+                                Save
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handlePackDelete(pack)}
+                                disabled={deliverablesMutating}
+                                className="cursor-pointer rounded-md border border-rose-200 px-2 py-1.5 text-xs font-semibold text-rose-700 transition hover:border-rose-300 disabled:cursor-not-allowed disabled:opacity-60"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="mb-2 h-2 overflow-hidden rounded-full bg-neutral-200">
+                            <div
+                              className="h-full bg-neutral-900 transition-all"
+                              style={{ width: `${pack.progressPercent || 0}%` }}
+                            />
+                          </div>
+
+                          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                            {(pack.items || []).map((item) => (
+                              <div key={item.id} className="rounded-md border border-neutral-200 px-2 py-2">
+                                <p className="text-[11px] font-semibold text-neutral-800">Deliverable {item.itemIndex}</p>
+                                <select
+                                  value={item.stepStatus}
+                                  onChange={(event) => handleItemStepChange(item, event.target.value)}
+                                  disabled={deliverablesMutating}
+                                  className="cursor-pointer mt-1 w-full rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs outline-none focus:border-black disabled:cursor-not-allowed disabled:opacity-60"
+                                >
+                                  {DELIVERABLE_STEP_OPTIONS.map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                      {option.label}
+                                    </option>
+                                  ))}
+                                </select>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
@@ -844,6 +1379,8 @@ export default function OwnerDashboard({ adminEmail }) {
                 </div>
               </div>
             )}
+
+            {renderDeliverablesTracking()}
           </div>
         ) : null}
       </div>

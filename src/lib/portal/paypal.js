@@ -295,6 +295,96 @@ function invoiceRecipientEmail(invoice) {
   );
 }
 
+function toLineQuantity(value) {
+  const parsed = Number.parseInt(String(value ?? '').trim(), 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) return null;
+  return parsed;
+}
+
+function normalizeInvoiceLineItems(invoice) {
+  const candidateLists = [
+    invoice?.items,
+    invoice?.line_items,
+    invoice?.detail?.items,
+  ].filter((value) => Array.isArray(value));
+
+  const rows = candidateLists.find((list) => list.length > 0) || candidateLists[0] || [];
+
+  return rows.map((line, index) => {
+    const name = String(line?.name || line?.title || '').trim();
+    const description = String(line?.description || line?.note || '').trim();
+    const quantity = toLineQuantity(
+      line?.quantity?.value ??
+      line?.quantity ??
+      line?.unit_amount?.quantity ??
+      line?.unit_amount?.value
+    );
+
+    const fragments = [
+      name,
+      description,
+      String(line?.sku || '').trim(),
+      String(line?.unit_of_measure || '').trim(),
+    ].filter(Boolean);
+
+    return {
+      lineKey: String(line?.id || line?.item_id || `line_${index + 1}`),
+      label: name || description || `Line ${index + 1}`,
+      description,
+      text: fragments.join(' • '),
+      quantity,
+    };
+  });
+}
+
+function normalizeInvoiceRow(row, rangeEndDate = toDayEndUtc(new Date())) {
+  const createdAt = parseDate(
+    row?.metadata?.create_time ||
+    row?.create_time ||
+    row?.detail?.invoice_date
+  );
+
+  const dueDate = parseDate(
+    row?.detail?.payment_term?.due_date ||
+    row?.detail?.due_date
+  );
+
+  const normalizedStatus = normalizeInvoiceStatus(row?.status, dueDate, rangeEndDate);
+  const purchaseState = mapPurchaseState(normalizedStatus);
+  const lineItems = normalizeInvoiceLineItems(row);
+
+  const invoiceTextFragments = [
+    row?.detail?.invoice_number,
+    row?.detail?.reference,
+    row?.detail?.note,
+    row?.detail?.terms_and_conditions,
+    row?.detail?.memo,
+    row?.detail?.currency_code,
+    row?.detail?.invoice_date,
+    row?.detail?.payment_term?.term_type,
+    row?.detail?.payment_term?.due_date,
+  ]
+    .map((value) => String(value || '').trim())
+    .filter(Boolean);
+
+  const searchText = invoiceTextFragments.join(' ').trim();
+
+  return {
+    id: row?.id || '',
+    invoiceNumber: row?.detail?.invoice_number || row?.id || '',
+    recipientEmail: invoiceRecipientEmail(row),
+    status: normalizedStatus,
+    purchaseState,
+    purchaseStateLabel: purchaseStateLabel(purchaseState),
+    totalCents: invoiceTotalCents(row),
+    currency: invoiceCurrency(row),
+    createdAt: createdAt ? createdAt.toISOString() : null,
+    dueDate: dueDate ? dueDate.toISOString() : null,
+    lineItems,
+    searchText,
+  };
+}
+
 function transactionCurrency(row) {
   return (
     row?.transaction_info?.transaction_amount?.currency_code ||
@@ -334,42 +424,25 @@ function purchaseStateLabel(state) {
   return 'Other';
 }
 
-export async function getPayPalClientInvoicesSnapshot({ clientEmail = null } = {}) {
+export async function getPayPalClientInvoicesDetailed({
+  clientEmail = null,
+  recentDays = null,
+  includeCancelled = true,
+} = {}) {
   const normalizedClientEmail = String(clientEmail || '').trim().toLowerCase();
   const nowUtc = toDayEndUtc(new Date());
   const invoiceRows = await fetchAllInvoices();
+  const recentWindowStart = Number.isFinite(Number(recentDays)) && Number(recentDays) > 0
+    ? new Date(Date.now() - Number(recentDays) * 24 * 60 * 60 * 1000)
+    : null;
 
-  const invoices = invoiceRows
-    .map((row) => {
-      const createdAt = parseDate(
-        row?.metadata?.create_time ||
-        row?.create_time ||
-        row?.detail?.invoice_date
-      );
-
-      const dueDate = parseDate(
-        row?.detail?.payment_term?.due_date ||
-        row?.detail?.due_date
-      );
-
-      const normalizedStatus = normalizeInvoiceStatus(row?.status, dueDate, nowUtc);
-      const purchaseState = mapPurchaseState(normalizedStatus);
-
-      return {
-        id: row?.id || '',
-        invoiceNumber: row?.detail?.invoice_number || row?.id || '',
-        recipientEmail: invoiceRecipientEmail(row),
-        status: normalizedStatus,
-        purchaseState,
-        purchaseStateLabel: purchaseStateLabel(purchaseState),
-        totalCents: invoiceTotalCents(row),
-        currency: invoiceCurrency(row),
-        createdAt: createdAt ? createdAt.toISOString() : null,
-        dueDate: dueDate ? dueDate.toISOString() : null,
-      };
-    })
+  return invoiceRows
+    .map((row) => normalizeInvoiceRow(row, nowUtc))
     .filter((row) => {
-      if (!row.createdAt) return false;
+      const createdAt = parseDate(row.createdAt);
+      if (!createdAt) return false;
+      if (recentWindowStart && createdAt < recentWindowStart) return false;
+      if (!includeCancelled && row.status === 'CANCELLED') return false;
       if (!normalizedClientEmail) return true;
       return row.recipientEmail.toLowerCase() === normalizedClientEmail;
     })
@@ -378,6 +451,10 @@ export async function getPayPalClientInvoicesSnapshot({ clientEmail = null } = {
       const rightDate = parseDate(right.createdAt)?.getTime() || 0;
       return rightDate - leftDate;
     });
+}
+
+export async function getPayPalClientInvoicesSnapshot({ clientEmail = null } = {}) {
+  const invoices = await getPayPalClientInvoicesDetailed({ clientEmail });
 
   const currency = invoices[0]?.currency || 'USD';
 
