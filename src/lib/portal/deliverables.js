@@ -314,7 +314,10 @@ async function insertPackItems(packId, quantity, startIndex = 1) {
       ${packId},
       gs,
       ${DELIVERABLE_STEP_STATUSES.NOT_STARTED}
-    FROM generate_series(${startIndex}, ${endIndex}) AS gs
+    FROM generate_series(
+      CAST(${startIndex} AS INTEGER),
+      CAST(${endIndex} AS INTEGER)
+    ) AS gs
   `;
 }
 
@@ -578,7 +581,7 @@ function toInvoiceCard({ invoice = null, packs = [] }) {
   const summary = summarizePacks(packs);
 
   return {
-    invoiceId: invoice?.id || packs[0]?.sourceInvoiceId || '',
+    invoiceId: invoice?.id || invoice?.invoiceNumber || packs[0]?.sourceInvoiceId || '',
     invoiceNumber: invoice?.invoiceNumber || packs[0]?.sourceInvoiceNumber || '',
     status: invoice?.status || 'UNKNOWN',
     purchaseState: invoice?.purchaseState || 'other',
@@ -715,6 +718,9 @@ export async function createManualDeliverablePack({
 }) {
   await ensurePortalTables();
 
+  const normalizedSourceInvoiceId =
+    normalizeInvoiceId(sourceInvoiceId) || normalizeInvoiceId(sourceInvoiceNumber);
+
   const normalizedLineKey = normalizeLineKey(
     sourceLineKey,
     `manual_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
@@ -722,7 +728,7 @@ export async function createManualDeliverablePack({
 
   await insertDeliverablePack({
     clientUserId,
-    sourceInvoiceId,
+    sourceInvoiceId: normalizedSourceInvoiceId,
     sourceInvoiceNumber,
     sourceLineKey: normalizedLineKey,
     sourceLineLabel,

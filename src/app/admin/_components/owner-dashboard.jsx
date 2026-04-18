@@ -8,6 +8,7 @@ const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
   { id: 'clients', label: 'Clients' },
   { id: 'revenue', label: 'Revenue' },
+  { id: 'applications', label: 'Applications' },
   { id: 'notes', label: 'Notes' },
   { id: 'settings', label: 'Settings' },
 ];
@@ -58,6 +59,19 @@ function formatDate(value) {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
+  }).format(date);
+}
+
+function formatDateTime(value) {
+  if (!value) return '—';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '—';
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
   }).format(date);
 }
 
@@ -257,6 +271,12 @@ export default function OwnerDashboard({ adminEmail }) {
   const [paypalLoading, setPaypalLoading] = useState(false);
   const [paypalError, setPaypalError] = useState('');
 
+  const [applications, setApplications] = useState([]);
+  const [applicationsSummary, setApplicationsSummary] = useState(null);
+  const [applicationsLoading, setApplicationsLoading] = useState(false);
+  const [applicationsError, setApplicationsError] = useState('');
+  const [selectedApplicationId, setSelectedApplicationId] = useState(null);
+
   const [clientDetail, setClientDetail] = useState(null);
   const [clientDetailLoading, setClientDetailLoading] = useState(false);
   const [clientDetailError, setClientDetailError] = useState('');
@@ -289,6 +309,10 @@ export default function OwnerDashboard({ adminEmail }) {
 
   const currentScopeLabel = selectedClient ? clientLabel(selectedClient) : 'All Clients';
   const activeNavLabel = ACTIVE_NAV_ITEMS.find((item) => item.id === activeNav)?.label || 'Overview';
+  const searchPlaceholder =
+    activeNav === 'applications'
+      ? 'Search applicants, roles, emails, portfolio links...'
+      : 'Search clients, issues, activity...';
 
   const filteredAttentionRows = useMemo(() => {
     const rows = overview?.ownerAttention || [];
@@ -314,6 +338,16 @@ export default function OwnerDashboard({ adminEmail }) {
     const rows = paypalRevenue?.transactions || [];
     return rows.filter((row) => matchSearch(globalSearch, [row.id, row.status, row.email, row.grossCents, row.netCents]));
   }, [paypalRevenue, globalSearch]);
+
+  const selectedApplication = useMemo(() => {
+    if (applications.length === 0) return null;
+
+    const found = applications.find(
+      (application) => String(application.id) === String(selectedApplicationId)
+    );
+
+    return found || applications[0];
+  }, [applications, selectedApplicationId]);
 
   const totalAlerts = filteredAttentionRows.length;
   const ownerLabel = ownerNameFromEmail(adminEmail);
@@ -443,6 +477,38 @@ export default function OwnerDashboard({ adminEmail }) {
     }
   }, [paypalInterval, selectedClientId, selectedClient?.email, setDatabaseBannerFromError]);
 
+  const loadApplications = useCallback(async () => {
+    setApplicationsLoading(true);
+    setApplicationsError('');
+
+    const params = new URLSearchParams();
+    params.set('limit', '200');
+    if (globalSearch.trim()) params.set('q', globalSearch.trim());
+
+    try {
+      const payload = await fetchJson(`/api/admin/careers?${params.toString()}`);
+      const nextApplications = payload.applications || [];
+
+      setApplications(nextApplications);
+      setApplicationsSummary(payload.summary || null);
+      setSelectedApplicationId((previous) => {
+        if (nextApplications.length === 0) return null;
+        if (
+          previous !== null &&
+          nextApplications.some((application) => String(application.id) === String(previous))
+        ) {
+          return previous;
+        }
+        return nextApplications[0].id;
+      });
+    } catch (error) {
+      setApplicationsError(error.message || 'Unable to load careers applications.');
+      setDatabaseBannerFromError(error);
+    } finally {
+      setApplicationsLoading(false);
+    }
+  }, [globalSearch, setDatabaseBannerFromError]);
+
   useEffect(() => {
     loadSelectorClients();
   }, [loadSelectorClients]);
@@ -467,6 +533,11 @@ export default function OwnerDashboard({ adminEmail }) {
     if (activeNav !== 'revenue') return;
     loadPayPalRevenue();
   }, [activeNav, loadPayPalRevenue]);
+
+  useEffect(() => {
+    if (activeNav !== 'applications') return;
+    loadApplications();
+  }, [activeNav, loadApplications]);
 
   useEffect(() => {
     if (!selectedClient) {
@@ -635,7 +706,13 @@ export default function OwnerDashboard({ adminEmail }) {
   async function handleManualPackCreate(invoice) {
     if (!selectedClient) return;
 
-    const form = manualPackForms[invoice.invoiceId] || {};
+    const invoiceId = String(invoice?.invoiceId || invoice?.invoiceNumber || '').trim();
+    if (!invoiceId) {
+      setDeliverablesError('This invoice is missing an id. Refresh the board and try again.');
+      return;
+    }
+
+    const form = manualPackForms[invoiceId] || {};
     const lineOption = (invoice.lineOptions || []).find((line) => line.lineKey === form.sourceLineKey);
 
     setDeliverablesMutating(true);
@@ -649,7 +726,7 @@ export default function OwnerDashboard({ adminEmail }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          sourceInvoiceId: invoice.invoiceId,
+          sourceInvoiceId: invoiceId,
           sourceInvoiceNumber: invoice.invoiceNumber,
           sourceLineKey: form.sourceLineKey || 'invoice_text',
           sourceLineLabel: lineOption?.label || form.sourceLineLabel || 'Invoice details',
@@ -774,6 +851,10 @@ export default function OwnerDashboard({ adminEmail }) {
   }
 
   function getBreadcrumb() {
+    if (activeNav === 'applications') {
+      return 'Careers / Applications / Inbox';
+    }
+
     if (activeNav === 'clients' && selectedClient) {
       return `Clients / ${currentScopeLabel} / Workspace`;
     }
@@ -782,6 +863,10 @@ export default function OwnerDashboard({ adminEmail }) {
   }
 
   function getHeaderTitle() {
+    if (activeNav === 'applications') {
+      return 'Careers Applications Inbox';
+    }
+
     if (activeNav === 'clients' && selectedClient) {
       return `${currentScopeLabel} Workspace`;
     }
@@ -1634,6 +1719,211 @@ export default function OwnerDashboard({ adminEmail }) {
     );
   }
 
+  function renderApplicationsSection() {
+    const summary = applicationsSummary || {
+      total: applications.length,
+      withResume: applications.filter((application) => Boolean(application.resumeName)).length,
+      withPortfolioLink: applications.filter((application) => Boolean(application.linkedin)).length,
+      latestSubmittedAt: applications[0]?.submittedAt || null,
+      roleBreakdown: [],
+    };
+
+    return (
+      <div className="space-y-4">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <MetricCard label="Applications" value={String(summary.total)} tone="blue" />
+          <MetricCard
+            label="Resume Included"
+            value={String(summary.withResume)}
+            tone={summary.withResume > 0 ? 'green' : 'gray'}
+          />
+          <MetricCard
+            label="Portfolio Link"
+            value={String(summary.withPortfolioLink)}
+            tone={summary.withPortfolioLink > 0 ? 'blue' : 'gray'}
+          />
+          <MetricCard
+            label="Latest Submission"
+            value={summary.latestSubmittedAt ? formatDate(summary.latestSubmittedAt) : '—'}
+            helper={summary.latestSubmittedAt ? formatDateTime(summary.latestSubmittedAt) : 'No applications yet'}
+          />
+        </div>
+
+        <div className="grid gap-4 xl:grid-cols-[360px_1fr]">
+          <div className="rounded-xl border border-neutral-200 bg-white p-4">
+            <div className="mb-3 flex items-center justify-between gap-2">
+              <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Inbox</p>
+              <button
+                type="button"
+                onClick={loadApplications}
+                disabled={applicationsLoading}
+                className="cursor-pointer rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {applicationsLoading ? 'Refreshing...' : 'Refresh'}
+              </button>
+            </div>
+
+            {summary.roleBreakdown?.length > 0 ? (
+              <div className="mb-3 flex flex-wrap gap-2">
+                {summary.roleBreakdown.map((role) => (
+                  <StatusPill key={`${role.roleId || role.roleTitle}-${role.count}`}>
+                    {role.roleTitle} ({role.count})
+                  </StatusPill>
+                ))}
+              </div>
+            ) : null}
+
+            {applicationsError ? (
+              <EmptyState
+                title="Could not load applications"
+                description={applicationsError}
+                actionLabel="Retry"
+                onAction={loadApplications}
+              />
+            ) : applicationsLoading && applications.length === 0 ? (
+              <LoadingGrid />
+            ) : applications.length === 0 ? (
+              <EmptyState
+                title="No careers submissions yet"
+                description="New applications from your careers form will appear here automatically."
+              />
+            ) : (
+              <div className="space-y-2">
+                {applications.map((application) => {
+                  const isSelected = String(selectedApplication?.id) === String(application.id);
+                  return (
+                    <button
+                      key={application.id}
+                      type="button"
+                      onClick={() => setSelectedApplicationId(application.id)}
+                      className={`w-full rounded-lg border px-3 py-2 text-left transition ${
+                        isSelected
+                          ? 'border-neutral-900 bg-neutral-900 text-white'
+                          : 'border-neutral-200 bg-white hover:border-neutral-400'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <p className="text-sm font-semibold">{application.fullName}</p>
+                          <p className={`text-xs ${isSelected ? 'text-neutral-200' : 'text-neutral-500'}`}>
+                            {application.email}
+                          </p>
+                        </div>
+                        <StatusPill tone={isSelected ? 'gray' : 'blue'}>{application.roleTitle}</StatusPill>
+                      </div>
+                      <p className={`mt-2 text-xs ${isSelected ? 'text-neutral-200' : 'text-neutral-600'}`}>
+                        {application.notesPreview}
+                      </p>
+                      <p className={`mt-2 text-[11px] ${isSelected ? 'text-neutral-300' : 'text-neutral-500'}`}>
+                        {formatDateTime(application.submittedAt)}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <div className="rounded-xl border border-neutral-200 bg-white p-4">
+            {!selectedApplication ? (
+              <EmptyState
+                title="Select an application"
+                description="Choose any row from the inbox to open the full submission."
+              />
+            ) : (
+              <div className="space-y-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Full Application</p>
+                    <h2 className="mt-1 text-2xl font-semibold tracking-tight text-neutral-950">
+                      {selectedApplication.fullName}
+                    </h2>
+                    <p className="mt-1 text-sm text-neutral-600">{selectedApplication.email}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <StatusPill tone="blue">{selectedApplication.roleTitle}</StatusPill>
+                    <StatusPill tone={selectedApplication.resumeName ? 'green' : 'gray'}>
+                      {selectedApplication.resumeName ? 'Resume attached' : 'No resume file'}
+                    </StatusPill>
+                    <StatusPill tone={selectedApplication.linkedin ? 'blue' : 'gray'}>
+                      {selectedApplication.linkedin ? 'Portfolio included' : 'No portfolio link'}
+                    </StatusPill>
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-lg border border-neutral-200 p-3">
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Submitted</p>
+                    <p className="mt-1 text-sm text-neutral-900">{formatDateTime(selectedApplication.submittedAt)}</p>
+                  </div>
+                  <div className="rounded-lg border border-neutral-200 p-3">
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Location</p>
+                    <p className="mt-1 text-sm text-neutral-900">{selectedApplication.location || '—'}</p>
+                  </div>
+                  <div className="rounded-lg border border-neutral-200 p-3">
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Portfolio</p>
+                    {selectedApplication.linkedin ? (
+                      <a
+                        href={selectedApplication.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-1 inline-block break-all text-sm font-medium text-blue-700 underline decoration-blue-200 underline-offset-4"
+                      >
+                        {selectedApplication.linkedin}
+                      </a>
+                    ) : (
+                      <p className="mt-1 text-sm text-neutral-500">Not provided</p>
+                    )}
+                  </div>
+                  <div className="rounded-lg border border-neutral-200 p-3">
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Resume Name</p>
+                    <p className="mt-1 break-all text-sm text-neutral-900">
+                      {selectedApplication.resumeName || 'Not provided'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border border-neutral-200 p-3">
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Why They Are a Fit</p>
+                  <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-neutral-800">
+                    {selectedApplication.notes || 'No fit statement provided.'}
+                  </p>
+                </div>
+
+                <div className="rounded-lg border border-neutral-200 p-3">
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Quick Actions</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <a
+                      href={`mailto:${selectedApplication.email}`}
+                      className="rounded-md border border-neutral-300 px-3 py-2 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400"
+                    >
+                      Email applicant
+                    </a>
+                    {selectedApplication.linkedin ? (
+                      <a
+                        href={selectedApplication.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-md border border-neutral-300 px-3 py-2 text-xs font-semibold text-neutral-800 transition hover:border-neutral-400"
+                      >
+                        Open portfolio
+                      </a>
+                    ) : null}
+                  </div>
+                  {selectedApplication.ipAddress ? (
+                    <p className="mt-2 text-[11px] text-neutral-500">
+                      Submitter IP: {selectedApplication.ipAddress}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   function renderSettingsSection() {
     return (
       <div className="space-y-4">
@@ -1721,6 +2011,7 @@ export default function OwnerDashboard({ adminEmail }) {
     if (activeNav === 'command') return renderCommandCenter();
     if (activeNav === 'clients') return renderClientsSection();
     if (activeNav === 'revenue') return renderRevenueSection();
+    if (activeNav === 'applications') return renderApplicationsSection();
     if (activeNav === 'notes') return renderNotesSection();
     if (activeNav === 'settings') return renderSettingsSection();
     return renderCommandCenter();
@@ -1752,7 +2043,7 @@ export default function OwnerDashboard({ adminEmail }) {
             <input
               value={globalSearch}
               onChange={(event) => setGlobalSearch(event.target.value)}
-              placeholder="Search clients, issues, activity..."
+              placeholder={searchPlaceholder}
               className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm outline-none focus:border-black"
             />
           </div>
