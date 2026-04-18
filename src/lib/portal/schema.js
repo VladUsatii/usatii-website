@@ -263,6 +263,67 @@ export async function ensurePortalTables() {
         `;
 
         await portalSql`
+          CREATE TABLE IF NOT EXISTS education_guides (
+            id BIGSERIAL PRIMARY KEY,
+            title VARCHAR(180) NOT NULL,
+            summary TEXT,
+            content_markdown TEXT NOT NULL DEFAULT '',
+            passing_percent INTEGER NOT NULL DEFAULT 70 CHECK (passing_percent BETWEEN 1 AND 100),
+            is_active BOOLEAN NOT NULL DEFAULT TRUE,
+            created_by_user_id BIGINT REFERENCES portal_users(id) ON DELETE SET NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          )
+        `;
+
+        await portalSql`
+          CREATE TABLE IF NOT EXISTS education_quiz_questions (
+            id BIGSERIAL PRIMARY KEY,
+            guide_id BIGINT NOT NULL REFERENCES education_guides(id) ON DELETE CASCADE,
+            position INTEGER NOT NULL CHECK (position > 0),
+            prompt TEXT NOT NULL,
+            option_a TEXT NOT NULL,
+            option_b TEXT NOT NULL,
+            option_c TEXT NOT NULL,
+            option_d TEXT NOT NULL,
+            correct_option VARCHAR(1) NOT NULL CHECK (correct_option IN ('a', 'b', 'c', 'd')),
+            explanation TEXT,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            UNIQUE (guide_id, position)
+          )
+        `;
+
+        await portalSql`
+          CREATE TABLE IF NOT EXISTS client_education_assignments (
+            id BIGSERIAL PRIMARY KEY,
+            guide_id BIGINT NOT NULL REFERENCES education_guides(id) ON DELETE CASCADE,
+            client_user_id BIGINT NOT NULL REFERENCES portal_users(id) ON DELETE CASCADE,
+            assigned_by_user_id BIGINT REFERENCES portal_users(id) ON DELETE SET NULL,
+            assigned_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            completed_at TIMESTAMPTZ,
+            latest_score_percent INTEGER,
+            latest_correct_count INTEGER,
+            latest_total_count INTEGER,
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            UNIQUE (guide_id, client_user_id)
+          )
+        `;
+
+        await portalSql`
+          CREATE TABLE IF NOT EXISTS client_education_attempts (
+            id BIGSERIAL PRIMARY KEY,
+            assignment_id BIGINT NOT NULL REFERENCES client_education_assignments(id) ON DELETE CASCADE,
+            client_user_id BIGINT NOT NULL REFERENCES portal_users(id) ON DELETE CASCADE,
+            submitted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            score_percent INTEGER NOT NULL CHECK (score_percent BETWEEN 0 AND 100),
+            correct_count INTEGER NOT NULL CHECK (correct_count >= 0),
+            total_count INTEGER NOT NULL CHECK (total_count >= 0),
+            answers_json JSONB NOT NULL DEFAULT '{}'::jsonb
+          )
+        `;
+
+        await portalSql`
           CREATE INDEX IF NOT EXISTS idx_portal_users_role
           ON portal_users (role)
         `;
@@ -320,6 +381,31 @@ export async function ensurePortalTables() {
         await portalSql`
           CREATE INDEX IF NOT EXISTS idx_referrals_referrer_status
           ON referrals (referrer_client_user_id, status)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_education_guides_active_updated
+          ON education_guides (is_active, updated_at DESC)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_education_quiz_questions_guide_position
+          ON education_quiz_questions (guide_id, position)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_client_education_assignments_client
+          ON client_education_assignments (client_user_id, assigned_at DESC)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_client_education_assignments_guide
+          ON client_education_assignments (guide_id, assigned_at DESC)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_client_education_attempts_assignment_submitted
+          ON client_education_attempts (assignment_id, submitted_at DESC)
         `;
 
         await maybeBootstrapOwnerAdmin();

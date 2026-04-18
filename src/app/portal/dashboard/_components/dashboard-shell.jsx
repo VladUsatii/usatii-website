@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import ClientEducationPane from '@/app/portal/dashboard/_components/client-education-pane';
 
 const CHUNK_SIZE = 8 * 1024 * 1024;
 
@@ -11,6 +12,7 @@ const CLIENT_NAV_ITEMS = [
   { id: 'request', label: 'Request' },
   { id: 'invoices', label: 'Invoices' },
   { id: 'progress', label: 'Progress' },
+  { id: 'education', label: 'Education' },
 ];
 
 function flattenFolders(node, map = {}) {
@@ -1011,11 +1013,16 @@ export default function DashboardShell({ user, checkoutState }) {
     );
   }
 
+  function renderEducationSection() {
+    return <ClientEducationPane />;
+  }
+
   function renderMainPanel() {
     if (activeNav === 'workspace') return renderWorkspaceSection();
     if (activeNav === 'request') return renderRequestSection();
     if (activeNav === 'invoices') return renderInvoicesSection();
     if (activeNav === 'progress') return renderProgressSection();
+    if (activeNav === 'education') return renderEducationSection();
     return renderWorkspaceSection();
   }
 

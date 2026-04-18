@@ -3,12 +3,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import AdminNotesPane from '@/app/admin/_components/admin-notes-pane';
+import AdminEducationPane from '@/app/admin/_components/admin-education-pane';
 
 const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
   { id: 'clients', label: 'Clients' },
   { id: 'revenue', label: 'Revenue' },
   { id: 'applications', label: 'Applications' },
+  { id: 'education', label: 'Education' },
   { id: 'notes', label: 'Notes' },
   { id: 'settings', label: 'Settings' },
 ];
@@ -312,6 +314,8 @@ export default function OwnerDashboard({ adminEmail }) {
   const searchPlaceholder =
     activeNav === 'applications'
       ? 'Search applicants, roles, emails, portfolio links...'
+      : activeNav === 'education'
+        ? 'Search guides, content, and quiz topics...'
       : 'Search clients, issues, activity...';
 
   const filteredAttentionRows = useMemo(() => {
@@ -855,6 +859,10 @@ export default function OwnerDashboard({ adminEmail }) {
       return 'Careers / Applications / Inbox';
     }
 
+    if (activeNav === 'education') {
+      return 'Education / Guides / Assignments';
+    }
+
     if (activeNav === 'clients' && selectedClient) {
       return `Clients / ${currentScopeLabel} / Workspace`;
     }
@@ -865,6 +873,10 @@ export default function OwnerDashboard({ adminEmail }) {
   function getHeaderTitle() {
     if (activeNav === 'applications') {
       return 'Careers Applications Inbox';
+    }
+
+    if (activeNav === 'education') {
+      return 'Education Guides';
     }
 
     if (activeNav === 'clients' && selectedClient) {
@@ -2007,11 +2019,16 @@ export default function OwnerDashboard({ adminEmail }) {
     return <AdminNotesPane />;
   }
 
+  function renderEducationSection() {
+    return <AdminEducationPane clients={selectorClients} />;
+  }
+
   function renderMainPanel() {
     if (activeNav === 'command') return renderCommandCenter();
     if (activeNav === 'clients') return renderClientsSection();
     if (activeNav === 'revenue') return renderRevenueSection();
     if (activeNav === 'applications') return renderApplicationsSection();
+    if (activeNav === 'education') return renderEducationSection();
     if (activeNav === 'notes') return renderNotesSection();
     if (activeNav === 'settings') return renderSettingsSection();
     return renderCommandCenter();
