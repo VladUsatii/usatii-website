@@ -3,6 +3,8 @@ const SANDBOX_BASE_URL = 'https://api-m.sandbox.paypal.com';
 const MAX_REPORTING_WINDOW_DAYS = 31;
 const MAX_PAGINATION_PAGES = 20;
 const DEFAULT_PAGE_SIZE = 100;
+const SUCCESS_TRANSACTION_STATUSES = new Set(['S', 'SUCCESS', 'COMPLETED']);
+const DEFAULT_BLOCKED_PAYER_EMAIL_DOMAINS = ['namecheap.com', 'namecheaphosting.com'];
 
 let cachedToken = null;
 
@@ -33,6 +35,70 @@ function centsFromValue(value) {
   const parsed = Number.parseFloat(String(value || '0'));
   if (!Number.isFinite(parsed)) return 0;
   return Math.round(parsed * 100);
+}
+
+function normalizeIdentifier(value) {
+  return String(value || '').trim();
+}
+
+function normalizeTransactionStatus(status) {
+  return String(status || '').trim().toUpperCase() || 'UNKNOWN';
+}
+
+function isSuccessfulTransactionStatus(status) {
+  return SUCCESS_TRANSACTION_STATUSES.has(normalizeTransactionStatus(status));
+}
+
+function normalizeEmailDomain(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function getBlockedPayerEmailDomains() {
+  const envList = String(process.env.PAYPAL_BLOCKED_PAYER_EMAIL_DOMAINS || '')
+    .split(',')
+    .map((value) => normalizeEmailDomain(value))
+    .filter(Boolean);
+
+  return new Set([
+    ...DEFAULT_BLOCKED_PAYER_EMAIL_DOMAINS.map((value) => normalizeEmailDomain(value)),
+    ...envList,
+  ]);
+}
+
+const BLOCKED_PAYER_EMAIL_DOMAINS = getBlockedPayerEmailDomains();
+
+function extractEmailDomain(email) {
+  const normalizedEmail = String(email || '').trim().toLowerCase();
+  const atIndex = normalizedEmail.lastIndexOf('@');
+  if (atIndex < 0 || atIndex >= normalizedEmail.length - 1) return '';
+  return normalizedEmail.slice(atIndex + 1);
+}
+
+function isBlockedPayerEmail(email) {
+  const domain = extractEmailDomain(email);
+  if (!domain) return false;
+
+  for (const blockedDomain of BLOCKED_PAYER_EMAIL_DOMAINS) {
+    if (domain === blockedDomain || domain.endsWith(`.${blockedDomain}`)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function extractInvoiceIdFromTransaction(row) {
+  const directInvoiceId = normalizeIdentifier(row?.transaction_info?.invoice_id);
+  if (directInvoiceId) return directInvoiceId;
+
+  const referenceType = String(row?.transaction_info?.paypal_reference_id_type || '').trim().toUpperCase();
+  const referenceId = normalizeIdentifier(row?.transaction_info?.paypal_reference_id);
+
+  if (referenceId && referenceType.includes('INVOICE')) {
+    return referenceId;
+  }
+
+  return '';
 }
 
 function toIsoUtc(date) {
@@ -402,6 +468,21 @@ function transactionEmail(row) {
   );
 }
 
+function transactionPayerName(row) {
+  const fullName = String(row?.payer_info?.payer_name?.alternate_full_name || '').trim();
+  if (fullName) return fullName;
+
+  const firstName = String(row?.payer_info?.payer_name?.given_name || '').trim();
+  const lastName = String(row?.payer_info?.payer_name?.surname || '').trim();
+  const joined = `${firstName} ${lastName}`.trim();
+  if (joined) return joined;
+
+  const accountHolder = String(row?.payer_info?.account_holder_name || '').trim();
+  if (accountHolder) return accountHolder;
+
+  return '';
+}
+
 function mapPurchaseState(status) {
   if (status === 'PAID') return 'fully_paid';
   if (status === 'PARTIALLY PAID') return 'semi_paid';
@@ -539,6 +620,22 @@ export async function getPayPalRevenueSnapshot({
   const startUtc = toDayStartUtc(parsedStart);
   const endUtc = toDayEndUtc(parsedEnd);
   const normalizedClientEmail = String(clientEmail || '').trim().toLowerCase();
+  const knownInvoiceTokens = new Set();
+
+  for (const invoiceRow of invoiceRows) {
+    const tokens = [
+      invoiceRow?.id,
+      invoiceRow?.detail?.invoice_number,
+      invoiceRow?.detail?.reference,
+    ]
+      .map((value) => normalizeIdentifier(value))
+      .filter(Boolean)
+      .map((value) => value.toLowerCase());
+
+    for (const token of tokens) {
+      knownInvoiceTokens.add(token);
+    }
+  }
 
   const invoices = invoiceRows
     .map((row) => {
@@ -580,23 +677,49 @@ export async function getPayPalRevenueSnapshot({
   const transactions = transactionRows
     .map((row) => {
       const grossCents = centsFromValue(row?.transaction_info?.transaction_amount?.value);
-      const feeCents = centsFromValue(
+      const feeCents = Math.abs(centsFromValue(
         row?.transaction_info?.fee_amount?.value ||
         row?.paypal_fee?.value
-      );
-      const netCandidate = row?.transaction_info?.net_amount?.value;
-      const netCents = netCandidate !== undefined && netCandidate !== null
-        ? centsFromValue(netCandidate)
-        : grossCents - feeCents;
+      ));
+      const netCents = grossCents - feeCents;
+      const invoiceId = extractInvoiceIdFromTransaction(row);
+      const referenceType = String(row?.transaction_info?.paypal_reference_id_type || '').trim().toUpperCase();
+      const referenceId = normalizeIdentifier(row?.transaction_info?.paypal_reference_id);
+      const invoiceSignal = Boolean(invoiceId) || referenceType.includes('INVOICE');
+      const invoiceKnown = [invoiceId, referenceId]
+        .map((value) => normalizeIdentifier(value))
+        .filter(Boolean)
+        .some((value) => knownInvoiceTokens.has(value.toLowerCase()));
+      const invoiceLinked = Boolean(invoiceSignal || invoiceKnown);
+      const status = normalizeTransactionStatus(row?.transaction_info?.transaction_status);
+      const successful = isSuccessfulTransactionStatus(status);
+      const payerEmail = String(transactionEmail(row)).trim();
+      const payerName = transactionPayerName(row);
+      const payerDisplay = payerEmail || payerName;
+      const hasPayerIdentity = Boolean(payerDisplay);
+      const blockedPayerEmail = isBlockedPayerEmail(payerEmail);
 
       return {
         id: row?.transaction_info?.transaction_id || '',
-        status: String(row?.transaction_info?.transaction_status || '').toUpperCase() || 'UNKNOWN',
+        status,
         grossCents,
         feeCents,
         netCents,
         currency: transactionCurrency(row),
-        email: transactionEmail(row),
+        email: payerEmail,
+        payerName,
+        payerDisplay,
+        hasPayerIdentity,
+        blockedPayerEmail,
+        invoiceId: invoiceId || null,
+        invoiceLinked,
+        includeInTaxEstimate: Boolean(
+          successful &&
+          invoiceLinked &&
+          hasPayerIdentity &&
+          !blockedPayerEmail &&
+          grossCents > 0
+        ),
         occurredAt: parseDate(
           row?.transaction_info?.transaction_initiation_date ||
           row?.transaction_info?.transaction_updated_date

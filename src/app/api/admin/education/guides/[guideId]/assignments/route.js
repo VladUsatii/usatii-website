@@ -18,7 +18,8 @@ export async function PUT(request, { params }) {
   const { session, error } = await requirePortalSession('admin');
   if (error) return error;
 
-  const guideId = parseGuideId(params?.guideId);
+  const resolvedParams = await params;
+  const guideId = parseGuideId(resolvedParams?.guideId);
   if (Number.isNaN(guideId)) {
     return NextResponse.json({ error: 'Guide id must be numeric.' }, { status: 400 });
   }

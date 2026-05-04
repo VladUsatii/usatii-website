@@ -35,7 +35,8 @@ export async function GET(_request, { params }) {
   if (error) return error;
 
   try {
-    const note = await getAdminNote(params?.id);
+    const resolvedParams = await params;
+    const note = await getAdminNote(resolvedParams?.id);
     return NextResponse.json({ note }, { status: 200 });
   } catch (err) {
     return mapNoteError(err);
@@ -45,6 +46,9 @@ export async function GET(_request, { params }) {
 export async function PATCH(request, { params }) {
   const { error } = await requirePortalSession('admin');
   if (error) return error;
+
+  const resolvedParams = await params;
+  const noteId = resolvedParams?.id;
 
   let body;
 
@@ -58,12 +62,12 @@ export async function PATCH(request, { params }) {
     let note;
 
     if (typeof body?.title === 'string' && typeof body?.content === 'string') {
-      await updateAdminNote(params?.id, body.content);
-      note = await renameAdminNote(params?.id, body.title);
+      await updateAdminNote(noteId, body.content);
+      note = await renameAdminNote(noteId, body.title);
     } else if (typeof body?.title === 'string' && typeof body?.content !== 'string') {
-      note = await renameAdminNote(params?.id, body.title);
+      note = await renameAdminNote(noteId, body.title);
     } else if (typeof body?.content === 'string') {
-      note = await updateAdminNote(params?.id, body?.content);
+      note = await updateAdminNote(noteId, body?.content);
     } else {
       return NextResponse.json(
         { error: 'Expected either content or title in the request payload.' },
@@ -82,7 +86,8 @@ export async function DELETE(_request, { params }) {
   if (error) return error;
 
   try {
-    await deleteAdminNote(params?.id);
+    const resolvedParams = await params;
+    await deleteAdminNote(resolvedParams?.id);
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
     return mapNoteError(err);

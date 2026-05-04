@@ -4,14 +4,18 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import AdminNotesPane from '@/app/admin/_components/admin-notes-pane';
 import AdminEducationPane from '@/app/admin/_components/admin-education-pane';
+import AdminPaymentsPane from '@/app/admin/_components/admin-payments-pane';
+import AdminMermaidStudio from '@/app/admin/_components/admin-mermaid-studio';
 
 const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
   { id: 'clients', label: 'Clients' },
   { id: 'revenue', label: 'Revenue' },
+  { id: 'payments', label: 'Payments' },
   { id: 'applications', label: 'Applications' },
   { id: 'education', label: 'Education' },
   { id: 'notes', label: 'Notes' },
+  { id: 'mermaid', label: 'Mermaid Studio' },
   { id: 'settings', label: 'Settings' },
 ];
 
@@ -314,8 +318,12 @@ export default function OwnerDashboard({ adminEmail }) {
   const searchPlaceholder =
     activeNav === 'applications'
       ? 'Search applicants, roles, emails, portfolio links...'
+      : activeNav === 'payments'
+        ? 'Search payment IDs, payer emails, statuses...'
       : activeNav === 'education'
         ? 'Search guides, content, and quiz topics...'
+      : activeNav === 'mermaid'
+        ? 'Mermaid Studio does not use search...'
       : 'Search clients, issues, activity...';
 
   const filteredAttentionRows = useMemo(() => {
@@ -863,6 +871,14 @@ export default function OwnerDashboard({ adminEmail }) {
       return 'Education / Guides / Assignments';
     }
 
+    if (activeNav === 'payments') {
+      return 'Revenue / Payments / Received';
+    }
+
+    if (activeNav === 'mermaid') {
+      return 'Admin / Mermaid / Studio';
+    }
+
     if (activeNav === 'clients' && selectedClient) {
       return `Clients / ${currentScopeLabel} / Workspace`;
     }
@@ -877,6 +893,14 @@ export default function OwnerDashboard({ adminEmail }) {
 
     if (activeNav === 'education') {
       return 'Education Guides';
+    }
+
+    if (activeNav === 'payments') {
+      return 'Payments Received';
+    }
+
+    if (activeNav === 'mermaid') {
+      return 'Mermaid Studio';
     }
 
     if (activeNav === 'clients' && selectedClient) {
@@ -2023,13 +2047,29 @@ export default function OwnerDashboard({ adminEmail }) {
     return <AdminEducationPane clients={selectorClients} />;
   }
 
+  function renderPaymentsSection() {
+    return (
+      <AdminPaymentsPane
+        selectedClient={selectedClient}
+        globalSearch={globalSearch}
+        onDatabaseError={setDatabaseBannerFromError}
+      />
+    );
+  }
+
+  function renderMermaidStudioSection() {
+    return <AdminMermaidStudio />;
+  }
+
   function renderMainPanel() {
     if (activeNav === 'command') return renderCommandCenter();
     if (activeNav === 'clients') return renderClientsSection();
     if (activeNav === 'revenue') return renderRevenueSection();
+    if (activeNav === 'payments') return renderPaymentsSection();
     if (activeNav === 'applications') return renderApplicationsSection();
     if (activeNav === 'education') return renderEducationSection();
     if (activeNav === 'notes') return renderNotesSection();
+    if (activeNav === 'mermaid') return renderMermaidStudioSection();
     if (activeNav === 'settings') return renderSettingsSection();
     return renderCommandCenter();
   }

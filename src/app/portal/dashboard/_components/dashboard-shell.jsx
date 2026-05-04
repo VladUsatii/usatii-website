@@ -71,11 +71,37 @@ function invoiceTone(state) {
   return 'gray';
 }
 
-function stepTone(stepStatus) {
-  if (stepStatus === 'completed') return 'green';
-  if (stepStatus === 'quality_assurance') return 'blue';
-  if (stepStatus === 'in_progress') return 'yellow';
-  return 'gray';
+function stepLabelFromStatus(stepStatus) {
+  if (stepStatus === 'completed') return 'Completed';
+  if (stepStatus === 'quality_assurance') return 'Quality Assurance';
+  if (stepStatus === 'in_progress') return 'In Progress';
+  if (stepStatus === 'queued') return 'Queued';
+  return 'Not Started';
+}
+
+function stepSegmentClass(stepStatus) {
+  if (stepStatus === 'completed') return 'bg-emerald-500';
+  if (stepStatus === 'quality_assurance') return 'bg-blue-500';
+  if (stepStatus === 'in_progress') return 'bg-amber-400';
+  if (stepStatus === 'queued') return 'bg-violet-400';
+  return 'bg-neutral-300';
+}
+
+function buildPackSegments(pack) {
+  const quantity = Math.max(0, Number(pack?.quantity || 0));
+  if (quantity === 0) return [];
+
+  const statusByIndex = new Map(
+    (pack?.items || []).map((item) => [Number(item.itemIndex), String(item.stepStatus || 'not_started')])
+  );
+
+  return Array.from({ length: quantity }, (_, offset) => {
+    const itemIndex = offset + 1;
+    return {
+      itemIndex,
+      stepStatus: statusByIndex.get(itemIndex) || 'not_started',
+    };
+  });
 }
 
 function parseUploadedRangeHeader(rangeHeader) {
@@ -989,17 +1015,37 @@ export default function DashboardShell({ user, checkoutState }) {
                           </p>
                         </div>
 
-                        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                          {(pack.items || []).map((item) => (
-                            <div key={item.id} className="rounded-md border border-neutral-200 px-2 py-2">
-                              <p className="text-[11px] font-semibold text-neutral-800">Deliverable {item.itemIndex}</p>
-                              <div className="mt-1">
-                                <StatusPill tone={stepTone(item.stepStatus)}>
-                                  {item.stepLabel}
-                                </StatusPill>
+                        <div className="mt-2">
+                          {(() => {
+                            const segments = buildPackSegments(pack);
+                            return segments.length > 0 ? (
+                              <div className="space-y-2">
+                                <div className="flex h-3 w-full overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
+                                  {segments.map((segment, segmentIndex) => (
+                                    <div
+                                      key={`${pack.id}-segment-${segment.itemIndex}`}
+                                      className={`${stepSegmentClass(segment.stepStatus)} ${segmentIndex < segments.length - 1 ? 'border-r border-white/80' : ''}`}
+                                      style={{ width: `${100 / segments.length}%` }}
+                                      title={`Deliverable ${segment.itemIndex}: ${stepLabelFromStatus(segment.stepStatus)}`}
+                                    />
+                                  ))}
+                                </div>
+
+                                <div className="flex flex-wrap gap-2">
+                                  {segments.map((segment) => (
+                                    <span
+                                      key={`${pack.id}-status-${segment.itemIndex}`}
+                                      className="rounded-full border border-neutral-200 bg-white px-2 py-0.5 text-[11px] text-neutral-700"
+                                    >
+                                      #{segment.itemIndex} {stepLabelFromStatus(segment.stepStatus)}
+                                    </span>
+                                  ))}
+                                </div>
                               </div>
-                            </div>
-                          ))}
+                            ) : (
+                              <p className="text-xs text-neutral-500">No deliverables in this pack yet.</p>
+                            );
+                          })()}
                         </div>
                       </div>
                     ))}

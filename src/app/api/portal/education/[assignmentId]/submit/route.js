@@ -18,7 +18,8 @@ export async function POST(request, { params }) {
   const { session, error } = await requirePortalSession('client');
   if (error) return error;
 
-  const assignmentId = parseAssignmentId(params?.assignmentId);
+  const resolvedParams = await params;
+  const assignmentId = parseAssignmentId(resolvedParams?.assignmentId);
   if (Number.isNaN(assignmentId)) {
     return NextResponse.json({ error: 'Assignment id must be numeric.' }, { status: 400 });
   }

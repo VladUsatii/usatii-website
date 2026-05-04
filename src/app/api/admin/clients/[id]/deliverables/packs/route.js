@@ -18,7 +18,8 @@ export async function POST(request, { params }) {
   const { error } = await requirePortalSession('admin');
   if (error) return error;
 
-  const clientUserId = parseClientUserId(params?.id);
+  const resolvedParams = await params;
+  const clientUserId = parseClientUserId(resolvedParams?.id);
 
   if (Number.isNaN(clientUserId)) {
     return NextResponse.json({ error: 'Client id must be numeric.' }, { status: 400 });

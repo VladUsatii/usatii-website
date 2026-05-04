@@ -18,8 +18,9 @@ export async function PATCH(request, { params }) {
   const { error } = await requirePortalSession('admin');
   if (error) return error;
 
-  const clientUserId = parseNumericId(params?.id);
-  const itemId = parseNumericId(params?.itemId);
+  const resolvedParams = await params;
+  const clientUserId = parseNumericId(resolvedParams?.id);
+  const itemId = parseNumericId(resolvedParams?.itemId);
 
   if (Number.isNaN(clientUserId) || Number.isNaN(itemId)) {
     return NextResponse.json({ error: 'Client id and item id must be numeric.' }, { status: 400 });

@@ -19,7 +19,8 @@ export async function GET(_request, { params }) {
   const { error } = await requirePortalSession('admin');
   if (error) return error;
 
-  const idValue = String(params?.id || '').trim();
+  const resolvedParams = await params;
+  const idValue = String(resolvedParams?.id || '').trim();
   if (!/^\d+$/.test(idValue)) {
     return NextResponse.json({ error: 'Client id must be numeric.' }, { status: 400 });
   }
@@ -54,7 +55,8 @@ export async function PATCH(request, { params }) {
   const { error } = await requirePortalSession('admin');
   if (error) return error;
 
-  const idValue = String(params?.id || '').trim();
+  const resolvedParams = await params;
+  const idValue = String(resolvedParams?.id || '').trim();
   if (!/^\d+$/.test(idValue)) {
     return NextResponse.json({ error: 'Client id must be numeric.' }, { status: 400 });
   }

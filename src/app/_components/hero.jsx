@@ -10,6 +10,7 @@ import SystemsBentoGrid from "./bento-systems";
 import DemoGridWithLiveVideo from "./demo-grid-live-video";
 import TrustedByGrid from "./brands";
 import HeroSection from "./top-hero";
+import GoogleReviewGrid from "./google-review-grid";
 
 export default function Hero() {
   return (
@@ -17,6 +18,7 @@ export default function Hero() {
     <HeroSection />
     <section className="flex flex-col items-center justify-center gap-6 py-10 mx-0 text-center">
       <TrustedByGrid />
+      <GoogleReviewGrid />
       <SystemsBentoGrid />
       <DemoGridWithLiveVideo />
       <CaseStudySwiper />

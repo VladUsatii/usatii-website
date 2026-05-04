@@ -762,26 +762,6 @@ export async function updateDeliverablePack({ clientUserId, packId, packType, qu
   const currentQuantity = toPositiveInt(existingPack.quantity) || 0;
 
   if (normalizedQuantity < currentQuantity) {
-    const removableItemsResult = await portalSql`
-      SELECT id, step_status
-      FROM deliverable_items
-      WHERE pack_id = ${packId}
-        AND item_index > ${normalizedQuantity}
-      ORDER BY item_index ASC
-    `;
-
-    const hasProgress = removableItemsResult.rows.some(
-      (row) => normalizeStepStatus(row.step_status) !== DELIVERABLE_STEP_STATUSES.NOT_STARTED
-    );
-
-    if (hasProgress) {
-      const error = new Error(
-        'Cannot reduce quantity because some removable items already have progress. Move those items back to Not Started first.'
-      );
-      error.code = 'quantity_reduce_blocked';
-      throw error;
-    }
-
     await portalSql`
       DELETE FROM deliverable_items
       WHERE pack_id = ${packId}

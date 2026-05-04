@@ -21,8 +21,9 @@ export async function PATCH(request, { params }) {
   const { error } = await requirePortalSession('admin');
   if (error) return error;
 
-  const clientUserId = parseNumericId(params?.id);
-  const packId = parseNumericId(params?.packId);
+  const resolvedParams = await params;
+  const clientUserId = parseNumericId(resolvedParams?.id);
+  const packId = parseNumericId(resolvedParams?.packId);
 
   if (Number.isNaN(clientUserId) || Number.isNaN(packId)) {
     return NextResponse.json({ error: 'Client id and pack id must be numeric.' }, { status: 400 });
@@ -90,8 +91,9 @@ export async function DELETE(_request, { params }) {
   const { error } = await requirePortalSession('admin');
   if (error) return error;
 
-  const clientUserId = parseNumericId(params?.id);
-  const packId = parseNumericId(params?.packId);
+  const resolvedParams = await params;
+  const clientUserId = parseNumericId(resolvedParams?.id);
+  const packId = parseNumericId(resolvedParams?.packId);
 
   if (Number.isNaN(clientUserId) || Number.isNaN(packId)) {
     return NextResponse.json({ error: 'Client id and pack id must be numeric.' }, { status: 400 });
