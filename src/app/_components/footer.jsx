@@ -1,32 +1,28 @@
-import React from 'react';
-import { Linkedin, Instagram } from 'lucide-react';
+import React from "react";
+import { Linkedin, Instagram } from "lucide-react";
 
 const productTiles = [
-  { id: 1, title: 'Market Intelligence', href: '/demos/1' },
-  { id: 2, title: 'Editor', href: '/editor' },
+  { id: 1, title: "Trades Hub", href: "/trades" },
+  { id: 2, title: "Software", href: "/software" },
+  { id: 3, title: "Industries", href: "/industries" },
+  { id: 4, title: "Locations", href: "/locations" },
 ];
 
 export default function Footer() {
   return (
     <footer className="border-t-neutral-100 border-t-[2px] bg-gradient-to-tr text-black py-16 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Logo & Newsletter */}
         <div className="space-y-0">
-          <p className="text-lg font-black italic tracking-tight text-black">
-          USATII MEDIA</p>
-          <p className='text-sm leading-relaxed'>build your audience organically.</p>
+          <p className="text-lg font-black italic tracking-tight text-black">USATII MEDIA</p>
+          <p className="text-sm leading-relaxed">build your audience organically.</p>
         </div>
 
-        {/* Products */}
         <div>
-          <h3 className="text-black font-semibold mb-4">Products</h3>
+          <h3 className="text-black font-semibold mb-4">Solutions</h3>
           <ul className="space-y-2">
-          {productTiles.map((tile) => (
+            {productTiles.map((tile) => (
               <li key={tile.id}>
-                <a
-                  href={tile.href}
-                  className="hover:text-black transition-colors"
-                >
+                <a href={tile.href} className="hover:text-black transition-colors">
                   {tile.title}
                 </a>
               </li>
@@ -34,31 +30,60 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Resources */}
         <div>
           <h3 className="text-black font-semibold mb-4">Resources</h3>
           <ul className="space-y-2">
+            <li>
+              <a href="/software/software-waste-audit" className="hover:text-black">
+                Software Waste Audit
+              </a>
+            </li>
+            <li>
+              <a href="/compare" className="hover:text-black">
+                Compare
+              </a>
+            </li>
+            <li>
+              <a href="/resources" className="hover:text-black">
+                Guides & Tools
+              </a>
+            </li>
             <li>
               <a href="/case-studies" className="hover:text-black">
                 Case Studies
               </a>
             </li>
-            <li>
-              <a href="/documentation" className="hover:text-black transition-colors">
-                Documentation
-              </a>
-            </li>
           </ul>
         </div>
 
-        {/* Company & Social */}
         <div className="space-y-4">
           <h3 className="text-black font-semibold mb-4">Company</h3>
           <ul className="space-y-2">
-            <li><a href="/vlad" className="hover:text-black">Our Founder's Story</a></li>
-            <li><a href="/careers" className="hover:text-black">Careers</a></li>
-            <li><a href="/referral" className="hover:text-black">Referrals</a></li>
-            <li><a href="/privacy" className="hover:text-black">Privacy Policy</a></li>
+            <li>
+              <a href="/about" className="hover:text-black">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="/about/vlad-usatii" className="hover:text-black">
+                Founder
+              </a>
+            </li>
+            <li>
+              <a href="/security" className="hover:text-black">
+                Security
+              </a>
+            </li>
+            <li>
+              <a href="/reviews" className="hover:text-black">
+                Reviews
+              </a>
+            </li>
+            <li>
+              <a href="/privacy" className="hover:text-black">
+                Privacy Policy
+              </a>
+            </li>
           </ul>
           <div className="flex space-x-4 pt-4">
             <a href="https://linkedin.com/in/vladusatii" aria-label="LinkedIn">

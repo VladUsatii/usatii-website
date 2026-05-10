@@ -6,6 +6,7 @@ import AdminNotesPane from '@/app/admin/_components/admin-notes-pane';
 import AdminEducationPane from '@/app/admin/_components/admin-education-pane';
 import AdminPaymentsPane from '@/app/admin/_components/admin-payments-pane';
 import AdminMermaidStudio from '@/app/admin/_components/admin-mermaid-studio';
+import AdminTelemetryPane from '@/app/admin/_components/admin-telemetry-pane';
 
 const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
@@ -14,6 +15,7 @@ const ACTIVE_NAV_ITEMS = [
   { id: 'payments', label: 'Payments' },
   { id: 'applications', label: 'Applications' },
   { id: 'education', label: 'Education' },
+  { id: 'telemetry', label: 'Telemetry' },
   { id: 'notes', label: 'Notes' },
   { id: 'mermaid', label: 'Mermaid Studio' },
   { id: 'settings', label: 'Settings' },
@@ -322,6 +324,8 @@ export default function OwnerDashboard({ adminEmail }) {
         ? 'Search payment IDs, payer emails, statuses...'
       : activeNav === 'education'
         ? 'Search guides, content, and quiz topics...'
+      : activeNav === 'telemetry'
+        ? 'Search quote requests by name, email, source...'
       : activeNav === 'mermaid'
         ? 'Mermaid Studio does not use search...'
       : 'Search clients, issues, activity...';
@@ -871,6 +875,10 @@ export default function OwnerDashboard({ adminEmail }) {
       return 'Education / Guides / Assignments';
     }
 
+    if (activeNav === 'telemetry') {
+      return 'Admin / Telemetry / Performance';
+    }
+
     if (activeNav === 'payments') {
       return 'Revenue / Payments / Received';
     }
@@ -893,6 +901,10 @@ export default function OwnerDashboard({ adminEmail }) {
 
     if (activeNav === 'education') {
       return 'Education Guides';
+    }
+
+    if (activeNav === 'telemetry') {
+      return 'Telemetry Dashboard';
     }
 
     if (activeNav === 'payments') {
@@ -2057,6 +2069,10 @@ export default function OwnerDashboard({ adminEmail }) {
     );
   }
 
+  function renderTelemetrySection() {
+    return <AdminTelemetryPane />;
+  }
+
   function renderMermaidStudioSection() {
     return <AdminMermaidStudio />;
   }
@@ -2068,6 +2084,7 @@ export default function OwnerDashboard({ adminEmail }) {
     if (activeNav === 'payments') return renderPaymentsSection();
     if (activeNav === 'applications') return renderApplicationsSection();
     if (activeNav === 'education') return renderEducationSection();
+    if (activeNav === 'telemetry') return renderTelemetrySection();
     if (activeNav === 'notes') return renderNotesSection();
     if (activeNav === 'mermaid') return renderMermaidStudioSection();
     if (activeNav === 'settings') return renderSettingsSection();

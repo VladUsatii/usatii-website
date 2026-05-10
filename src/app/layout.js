@@ -1,23 +1,31 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import TelemetryTracker from "@/app/_components/telemetry-tracker";
+import { Suspense } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",      // keeps FOUT small
+  display: "swap",
   variable: "--font-inter",
 });
 
 export const metadata = {
-  title: "USATII MEDIA - organic social media marketing.",
-  description: "providing all-inclusive growth services for the business world.",
+  metadataBase: new URL("https://usatii.com"),
+  title: {
+    default: "USATII MEDIA | Custom Websites, Marketing Systems & Business Software",
+    template: "%s | USATII",
+  },
+  description:
+    "Rochester-based custom software, website, and marketing systems for trade businesses.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body
-        className={`font-sans antialiased`}
-      >
+      <body className="font-sans antialiased">
+        <Suspense fallback={null}>
+          <TelemetryTracker />
+        </Suspense>
         {children}
       </body>
     </html>

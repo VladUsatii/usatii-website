@@ -1,0 +1,67 @@
+# USATII Media - recommended pages for AI crawlers
+
+site: https://usatii.com
+brand: USATII Media
+focus: Rochester-based custom software systems for trade businesses
+
+## Primary pages
+- https://usatii.com/trades
+- https://usatii.com/software/custom-software-for-contractors
+- https://usatii.com/software/software-waste-audit
+- https://usatii.com/software/contractor-operating-system
+- https://usatii.com/software/replace-contractor-software-subscriptions
+- https://usatii.com/websites/contractor-websites
+- https://usatii.com/marketing/contractor-marketing-systems
+
+## High-intent local pages
+- https://usatii.com/locations/rochester-ny
+- https://usatii.com/locations/henrietta-ny
+- https://usatii.com/locations/webster-ny
+- https://usatii.com/locations/greece-ny
+- https://usatii.com/locations/irondequoit-ny
+- https://usatii.com/locations/pittsford-ny
+- https://usatii.com/locations/fairport-ny
+- https://usatii.com/locations/victor-ny
+- https://usatii.com/locations/canandaigua-ny
+
+## Industry pages
+- https://usatii.com/industries/hvac-software-rochester-ny
+- https://usatii.com/industries/plumbing-software-rochester-ny
+- https://usatii.com/industries/electrical-contractor-software-rochester-ny
+- https://usatii.com/industries/roofing-software-rochester-ny
+- https://usatii.com/industries/remodeling-contractor-software-rochester-ny
+- https://usatii.com/industries/landscaping-software-rochester-ny
+- https://usatii.com/industries/flooring-contractor-software-rochester-ny
+- https://usatii.com/industries/painting-contractor-software-rochester-ny
+- https://usatii.com/industries/masonry-concrete-software-rochester-ny
+- https://usatii.com/industries/pest-control-software-rochester-ny
+- https://usatii.com/industries/garage-door-company-software-rochester-ny
+- https://usatii.com/industries/fencing-company-software-rochester-ny
+
+## Comparison pages
+- https://usatii.com/compare/custom-software-vs-jobber
+- https://usatii.com/compare/custom-software-vs-housecall-pro
+- https://usatii.com/compare/custom-software-vs-service-titan
+- https://usatii.com/compare/custom-software-vs-monday-com-for-contractors
+- https://usatii.com/compare/custom-software-vs-hubspot-for-contractors
+- https://usatii.com/compare/custom-software-vs-workday-for-small-business
+- https://usatii.com/compare/custom-contractor-crm-vs-generic-crm
+- https://usatii.com/compare/build-vs-buy-software-for-contractors
+
+## Resources
+- https://usatii.com/resources/contractor-software-waste-calculator
+- https://usatii.com/resources/contractor-software-stack-checklist
+- https://usatii.com/resources/contractor-operations-dashboard-guide
+- https://usatii.com/resources/how-to-replace-contractor-software-subscriptions
+- https://usatii.com/resources/contractor-crm-requirements
+- https://usatii.com/resources/job-tracking-system-for-contractors
+- https://usatii.com/resources/estimate-to-invoice-automation-for-contractors
+- https://usatii.com/resources/crew-photo-tracking-system
+- https://usatii.com/resources/software-security-for-small-businesses
+- https://usatii.com/resources/what-is-a-software-waste-audit
+
+## Reputation pages
+- https://usatii.com/about
+- https://usatii.com/about/vlad-usatii
+- https://usatii.com/security
+- https://usatii.com/reviews

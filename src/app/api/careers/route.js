@@ -5,6 +5,7 @@ import {
   ensureCareerApplicationsTable,
   toTrimmedString,
 } from '@/lib/careers/applications'
+import { recordTelemetryApiRequest } from '@/lib/portal/telemetry';
 
 function getClientIp(request) {
   const forwardedFor = request.headers.get('x-forwarded-for')
@@ -22,14 +23,19 @@ function getClientIp(request) {
 }
 
 export async function POST(request) {
+  const startedAt = Date.now();
+  let statusCode = 201;
+  let errorMessage = null;
   let body
 
   try {
     body = await request.json()
   } catch {
+    statusCode = 400;
+    errorMessage = 'Invalid JSON payload.';
     return NextResponse.json(
-      { error: 'Invalid JSON payload.' },
-      { status: 400 }
+      { error: errorMessage },
+      { status: statusCode }
     )
   }
 
@@ -43,24 +49,32 @@ export async function POST(request) {
   const roleConfig = CAREER_ROLE_CATALOG[roleId]
 
   if (!fullName || !email || !roleId) {
+    statusCode = 400;
+    errorMessage = 'Full name, email, and role are required.';
     return NextResponse.json(
-      { error: 'Full name, email, and role are required.' },
-      { status: 400 }
+      { error: errorMessage },
+      { status: statusCode }
     )
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json({ error: 'Please enter a valid email.' }, { status: 400 })
+    statusCode = 400;
+    errorMessage = 'Please enter a valid email.';
+    return NextResponse.json({ error: errorMessage }, { status: statusCode })
   }
 
   if (!roleConfig) {
-    return NextResponse.json({ error: 'Invalid role selection.' }, { status: 400 })
+    statusCode = 400;
+    errorMessage = 'Invalid role selection.';
+    return NextResponse.json({ error: errorMessage }, { status: statusCode })
   }
 
   if (!ipAddress) {
+    statusCode = 400;
+    errorMessage = 'Unable to determine IP address for this request.';
     return NextResponse.json(
-      { error: 'Unable to determine IP address for this request.' },
-      { status: 400 }
+      { error: errorMessage },
+      { status: statusCode }
     )
   }
 
@@ -91,20 +105,32 @@ export async function POST(request) {
       )
     `
 
-    return NextResponse.json({ success: true }, { status: 201 })
+    return NextResponse.json({ success: true }, { status: statusCode })
   } catch (error) {
     if (error?.code === '23505') {
+      statusCode = 409;
+      errorMessage = 'Only one application is allowed per IP address.';
       return NextResponse.json(
-        { error: 'Only one application is allowed per IP address.' },
-        { status: 409 }
+        { error: errorMessage },
+        { status: statusCode }
       )
     }
 
     console.error('Failed to store career application', error)
 
+    statusCode = 500;
+    errorMessage = 'Unable to store application right now.';
     return NextResponse.json(
-      { error: 'Unable to store application right now.' },
-      { status: 500 }
+      { error: errorMessage },
+      { status: statusCode }
     )
+  } finally {
+    await recordTelemetryApiRequest({
+      routeKey: '/api/careers',
+      method: 'POST',
+      statusCode,
+      latencyMs: Date.now() - startedAt,
+      errorMessage,
+    });
   }
 }

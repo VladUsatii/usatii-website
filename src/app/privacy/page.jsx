@@ -25,7 +25,7 @@ function About() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        Privacy policies only apply to signed clients. We don't track, store, or use data of webpage visitors.
+        We collect limited website telemetry (for example page visits, referral source, and quote-request activity) to improve service quality and response times. If you submit a quote request, we store the information you provide so we can contact you and manage your request.
       </motion.div>
     </div>
     <Footer /></>

@@ -3,29 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star } from "lucide-react";
-
-const googlePlaceUrl = "https://goo.gl/maps/7Loo6jModfCB1qse7";
-
-const googleReviews = [
-  {
-    name: "Eric Rippetoe",
-    meta: "1 review",
-    rating: 5,
-    text: "Vlad has been super helpful and has engaged with us in a variety of ways. He always brings fresh ideas and technical competence to any areas we are collaborating. I've enjoyed partnering with him",
-  },
-  {
-    name: "Elijah Anderson",
-    meta: "1 review",
-    rating: 5,
-    text: "Vlad helped me out with a few ad campaigns for my marketing business as well as building our landing page/website. He was extremely responsive and worked in a pace that matched mine. Would 100% recommend!",
-  },
-  {
-    name: "hamish NV",
-    meta: "Local Guide · 16 reviews · 18 photos",
-    rating: 5,
-    text: "Solid editing and very reliable. Good communication.",
-  },
-];
+import { GOOGLE_PLACE_URL, GOOGLE_REVIEWS } from "@/lib/google-reviews";
 
 function Stars({ rating = 5 }) {
   return (
@@ -67,19 +45,22 @@ function shouldChangeReview(offset, velocity) {
 export default function GoogleReviewGrid() {
   const [[activeIndex, direction], setActiveIndex] = useState([0, 1]);
 
-  const activeReview = googleReviews[activeIndex];
-  const reviewCount = googleReviews.length;
+  const activeReview = GOOGLE_REVIEWS[activeIndex];
+  const reviewCount = GOOGLE_REVIEWS.length;
+  const averageRating = (
+    GOOGLE_REVIEWS.reduce((sum, review) => sum + (review.rating ?? 0), 0) / reviewCount
+  ).toFixed(1);
 
   function goPrevious() {
     setActiveIndex(([current]) => [
-      current === 0 ? googleReviews.length - 1 : current - 1,
+      current === 0 ? GOOGLE_REVIEWS.length - 1 : current - 1,
       -1,
     ]);
   }
 
   function goNext() {
     setActiveIndex(([current]) => [
-      current === googleReviews.length - 1 ? 0 : current + 1,
+      current === GOOGLE_REVIEWS.length - 1 ? 0 : current + 1,
       1,
     ]);
   }
@@ -87,7 +68,7 @@ export default function GoogleReviewGrid() {
   useEffect(() => {
     const interval = window.setInterval(() => {
       setActiveIndex(([current]) => [
-        current === googleReviews.length - 1 ? 0 : current + 1,
+        current === GOOGLE_REVIEWS.length - 1 ? 0 : current + 1,
         1,
       ]);
     }, 5000);
@@ -125,14 +106,14 @@ export default function GoogleReviewGrid() {
           </h3>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-neutral-700 sm:text-lg">
-            Our clients rate us five stars on Google, and nearly every one of
-            them refreshes their retainer every month.
+            Public Google reviews consistently call out responsiveness, technical
+            execution, and practical support throughout delivery.
           </p>
 
           <div className="mt-9 mx-auto grid max-w-md grid-cols-2 overflow-hidden rounded-[1.5rem] border border-neutral-200 bg-white shadow-sm lg:mx-0">
             <div className="flex min-h-[112px] flex-col items-center justify-center px-5 text-center">
               <div className="text-4xl font-semibold leading-none tracking-tight text-neutral-950">
-                5.0
+                {averageRating}
               </div>
               <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 Rating
@@ -151,7 +132,7 @@ export default function GoogleReviewGrid() {
 
           <div className="mt-8 flex flex-wrap justify-center">
             <a
-              href={googlePlaceUrl}
+              href={GOOGLE_PLACE_URL}
               target="_blank"
               rel="noreferrer"
               className="rounded-full bg-neutral-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
@@ -203,6 +184,11 @@ export default function GoogleReviewGrid() {
                     <p className="mt-0.5 truncate text-sm text-neutral-500">
                       {activeReview.meta}
                     </p>
+                    {activeReview.posted ? (
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400">
+                        {activeReview.posted}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
 
