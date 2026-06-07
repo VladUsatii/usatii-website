@@ -283,7 +283,7 @@ function SeoFooter() {
               <Link href="/privacy" className="hover:text-[#29314d]">
                 Privacy Policy
               </Link>
-              <Link href="/sitemap.xml" className="hover:text-[#29314d]">
+              <Link href="/sitemap" className="hover:text-[#29314d]">
                 Site Map
               </Link>
             </div>

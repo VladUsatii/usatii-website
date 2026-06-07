@@ -523,8 +523,8 @@ export default function HeroSection() {
       <div className="pointer-events-none relative z-20 mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center justify-center gap-y-6 py-24 text-center md:py-32">
           <h1 className="max-w-4xl text-5xl font-bold tracking-tight text-neutral-950 md:text-7xl">
-            We build marketing <span className="text-indigo-600">systems</span> that power{" "}
-            <u>operations</u>.
+            We build <span className="text-indigo-600">systems</span> that power{" "}
+            <u>marketing</u> & <u>operations</u>.
           </h1>
 
           <h3 className="mx-3 text-xl font-medium tracking-tight text-neutral-700 md:text-2xl">
