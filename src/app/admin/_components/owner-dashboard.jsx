@@ -7,6 +7,7 @@ import AdminEducationPane from '@/app/admin/_components/admin-education-pane';
 import AdminPaymentsPane from '@/app/admin/_components/admin-payments-pane';
 import AdminMermaidStudio from '@/app/admin/_components/admin-mermaid-studio';
 import AdminTelemetryPane from '@/app/admin/_components/admin-telemetry-pane';
+import AdminLiveChatPane from '@/app/admin/_components/admin-live-chat-pane';
 
 const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
@@ -14,6 +15,7 @@ const ACTIVE_NAV_ITEMS = [
   { id: 'revenue', label: 'Revenue' },
   { id: 'payments', label: 'Payments' },
   { id: 'applications', label: 'Applications' },
+  { id: 'liveChat', label: 'Live Chat' },
   { id: 'education', label: 'Education' },
   { id: 'telemetry', label: 'Telemetry' },
   { id: 'notes', label: 'Notes' },
@@ -324,6 +326,8 @@ export default function OwnerDashboard({ adminEmail }) {
         ? 'Search payment IDs, payer emails, statuses...'
       : activeNav === 'education'
         ? 'Search guides, content, and quiz topics...'
+      : activeNav === 'liveChat'
+        ? 'Search visitor names, contact info, sources...'
       : activeNav === 'telemetry'
         ? 'Search quote requests by name, email, source...'
       : activeNav === 'mermaid'
@@ -875,6 +879,10 @@ export default function OwnerDashboard({ adminEmail }) {
       return 'Education / Guides / Assignments';
     }
 
+    if (activeNav === 'liveChat') {
+      return 'Website / Live Chat / Inbox';
+    }
+
     if (activeNav === 'telemetry') {
       return 'Admin / Telemetry / Performance';
     }
@@ -901,6 +909,10 @@ export default function OwnerDashboard({ adminEmail }) {
 
     if (activeNav === 'education') {
       return 'Education Guides';
+    }
+
+    if (activeNav === 'liveChat') {
+      return 'Live Chat Inbox';
     }
 
     if (activeNav === 'telemetry') {
@@ -2059,6 +2071,10 @@ export default function OwnerDashboard({ adminEmail }) {
     return <AdminEducationPane clients={selectorClients} />;
   }
 
+  function renderLiveChatSection() {
+    return <AdminLiveChatPane globalSearch={globalSearch} />;
+  }
+
   function renderPaymentsSection() {
     return (
       <AdminPaymentsPane
@@ -2083,6 +2099,7 @@ export default function OwnerDashboard({ adminEmail }) {
     if (activeNav === 'revenue') return renderRevenueSection();
     if (activeNav === 'payments') return renderPaymentsSection();
     if (activeNav === 'applications') return renderApplicationsSection();
+    if (activeNav === 'liveChat') return renderLiveChatSection();
     if (activeNav === 'education') return renderEducationSection();
     if (activeNav === 'telemetry') return renderTelemetrySection();
     if (activeNav === 'notes') return renderNotesSection();

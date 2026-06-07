@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import TelemetryTracker from "@/app/_components/telemetry-tracker";
+import GlobalUiOverlays from "@/app/_components/global-ui-overlays";
 import { Suspense } from "react";
 
 const inter = Inter({
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
           <TelemetryTracker />
         </Suspense>
         {children}
+        <GlobalUiOverlays />
       </body>
     </html>
   );
