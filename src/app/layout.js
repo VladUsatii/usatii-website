@@ -1,14 +1,7 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import TelemetryTracker from "@/app/_components/telemetry-tracker";
 import GlobalUiOverlays from "@/app/_components/global-ui-overlays";
 import { Suspense } from "react";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
 
 export const metadata = {
   metadataBase: new URL("https://usatii.com"),
@@ -22,7 +15,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html
+      lang="en"
+      style={{
+        "--font-inter":
+          "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      }}
+    >
       <body className="font-sans antialiased">
         <Suspense fallback={null}>
           <TelemetryTracker />

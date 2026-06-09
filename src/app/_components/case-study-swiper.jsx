@@ -1,11 +1,8 @@
 'use client';
 import React, { useState } from "react";
 import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
-import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import { ThumbsUpIcon, ThumbsDownIcon, ExternalLinkIcon } from "lucide-react";
-
-const onest = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 const caseStudies = [
   {
@@ -183,7 +180,7 @@ export default function ComplexCaseStudySwiper() {
 
         <div className="mx-auto flex w-full max-w-[460px] flex-col items-center lg:mx-0 lg:justify-self-end">
           <div
-            className={`${onest.className} relative h-[420px] w-full sm:h-[440px]`}
+            className="relative h-[420px] w-full font-sans sm:h-[440px]"
           >
             <AnimatePresence>
               {cards.map((cs, idx) => (

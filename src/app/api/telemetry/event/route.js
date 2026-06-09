@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import {
+  TELEMETRY_EVENT_TYPES,
   getClientIp,
   recordTelemetryApiRequest,
   recordTelemetryEvent,
@@ -7,8 +8,6 @@ import {
 } from '@/lib/portal/telemetry';
 
 export const runtime = 'nodejs';
-
-const ALLOWED_EVENT_TYPES = new Set(['page_view', 'contact_intent', 'quote_submit', 'signup']);
 
 function toTrimmed(value, maxLength = 255) {
   return String(value || '').trim().slice(0, maxLength);
@@ -37,7 +36,7 @@ export async function POST(request) {
     }
 
     const eventType = toTrimmed(body?.eventType, 32);
-    if (!ALLOWED_EVENT_TYPES.has(eventType)) {
+    if (!TELEMETRY_EVENT_TYPES.has(eventType)) {
       statusCode = 400;
       errorMessage = 'Invalid eventType.';
       return NextResponse.json({ error: errorMessage }, { status: statusCode });
@@ -78,4 +77,3 @@ export async function POST(request) {
     });
   }
 }
-

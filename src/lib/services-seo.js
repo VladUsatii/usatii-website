@@ -810,7 +810,7 @@ export function pickNearbyServiceLocationLinks(serviceSlug, locationSlug) {
 }
 
 export function getApprovedSitemapRoutes() {
-  const routes = ["/", "/services"];
+  const routes = ["/", "/services", "/advertising"];
 
   for (const serviceSlug of SERVICE_SLUGS) {
     routes.push(buildServicePath(serviceSlug));

@@ -3,11 +3,17 @@ import { portalSql } from '@/lib/portal/database';
 
 let tableInitPromise;
 
-const TELEMETRY_EVENT_TYPES = new Set([
+export const TELEMETRY_EVENT_TYPES = new Set([
   'page_view',
   'contact_intent',
   'quote_submit',
   'signup',
+  'advertising_course_started',
+  'lesson_completed',
+  'course_completed',
+  'referral_reward_unlocked',
+  'referral_link_copied',
+  'kickoff_call_clicked',
 ]);
 
 function toTrimmedString(value, maxLength = 255) {
