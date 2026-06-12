@@ -53,19 +53,19 @@ const coreServices = [
     ],
   },
   {
-    name: "Website & Marketing-Informed Operations",
+    name: "Websites & Growth Operations Software",
     price: "From $500+/mo",
     badge: "Core service",
     summary:
-      "Websites, analytics, and internal marketing-informed software that help businesses turn demand signals into operational decisions.",
+      "Custom websites, analytics systems, and internal tools for companies that want their marketing, sales, and operations to work from the same source of truth.",
     features: [
-      "• Static sites ($500/mo)",
-      "• Dynamic sites w/ advanced motion ($1,500/mo)",
-      "• Full-stack builds & internal tools ($2,500+/mo)",
-      "• Marketing analytics & operations software",
+      "• Static business websites ($500/mo)",
+      "• Dynamic sites with advanced motion and conversion flows ($1,500/mo)",
+      "• Full-stack internal tools, dashboards, and client portals ($2,500+/mo)",
+      "• Growth analytics, CRM workflows, automations, and operational software",
     ],
     prices: [["Custom", "Schedule a call to scope the build."]],
-  },
+  }
 ];
 
 const addOns = [
@@ -85,12 +85,12 @@ const addOns = [
   },
   {
     name: "Growth Consulting",
-    price: "$50/hr (1st hr free)",
-    summary: "Optional advisory for teams needing strategy input.",
+    price: "$850/hr",
+    summary: "Expert advisory for teams needing strategy.",
     features: [
-      "• Custom growth roadmaps",
-      "• Weekly strategy calls",
-      "• Brand and acquisition direction",
+      "• Custom growth roadmaps for established enterprises and stakeholders",
+      "• Weekly strategy calls that compound clarity and creativity",
+      "• Frontier business software and marketing insights",
     ],
   },
 ];
@@ -283,11 +283,15 @@ export default function HeroThree() {
         <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
           Our Services
         </h2>
-        <p className="mt-4 text-left text-md leading-7 text-slate-500">
+        {/* <p className="mt-4 text-left text-md leading-7 text-slate-500">
           We are content-first -- businesses don't grow today without strong content pipelines. After that, we
           help you expand your paid ads channel through fast-acting campaigns.
           After your content and advertising is squared away, we help you build a strong marketing-informed operations website.
           Our systems weave together and work as a feedback lifecycle for businesses at any stage.
+        </p> */}
+        <p className="mt-4 text-left text-md leading-7 text-slate-500">
+          We build the growth layer for modern businesses: content systems, paid acquisition, and custom software that connects marketing, sales, and operations. 
+          The goal is not just to make your company look active online. The goal is to create a tighter operating system where demand, data, follow-up, and execution compound in-house. No more subscription software.
         </p>
       </div>
 
