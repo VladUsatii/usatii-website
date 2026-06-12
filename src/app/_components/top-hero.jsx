@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 function HeroVideoBackground() {
@@ -27,11 +28,11 @@ function HeroVideoBackground() {
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-white">
+    <section className="relative isolate min-h-[100svh] overflow-hidden bg-white">
       <HeroVideoBackground />
 
       <div className="pointer-events-none relative z-20 mx-auto max-w-7xl px-6">
-        <div className="flex min-h-[34rem] flex-col items-center justify-center gap-y-8 py-28 text-center md:min-h-[44rem] md:py-40">
+        <div className="flex min-h-[100svh] flex-col items-center justify-center gap-y-8 py-28 text-center md:py-40">
           <h1 className="max-w-4xl text-5xl font-bold tracking-tight text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.34)] md:text-7xl">
             We build <span className="text-purple-200">systems</span> that power{" "}
             <u>marketing</u> & <u>operations</u>.
@@ -51,6 +52,11 @@ export default function HeroSection() {
             </Link>
           </div>
         </div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2 text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
+        <span className="text-sm font-semibold tracking-tight">Scroll to explore</span>
+        <ArrowDown className="h-6 w-6 animate-bounce" strokeWidth={2.5} />
       </div>
     </section>
   );
