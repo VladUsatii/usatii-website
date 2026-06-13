@@ -102,12 +102,12 @@ export default function GoogleReviewGrid() {
         <div>
 
           <h3 className="max-w-xl text-4xl font-base tracking-tight text-neutral-950 sm:text-5xl">
-            Rated 5 stars.
+            Trusted by operators building enterprise workflows.
           </h3>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-neutral-700 sm:text-lg">
-            Public Google reviews consistently call out responsiveness, technical
-            execution, and practical support throughout delivery.
+            Business owners and celebrities consistently rely on Usatii to build robust,
+            internal operations and marketing tools.
           </p>
 
           <div className="mt-9 mx-auto grid max-w-md grid-cols-2 overflow-hidden rounded-[1.5rem] border border-neutral-200 bg-white shadow-sm lg:mx-0">
@@ -116,7 +116,7 @@ export default function GoogleReviewGrid() {
                 {averageRating}
               </div>
               <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                Rating
+                STARS
               </p>
             </div>
 
@@ -125,7 +125,7 @@ export default function GoogleReviewGrid() {
                 {reviewCount}
               </div>
               <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                Reviews
+                REVIEWS
               </p>
             </div>
           </div>

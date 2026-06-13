@@ -68,7 +68,7 @@ const DEFAULT_LOGOS = [
 export default function TrustedByGrid({
     eyebrow = "#1 content marketing agency in the US by volume",
     title = "Trusted by ambitious companies.",
-    subtitle = "For the last 4 years, my team and I have solidified a workflow that has helped hundreds of businesses and personalities build a solid presence online.",
+    subtitle = "For the last 4 years, Usatii Media has helped hundreds of businesses and personalities build efficient operations software and a solid reputation.",
     logos = DEFAULT_LOGOS,
     className = "",
   }) {

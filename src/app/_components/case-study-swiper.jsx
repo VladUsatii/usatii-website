@@ -168,13 +168,13 @@ export default function ComplexCaseStudySwiper() {
       <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-12 px-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-center lg:gap-16 xl:gap-24">
         <div className="max-w-xl text-center lg:text-left">
           <h2 className="text-4xl font-medium leading-[0.95] tracking-tight sm:text-5xl lg:text-6xl">
-            Case studies
+            & case studies
             <br />
-            matter.
+            <b>matter.</b>
           </h2>
 
           <p className="mt-4 text-base leading-7 text-neutral-600 sm:text-lg">
-            Swipe through a few of our past clients.
+            Swipe through a few past marketing clients.
           </p>
         </div>
 
