@@ -1,436 +1,246 @@
-'use client'
 import Link from 'next/link'
-import React, { useMemo, useState } from 'react'
-import Footer from '../_components/footer'
-import { motion } from 'framer-motion'
 
-const jobs = [
+export const metadata = {
+  title: 'Non-Human Identity Management Careers | OASIS Security',
+  description:
+    'Non Human Identity Management Careers | Oasis unlocks lifecycle management and security for non-human identities.',
+}
+
+const galleryImages = [
   {
-    id: 'content-editor',
-    title: 'Content Editor',
-    location: 'Fully remote',
-    compensation: '$20 / hour',
-    summary:
-      'Edit catchy short-form content that is built to perform across modern social channels. We expect excellence -- not a beginner role.',
-    description:
-      'Content Editors at USATII help turn raw footage, rough drafts, and existing creative direction into polished deliverables. This role is execution-heavy and quality-sensitive. You should be comfortable following systems, moving quickly, and maintaining strong visual and editorial judgment under deadlines.',
-    duties: [
-      'Edit 6-10 short-form videos per day using provided footage, briefs, and brand direction.',
-      'Refine pacing, cuts, captions, hooks, and supporting visual elements to improve clarity and retention.',
-      'Maintain consistency across client accounts, content series, and brand standards.',
-      'Collaborate with internal creative and strategy teams to revise content quickly.',
-      'Organize files, exports, and deliverables in a clean and reliable way.',
-      'Help identify repeatable editing patterns that improve output quality and throughput.',
-    ],
-    qualifications: [
-      'Experience editing short-form content for social platforms.',
-      'Strong sense of pacing, hook structure, visual cleanliness, and audience retention.',
-      'Able to work independently, communicate clearly, and handle revisions professionally.',
-      'Comfortable working in a fast-moving remote environment.',
-      'Portfolio or examples of relevant editing work preferred.',
-    ],
+    src: 'https://cdn.prod.website-files.com/679b2b742e3af6fc4669f5cd/68093357ed7ee672f4730840_42901bf11de9c33209c3edc8a49ef1a9_career-3.avif',
+    alt: 'Oasis reception',
+    className: 'row-span-2 min-h-[460px] md:min-h-[640px]',
   },
   {
-    id: 'platform-marketing-lead',
-    title: 'Platform Marketing Lead',
-    type: 'Full-time',
-    location: 'Fully remote',
-    compensation: '$50,000 / year',
-    summary:
-      'Lead platform-level marketing execution and growth strategy across the channels and systems that drive attention, demand, and client acquisition.',
-    description:
-      'The Platform Marketing Lead owns high-level marketing direction across the business and helps translate strategy into real platform performance. This role is for someone who can think structurally, write clearly, make strong channel decisions, and keep execution aligned with growth goals.',
-    duties: [
-      'Own platform-level marketing planning across social, web, and related acquisition surfaces.',
-      'Develop and manage campaign direction, positioning, and channel-specific execution priorities.',
-      'Work with editors, operators, and leadership to keep messaging and output aligned.',
-      'Monitor performance signals and recommend changes to improve reach, conversion, and consistency.',
-      'Help define publishing priorities, platform expansion opportunities, and distribution systems.',
-      'Contribute to marketing-informed operational decisions by connecting campaign performance to business needs.',
-    ],
-    qualifications: [
-      'Experience in platform marketing, growth, content strategy, or a closely related role.',
-      'Strong understanding of how content, distribution, and positioning interact across channels.',
-      'Able to think both strategically and operationally.',
-      'Strong written communication and decision-making ability.',
-      'Comfortable leading remotely and working across multiple moving parts at once.',
-    ],
+    src: 'https://cdn.prod.website-files.com/679b2b742e3af6fc4669f5cd/691f72a49c1f73ed4c25f9c2_oasis-careers-2025.avif',
+    alt: 'Oasis office team',
+    className: 'min-h-[220px] md:min-h-[310px]',
+  },
+  {
+    src: 'https://cdn.prod.website-files.com/679b2b742e3af6fc4669f5cd/68093358acfd0cbeabf0e51e_career-1.avif',
+    alt: 'Oasis team',
+    className: 'min-h-[220px] md:min-h-[310px]',
   },
 ]
 
-function JobCard({ job, onApply }) {
+const footerGroups = [
+  {
+    title: 'Product',
+    links: ['Why Oasis', 'Product', 'Get a Demo'],
+  },
+  {
+    title: 'Company',
+    links: ['About', 'Careers', 'Newsroom'],
+  },
+  {
+    title: 'Resources',
+    links: ['Resources Library', 'Glossary', 'Blog', 'Upcoming Events'],
+  },
+]
+
+const navGroups = [
+  { label: 'Why Oasis', href: '#' },
+  { label: 'Product', href: '#' },
+  { label: 'Solutions', href: '#' },
+  { label: 'Company', href: '#' },
+  { label: 'Resources', href: '#' },
+]
+
+function Logo({ light = false }) {
   return (
-    <motion.div
-      className="mb-10"
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-          <div>
-            <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900">
-              {job.title}
-            </h3>
-            <p className="mt-2 text-base sm:text-lg text-gray-600 font-medium">
-              {job.summary}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-2 md:justify-end">
-            <span className="rounded-full bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-700">
-              {job.location}
-            </span>
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">
-              {job.compensation}
-            </span>
-          </div>
-        </div>
-
-        <div className="grid gap-6 pt-2">
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-[0.14em] text-gray-500">
-              Role overview
-            </h4>
-            <p className="mt-2 text-gray-700 font-medium leading-7">
-              {job.description}
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            <div>
-              <h4 className="text-sm font-bold uppercase tracking-[0.14em] text-gray-500">
-                Duties
-              </h4>
-              <ul className="mt-3 space-y-3 text-gray-700 font-medium">
-                {job.duties.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-600 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-bold uppercase tracking-[0.14em] text-gray-500">
-                Qualifications
-              </h4>
-              <ul className="mt-3 space-y-3 text-gray-700 font-medium">
-                {job.qualifications.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-gray-900 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
+    <Link href="/" className="inline-flex items-center gap-2.5" aria-label="USATII home">
+      <span
+        className={`grid h-7 w-7 place-items-center rounded-full border ${
+          light
+            ? 'border-white/25 bg-white text-[#101112]'
+            : 'border-[#27201d] bg-[#101112] text-white'
+        }`}
+      >
+        <span className="h-2.5 w-2.5 rounded-full bg-current" />
+      </span>
+      <span className={`text-[22px] font-semibold tracking-[-0.04em] ${light ? 'text-white' : 'text-[#101112]'}`}>
+        Oasis
+      </span>
+    </Link>
   )
 }
 
-function Careers() {
-  const [selectedRole, setSelectedRole] = useState(jobs[0].id)
-  const [resumeName, setResumeName] = useState('')
-  const [submitStatus, setSubmitStatus] = useState('idle')
-  const [submitMessage, setSubmitMessage] = useState('')
-
-  const selectedJob = useMemo(
-    () => jobs.find((job) => job.id === selectedRole) || jobs[0],
-    [selectedRole]
-  )
-
-  const clearSubmitState = () => {
-    setSubmitStatus('idle')
-    setSubmitMessage('')
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setSubmitStatus('submitting')
-    setSubmitMessage('')
-
-    const form = e.currentTarget
-    const formData = new FormData(form)
-    const payload = {
-      fullName: String(formData.get('fullName') || '').trim(),
-      email: String(formData.get('email') || '').trim(),
-      roleId: selectedRole,
-      linkedin: String(formData.get('linkedin') || '').trim(),
-      notes: String(formData.get('notes') || '').trim(),
-      resumeName,
-    }
-
-    try {
-      const response = await fetch('/api/careers', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-
-      const data = await response.json().catch(() => null)
-      if (response.ok) {
-        setSubmitStatus('success')
-        setSubmitMessage(
-          'Application submitted successfully. Our team will review it and follow up if there is a fit.'
-        )
-        form.reset()
-        setResumeName('')
-        return
-      }
-
-      if (response.status === 409) {
-        setSubmitStatus('duplicate')
-        setSubmitMessage(
-          data?.error ||
-            'Only one careers submission is allowed per IP address.'
-        )
-        return
-      }
-
-      setSubmitStatus('error')
-      setSubmitMessage(
-        data?.error || 'Unable to submit right now. Please try again shortly.'
-      )
-    } catch {
-      setSubmitStatus('error')
-      setSubmitMessage('Network error. Please try again in a moment.')
-    }
-  }
-
+function CareersPage() {
   return (
-    <>
-      <div className="max-w-[980px] w-full mx-auto px-6 sm:px-8 py-12 bg-white">
-        <Link href="/">
-          <h1 className="font-black text-center text-md text-indigo-600 hover:text-indigo-800 transition-colors">
-            USATII MEDIA
-          </h1>
-        </Link>
-
-        <div className="flex flex-col justify-center items-center mt-6 gap-y-8 text-center">
-          <h2 className="text-gray-900 text-4xl sm:text-5xl font-bold">
-            Careers
-          </h2>
-          <p className="mt-4 text-gray-700 text-lg font-medium leading-8 max-w-2xl">
-            We are looking for people with strong portfolios only. Tell the truth on applications: if it is hidden behind an NDA, you're lying. Remote-only.
-          </p>
-          <hr className='max-w-2xl w-full'/>
-        </div>
-
-        <motion.div
-          className="mt-10 grid gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.12, duration: 0.55 }}
-        >
-          {jobs.map((job) => (
-            <JobCard
-              key={job.id}
-              job={job}
-              onApply={(jobId) => {
-                setSelectedRole(jobId)
-                clearSubmitState()
-                if (typeof window !== 'undefined') {
-                  const el = document.getElementById('application-form')
-                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }
-              }}
-            />
-          ))}
-        </motion.div>
-
-        <motion.div
-          id="application-form"
-          className="mt-12 rounded-[28px] border border-gray-200 bg-white p-6 sm:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.18, duration: 0.55 }}
-        >
-          <div className="max-w-[760px]">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
-              Apply now.
-            </h3>
-            <p className="mt-3 text-gray-700 font-medium leading-7">
-              By submitting, you agree that you are eligible to work in your jurisdiction.
-            </p>
+    <main className="min-h-screen bg-[#080908] text-[#f6eee6]">
+      <header className="relative overflow-hidden bg-[#f1e5d8] text-[#141414]">
+        <nav className="fixed left-0 right-0 top-0 z-50 border-b border-[#141414]/10 bg-[#f1e5d8]/90 px-5 py-3 backdrop-blur-xl md:px-8">
+          <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6">
+            <Logo />
+            <div className="hidden items-center gap-8 text-[14px] font-medium text-[#141414]/75 lg:flex">
+              {navGroups.map((item) => (
+                <a key={item.label} href={item.href} className="transition hover:text-[#141414]">
+                  {item.label}
+                </a>
+              ))}
+            </div>
+            <a
+              href="#newsletter"
+              className="rounded-full border border-[#161616]/10 bg-[#101112] px-5 py-3 text-[13px] font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] transition hover:bg-black"
+            >
+              Request a Demo
+            </a>
           </div>
+        </nav>
 
-          <form onSubmit={handleSubmit} className="mt-8 grid gap-5">
-            <div className="grid gap-5 md:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="fullName"
-                  className="mb-2 block text-sm font-black uppercase tracking-[0.14em] text-gray-500"
-                >
-                  Full name
-                </label>
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  required
-                  placeholder="Your full name"
-                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-400"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-black uppercase tracking-[0.14em] text-gray-500"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@example.com"
-                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-400"
-                />
-              </div>
+        <section className="relative mx-auto grid min-h-[720px] max-w-[1440px] place-items-center px-5 pb-28 pt-28 md:min-h-[820px] md:px-8">
+          <div className="absolute inset-0 opacity-45">
+            <div className="grid h-full grid-cols-3 grid-rows-2">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <div key={index} className="border-b border-r border-[#1d1714]/10" />
+              ))}
             </div>
+          </div>
+          <div className="absolute left-[12%] top-[31%] h-5 w-5 rounded-full border border-[#1d1714]/25 bg-[#f1e5d8]" />
+          <div className="absolute right-[32%] top-[31%] h-5 w-5 rounded-full border border-[#1d1714]/25 bg-[#f1e5d8]" />
+          <div className="absolute bottom-[29%] left-[32%] h-5 w-5 rounded-full border border-[#1d1714]/25 bg-[#f1e5d8]" />
+          <div className="absolute bottom-[29%] right-[12%] h-5 w-5 rounded-full border border-[#1d1714]/25 bg-[#f1e5d8]" />
 
-            <div className="grid gap-5 md:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="role"
-                  className="mb-2 block text-sm font-black uppercase tracking-[0.14em] text-gray-500"
-                >
-                  Role
-                </label>
-                <select
-                  id="role"
-                  name="role"
-                  value={selectedRole}
-                  onChange={(e) => {
-                    setSelectedRole(e.target.value)
-                    clearSubmitState()
-                  }}
-                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-indigo-400"
-                >
-                  {jobs.map((job) => (
-                    <option key={job.id} value={job.id}>
-                      {job.title}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="location"
-                  className="mb-2 block text-sm font-black uppercase tracking-[0.14em] text-gray-500"
-                >
-                  Work setup
-                </label>
-                <input
-                  id="location"
-                  name="location"
-                  type="text"
-                  value={selectedJob.location}
-                  readOnly
-                  className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-700 outline-none"
-                />
-              </div>
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <h1 className="max-w-[980px] text-[76px] font-semibold leading-[0.92] tracking-[-0.07em] text-[#101112] sm:text-[110px] md:text-[150px] lg:text-[178px]">
+              Join the team
+            </h1>
+            <div className="mt-8 rounded-full border border-[#101112]/10 bg-[#fff7ef]/70 px-5 py-2 text-sm font-medium text-[#151515]/70 shadow-[0_18px_60px_rgba(20,17,15,0.08)]">
+              Careers
             </div>
+          </div>
+        </section>
+      </header>
 
-            <div>
-              <label
-                htmlFor="linkedin"
-                className="mb-2 block text-sm font-black uppercase tracking-[0.14em] text-gray-500"
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_18%_0%,rgba(157,121,90,0.38),transparent_30%),linear-gradient(135deg,#111312_0%,#171615_35%,#5f473a_100%)] px-5 py-24 md:px-8 md:py-32">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:220px_220px]" />
+        <div className="relative z-10 mx-auto max-w-[1180px]">
+          <h2 className="mx-auto max-w-[1000px] text-center text-[31px] font-medium leading-[1.18] tracking-[-0.045em] text-[#fff9f0] md:text-[54px]">
+            At Oasis Security, we are building something special to tackle one of cybersecurity&apos;s biggest challenges: securing and managing non-human identities at scale. We&apos;re a team of builders, problem-solvers, and innovators redefining how enterprises secure their expanding digital ecosystems.
+            <br />
+            <br />
+            As we grow, we are on the lookout for passionate individuals to join our dynamic team. Here, you&apos;ll work alongside industry experts, push the boundaries of security innovation, and make a direct impact in protecting the digital world. If you&apos;re passionate about solving real security problems and want to be part of a team that&apos;s shaping the future of cybersecurity, we&apos;d love to meet you.
+          </h2>
+
+          <div className="mt-24 grid gap-4 md:mt-32 md:grid-cols-[0.82fr_1fr] md:grid-rows-2 md:gap-5">
+            {galleryImages.map((image) => (
+              <div
+                key={image.src}
+                className={`overflow-hidden rounded-[5px] bg-[#221d1a] shadow-[0_28px_90px_rgba(0,0,0,0.32)] ${image.className}`}
               >
-                LinkedIn or portfolio
-              </label>
-              <input
-                id="linkedin"
-                name="linkedin"
-                type="url"
-                placeholder="https://"
-                className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-400"
-              />
-            </div>
+                <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div>
-              <label
-                htmlFor="notes"
-                className="mb-2 block text-sm font-black uppercase tracking-[0.14em] text-gray-500"
-              >
-                Why you are a fit
-              </label>
-              <textarea
-                id="notes"
-                name="notes"
-                rows={5}
-                placeholder="Briefly explain your experience and why you want the role."
-                className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-400"
-              />
-            </div>
+      <section className="bg-[#080908] px-5 py-24 md:px-8 md:py-32">
+        <div className="mx-auto max-w-[980px]">
+          <h2 className="max-w-[780px] text-[46px] font-semibold leading-[0.98] tracking-[-0.055em] text-[#fff4ea] md:text-[86px]">
+            Join us and help secure the next frontier.
+          </h2>
 
-            <div>
-              <label
-                htmlFor="resume"
-                className="mb-2 block text-sm font-black uppercase tracking-[0.14em] text-gray-500"
+          <div className="mt-16 border-y border-white/10 py-10">
+            <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+              <div>
+                <p className="text-[15px] font-semibold uppercase tracking-[0.16em] text-[#d6bca7]/70">
+                  Open roles
+                </p>
+                <h3 className="mt-3 text-[28px] font-medium tracking-[-0.04em] text-white md:text-[42px]">
+                  No current openings listed.
+                </h3>
+                <p className="mt-4 max-w-[620px] text-[17px] leading-7 text-white/58">
+                  We&apos;re always interested in exceptional builders, operators, and security thinkers. Send your details and we&apos;ll reach out when there is a fit.
+                </p>
+              </div>
+              <a
+                href="mailto:careers@usatii.com"
+                className="w-fit rounded-full border border-white/12 bg-[#f4dfcf] px-6 py-3 text-[14px] font-semibold text-[#101112] transition hover:bg-white"
               >
-                Resume
-              </label>
-              <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-4">
-                <input
-                  id="resume"
-                  name="resume"
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0]
-                    setResumeName(file ? file.name : '')
-                    clearSubmitState()
-                  }}
-                  className="block w-full text-sm text-gray-700 file:mr-4 file:rounded-full file:border-0 file:bg-gray-900 file:px-4 file:py-2 file:font-bold file:text-white hover:file:bg-black"
-                />
-                <p className="mt-3 text-sm font-medium text-gray-500">
-                  Accepted formats: PDF, DOC, DOCX.
-                  {resumeName ? ` Selected: ${resumeName}` : ''}
+                Contact careers
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        id="newsletter"
+        className="relative overflow-hidden bg-[radial-gradient(circle_at_85%_10%,rgba(255,255,255,0.76),transparent_25%),linear-gradient(145deg,#efd5c5_0%,#d9c3b4_46%,#bfa996_100%)] px-5 py-16 text-[#151515] md:px-8 md:py-20"
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(20,20,20,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(20,20,20,0.045)_1px,transparent_1px)] bg-[size:180px_180px]" />
+        <div className="relative z-10 mx-auto max-w-[1180px]">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+            <div className="flex flex-col gap-10">
+              <Logo />
+              <div className="max-w-[430px]">
+                <h3 className="text-[24px] font-semibold tracking-[-0.035em]">
+                  Sign up for our newsletter
+                </h3>
+                <form className="mt-5 flex rounded-full border border-[#161616]/12 bg-white/45 p-1 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.28)]">
+                  <input
+                    type="email"
+                    placeholder="Business email"
+                    className="min-w-0 flex-1 bg-transparent px-4 text-sm text-[#151515] outline-none placeholder:text-[#151515]/48"
+                  />
+                  <button type="button" className="rounded-full bg-[#111312] px-5 py-3 text-sm font-semibold text-white">
+                    Submit
+                  </button>
+                </form>
+                <p className="mt-3 text-xs leading-5 text-[#151515]/58">
+                  By submitting the form you are agreeing to our privacy policy
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 pt-2">
-              <button
-                type="submit"
-                disabled={submitStatus === 'submitting'}
-                className="inline-flex w-fit items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-black text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-70"
-              >
-                {submitStatus === 'submitting'
-                  ? 'Submitting...'
-                  : 'Submit application'}
-              </button>
-              {submitStatus === 'success' && (
-                <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">
-                  {submitMessage}
+            <div className="grid gap-10 md:grid-cols-3">
+              {footerGroups.map((group) => (
+                <div key={group.title}>
+                  <h4 className="text-[15px] font-semibold">{group.title}</h4>
+                  <div className="mt-5 flex flex-col items-start gap-3">
+                    {group.links.map((link) => (
+                      <a key={link} href="#" className="text-sm text-[#151515]/62 transition hover:text-[#151515]">
+                        {link}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              )}
-              {submitStatus === 'duplicate' && (
-                <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
-                  {submitMessage}
-                </div>
-              )}
-              {submitStatus === 'error' && (
-                <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
-                  {submitMessage}
-                </div>
-              )}
+              ))}
             </div>
-          </form>
-        </motion.div>
-      </div>
+          </div>
 
-      <Footer />
-    </>
+          <div className="mt-16 grid gap-8 border-t border-[#151515]/10 pt-8 md:grid-cols-[1fr_auto_1fr] md:items-end">
+            <div className="flex items-center gap-3">
+              <a href="#" aria-label="X" className="grid h-9 w-9 place-items-center rounded-full bg-[#151515]/8 text-sm font-semibold">
+                X
+              </a>
+              <a href="#" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full bg-[#151515]/8 text-sm font-semibold">
+                in
+              </a>
+              <a href="#" aria-label="YouTube" className="grid h-9 w-9 place-items-center rounded-full bg-[#151515]/8 text-sm font-semibold">
+                yt
+              </a>
+            </div>
+            <div className="text-sm text-[#151515]/62 md:text-center">
+              <a href="tel:+16466870855" className="font-semibold text-[#151515]">
+                Phone:
+              </a>{' '}
+              +1 646-687-0855
+              <br />
+              240 W 37th street NY, 10018
+            </div>
+            <div className="text-sm text-[#151515]/62 md:text-right">
+              © 2026 Oasis Security
+              <br />
+              Terms of use - Privacy policy - Cookie preferences
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
   )
 }
 
-export default Careers
+export default CareersPage

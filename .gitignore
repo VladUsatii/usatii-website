@@ -24,6 +24,11 @@
 .DS_Store
 *.pem
 /data/admin-notes
+/tmp/
+/public/pdfjs-cmaps/
+/public/pdfjs-standard-fonts/
+/public/pdfjs-wasm/
+/scripts/render-pdf-page-preview.swift
 
 # debug
 npm-debug.log*
