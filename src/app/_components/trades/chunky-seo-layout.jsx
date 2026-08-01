@@ -2,6 +2,8 @@ import { Children } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import GoogleReviewGrid from "@/app/_components/google-review-grid";
+import Header from "@/app/_components/header";
+import Footer from "@/app/_components/footer";
 import {
   ArrowRight,
   BadgeCheck,
@@ -81,13 +83,12 @@ function SlantedButton({ href, label, primary = true, full = false }) {
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
       className={[
-        "inline-flex items-center justify-center px-6 py-3 text-sm font-bold tracking-[0.01em] transition",
+        "inline-flex h-11 items-center justify-center rounded-mdx px-5 text-sm font-semibold shadow-soft transition",
         full ? "w-full" : "",
         primary
-          ? "bg-[#6d4dff] text-white hover:bg-[#5b3fe0]"
-          : "bg-[#818bac] text-white hover:bg-[#6f7898]",
+          ? "bg-accent text-white hover:bg-accent-hover"
+          : "border border-control-border bg-paper text-ink hover:bg-surface",
       ].join(" ")}
-      style={{ clipPath: "polygon(0 0, 94% 0, 100% 100%, 0 100%)" }}
     >
       {label}
     </Link>
@@ -118,12 +119,9 @@ function HeroMediaPlaceholder() {
 
 function SidebarContactCard({ cta }) {
   return (
-    <article className="border border-[#1d243f] bg-[#131b33] p-5 text-white">
-      <div className="flex items-center gap-3 text-[#c7b9ff]">
-        <MapPinned className="h-5 w-5" />
-        <span className="h-px w-12 bg-[#5f6992]" />
-      </div>
-      <h3 className="mt-3 text-3xl font-black leading-[1.05] tracking-tight">Contact USATII Today</h3>
+    <article className="border border-surface bg-paper p-5 text-ink shadow-soft">
+      <p className="text-sm font-semibold text-accent">Start a conversation</p>
+      <h3 className="mt-3 text-2xl font-semibold leading-tight">Contact USATII Today</h3>
 
       <div className="mt-4 space-y-2">
         {["First Name", "Last Name", "Phone", "Email", "Business Name"].map((field) => (
@@ -131,11 +129,11 @@ function SidebarContactCard({ cta }) {
             key={field}
             type="text"
             placeholder={field}
-            className="h-10 w-full border border-[#2a3455] bg-white/95 px-3 text-sm text-[#1a2139] placeholder:text-[#7e879f]"
+            className="h-10 w-full border border-control-border bg-paper px-3 text-sm text-ink placeholder:text-faint"
           />
         ))}
 
-        <select className="h-10 w-full border border-[#2a3455] bg-white/95 px-3 text-sm text-[#1a2139]" defaultValue="">
+        <select className="h-10 w-full border border-control-border bg-paper px-3 text-sm text-ink" defaultValue="">
           <option value="" disabled>
             Are you a new customer?
           </option>
@@ -146,11 +144,11 @@ function SidebarContactCard({ cta }) {
         <textarea
           placeholder="How can we help you?"
           rows={4}
-          className="w-full border border-[#2a3455] bg-white/95 px-3 py-2 text-sm text-[#1a2139] placeholder:text-[#7e879f]"
+          className="w-full border border-control-border bg-paper px-3 py-2 text-sm text-ink placeholder:text-faint"
         />
       </div>
 
-      <p className="mt-3 text-xs leading-5 text-[#9ea8c5]">
+      <p className="mt-3 text-xs leading-5 text-muted">
         {cta ?? "Tell us your workflow goals and we will map practical next steps."}
       </p>
 
@@ -163,13 +161,13 @@ function SidebarContactCard({ cta }) {
 
 function SidebarServicesCard({ items }) {
   return (
-    <article className="border border-[#1d243f] bg-[#0f1529] p-5 text-white">
-      <h3 className="text-4xl font-black tracking-tight text-[#8f73ff]">Services</h3>
-      <ul className="mt-4 divide-y divide-[#243051] border-y border-[#243051]">
+    <article className="border border-surface bg-paper p-5 text-ink shadow-soft">
+      <h3 className="text-2xl font-semibold">Services</h3>
+      <ul className="mt-4 divide-y divide-surface border-y border-surface">
         {items.map((item) => (
-          <li key={item} className="flex items-center justify-between py-2 text-lg text-[#d7ddf1]">
+          <li key={item} className="flex items-center justify-between py-3 text-sm font-medium text-ink-soft">
             <span>{item}</span>
-            <span className="text-[#8f73ff]">+</span>
+            <span className="text-accent">+</span>
           </li>
         ))}
       </ul>
@@ -321,12 +319,12 @@ export function ImagePlaceholder() {
 
 export function ChunkSection({ title, children, eyebrow }) {
   return (
-    <section className="border border-[#dbe0eb] bg-white p-6 sm:p-7">
+    <section className="border border-surface bg-paper p-6 sm:p-7">
       {eyebrow ? (
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6d4dff]">{eyebrow}</p>
+        <p className="text-sm font-semibold text-accent">{eyebrow}</p>
       ) : null}
-      <h2 className="mt-2 text-3xl font-black tracking-tight text-[#12182f] sm:text-4xl">{title}</h2>
-      <div className="mt-4 space-y-4 text-base leading-8 text-[#424b65]">{children}</div>
+      <h2 className="mt-2 text-2xl font-semibold text-ink sm:text-4xl">{title}</h2>
+      <div className="mt-4 space-y-4 text-base leading-8 text-muted">{children}</div>
     </section>
   );
 }
@@ -335,7 +333,7 @@ export function BulletGrid({ items = [] }) {
   return (
     <ul className="grid gap-3 sm:grid-cols-2">
       {items.map((item) => (
-        <li key={item} className="border border-[#dbe0eb] bg-[#f7f9fd] px-4 py-3 text-sm leading-6 text-[#36405b]">
+        <li key={item} className="border border-surface bg-canvas px-4 py-3 text-sm leading-6 text-ink-soft">
           {item}
         </li>
       ))}
@@ -347,9 +345,9 @@ export function FaqCards({ faqs = [] }) {
   return (
     <div className="space-y-3">
       {faqs.map((faq) => (
-        <article key={faq.q} className="border border-[#dbe0eb] bg-[#f7f9fd] px-5 py-4">
-          <h3 className="text-lg font-semibold text-[#161e37]">{faq.q}</h3>
-          <p className="mt-2 text-sm leading-7 text-[#55607c]">{faq.a}</p>
+        <article key={faq.q} className="border border-surface bg-canvas px-5 py-4">
+          <h3 className="text-lg font-semibold text-ink">{faq.q}</h3>
+          <p className="mt-2 text-sm leading-7 text-muted">{faq.a}</p>
         </article>
       ))}
     </div>
@@ -363,7 +361,7 @@ export function PageLinkGrid({ links = [] }) {
         <Link
           key={link.href}
           href={link.href}
-          className="border border-[#dbe0eb] bg-[#f7f9fd] px-4 py-3 text-sm font-semibold text-[#26304d] transition hover:border-[#baa9ff]"
+          className="border border-surface bg-canvas px-4 py-3 text-sm font-semibold text-ink transition hover:border-accent"
         >
           {link.label}
         </Link>
@@ -410,48 +408,14 @@ export default function ChunkySeoLayout({
     : /website|websites|web design|site build|site redesign|site development/.test(keywordText);
 
   return (
-    <main className="bg-[#eaedf3] text-[#141935]">
-      <header>
-        <section className="bg-[#6d4dff] text-white">
-          <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 text-xs sm:px-6 lg:px-8">
-            <Link
-              href={ctaPrimary.href}
-              target={primaryIsExternal ? "_blank" : undefined}
-              rel={primaryIsExternal ? "noreferrer" : undefined}
-              className="flex items-center gap-2 font-semibold"
-            >
-              <ShoppingBag className="h-3.5 w-3.5" />
-              {ctaPrimary.label}
-            </Link>
-            <div className="flex items-center gap-4 font-semibold">
-              <span>{FOOTER_PHONE}</span>
-              <Link href="/portal/login" className="underline-offset-2 hover:underline">
-                Client Login
-              </Link>
-            </div>
-          </div>
-        </section>
+    <main className="bg-canvas text-ink" data-oasis-public>
+      <Header />
 
-        <section className="bg-[#0e1428] text-white">
-          <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-            <p className="text-center text-3xl font-black tracking-tight">USATII MEDIA</p>
-            <nav className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-lg font-semibold text-[#d8def0]">
-              <Link href="/" className="hover:text-white">Home</Link>
-              <Link href="/about" className="hover:text-white">About</Link>
-              <Link href="/services" className="hover:text-white">Services</Link>
-              <Link href="/locations" className="hover:text-white">Service Areas</Link>
-              <Link href="/quote-request" className="hover:text-white">Contact Us</Link>
-            </nav>
-          </div>
-        </section>
-      </header>
-
-      <section className="relative isolate h-[420px] overflow-hidden border-t border-[#3b4465]">
-        <HeroMediaPlaceholder />
-        <div className="relative mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
-          <SectionBadge />
-          <h1 className="mt-4 text-5xl font-black tracking-tight text-white sm:text-6xl">{title}</h1>
-          <p className="mt-4 max-w-4xl text-lg leading-9 text-[#d4daec] sm:text-2xl sm:leading-10">{intro}</p>
+      <section className="border-b border-surface bg-paper">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 md:py-24 lg:px-8">
+          <p className="text-sm font-semibold text-accent">{eyebrow}</p>
+          <h1 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.96] tracking-tight text-ink sm:text-7xl">{title}</h1>
+          <p className="mt-6 max-w-3xl text-xl leading-9 text-muted">{intro}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <CtaButton href={ctaPrimary.href} label={ctaPrimary.label} primary />
             <CtaButton href={ctaSecondary.href} label={ctaSecondary.label} />
@@ -465,12 +429,12 @@ export default function ChunkySeoLayout({
             <MapPinned className="h-6 w-6" />
             <span className="h-px w-20 bg-[#a998ff]" />
           </div>
-          <h2 className="text-5xl font-black leading-[0.95] tracking-tight text-[#12182f]">{title}</h2>
+          <h2 className="text-4xl font-semibold leading-tight text-ink">{title}</h2>
 
           {proofPoints.length ? (
             <ul className="space-y-2">
               {proofPoints.map((point) => (
-                <li key={point} className="border border-[#dbe0eb] bg-white px-4 py-3 text-sm leading-7 text-[#3e4763]">
+                <li key={point} className="border border-surface bg-paper px-4 py-3 text-sm leading-7 text-ink-soft">
                   {point}
                 </li>
               ))}
@@ -478,7 +442,7 @@ export default function ChunkySeoLayout({
           ) : null}
 
           {leadSections.map((node, index) => (
-            <div key={`lead-section-${index}`} className="border border-[#dbe0eb] bg-white p-1">
+            <div key={`lead-section-${index}`} className="border border-surface bg-paper p-1">
               {node}
             </div>
           ))}
@@ -496,12 +460,12 @@ export default function ChunkySeoLayout({
         </aside>
       </section>
 
-      <section className="border-y border-[#dbe0ec] bg-[#e6eaf2] py-16">
+      <section className="border-y border-surface bg-paper py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge />
-          <h2 className="mt-5 text-center text-5xl font-black tracking-tight text-[#1b2239]">Why Choose USATII?</h2>
+          <h2 className="mt-5 text-center text-4xl font-semibold text-ink">Why Choose USATII?</h2>
 
-          <div className="mt-10 grid border border-[#d5dae7] bg-white sm:grid-cols-2">
+          <div className="mt-10 grid border border-surface bg-paper sm:grid-cols-2">
             {architectureCards.map((item, index) => (
               <article
                 key={item}
@@ -511,14 +475,14 @@ export default function ChunkySeoLayout({
                   index < 2 ? "border-b border-[#d9deea]" : "",
                 ].join(" ")}
               >
-                <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#d7cfff] bg-[#f4f1ff]">
+                <div className="flex h-20 w-20 items-center justify-center rounded-mdx border border-surface bg-accent-soft">
                   {index === 0 ? <HandCoins className="h-9 w-9 text-[#6d4dff]" /> : null}
                   {index === 1 ? <BadgeCheck className="h-9 w-9 text-[#6d4dff]" /> : null}
                   {index === 2 ? <CalendarClock className="h-9 w-9 text-[#6d4dff]" /> : null}
                   {index === 3 ? <MapPinned className="h-9 w-9 text-[#6d4dff]" /> : null}
                 </div>
-                <h3 className="mt-8 text-3xl font-black leading-tight tracking-tight text-[#131b32]">{item}</h3>
-                <p className="mt-3 max-w-lg text-base leading-7 text-[#5a637e]">
+                <h3 className="mt-8 text-2xl font-semibold leading-tight text-ink">{item}</h3>
+                <p className="mt-3 max-w-lg text-base leading-7 text-muted">
                   {architectureCardSupport[index] ?? architectureCardSupport[architectureCardSupport.length - 1]}
                 </p>
               </article>
@@ -527,27 +491,27 @@ export default function ChunkySeoLayout({
         </div>
       </section>
 
-      <section className="bg-[radial-gradient(circle_at_50%_50%,rgba(109,77,255,0.26),transparent_36%),linear-gradient(95deg,#080d1e_0%,#0f1730_45%,#070c1d_100%)] py-16 text-white">
+      <section className="border-y border-surface bg-accent-soft py-16 text-ink">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 text-[#bdafff]">
             <MapPinned className="h-5 w-5" />
             <span className="h-px w-16 bg-[#4a5476]" />
           </div>
-          <h2 className="mt-3 text-5xl font-black tracking-tight">How USATII SEO Pages Drive Qualified Pipeline</h2>
-          <p className="mt-5 max-w-6xl text-lg leading-8 text-[#c9d0e5]">
+          <h2 className="mt-3 text-4xl font-semibold">How USATII SEO Pages Drive Qualified Pipeline</h2>
+          <p className="mt-5 max-w-6xl text-lg leading-8 text-muted">
             USATII builds every route around a practical buyer sequence: intent match, trust validation,
             operational fit, then a direct next step. The goal is not traffic for its own sake. The goal is
             to convert qualified searches into sales-ready conversations.
           </p>
-          <div className="mt-8 space-y-3 text-lg leading-8 text-[#c4cce3]">
+          <div className="mt-8 space-y-3 text-lg leading-8 text-ink-soft">
             <p>
-              <strong className="text-white">Intent-matched page structure:</strong> Service, industry, and location routes answer different search intents with specific context.
+              <strong className="text-ink">Intent-matched page structure:</strong> Service, industry, and location routes answer different search intents with specific context.
             </p>
             <p>
-              <strong className="text-white">Conversion-first UX:</strong> Calls, quote requests, and audit CTAs are mapped to the workflows your team can actually deliver.
+              <strong className="text-ink">Conversion-first UX:</strong> Calls, quote requests, and audit CTAs are mapped to the workflows your team can actually deliver.
             </p>
             <p>
-              <strong className="text-white">Entity consistency:</strong> USATII branding, schema, and proof signals stay aligned across every route to strengthen search trust.
+              <strong className="text-ink">Entity consistency:</strong> USATII branding, schema, and proof signals stay aligned across every route to strengthen search trust.
             </p>
           </div>
         </div>
@@ -558,7 +522,7 @@ export default function ChunkySeoLayout({
       {remainingSections.length > 0 ? (
         <section className="mx-auto max-w-7xl space-y-6 px-4 py-14 sm:px-6 lg:px-8">
           {remainingSections.map((node, index) => (
-            <div key={`remaining-section-${index}`} className="border border-[#dbe0eb] bg-white p-1">
+            <div key={`remaining-section-${index}`} className="border border-surface bg-paper p-1">
               {node}
             </div>
           ))}
@@ -567,12 +531,12 @@ export default function ChunkySeoLayout({
 
       {shouldShowRecentWork ? <RecentWorkSection /> : null}
 
-      <section className="border-b border-[#d8ddeb] bg-[#eceff5] py-14">
+      <section className="border-b border-surface bg-paper py-14">
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1fr] lg:px-8">
           <article>
             <SectionBadge />
-            <h2 className="mt-4 text-center text-5xl font-black tracking-tight text-[#11182f] lg:text-left">Why work with us?</h2>
-            <p className="mx-auto mt-5 max-w-3xl text-center text-xl leading-9 text-[#49526a] lg:mx-0 lg:text-left">
+            <h2 className="mt-4 text-center text-4xl font-semibold text-ink lg:text-left">Why work with us?</h2>
+            <p className="mx-auto mt-5 max-w-3xl text-center text-xl leading-9 text-muted lg:mx-0 lg:text-left">
               USATII combines software engineering, conversion architecture, and operational strategy so your SEO pages
               support both discoverability and real delivery outcomes after the lead comes in.
             </p>
@@ -582,7 +546,7 @@ export default function ChunkySeoLayout({
         </div>
       </section>
 
-      <SeoFooter />
+      <Footer />
     </main>
   );
 }

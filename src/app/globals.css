@@ -41,28 +41,50 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-ink: var(--oasis-ink);
+  --color-ink-soft: var(--oasis-ink-soft);
+  --color-faint: var(--oasis-faint);
+  --color-paper: var(--oasis-paper);
+  --color-canvas: var(--oasis-canvas);
+  --color-surface: var(--oasis-surface);
+  --color-surface-strong: var(--oasis-surface-strong);
+  --color-control-border: var(--oasis-control-border);
+  --color-accent-hover: var(--oasis-accent-hover);
+  --color-accent-soft: var(--oasis-accent-soft);
+  --radius-mdx: 12px;
+  --shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.05), 0 4px 14px rgba(15, 23, 42, 0.04);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --oasis-ink: #0f172a;
+  --oasis-ink-soft: #334155;
+  --oasis-faint: #686d78;
+  --oasis-paper: #ffffff;
+  --oasis-canvas: #f8fafc;
+  --oasis-surface: #f1f5f9;
+  --oasis-surface-strong: #e2e8f0;
+  --oasis-control-border: #cbd5e1;
+  --oasis-accent-hover: #6d28d9;
+  --oasis-accent-soft: #f3e8ff;
+  --background: #f8fafc;
+  --foreground: #0f172a;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #334155;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #7c3aed;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #e2e8f0;
+  --input: #cbd5e1;
+  --ring: #8b5cf6;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -118,5 +140,29 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 14px;
+    font-weight: 450;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
   }
+}
+
+html {
+  min-width: 320px;
+  scroll-padding-block: 5rem;
+}
+
+::selection {
+  background: #4c1d95;
+  color: #ffffff;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* OASIS uses `muted` as a text color; retain shadcn's light muted surface for backgrounds. */
+.text-muted {
+  color: #64748b;
 }

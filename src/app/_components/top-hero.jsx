@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 function HeroVideoBackground() {
   return (
@@ -28,35 +27,29 @@ function HeroVideoBackground() {
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden bg-white">
-      <HeroVideoBackground />
-
-      <div className="pointer-events-none relative z-20 mx-auto max-w-7xl px-6">
-        <div className="flex min-h-[100svh] flex-col items-center justify-center gap-y-8 py-28 text-center md:py-40">
-          <h1 className="max-w-4xl text-5xl font-bold tracking-tight text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.34)] md:text-7xl">
-            We build <span className="text-purple-200">systems</span> that power{" "}
-            <u>marketing</u> & <u>operations</u>.
+    <section className="border-b border-surface bg-paper">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 md:px-6 md:py-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1.1fr)] lg:items-center">
+        <div>
+          <p className="text-sm font-semibold text-accent">USATII MEDIA</p>
+          <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[0.96] tracking-tight text-ink md:text-7xl">
+            We build systems that power marketing &amp; operations.
           </h1>
-
-          <div className="pointer-events-auto flex flex-row flex-wrap justify-center gap-3 pt-2">
-            <Link id="book" href="https://cal.com/usatii/onboarding" target="_blank">
-              <Button className="cursor-pointer rounded-full border border-white/25 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.45),transparent_28%),linear-gradient(135deg,#d946ef_0%,#a855f7_48%,#7c3aed_100%)] px-7 py-6 text-lg font-bold text-white shadow-[inset_0.35em_0.25em_0.8em_rgba(255,255,255,0.22),inset_-0.45em_-0.35em_0.9em_rgba(67,0,142,0.32),0_18px_45px_rgba(126,34,206,0.42)] transition hover:-translate-y-0.5 hover:scale-[1.03] hover:shadow-[inset_0.35em_0.25em_0.8em_rgba(255,255,255,0.25),inset_-0.45em_-0.35em_0.9em_rgba(67,0,142,0.3),0_22px_55px_rgba(126,34,206,0.5)]">
-                Book a call
-              </Button>
+          <p className="mt-6 max-w-2xl text-xl leading-9 text-muted">
+            Custom software, websites, and growth systems designed around the way your business actually works.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link id="book" href="https://cal.com/usatii/onboarding" target="_blank" className="inline-flex h-11 items-center gap-2 rounded-mdx bg-accent px-5 text-sm font-semibold text-white shadow-soft hover:bg-accent-hover">
+              Book a call
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
-
-            <Link id="casestudies" href="/case-studies" target="_blank">
-              <Button className="cursor-pointer rounded-full border border-white/45 bg-white/12 px-7 py-6 text-lg font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-md transition hover:-translate-y-0.5 hover:scale-[1.03] hover:bg-white/20 hover:text-white">
-                Read case studies
-              </Button>
+            <Link id="casestudies" href="/case-studies" className="inline-flex h-11 items-center rounded-mdx bg-surface px-5 text-sm font-semibold text-ink hover:bg-surface-strong">
+              Read case studies
             </Link>
           </div>
         </div>
-      </div>
-
-      <div className="pointer-events-none absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2 text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
-        <span className="text-sm font-semibold tracking-tight">Scroll to explore</span>
-        <ArrowDown className="h-6 w-6 animate-bounce" strokeWidth={2.5} />
+        <div className="relative min-h-[360px] overflow-hidden rounded-mdx border border-surface bg-canvas shadow-soft md:min-h-[500px]">
+          <HeroVideoBackground />
+        </div>
       </div>
     </section>
   );

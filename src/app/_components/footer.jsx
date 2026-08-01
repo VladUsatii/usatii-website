@@ -10,19 +10,20 @@ const productTiles = [
 
 export default function Footer() {
   return (
-    <footer className="border-t-neutral-100 border-t-[2px] bg-gradient-to-tr text-black py-16 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-paper text-ink">
+      <div className="border-t border-surface bg-surface">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-4 md:px-6">
         <div className="space-y-0">
-          <p className="text-lg font-black italic tracking-tight text-black">USATII MEDIA</p>
-          <p className="text-sm leading-relaxed">build your audience organically.</p>
+          <p className="text-lg font-black italic tracking-tight text-ink">USATII MEDIA</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">build your audience organically.</p>
         </div>
 
         <div>
-          <h3 className="text-black font-semibold mb-4">Solutions</h3>
-          <ul className="space-y-2">
+          <h3 className="mb-4 text-sm font-black text-ink">Solutions</h3>
+          <ul className="space-y-3 text-sm font-medium text-ink-soft">
             {productTiles.map((tile) => (
               <li key={tile.id}>
-                <a href={tile.href} className="hover:text-black transition-colors">
+                <a href={tile.href} className="transition-colors hover:text-ink">
                   {tile.title}
                 </a>
               </li>
@@ -31,8 +32,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-black font-semibold mb-4">Resources</h3>
-          <ul className="space-y-2">
+          <h3 className="mb-4 text-sm font-black text-ink">Resources</h3>
+          <ul className="space-y-3 text-sm font-medium text-ink-soft">
             <li>
               <a href="/software/software-waste-audit" className="hover:text-black">
                 Software Waste Audit
@@ -57,8 +58,13 @@ export default function Footer() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-black font-semibold mb-4">Company</h3>
-          <ul className="space-y-2">
+          <h3 className="mb-4 text-sm font-black text-ink">Company</h3>
+          <ul className="space-y-3 text-sm font-medium text-ink-soft">
+            <li>
+              <a href="/careers" className="hover:text-ink">
+                Careers
+              </a>
+            </li>
             <li>
               <a href="/about" className="hover:text-black">
                 About
@@ -95,9 +101,12 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      <div className="text-center mt-10 text-xs text-neutral-500">
-        © {new Date().getFullYear()} VAU SOLUTIONS, LLC. All rights reserved.
+      </div>
+      <div className="border-t border-surface bg-paper">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between md:px-6">
+        <p>© {new Date().getFullYear()} VAU SOLUTIONS, LLC. All rights reserved.</p>
+        <p className="text-base font-black italic uppercase tracking-tight">USATII MEDIA</p>
+      </div>
       </div>
     </footer>
   );

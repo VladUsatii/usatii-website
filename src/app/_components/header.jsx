@@ -1,15 +1,13 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex flex-col gap-3 px-3 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-      <div className="flex items-center gap-4">
+    <header className="sticky top-0 z-40 border-b border-surface bg-paper/95 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
         <Link
           href="/"
-          className="flex items-center gap-3 text-lg font-black italic tracking-tight sm:text-2xl md:text-3xl"
+          className="flex items-center gap-2 text-lg font-black italic tracking-tight text-ink"
         >
           <span
             aria-hidden="true"
@@ -17,19 +15,21 @@ export default function Header() {
           />
           <span>USATII MEDIA</span>
         </Link>
-      </div>
-
-      <div className="flex flex-row items-center gap-x-2 sm:gap-x-4">
-        <Link href="/quote-request">
-          <Button className="cursor-pointer bg-neutral-900 text-white hover:bg-black border-[2px] border-neutral-900 px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold transition hover:scale-105">
-            Get a quote
-          </Button>
-        </Link>
-        <Link href="https://cal.com/usatii/onboarding" target="_blank">
-          <Button className="cursor-pointer bg-white text-black hover:bg-white border-[2px] border-black px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold transition hover:scale-105">
+        <nav className="mr-auto hidden items-center gap-1 text-sm font-semibold text-muted-foreground md:flex" aria-label="Primary navigation">
+          <Link href="/websites" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Websites</Link>
+          <Link href="/software" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Software</Link>
+          <Link href="/industries" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Industries</Link>
+          <Link href="/case-studies" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Case studies</Link>
+        </nav>
+        <div className="flex items-center gap-2">
+          <Link href="https://cal.com/usatii/onboarding" target="_blank" className="hidden h-9 items-center px-3 text-sm font-semibold text-ink hover:bg-surface sm:inline-flex">
             Book now
-          </Button>
-        </Link>
+          </Link>
+          <Link href="/quote-request" className="inline-flex h-9 items-center gap-2 rounded-mdx bg-accent px-3 text-sm font-semibold text-white shadow-soft hover:bg-accent-hover">
+            Get a quote
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
     </header>
   );
