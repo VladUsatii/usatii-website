@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="bg-canvas text-ink" data-oasis-public>
+      <main>
         <Hero />
         <Roadmap />
         <HeroTwo />
