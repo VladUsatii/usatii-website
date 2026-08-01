@@ -1,134 +1,56 @@
-// ComparisonTable.jsx
-import React from "react";
+"use client";
+
+import { useState } from "react";
+
+const alternatives = [
+  {
+    name: "Traditional agency",
+    values: ["Full-service contract", "$3–10k monthly fee", "8–15 assets monthly", "Manual-heavy execution", "Agency-hosted"],
+  },
+  {
+    name: "All-in-one SaaS",
+    values: ["Subscription toolbox", "$400–1k per service", "Basic templates", "Semi-automated", "Vendor-locked"],
+  },
+  {
+    name: "Freelance / DIY",
+    values: ["Disconnected tooling", "Costs internal time", "Inconsistent output", "Little automation", "You coordinate everything"],
+  },
+];
+
+const metrics = ["System", "Ongoing cost", "Content output", "Automation", "Ownership"];
+const usatii = ["Software + operating partnership", "Owned software with flexible support", "High-volume human-made content", "Workflow-level automation", "You own the IP"];
 
 export default function ComparisonTable() {
-  const rows = [
-    {
-      label: "System type",
-      usatii: "One build + content retainer",
-      agency: "Full-service contract",
-      saas: "Subscription toolbox",
-      diy: "Random free tooling",
-    },
-    {
-      label: "Monthly fees",
-      usatii: "$0 software + flex retainer",
-      agency: "$3-10k fee",
-      saas: "$400-1k / service",
-      diy: "Costs time",
-    },
-    {
-      label: "Savings/yr",
-      usatii: "Up to $10K",
-      agency: "N/A",
-      saas: "N/A",
-      diy: "N/A",
-    },
-    {
-      label: "Content output",
-      usatii: "90+ human-made videos/month",
-      agency: "8-15 assets / mo",
-      saas: "Basic templates",
-      diy: "Inconsistencies",
-    },
-    {
-      label: "Booking + CRM built-in",
-      usatii: "Local-hosted, self-owned, firm-managed",
-      agency: "Remote-hosted, remote-managed, remote-owned",
-      saas: "Remote-hosted, remote-managed, remote-owned",
-      diy: "N/A",
-    },
-    {
-      label: "Time saved / wk",
-      usatii: "20-30 hrs",
-      agency: "5-10 hrs",
-      saas: "Depends on setup",
-      diy: "-20 hrs",
-    },
-    {
-      label: "Automation level",
-      usatii: "Full",
-      agency: "Manual heavy",
-      saas: "Semi-auto",
-      diy: "None",
-    },
-    {
-      label: "Ownership",
-      usatii: "You own IP",
-      agency: "Agency-hosted",
-      saas: "Vendor-locked",
-      diy: "N/A",
-    },
-  ];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = alternatives[activeIndex];
 
   return (
-    <section className="mx-6 my-14 flex flex-col items-center">
-      <h3 className="pb-8 text-center text-4xl font-medium tracking-tight text-slate-900 sm:text-5xl">
-        How we compare
-      </h3>
+    <section className="bg-[#f7f7f5] px-6 py-24 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">How we compare</h2>
+        <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600">Choose an alternative to compare its operating model with USATII.</p>
 
-      <div className="w-full max-w-[980px] overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_12px_40px_rgba(15,23,42,0.06)]">
-        <div className="w-full overflow-x-auto">
-          <table className="w-full min-w-[760px] table-auto text-slate-900">
-            <thead>
-              <tr className="border-b border-slate-200 bg-slate-950 text-white">
-                <th className="px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">
-                  Metric
-                </th>
-                <th className="px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-300">
-                  USATII
-                </th>
-                <th className="px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">
-                  Traditional agency
-                </th>
-                <th className="px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">
-                  All-in-one SaaS
-                </th>
-                <th className="px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">
-                  Freelance / DIY
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {rows.map((r, i) => (
-                <tr
-                  key={r.label}
-                  className={i % 2 === 0 ? "bg-white" : "bg-slate-50/70"}
-                >
-                  <td className="border-b border-slate-200 px-5 py-4 align-top text-sm font-medium text-slate-900">
-                    <div className="flex items-start gap-3">
-                      <span className="mt-[7px] h-1.5 w-1.5 rounded-[2px] bg-slate-400" />
-                      <span>{r.label}</span>
-                    </div>
-                  </td>
-
-                  <td className="border-b border-slate-200 bg-indigo-50/60 px-5 py-4 align-top text-sm font-semibold text-indigo-700">
-                    {r.usatii}
-                  </td>
-
-                  <td className="border-b border-slate-200 px-5 py-4 align-top text-sm text-slate-700">
-                    {r.agency}
-                  </td>
-
-                  <td className="border-b border-slate-200 px-5 py-4 align-top text-sm text-slate-700">
-                    {r.saas}
-                  </td>
-
-                  <td className="border-b border-slate-200 px-5 py-4 align-top text-sm text-slate-700">
-                    {r.diy}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-10 overflow-x-auto border-b border-neutral-300">
+          <div className="flex min-w-max gap-7" role="tablist" aria-label="Comparison alternatives">
+            {alternatives.map((alternative, index) => (
+              <button key={alternative.name} type="button" role="tab" aria-selected={index === activeIndex} onClick={() => setActiveIndex(index)} className={`border-b-2 pb-3 text-sm font-medium ${index === activeIndex ? "border-neutral-950 text-neutral-950" : "border-transparent text-neutral-400 hover:text-neutral-700"}`}>
+                {alternative.name}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="border-t border-slate-200 bg-slate-50 px-5 py-4">
-          <p className="text-xs leading-5 text-slate-600">
-            * Excludes one-time development fee; hosting on your own systems keeps
-            monthly costs at $0.00
-          </p>
+        <div className="mt-8 grid bg-white md:grid-cols-[180px_1fr_1fr]">
+          <div className="hidden p-6 md:block" />
+          <div className="p-6 text-xl font-medium text-violet-700">USATII</div>
+          <div className="p-6 text-xl font-medium text-neutral-950">{active.name}</div>
+          {metrics.map((metric, index) => (
+            <div key={metric} className="contents">
+              <div className="border-t border-neutral-200 p-5 text-sm font-medium text-neutral-500">{metric}</div>
+              <div className="border-t border-neutral-200 p-5 text-base font-medium text-neutral-950">{usatii[index]}</div>
+              <div className="border-t border-neutral-200 p-5 text-base text-neutral-600">{active.values[index]}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

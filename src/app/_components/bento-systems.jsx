@@ -5,14 +5,14 @@ import { ArrowUpRight } from "lucide-react";
 const sideStories = [
   {
     title: "REBUILDIT AI",
-    description: "An intelligent construction operations layer that helps teams organize project information, automate routine coordination, and make faster decisions from the field to the office.",
+    description: "Helping construction companies make fast decisions. We organize private and public-sector projects with a data ontology, sovereign AI, and hundreds of features like PBX infrastructure, automated bid mining, 3D building scans, and team/inventory management.",
     image: "/home/press/rebuildit-ai.webp",
-    href: "/construction",
+    href: "https://www.rebuilditinc.com/",
     cta: "Explore REBUILDIT AI",
   },
   {
-    title: "USATII MEDIA",
-    description: "We build real software for organizations that need to automate operations and marketing—connecting data, workflows, customer acquisition, and reporting in systems their teams can own.",
+    title: "Custom projects",
+    description: "We build real marketing and operations software for organizations that need scale, precision, and coordinated action.",
     image: "/home/press/usatii-media.webp",
     href: "/software",
     cta: "See how we build",
@@ -37,12 +37,12 @@ export default function SystemsBentoGrid() {
             Systems we build today help you make better decisions tomorrow.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
-            Software, operations, and growth infrastructure built as real products—not disconnected deliverables.
+            Operations and growth infrastructure built as real products with institutional sovereignty.
           </p>
         </div>
 
         <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.8fr)_minmax(300px,0.7fr)] lg:items-start">
-          <article>
+          <article className="lg:sticky lg:top-20">
             <div className="relative aspect-[4/3] overflow-hidden bg-[#f7f7f5]">
               <Image
                 src="/home/press/oasis.webp"
@@ -56,13 +56,13 @@ export default function SystemsBentoGrid() {
             <div className="pt-7">
               <h3 className="text-4xl font-medium tracking-[-0.03em] text-neutral-950">OASIS</h3>
               <p className="mt-4 max-w-4xl text-lg leading-8 text-neutral-600">
-                OASIS is the governed command system for enterprise social operations—bringing publishing, approvals, inbox and cases, listening, analytics, accessibility evidence, compliance, and automation into one coordinated workspace.
+                OASIS is our enterprise social operations platform, bringing advanced social listening and communications management to corporations and public agencies.
               </p>
-              <StoryLink href="/software">Explore OASIS</StoryLink>
+              <StoryLink href="https://oasis.usatii.com/">Explore OASIS</StoryLink>
             </div>
           </article>
 
-          <div className="space-y-14 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-2">
+          <div className="space-y-14">
             {sideStories.map((story) => (
               <article key={story.title}>
                 <div className="relative aspect-square overflow-hidden bg-[#f7f7f5]">
