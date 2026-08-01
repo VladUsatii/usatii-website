@@ -103,9 +103,17 @@ export default function Footer() {
       </div>
       </div>
       <div className="border-t border-surface bg-paper">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between md:px-6">
-        <p>© {new Date().getFullYear()} VAU SOLUTIONS, LLC. All rights reserved.</p>
-        <p className="text-base font-black italic uppercase tracking-tight">USATII MEDIA</p>
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 py-7 text-sm text-muted-foreground md:flex-row md:items-end md:justify-between md:px-6">
+        <div className="grid gap-3">
+          <p>© {new Date().getFullYear()} VAU SOLUTIONS, LLC. All rights reserved.</p>
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Legal footer navigation">
+            <a href="/sitemap" className="hover:text-ink">Site Map</a>
+            <a href="/privacy" className="hover:text-ink">Privacy Policy</a>
+            <a href="/security" className="hover:text-ink">Security</a>
+            <a href="/careers" className="hover:text-ink">Careers</a>
+          </nav>
+        </div>
+        <p className="text-base font-black italic uppercase tracking-tight text-ink">USATII MEDIA</p>
       </div>
       </div>
     </footer>

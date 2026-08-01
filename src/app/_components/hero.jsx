@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <>
     <HeroSection />
-    <section className="flex flex-col items-center justify-center gap-6 py-10 mx-0 text-center">
+    <section className="flex flex-col items-center justify-center bg-white text-center">
       <TrustedByGrid />
       <GoogleReviewGrid />
       <SystemsBentoGrid />

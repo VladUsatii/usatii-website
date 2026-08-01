@@ -16,10 +16,9 @@ export default function Header() {
           <span>USATII MEDIA</span>
         </Link>
         <nav className="mr-auto hidden items-center gap-1 text-sm font-semibold text-muted-foreground md:flex" aria-label="Primary navigation">
-          <Link href="/websites" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Websites</Link>
           <Link href="/software" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Software</Link>
           <Link href="/industries" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Industries</Link>
-          <Link href="/case-studies" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Case studies</Link>
+          <Link href="/about" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Company</Link>
         </nav>
         <div className="flex items-center gap-2">
           <Link href="https://cal.com/usatii/onboarding" target="_blank" className="hidden h-9 items-center px-3 text-sm font-semibold text-ink hover:bg-surface sm:inline-flex">

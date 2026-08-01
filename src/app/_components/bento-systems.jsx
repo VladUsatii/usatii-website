@@ -1,157 +1,128 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Brain, Layers, BarChart2, RefreshCw } from 'lucide-react';
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 
-const tiles = [
+const systems = [
   {
-    id: 1,
-    title: 'Operational Software Modernization',
-    desc: 'Custom internal systems for organizations that need cleaner intake, task tracking, reporting, permissions, audit trails, and workflow visibility. We replace expensive subscriptions and bad tooling with owned software that teams use professionally and own forever.',
-    Icon: Brain,
-    span: 'lg:col-span-7 lg:row-span-2',
-    href: 'https://cal.com/usatii/onboarding',
-    cta: 'Discuss a Pilot',
+    title: "OASIS",
+    eyebrow: "Enterprise social operations",
+    description: "One governed command surface for publishing, approvals, inbox and cases, listening, analytics, accessibility evidence, compliance, and automation.",
+    detail: "OASIS gives serious communications teams perfect memory across channels, decisions, permissions, and evidence—without scattering the work across disconnected tools.",
+    image: "/home/product-showcase/oasis-command-center.png",
+    href: "/software",
+    cta: "Explore OASIS",
   },
   {
-    id: 2,
-    title: 'Workflow & Data Infrastructure',
-    desc: 'Dashboards, databases, role-based portals, automations, and integrations that connect daily operations to executive reporting. Built for teams that need a trusted platform for operations.',
-    Icon: BarChart2,
-    span: 'lg:col-span-5 lg:row-span-1',
-    href: 'https://cal.com/usatii/onboarding',
-    cta: 'Book Discovery',
+    title: "Workflow & data infrastructure",
+    eyebrow: "Owned operational software",
+    description: "Databases, role-based portals, automations, integrations, and reporting designed around the way your organization actually works.",
+    detail: "We replace fragmented subscriptions and handoffs with a trusted operating layer that makes ownership, permissions, status, and performance legible.",
+    image: "/home/product-showcase/workflow-data-infrastructure.png",
+    href: "/software/custom-software-for-contractors",
+    cta: "See our software approach",
   },
   {
-    id: 3,
-    title: 'Content Operations Systems',
-    desc: 'We started in content marketing. Now we also do internal tooling for planning, producing, reviewing, approving, and publishing content across channels. We help teams turn content from an ad hoc creative process into a managed operational pipeline.',
-    Icon: Layers,
-    span: 'lg:col-span-5 lg:row-span-2',
-    href: '/editor',
-    cta: 'View Our Systems',
-    img: '/USATII_EDITOR_DEMO.gif',
+    title: "Content operations",
+    eyebrow: "Creative systems with governance",
+    description: "Planning, drafting, reviewing, approving, scheduling, and publishing become one managed pipeline instead of an ad hoc creative process.",
+    detail: "Teams get a durable production rhythm, clear approval states, reusable assets, and a clean record of how every piece moved from idea to audience.",
+    image: "/home/product-showcase/content-operations.png",
+    href: "/editor",
+    cta: "View content systems",
   },
   {
-    id: 4,
-    title: 'Public-Facing Growth Infrastructure',
-    desc: 'Websites, landing pages, lead intake flows, campaign tracking, SEO support, paid search infrastructure, and communications pipelines built to connect public attention with measurable business outcomes.',
-    Icon: RefreshCw,
-    span: 'lg:col-span-7 lg:row-span-1',
-    href: 'https://cal.com/usatii/onboarding',
-    cta: 'Discuss Deployment',
+    title: "Growth infrastructure",
+    eyebrow: "Public attention, operationally connected",
+    description: "Websites, lead intake, campaign attribution, CRM routing, and measurement built as one accountable system.",
+    detail: "A website is valuable when it connects demand to the people and workflows that can act on it. We build that complete path and make the results measurable.",
+    image: "/home/product-showcase/growth-infrastructure.png",
+    href: "/case-studies",
+    cta: "See the work",
   },
 ];
 
-function BentoTile({ title, desc, Icon, span, img, href, cta }) {
-  const isExternal = href.startsWith('http');
-  const isMediaTile = Boolean(img);
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45, ease: 'easeOut' }}
-      className={`group relative col-span-1 overflow-hidden rounded-[28px] ${span}`}
-    >
-      <div className="absolute inset-0 rounded-[28px] bg-white/80 backdrop-blur-sm" />
-      <div className="absolute inset-0 rounded-[28px] border border-neutral-200/80 shadow-[0_16px_60px_-30px_rgba(0,0,0,0.28)]" />
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-fuchsia-100/70 via-indigo-50/40 to-transparent" />
-
-      <div
-        className={`relative z-10 flex h-full min-h-[260px] flex-col p-6 sm:p-7 ${
-          isMediaTile ? 'justify-between' : ''
-        }`}
-      >
-        {isMediaTile ? (
-          <>
-            <div className="mb-6 overflow-hidden rounded-[22px] border border-neutral-200 bg-neutral-100 shadow-sm">
-              <img
-                src={img}
-                alt={title}
-                className="aspect-video w-full object-cover"
-              />
-            </div>
-
-            <div className="mt-auto">
-              <header className="space-y-2 text-left">
-                <h4 className="text-xl font-semibold tracking-tight text-neutral-950">
-                  {title}
-                </h4>
-                <p className="max-w-[60ch] text-sm leading-6 text-neutral-700">
-                  {desc}
-                </p>
-              </header>
-
-              <div className="mt-5 text-left">
-                <Link
-                  href={href}
-                  target={isExternal ? '_blank' : undefined}
-                  rel={isExternal ? 'noreferrer' : undefined}
-                  className="inline-flex items-center rounded-xl bg-fuchsia-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-fuchsia-700"
-                >
-                  {cta}
-                </Link>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-fuchsia-100 text-fuchsia-700 ring-1 ring-fuchsia-200">
-              <Icon className="h-6 w-6" />
-            </div>
-
-            <header className="space-y-2 text-left">
-              <h4 className="text-xl font-semibold tracking-tight text-neutral-950">
-                {title}
-              </h4>
-              <p className="max-w-[62ch] text-sm leading-6 text-neutral-700">
-                {desc}
-              </p>
-            </header>
-
-            <div className="mt-6 text-left">
-              <Link
-                href={href}
-                target={isExternal ? '_blank' : undefined}
-                rel={isExternal ? 'noreferrer' : undefined}
-                className="inline-flex items-center rounded-xl bg-fuchsia-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-fuchsia-700"
-              >
-                {cta}
-              </Link>
-            </div>
-          </>
-        )}
-      </div>
-    </motion.article>
-  );
-}
-
 export default function SystemsBentoGrid() {
-  return (
-    <section className="relative isolate overflow-hidden pb-4 pt-[100px] text-black">
-      <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
-        <h3 className="text-2xl font-medium tracking-tight sm:text-4xl">
-          Systems we build today help you make better decisions{' '}
-          <span className="text-indigo-500">tomorrow</span>.
-        </h3>
-        <p className="mt-4 text-lg text-neutral-800">
-          <span className="text-indigo-500">We</span> modernize internal workflows,
-          public systems, and marketing operations.
-          <br />
-          <span className="text-indigo-500">You</span> get compliant and efficient data handling, tools, automations, and dashboards.
-          <br />
-          <span className="text-indigo-500">The result:</span> cleaner execution,
-          higher efficiency, and stronger operational control.
-        </p>
-      </div>
+  const [activeIndex, setActiveIndex] = useState(0);
+  const itemRefs = useRef([]);
 
-      <div className="mx-auto mt-10 grid max-w-7xl grid-cols-1 gap-5 px-6 sm:grid-cols-2 lg:[grid-template-columns:repeat(12,minmax(0,1fr))] lg:auto-rows-[minmax(180px,auto)] lg:px-8">
-        {tiles.map((tile) => (
-          <BentoTile key={tile.id} {...tile} />
-        ))}
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveIndex(Number(visible.target.dataset.systemIndex));
+      },
+      { rootMargin: "-30% 0px -45% 0px", threshold: [0.1, 0.4, 0.7] }
+    );
+
+    itemRefs.current.forEach((item) => item && observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  const active = systems[activeIndex];
+
+  return (
+    <section className="w-full border-y border-neutral-200 bg-[#f7f7f5] px-6 py-24 text-left lg:px-8 lg:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold text-violet-700">Systems, not isolated deliverables</p>
+          <h2 className="mt-5 text-4xl font-medium leading-tight tracking-[-0.035em] text-neutral-950 sm:text-6xl">
+            Systems we build today help you make better decisions tomorrow.
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
+            We connect software, operations, and growth into durable infrastructure your team can understand and own.
+          </p>
+        </div>
+
+        <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)] lg:items-start">
+          <div className="lg:sticky lg:top-20">
+            <div className="relative aspect-[16/10] overflow-hidden border border-neutral-200 bg-white">
+              {systems.map((system, index) => (
+                <Image
+                  key={system.image}
+                  src={system.image}
+                  alt={`${system.title} product system visualization`}
+                  fill
+                  priority={index === 0}
+                  sizes="(min-width: 1024px) 64vw, 100vw"
+                  className={`object-cover transition-opacity duration-500 ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+                />
+              ))}
+            </div>
+            <div className="border-x border-b border-neutral-200 bg-white p-6 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">{active.eyebrow}</p>
+              <h3 className="mt-3 text-3xl font-medium tracking-[-0.03em] text-neutral-950">{active.title}</h3>
+              <p className="mt-4 max-w-3xl text-base leading-7 text-neutral-600">{active.detail}</p>
+            </div>
+          </div>
+
+          <div className="border-t border-neutral-300">
+            {systems.map((system, index) => (
+              <article
+                key={system.title}
+                ref={(node) => { itemRefs.current[index] = node; }}
+                data-system-index={index}
+                className="flex min-h-[52vh] flex-col justify-center border-b border-neutral-300 py-10"
+              >
+                <button type="button" onClick={() => setActiveIndex(index)} className="text-left">
+                  <span className="text-xs font-semibold tabular-nums text-neutral-400">0{index + 1}</span>
+                  <h3 className={`mt-5 text-3xl font-medium tracking-[-0.03em] transition-colors ${index === activeIndex ? "text-neutral-950" : "text-neutral-400"}`}>
+                    {system.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-neutral-600">{system.description}</p>
+                </button>
+                <Link href={system.href} className="mt-7 inline-flex w-fit items-center gap-2 text-sm font-semibold text-neutral-950 hover:text-violet-700">
+                  {system.cta}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
