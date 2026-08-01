@@ -1,108 +1,43 @@
-'use client'
-import { useEffect, useRef } from 'react'
+"use client";
+
+import { useState } from "react";
 
 const reviews = [
-  {
-    name: 'James K.',
-    title: 'Founder @ KALM',
-    avatar: 'https://i.pravatar.cc/90?img=1',
-    review:
-      '“It has been a year of incredible results. Post after post, we hit new highs I\'ve never seen before. 10K views here, 30K there... if you want good SMM, Vlad is your guy.”',
-    date: '1 month ago',
-  },
-  {
-    name: 'Chris B.',
-    title: '@chrisstocksofficial',
-    avatar: 'https://i.pravatar.cc/50?img=2',
-    review:
-      '"Vlad is incredible. His quality is out-of-the-park, he is always available, and the guy knows how to get views."',
-    date: '2 weeks ago',
-  },
-  {
-    name: 'Anonymous',
-    title: 'Director @ Stealth Startup',
-    avatar: 'https://i.pravatar.cc/90?img=3',
-    review:
-      '“Vlad’s strategy helped us scale past our social media bottlenecks. These are genuinely weapons of mass destruction.”',
-    date: '3 weeks ago',
-  },
-  {
-    name: 'Anonymous',
-    title: 'Celebrity group',
-    avatar: 'https://i.pravatar.cc/90?img=4',
-    review:
-      '“Vlad is dialed - he crunches hundreds of uploads per month and has created organic systems to boost our engagement big-time.”',
-    date: '5 days ago',
-  },
-  {
-    name: 'Tony H.',
-    title: 'Founder @ TheCPADude',
-    avatar: 'https://i.pravatar.cc/60',
-    review:
-      '“Sick edits! Good job here, I like how you did with these styles.”',
-    date: '4 weeks ago',
-  },
-]
+  { name: "James K.", title: "Founder, KALM", quote: "It has been a year of incredible results. Post after post, we hit new highs I had never seen before. If you want good social media management, Vlad is your guy." },
+  { name: "Chris B.", title: "Creator, @chrisstocksofficial", quote: "Vlad is incredible. His quality is out of the park, he is always available, and the guy knows how to get views." },
+  { name: "Startup director", title: "Director, venture-backed startup", quote: "Vlad’s strategy helped us scale past our social-media bottlenecks. The systems gave the team a much stronger operating rhythm." },
+  { name: "Entertainment team", title: "Celebrity management group", quote: "Vlad is dialed in. He handles hundreds of uploads per month and built organic systems that materially improved engagement." },
+  { name: "Tony Hoong", title: "Founder, The CPA Dude", quote: "Sick edits. Good job here—I like how you handled these styles." },
+];
 
 export default function ReviewCarousel() {
-  const containerRef = useRef(null)
-
-  useEffect(() => {
-    const container = containerRef.current
-    let index = 0
-    const interval = setInterval(() => {
-      const scrollTo = container.children[index].offsetLeft - (container.offsetWidth - container.children[index].offsetWidth) / 2
-      container.scrollTo({ left: scrollTo, behavior: 'smooth' })
-      index = (index + 1) % reviews.length
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [])
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = reviews[activeIndex];
 
   return (
-    <div className="w-full overflow-hidden">
-      <h3 className="font-medium text-center text-5xl pb-3">What founders are saying</h3>
-      <h3 className="font-base text-center text-lg pb-8">Mostly anonymized, but feel free to reach out if you'd like specific examples pertaining to your niche.</h3>
-      <div
-        ref={containerRef}
-        className="flex gap-6 overflow-x-scroll scroll-smooth px-4 snap-x snap-mandatory"
-        style={{ scrollBehavior: 'smooth' }}
-      >
-        {reviews.map((review, i) => (
-          <section
-            key={i}
-            className="bg-white p-6 rounded-2xl shadow-md min-w-[300px] sm:min-w-[400px] md:min-w-[500px] snap-center border border-gray-200"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <img
-                  src={review.avatar}
-                  alt={`${review.name} Avatar`}
-                  className="w-10 h-10 rounded-full"
-                />
-                <div>
-                  <h4 className="font-bold text-gray-900">{review.name}</h4>
-                  <p className="text-sm text-gray-500">{review.title}</p>
-                </div>
-              </div>
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-4 h-4 text-green-500"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 15l-5.878 3.09L5.66 12.18.781 8.41l6.362-.926L10 2l2.857 5.484 6.362.926-4.879 3.77 1.538 5.91z" />
-                  </svg>
-                ))}
-              </div>
-            </div>
-            <p className="text-gray-800 leading-relaxed mb-4">{review.review}</p>
-            <div className="text-sm text-gray-500 italic">Posted {review.date}</div>
-          </section>
-        ))}
+    <section className="w-full bg-white px-6 py-24 text-left lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">What founders are saying</h2>
+        <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600">A selection of feedback from teams and creators we have supported.</p>
+
+        <div className="mt-10 overflow-x-auto border-b border-neutral-200">
+          <div className="flex min-w-max gap-7" role="tablist" aria-label="Founder testimonials">
+            {reviews.map((review, index) => (
+              <button key={`${review.name}-${index}`} type="button" role="tab" aria-selected={index === activeIndex} onClick={() => setActiveIndex(index)} className={`border-b-2 pb-3 text-sm font-medium ${index === activeIndex ? "border-neutral-950 text-neutral-950" : "border-transparent text-neutral-400 hover:text-neutral-700"}`}>
+                {review.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <article className="mt-8 grid min-h-[360px] bg-[#f7f7f5] p-7 sm:p-10 md:grid-cols-[1fr_260px] md:items-end lg:p-14">
+          <blockquote className="max-w-3xl text-3xl font-normal leading-[1.3] tracking-[-0.03em] text-neutral-950 sm:text-4xl">“{active.quote}”</blockquote>
+          <div className="mt-10 md:mt-0 md:text-right">
+            <p className="font-semibold text-neutral-950">{active.name}</p>
+            <p className="mt-1 text-sm text-neutral-500">{active.title}</p>
+          </div>
+        </article>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
