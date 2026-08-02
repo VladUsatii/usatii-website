@@ -107,7 +107,7 @@ export default function TrustedByGrid({
     return (
       <section className={`relative w-full overflow-hidden border-b border-neutral-200 bg-white text-neutral-950 ${className}`}>
   
-        <div className="relative mx-auto w-full max-w-7xl px-6 py-20 sm:px-8 md:py-24">
+        <div className="relative mx-auto w-full max-w-6xl px-6 py-24 sm:px-8">
           <motion.div
             variants={container}
             initial="hidden"

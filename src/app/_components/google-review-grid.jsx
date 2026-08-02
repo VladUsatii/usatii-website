@@ -19,8 +19,8 @@ export default function GoogleReviewGrid() {
   }, []);
 
   return (
-    <section className="w-full bg-white px-6 py-24 text-neutral-950 sm:py-28 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section className="w-full bg-white px-6 py-24 text-neutral-950 lg:px-8">
+      <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="max-w-3xl text-4xl font-normal tracking-[-0.035em] sm:text-6xl">

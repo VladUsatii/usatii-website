@@ -30,8 +30,8 @@ function StoryLink({ href, children }) {
 
 export default function SystemsBentoGrid() {
   return (
-    <section className="w-full bg-white px-6 py-24 text-left lg:px-8 lg:py-32">
-      <div className="mx-auto max-w-7xl">
+    <section className="w-full bg-white px-6 py-24 text-left lg:px-8">
+      <div className="mx-auto max-w-6xl">
         <div className="max-w-4xl">
           <h2 className="text-4xl font-medium leading-tight tracking-[-0.035em] text-neutral-950 sm:text-6xl">
             Systems we build today help you make better decisions tomorrow.
