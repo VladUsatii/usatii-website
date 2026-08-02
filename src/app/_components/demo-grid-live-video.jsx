@@ -1,22 +1,4 @@
-"use client";
-
-import { useState } from "react";
-
-const VIDEOS = [
-  ["Chris Stocks", "1111406856"],
-  ["Spectres", "1111404306"],
-  ["Bigbrain", "1111404009"],
-  ["Airbo", "1111402315"],
-  ["USATII", "1111401934"],
-  ["KALM", "1111401779"],
-  ["James", "1111401393"],
-  ["The CPA Dude", "1111411624"],
-].map(([title, videoId]) => ({ title, videoId }));
-
 export default function DemoGridWithLiveVideo() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = VIDEOS[activeIndex];
-
   return (
     <section className="w-full bg-white px-6 py-24 text-left lg:px-8">
       <div className="mx-auto max-w-6xl">
@@ -25,40 +7,22 @@ export default function DemoGridWithLiveVideo() {
           Selected short-form work from the content systems that shaped USATII.
         </p>
 
-        <div className="mt-10 overflow-x-auto border-b border-neutral-200">
-          <div className="flex min-w-max gap-7" role="tablist" aria-label="Video previews">
-            {VIDEOS.map((video, index) => (
-              <button
-                key={video.videoId}
-                type="button"
-                role="tab"
-                aria-selected={index === activeIndex}
-                onClick={() => setActiveIndex(index)}
-                className={`border-b-2 pb-3 text-sm font-medium transition ${index === activeIndex ? "border-neutral-950 text-neutral-950" : "border-transparent text-neutral-400 hover:text-neutral-700"}`}
-              >
-                {video.title}
-              </button>
-            ))}
+        <div className="mt-10 grid min-h-[440px] gap-8 border-t border-neutral-200 bg-white py-8 md:grid-cols-[320px_minmax(0,1fr)] md:items-end lg:min-h-[520px] lg:grid-cols-[360px_minmax(0,1fr)] lg:py-10">
+          <div className="h-[400px] overflow-hidden bg-neutral-950 sm:h-[460px] lg:h-[520px]">
+            <iframe
+              src="https://player.vimeo.com/video/1111406856?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
+              className="h-full w-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title="Chris Stocks short-form video preview"
+            />
           </div>
-        </div>
 
-        <div className="mt-8 grid gap-8 bg-[#f7f7f5] p-5 sm:p-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
-          <div className="mx-auto w-full max-w-[480px] overflow-hidden bg-neutral-950">
-            <div className="aspect-[9/16]">
-              <iframe
-                key={active.videoId}
-                src={`https://player.vimeo.com/video/${active.videoId}?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0`}
-                className="h-full w-full"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                title={`${active.title} video preview`}
-              />
-            </div>
-          </div>
-          <div className="pb-2">
-            <p className="text-sm text-neutral-500">Currently viewing</p>
-            <h3 className="mt-2 text-3xl font-medium tracking-[-0.03em] text-neutral-950">{active.title}</h3>
-            <p className="mt-4 text-base leading-7 text-neutral-600">Muted by default. Use the player controls when you want sound.</p>
+          <div className="pb-2 md:max-w-md">
+            <h3 className="text-3xl font-medium tracking-[-0.03em] text-neutral-950">Short-form, built to hold attention.</h3>
+            <p className="mt-4 text-base leading-7 text-neutral-600">
+              A concise example of the research, editing, packaging, and publishing systems behind our content work. Muted by default.
+            </p>
           </div>
         </div>
       </div>

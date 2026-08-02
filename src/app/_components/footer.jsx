@@ -11,7 +11,7 @@ const productTiles = [
 export default function Footer() {
   return (
     <footer className="bg-paper text-ink">
-      <div className="border-t border-surface bg-surface">
+      <div className="border-t border-surface bg-white">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-4 md:px-6">
         <div className="space-y-0">
           <p className="text-lg font-black italic tracking-tight text-ink">USATII MEDIA</p>

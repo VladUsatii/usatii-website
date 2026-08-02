@@ -30,7 +30,7 @@ function StoryLink({ href, children }) {
 
 export default function SystemsBentoGrid() {
   return (
-    <section className="w-full bg-[#f7f7f5] px-6 py-24 text-left lg:px-8 lg:py-32">
+    <section className="w-full bg-white px-6 py-24 text-left lg:px-8 lg:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-4xl">
           <h2 className="text-4xl font-medium leading-tight tracking-[-0.035em] text-neutral-950 sm:text-6xl">
@@ -43,7 +43,7 @@ export default function SystemsBentoGrid() {
 
         <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.8fr)_minmax(300px,0.7fr)] lg:items-start">
           <article className="lg:sticky lg:top-20">
-            <div className="relative aspect-[4/3] overflow-hidden bg-[#f7f7f5]">
+            <div className="relative aspect-[4/3] overflow-hidden bg-white">
               <Image
                 src="/home/press/oasis.webp"
                 alt="OASIS product identity"
@@ -65,7 +65,7 @@ export default function SystemsBentoGrid() {
           <div className="space-y-14">
             {sideStories.map((story) => (
               <article key={story.title}>
-                <div className="relative aspect-square overflow-hidden bg-[#f7f7f5]">
+                <div className="relative aspect-square overflow-hidden bg-white">
                   <Image
                     src={story.image}
                     alt={`${story.title} identity`}

@@ -13,8 +13,6 @@ tags:
   - AI
 ---
 
-![OASIS product identity](/home/press/oasis.webp)
-
 Organizations do not have a shortage of communication tools. They have a coordination problem.
 
 A serious communications team may publish through one system, review drafts in another, respond to communities from several native inboxes, export analytics into spreadsheets, track approvals in chat, and assemble compliance evidence by hand. Each tool can work exactly as advertised while the organization as a whole still loses context.

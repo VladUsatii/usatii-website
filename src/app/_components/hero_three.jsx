@@ -98,7 +98,7 @@ const addOns = [
 const cleanFeature = (text) => text.replace(/^•\s*/, "");
 
 const PriceTable = ({ prices }) => (
-  <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+  <div className="mt-6 overflow-hidden border-t border-slate-200 bg-white">
     <table className="min-w-full">
       <thead className="bg-slate-50">
         <tr>
@@ -139,18 +139,8 @@ function PlanCard({ plan, index, onSelect, featured = false, compact = false }) 
         delay: index * 0.04,
         ease: [0.16, 1, 0.3, 1],
       }}
-      whileHover={reduceMotion ? undefined : { y: -4 }}
-      className={[
-        "group relative flex h-full flex-col overflow-hidden bg-white",
-        featured
-          ? "rounded-[30px] border border-indigo-200 shadow-[0_18px_60px_rgba(99,102,241,0.10)]"
-          : "rounded-[24px] border border-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.05)]",
-      ].join(" ")}
+      className="group relative flex h-full flex-col overflow-hidden border-t border-slate-200 bg-white"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:24px_24px] opacity-30" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.08),transparent_26%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
       <div className={["relative z-10 flex h-full flex-col", compact ? "p-5" : "p-6"].join(" ")}>
         <h3
           className={
@@ -188,8 +178,8 @@ function PlanCard({ plan, index, onSelect, featured = false, compact = false }) 
           className={[
             "mt-6 w-full cursor-pointer text-base font-semibold transition duration-300",
             featured
-              ? "rounded-[18px] border border-slate-900 bg-slate-900 text-white hover:scale-[1.015] hover:border-indigo-600 hover:bg-indigo-600"
-              : "rounded-[16px] border border-slate-300 bg-white text-slate-900 hover:border-slate-900 hover:bg-slate-50",
+              ? "border border-slate-900 bg-slate-900 text-white hover:bg-slate-800"
+              : "border border-slate-300 bg-white text-slate-900 hover:border-slate-900 hover:bg-slate-50",
           ].join(" ")}
           onClick={() => onSelect(plan)}
         >
@@ -278,9 +268,10 @@ export default function HeroThree() {
   };
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+    <section className="w-full bg-white px-6 py-24 text-left lg:px-8">
+      <div className="mx-auto max-w-6xl border-t border-neutral-200 pt-8">
+      <div className="max-w-3xl">
+        <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">
           Our Services
         </h2>
         {/* <p className="mt-4 text-left text-md leading-7 text-slate-500">
@@ -307,8 +298,8 @@ export default function HeroThree() {
         ))}
       </div>
 
-      <div className="mt-16 rounded-[30px] ">
-        <div className="text-center">
+      <div className="mt-16">
+        <div>
           <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-700">
             Add-on services
           </h3>
@@ -406,6 +397,7 @@ export default function HeroThree() {
           ) : null}
         </AnimatePresence>
       </Dialog>
+      </div>
     </section>
   );
 }
