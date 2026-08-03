@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 
 const DEFAULT_LOGOS = [
   {
@@ -66,9 +67,9 @@ const DEFAULT_LOGOS = [
 ];
 
 export default function TrustedByGrid({
-    eyebrow = "#1 content marketing agency in the US by volume",
-    title = "Trusted by ambitious companies.",
-    subtitle = "For the last 4 years, Usatii Media has helped hundreds of businesses and personalities build efficient operations software and a solid reputation.",
+    eyebrow = "",
+    title = "Scalable marketing and custom software development.",
+    subtitle = "For the last half-decade, Usatii has helped hundreds of businesses and creators build efficient operations software and a solid marketing reputation with hands-on creative work.",
     logos = DEFAULT_LOGOS,
     className = "",
   }) {
@@ -126,6 +127,15 @@ export default function TrustedByGrid({
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-neutral-600 sm:text-base">
               {subtitle}
             </p>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link href="/services/short-form-content-creation" className="rounded-full bg-neutral-100 px-4 py-2 text-xs font-medium transition hover:bg-neutral-200">
+                Creative delivery ↗
+              </Link>
+              <Link href="/software" className="rounded-full bg-neutral-100 px-4 py-2 text-xs font-medium transition hover:bg-neutral-200">
+                Operations work ↗
+              </Link>
+            </div>
           </motion.div>
   
           <motion.div

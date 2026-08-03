@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-4 md:px-6">
         <div className="space-y-0">
           <p className="text-lg font-black italic tracking-tight text-ink">USATII MEDIA</p>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">build your audience organically.</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">marketing and operations software.</p>
         </div>
 
         <div>

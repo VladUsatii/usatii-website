@@ -1,81 +1,78 @@
-import Link from "next/link";
-import ChunkySeoLayout, {
-  BulletGrid,
-  ChunkSection,
-  SchemaScripts,
-} from "@/app/_components/trades/chunky-seo-layout";
-import { TRADE_AUDIT_BOOKING_URL } from "@/lib/trades-seo-data";
-import { buildPageMetadata, buildStandardSchemas } from "@/lib/trades-page-utils";
-
-const PATH = "/about/vlad-usatii";
+import Header from "@/app/_components/header";
+import Footer from "@/app/_components/footer";
+import { buildPageMetadata } from "@/lib/trades-page-utils";
 
 export const metadata = buildPageMetadata({
-  title: "Vlad Usatii",
+  title: "Letters from Vlad Usatii",
   description:
-    "Founder profile for Vlad Usatii, founder of USATII Media, with software systems and security-oriented background.",
-  path: PATH,
+    "Writing from USATII founder Vlad Usatii on the software industry and letters to clients.",
+  path: "/about/vlad-usatii",
 });
 
-export default function FounderPage() {
-  const schemas = buildStandardSchemas({
-    path: PATH,
-    title: "Vlad Usatii",
+const posts = [
+  {
+    date: "Coming soon",
+    title: "Software should reduce the work around the work",
     description:
-      "Founder of USATII Media with a software systems and security-oriented background.",
-    breadcrumbs: [
-      { name: "Home", path: "/" },
-      { name: "About", path: "/about" },
-      { name: "Vlad Usatii", path: PATH },
-    ],
-    includeFounder: true,
-  });
+      "On building systems that remove operational complexity instead of creating another place to manage it.",
+  },
+  {
+    date: "Coming soon",
+    title: "What it means to own your operating system",
+    description:
+      "A letter to clients on control, continuity, and owning the workflows that run your business.",
+  },
+  {
+    date: "Coming soon",
+    title: "The case for smaller software stacks",
+    description:
+      "Why connected systems will replace sprawling collections of software subscriptions.",
+  },
+  {
+    date: "Coming soon",
+    title: "Building for the way your team works",
+    description:
+      "A letter to clients on learning an operation before deciding what technology belongs inside it.",
+  },
+];
 
+export default function FounderLettersPage() {
   return (
-    <ChunkySeoLayout
-      eyebrow="Founder"
-      title="Vlad Usatii"
-      intro="Founder of USATII Media. Focused on building practical software systems for trade operations with a technical and security-aware approach."
-      proofPoints={[
-        "Founder-led strategy and architecture",
-        "Background in software systems and security",
-        "Connects marketing signal to operational decision-making",
-      ]}
-      primaryCta={{ label: "Book free software waste audit", href: TRADE_AUDIT_BOOKING_URL }}
-      secondaryCta={{ label: "About USATII", href: "/about" }}
-    >
-      <SchemaScripts schemas={schemas} />
+    <>
+      <Header />
+      <main className="bg-white text-neutral-950">
+        <section className="mx-auto max-w-7xl px-6 pb-40 pt-16 lg:px-8 lg:pb-56 lg:pt-20">
+          <h1 className="text-5xl font-normal leading-none tracking-[-0.055em] sm:text-7xl lg:text-[5.75rem]">
+            Letters from Vlad Usatii
+          </h1>
+        </section>
 
-      <ChunkSection title="Credibility areas">
-        <BulletGrid
-          items={[
-            "Software architecture for service operations",
-            "Workflow optimization across lead-to-invoice lifecycle",
-            "Security-conscious implementation and permissions",
-            "Integration of acquisition systems with operational dashboards",
-          ]}
-        />
-      </ChunkSection>
+        <section className="mx-auto max-w-7xl px-6 pb-32 lg:px-8 lg:pb-44">
+          <h2 className="max-w-md text-3xl font-normal leading-[0.95] tracking-[-0.04em] sm:text-4xl">
+            Read the latest from Vlad Usatii:
+          </h2>
 
-      <ChunkSection title="Profiles and references">
-        <div className="space-y-2 text-sm text-[#4d556e]">
-          <p>
-            LinkedIn:{" "}
-            <Link
-              href="https://www.linkedin.com/in/vladusatii"
-              target="_blank"
-              className="underline decoration-[#6d4dff] underline-offset-4"
-            >
-              linkedin.com/in/vladusatii
-            </Link>
-          </p>
-          <p>
-            Existing long-form profile:{" "}
-            <Link href="/vlad" className="underline decoration-[#6d4dff] underline-offset-4">
-              /vlad
-            </Link>
-          </p>
-        </div>
-      </ChunkSection>
-    </ChunkySeoLayout>
+          <div className="mt-20 grid gap-x-12 gap-y-20 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4 lg:gap-x-14 lg:gap-y-24">
+            {posts.map((post) => (
+              <article key={post.title}>
+                <p className="text-[9px] font-medium uppercase tracking-[0.08em] text-neutral-400">
+                  {post.date}
+                </p>
+                <h3 className="mt-4 text-xl font-normal leading-[1.05] tracking-[-0.025em]">
+                  {post.title}
+                </h3>
+                <p className="mt-5 text-sm leading-5 text-neutral-600">
+                  {post.description}
+                </p>
+                <p className="mt-5 inline-block border-b border-neutral-300 pb-0.5 text-xs text-neutral-400">
+                  ↳ Read More
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }

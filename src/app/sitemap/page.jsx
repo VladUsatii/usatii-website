@@ -1,142 +1,86 @@
-import ChunkySeoLayout, {
-  ChunkSection,
-  PageLinkGrid,
-  SchemaScripts,
-} from "@/app/_components/trades/chunky-seo-layout";
-import { buildPageMetadata, buildStandardSchemas } from "@/lib/trades-page-utils";
+import Link from "next/link";
+import Header from "@/app/_components/header";
+import Footer from "@/app/_components/footer";
+import { buildPageMetadata } from "@/lib/trades-page-utils";
 import { getCanonicalSitemapPaths } from "@/lib/sitemap-data";
-
-const PATH = "/sitemap";
 
 export const metadata = buildPageMetadata({
   title: "Sitemap",
-  description:
-    "Canonical sitemap for USATII pages including services, industries, locations, comparison pages, resources, about, security, reviews, and posts.",
-  path: PATH,
+  description: "A complete map of the canonical pages on USATII.",
+  path: "/sitemap",
 });
 
-function titleFromPath(path) {
-  if (path === "/") return "Homepage";
-  return path
-    .replaceAll("/", " ")
-    .trim()
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
-}
+const groups = [
+  { label: "software", test: (path) => path === "/software" || path.startsWith("/software/") },
+  { label: "services", test: (path) => path === "/services" || path.startsWith("/services/") },
+  { label: "industries", test: (path) => path === "/industries" || path.startsWith("/industries/") },
+  { label: "locations", test: (path) => path === "/locations" || path.startsWith("/locations/") },
+  { label: "case-studies", test: (path) => path === "/case-studies" || path.startsWith("/case-studies/") },
+  { label: "resources", test: (path) => path === "/resources" || path.startsWith("/resources/") },
+  { label: "compare", test: (path) => path === "/compare" || path.startsWith("/compare/") },
+];
 
-function toLinks(paths) {
-  return paths.map((path) => ({
-    label: titleFromPath(path),
-    href: path,
-  }));
+function RouteLink({ path, last }) {
+  const name = path === "/" ? "home" : path.split("/").filter(Boolean).at(-1);
+
+  return (
+    <li className="flex min-w-0 items-start gap-3">
+      <span aria-hidden="true" className="shrink-0 text-neutral-300">
+        {last ? "└──" : "├──"}
+      </span>
+      <Link
+        href={path}
+        className="min-w-0 break-words text-neutral-700 underline-offset-4 transition hover:text-violet-700 hover:underline"
+      >
+        {name}
+      </Link>
+    </li>
+  );
 }
 
 export default async function SitemapPage() {
   const paths = await getCanonicalSitemapPaths();
-
-  const corePages = [
-    "/",
-    "/services",
-    "/industries",
-    "/locations",
-    "/compare",
-    "/resources",
-    "/reviews",
-    "/about",
-    "/about/vlad-usatii",
-    "/security",
-    "/case-studies",
-    "/sitemap",
-  ].filter((path) => paths.includes(path));
-
-  const servicePages = paths.filter((path) => /^\/services\/[^/]+$/.test(path));
-  const serviceLocationPages = paths.filter((path) =>
-    /^\/services\/[^/]+\/[^/]+$/.test(path),
-  );
-  const industryPages = paths.filter((path) => /^\/industries\/[^/]+$/.test(path));
-  const locationPages = paths.filter((path) => /^\/locations\/[^/]+$/.test(path));
-  const comparisonPages = paths.filter((path) => /^\/compare\/[^/]+$/.test(path));
-  const resourcePages = paths.filter((path) => /^\/resources\/[^/]+$/.test(path));
-  const posts = paths.filter((path) => /^\/case-studies\/[^/]+$/.test(path));
-
-  const used = new Set([
-    ...corePages,
-    ...servicePages,
-    ...serviceLocationPages,
-    ...industryPages,
-    ...locationPages,
-    ...comparisonPages,
-    ...resourcePages,
-    ...posts,
-  ]);
-  const additionalCanonicalPages = paths.filter((path) => !used.has(path));
-
-  const schemas = buildStandardSchemas({
-    path: PATH,
-    title: "Sitemap",
-    description:
-      "Canonical sitemap of USATII pages for services, industries, locations, comparisons, resources, and posts.",
-    breadcrumbs: [
-      { name: "Home", path: "/" },
-      { name: "Sitemap", path: PATH },
-    ],
-    includeArticle: true,
+  const assigned = new Set();
+  const sections = groups.map((group) => {
+    const routes = paths.filter(group.test);
+    routes.forEach((route) => assigned.add(route));
+    return { ...group, routes };
   });
+  const rootRoutes = paths.filter((path) => !assigned.has(path));
 
   return (
-    <ChunkySeoLayout
-      eyebrow="Sitemap"
-      title="Site Map"
-      intro="This page lists the canonical URLs for USATII SEO pages, including service hubs, subpages, location coverage, comparison content, resources, and posts."
-      proofPoints={[
-        `${paths.length} canonical URLs currently published`,
-        "Service pages and service-location pages included",
-        "Industry, location, comparison, resource, and post pages included",
-      ]}
-      primaryCta={{ label: "Browse services", href: "/services" }}
-      secondaryCta={{ label: "Back to homepage", href: "/" }}
-      showRecentWork={false}
-    >
-      <SchemaScripts schemas={schemas} />
+    <>
+      <Header />
+      <main className="bg-white px-6 py-20 font-mono text-[13px] leading-7 lg:px-8 lg:py-28">
+        <div className="mx-auto max-w-6xl">
+            <h1 className="mb-8 text-4xl font-medium tracking-[-0.035em] text-neutral-950 md:text-6xl">Sitemap</h1>
 
-      <ChunkSection title="Core Pages">
-        <PageLinkGrid links={toLinks(corePages)} />
-      </ChunkSection>
+            <div className="font-semibold text-violet-600">usatii.com</div>
+            <div className="grid gap-x-12 gap-y-8 border-l border-neutral-200 pl-4 md:grid-cols-2 lg:grid-cols-3">
+              <ul>
+                {rootRoutes.map((path, index) => (
+                  <RouteLink key={path} path={path} last={index === rootRoutes.length - 1} />
+                ))}
+              </ul>
 
-      <ChunkSection title="Services">
-        <PageLinkGrid links={toLinks(servicePages)} />
-      </ChunkSection>
+              {sections.filter((section) => section.routes.length).map((section, sectionIndex, visibleSections) => (
+                <section key={section.label} aria-labelledby={`map-${section.label}`}>
+                  <h2 id={`map-${section.label}`} className="flex gap-3 font-semibold text-violet-600">
+                    <span aria-hidden="true">{sectionIndex === visibleSections.length - 1 ? "└──" : "├──"}</span>
+                    {section.label}/
+                  </h2>
+                  <ul className="ml-[1.15rem] border-l border-neutral-200 pl-4">
+                    {section.routes.map((path, index) => (
+                      <RouteLink key={path} path={path} last={index === section.routes.length - 1} />
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
 
-      <ChunkSection title="Service Location Subpages">
-        <PageLinkGrid links={toLinks(serviceLocationPages)} />
-      </ChunkSection>
-
-      <ChunkSection title="Industries">
-        <PageLinkGrid links={toLinks(industryPages)} />
-      </ChunkSection>
-
-      <ChunkSection title="Locations">
-        <PageLinkGrid links={toLinks(locationPages)} />
-      </ChunkSection>
-
-      <ChunkSection title="Comparison Pages">
-        <PageLinkGrid links={toLinks(comparisonPages)} />
-      </ChunkSection>
-
-      <ChunkSection title="Resources">
-        <PageLinkGrid links={toLinks(resourcePages)} />
-      </ChunkSection>
-
-      <ChunkSection title="Posts">
-        <PageLinkGrid links={toLinks(posts)} />
-      </ChunkSection>
-
-      {additionalCanonicalPages.length > 0 ? (
-        <ChunkSection title="Additional Canonical Pages">
-          <PageLinkGrid links={toLinks(additionalCanonicalPages)} />
-        </ChunkSection>
-      ) : null}
-    </ChunkySeoLayout>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }
