@@ -17,6 +17,7 @@ import {
   buildServicePath,
 } from "@/lib/services-seo";
 import { buildPageMetadata, buildStandardSchemas } from "@/lib/trades-page-utils";
+import UsatiiEditorRelease from "@/app/services/_components/usatii-editor-release";
 
 export const dynamicParams = false;
 
@@ -32,6 +33,14 @@ export async function generateMetadata({ params }) {
     return {
       title: "Service Not Found | USATII",
     };
+  }
+
+  if (serviceSlug === "short-form-content-creation") {
+    return buildPageMetadata({
+      title: "Introducing USATII Editor",
+      description: "Meet USATII Editor, a macOS video editor combining AI-generated motion, editable timelines, intelligent subtitles, Face Focus, and professional rendering.",
+      path: buildServicePath(serviceSlug),
+    });
   }
 
   return buildPageMetadata({
@@ -80,6 +89,10 @@ export default async function ServicePage({ params }) {
       .map((locationSlug) => getLocationBySlug(locationSlug)?.name)
       .filter(Boolean),
   });
+
+  if (serviceSlug === "short-form-content-creation") {
+    return <UsatiiEditorRelease schemas={schemas} />;
+  }
 
   return (
     <ChunkySeoLayout
