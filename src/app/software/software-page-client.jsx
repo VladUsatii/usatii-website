@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
 
 const platforms = [
   {
@@ -180,19 +180,29 @@ function QuoteForm() {
 export default function SoftwarePageClient() {
   const reducedMotion = useReducedMotion();
   const heroVideoRef = useRef(null);
+  const heroPlaybackPendingRef = useRef(false);
   const [heroMuted, setHeroMuted] = useState(false);
+  const [heroStarted, setHeroStarted] = useState(false);
+  const [heroPlaying, setHeroPlaying] = useState(false);
 
-  useEffect(() => {
+  async function toggleHeroPlayback() {
     const video = heroVideoRef.current;
-    if (!video) return;
+    if (!video || heroPlaybackPendingRef.current) return;
 
-    video.muted = false;
-    video.play().catch(() => {
-      video.muted = true;
-      setHeroMuted(true);
-      video.play().catch(() => {});
-    });
-  }, []);
+    if (video.paused) {
+      heroPlaybackPendingRef.current = true;
+      setHeroStarted(true);
+      try {
+        await video.play();
+      } catch {
+        setHeroStarted(false);
+      } finally {
+        heroPlaybackPendingRef.current = false;
+      }
+    } else {
+      video.pause();
+    }
+  }
 
   function toggleHeroAudio() {
     if (!heroVideoRef.current) return;
@@ -240,29 +250,57 @@ export default function SoftwarePageClient() {
             ref={heroVideoRef}
             src="/software-hero.mp4"
             aria-label="USATII software demonstration"
-            autoPlay
             loop
             muted={heroMuted}
             playsInline
-            preload="auto"
+            preload="metadata"
+            onPlay={() => setHeroPlaying(true)}
+            onPause={() => setHeroPlaying(false)}
             className="h-full w-full object-cover"
           />
-          <div className="group absolute bottom-4 right-4">
-            <span
+
+          {!heroStarted ? (
+            <button
+              type="button"
+              onClick={toggleHeroPlayback}
+              className="absolute inset-0 grid place-items-center bg-neutral-950/18 text-white transition hover:bg-neutral-950/26 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-6px] focus-visible:outline-white"
+              aria-label="Play software overview"
+            >
+              <span className="inline-flex items-center gap-3 rounded-full bg-neutral-950/80 px-5 py-3 text-sm font-medium shadow-lg backdrop-blur-sm">
+                <Play className="h-4 w-4 fill-current" />
+                Play overview
+              </span>
+            </button>
+          ) : null}
+
+          {heroStarted ? (
+            <div className="absolute bottom-4 right-4 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={toggleHeroPlayback}
+                className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                aria-label={heroPlaying ? "Pause video" : "Play video"}
+              >
+                {heroPlaying ? <Pause className="h-5 w-5 fill-current" /> : <Play className="h-5 w-5 fill-current" />}
+              </button>
+              <div className="group relative">
+                <span
               role="tooltip"
               className="pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-lg bg-neutral-950 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg transition duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
             >
               {heroMuted ? "Turn sound on" : "Turn sound off"}
-            </span>
-            <button
-              type="button"
-              onClick={toggleHeroAudio}
-              className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              aria-label={heroMuted ? "Unmute video" : "Mute video"}
-            >
-              {heroMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-            </button>
-          </div>
+                </span>
+                <button
+                  type="button"
+                  onClick={toggleHeroAudio}
+                  className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  aria-label={heroMuted ? "Unmute video" : "Mute video"}
+                >
+                  {heroMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+                </button>
+              </div>
+            </div>
+          ) : null}
         </motion.div>
       </section>
 

@@ -19,6 +19,7 @@
     "again": "^0.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "d3-geo": "^3.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.0",
     "gray-matter": "^4.0.3",
@@ -40,7 +41,9 @@
     "remark-math": "^6.0.0",
     "stripe": "^22.0.1",
     "tailwind-merge": "^3.3.0",
-    "uuid": "^11.1.0"
+    "topojson-client": "^3.1.0",
+    "uuid": "^11.1.0",
+    "world-atlas": "^2.0.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
