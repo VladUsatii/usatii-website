@@ -14,73 +14,138 @@ import {
 } from "@/components/ui/dialog";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import { Download } from "lucide-react";
 
 const coreServices = [
   {
-    name: "Organic Social Media Content Creation & Management",
-    price: "Starts at $550 /mo",
+    name: "Content & Channel Operations",
+    price: "Editing from $75",
     badge: "Core service",
     summary:
-      "Consistent short-form and written content systems that keep your brand active, credible, and compounding. The team and I have worked with some of the largest creators on social media and our systems genuinely work. We handle:",
+      "A modular content system for brands that need dependable creative production, publishing, and channel operations.",
     features: [
-      "• Content planning & scripting",
-      "• Editing, voiceovers & publishing",
-      "• Daily written or image posts",
-      "• Tone-matched copywriting",
+      "• Short-form editing: 1, 10, 20, or 30-video packages",
+      "• Strategy and scripting support from $300/month",
+      "• Multi-platform publishing and channel operations",
+      "• Custom scopes for 31+ videos and mixed deliverables",
     ],
     prices: [
-      ["$550.00", "10 posts (video or text) / month"],
-      ["$750.00", "20 posts (video or text) / month"],
-      ["$1,000.00", "30 posts (video or text) / month"],
-      ["$1,750.00", "60 posts (video or text) / month"],
+      ["$75", "1 short-form video edit"],
+      ["$650", "10 short-form video edits"],
+      ["$1,100", "20 short-form video edits"],
+      ["$1,500", "30 short-form video edits"],
+      ["Custom", "31+ videos, channel operations, or mixed deliverables"],
     ],
   },
   {
     name: "Paid Marketing",
-    price: "$450 + (1.2 × ad budget) /mo",
+    price: "$450/mo + 20% of ad spend",
     badge: "Core service",
     summary:
       "Performance-driven paid acquisition for brands that need immediate reach, deterministic demand capture, and controlled spend options.",
     features: [
       "• Meta ads",
-      "• Paid content creation & management",
+      "• Campaign setup, management, and reporting",
       "• A/B testing and budget optimization",
+      "• Creative production scoped separately when needed",
     ],
     prices: [
-      ["$450.00 + (1.2 × ad budget)", "15 creatives (video or text) / campaign"],
-      ["$850.00 + (1.2 × ad budget)", "30 creatives (video or text) / campaign"],
-      ["$1,000.00 + (1.2 × ad budget)", "45 creatives (video or text) / campaign"],
+      ["$450/month", "Base management fee"],
+      ["20%", "Managed ad spend fee"],
     ],
   },
   {
-    name: "Websites & Growth Operations Software",
-    price: "From $500+/mo",
+    name: "Websites",
+    price: "Projects from $2,000",
     badge: "Core service",
     summary:
-      "Custom websites, analytics systems, and internal tools for companies that want their marketing, sales, and operations to work from the same source of truth.",
+      "Conversion-focused websites ranging from focused landing pages to full public platforms, with optional ongoing care.",
     features: [
-      "• Static business websites ($500/mo)",
-      "• Dynamic sites with advanced motion and conversion flows ($1,500/mo)",
-      "• Full-stack internal tools, dashboards, and client portals ($2,500+/mo)",
-      "• Growth analytics, CRM workflows, automations, and operational software",
+      "• Landing pages and dynamic business websites",
+      "• Full-stack public platforms and enterprise builds",
+      "• Website care from $150/month",
+      "• Open development support at $45/hour",
     ],
-    prices: [["Custom", "Schedule a call to scope the build."]],
+    prices: [
+      ["$2,000", "Landing page"],
+      ["$4,000", "Dynamic business website"],
+      ["$12,000", "Full-stack public platform"],
+      ["$40,000+", "Enterprise website"],
+    ],
+  },
+  {
+    name: "Search Engine Optimization",
+    price: "From $1,000",
+    badge: "Core service",
+    summary:
+      "Technical, local, and multi-market search programs designed around durable organic growth.",
+    features: [
+      "• Technical SEO audits and implementation planning",
+      "• Local, growth, and multi-market monthly programs",
+      "• Location pages, keyword maps, and editorial content",
+    ],
+    prices: [
+      ["$1,000", "Technical SEO audit — one time"],
+      ["$1,250/month", "Local SEO"],
+      ["$2,500/month", "Growth SEO"],
+      ["$4,000/month", "Multi-market SEO"],
+      ["$6,000+/month", "Enterprise SEO"],
+    ],
+  },
+  {
+    name: "Community Management",
+    price: "From $250/channel/mo",
+    badge: "Core service",
+    summary:
+      "Structured monitoring, engagement, moderation, and escalation for branded communities.",
+    features: [
+      "• Monitoring and response support",
+      "• Managed engagement and moderation",
+      "• High-volume and regulated programs available",
+    ],
+    prices: [
+      ["$250/channel/month", "Monitoring"],
+      ["$500/channel/month", "Managed community"],
+      ["$1,000+/channel/month", "High-volume community"],
+      ["Custom", "Regulated community operations"],
+    ],
+  },
+  {
+    name: "Custom Software & Operations Systems",
+    price: "$45/hr or fixed scope",
+    badge: "Core service",
+    summary:
+      "Purpose-built dashboards, portals, automations, and operating systems that connect your growth stack.",
+    features: [
+      "• Systems mapping and implementation planning",
+      "• CRM, analytics, workflow, and portal modules",
+      "• Fixed-scope foundations and custom development",
+    ],
+    prices: [
+      ["$45/hour", "Open software development"],
+      ["$1,500", "Systems mapping"],
+      ["$7,500", "Operations-system foundation"],
+      ["Custom", "Modules and larger system classes"],
+    ],
   }
 ];
 
 const addOns = [
   {
-    name: "Community Building",
-    price: "$150+/platform",
-    summary: "Optional audience and community support.",
+    name: "OASIS Platform",
+    price: "From $200/mo",
+    summary: "A managed operating layer for teams that need connected growth and execution workflows.",
     features: [
-      "• Discord, Quora, Reddit support",
-      "• Optional $50/mo maintenance",
+      "• Two-user minimum",
+      "• Additional users are $100/user/month",
+      "• Reduced onboarding for managed clients",
     ],
     prices: [
-      ["$150.00", "1 community built"],
-      ["$300.00", "3 communities built (Discord, Quora, Reddit)"],
-      ["$50.00", "1 month of community moderating & support"],
+      ["$200/month", "2 users"],
+      ["$500/month", "5 users"],
+      ["$1,000/month", "10 users"],
+      ["$750", "Standard onboarding"],
+      ["$250", "Onboarding for managed clients"],
     ],
   },
   {
@@ -270,6 +335,7 @@ export default function HeroThree() {
   return (
     <section className="w-full bg-white px-6 py-24 text-left lg:px-8">
       <div className="mx-auto max-w-6xl border-t border-neutral-200 pt-8">
+      <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
       <div className="max-w-3xl">
         <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">
           Our Services
@@ -281,9 +347,17 @@ export default function HeroThree() {
           Our systems weave together and work as a feedback lifecycle for businesses at any stage.
         </p> */}
         <p className="mt-4 text-left text-md leading-7 text-slate-500">
-          We build the growth layer for modern businesses: content systems, paid acquisition, and custom software that connects marketing, sales, and operations. 
-          The goal is not just to make your company look active online. The goal is to create a tighter operating system where demand, data, follow-up, and execution compound in-house. No more subscription software.
+          We build the growth layer for modern businesses: content systems, paid acquisition, and custom software that connects marketing, sales, and operations. Our mission is to create cohesive operating systems where demand, data, follow-up, and execution compound in-house. No more subscription software.
         </p>
+      </div>
+        <a
+          href="/guides/usatii-media-comprehensive-price-guide.pdf"
+          download
+          className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm font-medium text-neutral-950 shadow-sm transition-colors hover:border-neutral-950 hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2"
+        >
+          <Download className="h-4 w-4" aria-hidden="true" />
+          Download full price guide
+        </a>
       </div>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -337,13 +411,13 @@ export default function HeroThree() {
                   y: reduceMotion ? 0 : 8,
                 }}
                 transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-[0_20px_80px_rgba(15,23,42,0.18)]"
+                className="relative max-h-[calc(100vh-2rem)] overflow-y-auto rounded-[24px] border border-slate-200 bg-white shadow-[0_20px_80px_rgba(15,23,42,0.18)]"
               >
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:24px_24px] opacity-30" />
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/70 to-transparent" />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.08),transparent_28%)]" />
 
-                <div className="relative z-10 p-8">
+                <div className="relative z-10 p-6 sm:p-8">
                   <DialogHeader>
                     <DialogTitle className="text-2xl font-bold tracking-tight text-slate-900">
                       {selectedPlan.name}

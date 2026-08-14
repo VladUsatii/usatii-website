@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Volume2, VolumeX } from "lucide-react";
 
 const platforms = [
   {
@@ -179,6 +179,27 @@ function QuoteForm() {
 
 export default function SoftwarePageClient() {
   const reducedMotion = useReducedMotion();
+  const heroVideoRef = useRef(null);
+  const [heroMuted, setHeroMuted] = useState(false);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    video.play().catch(() => {
+      video.muted = true;
+      setHeroMuted(true);
+      video.play().catch(() => {});
+    });
+  }, []);
+
+  function toggleHeroAudio() {
+    if (!heroVideoRef.current) return;
+    const nextMuted = !heroVideoRef.current.muted;
+    heroVideoRef.current.muted = nextMuted;
+    setHeroMuted(nextMuted);
+  }
 
   return (
     <main className="overflow-hidden bg-white text-neutral-950">
@@ -216,24 +237,31 @@ export default function SoftwarePageClient() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         >
           <video
-            src="/Inventory_DEMO.mp4"
-            aria-label="Materials inventory software demonstration"
+            ref={heroVideoRef}
+            src="/software-hero.mp4"
+            aria-label="USATII software demonstration"
             autoPlay
             loop
-            muted
+            muted={heroMuted}
             playsInline
-            preload="metadata"
+            preload="auto"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-white/5" />
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-5 p-5 text-white md:p-8">
-            <div>
-              <p className="text-sm font-semibold">Software, connected</p>
-              <p className="mt-2 max-w-lg text-sm text-white/75">One view of the work, the customer, and what happens next.</p>
-            </div>
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/70 bg-white/10 backdrop-blur">
-              <Play className="ml-0.5 h-4 w-4 fill-current" />
+          <div className="group absolute bottom-4 right-4">
+            <span
+              role="tooltip"
+              className="pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-lg bg-neutral-950 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg transition duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
+            >
+              {heroMuted ? "Turn sound on" : "Turn sound off"}
             </span>
+            <button
+              type="button"
+              onClick={toggleHeroAudio}
+              className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              aria-label={heroMuted ? "Unmute video" : "Mute video"}
+            >
+              {heroMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+            </button>
           </div>
         </motion.div>
       </section>

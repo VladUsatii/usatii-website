@@ -70,9 +70,9 @@ const timelineOptions = [
 const budgetOptions = [
   "Under $2k",
   "$2k–$5k",
-  "$5k–$10k",
-  "$10k–$20k",
-  "$20k+",
+  "$5k–$12k",
+  "$12k–$40k",
+  "$40k+",
   "Need guidance",
 ];
 

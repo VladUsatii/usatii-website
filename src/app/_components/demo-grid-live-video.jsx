@@ -27,8 +27,8 @@ export default function DemoGridWithLiveVideo() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">Selected content from our marketing work.</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600">Real published content built with our marketing software and edited by our team.</p>
+            <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">We still execute real marketing work.</h2>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600">Real published content built with our marketing software and edited by our team. Companies that build marketing software must prove that their software allows scalable execution.</p>
           </div>
           <div className="flex shrink-0 items-center gap-3" aria-label="Content preview controls">
             <span className="mr-2 text-sm tabular-nums text-neutral-500">{String(activeIndex + 1).padStart(2, "0")} / {String(videos.length).padStart(2, "0")}</span>
