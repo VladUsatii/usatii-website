@@ -1575,7 +1575,7 @@ export function getAllTradeRoutes() {
   const resourceRoutes = RESOURCE_PAGE_DATA.map((item) => `/resources/${item.slug}`);
 
   return [
-    "/trades",
+    "/construction",
     "/software",
     "/websites",
     "/marketing",

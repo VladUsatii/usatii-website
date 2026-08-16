@@ -1,67 +1,88 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 
 const DEFAULT_LOGOS = [
   {
     name: "The CPA Dude",
-    src: "https://i.postimg.cc/L5DXdKt9/CPADUDEIMAGE.png",
+    src: "/home/client-logos/cpa-dude.webp",
+    width: 640,
+    height: 122,
     alt: "The CPA Dude logo",
   },
   {
     name: "OFR",
-    src: "https://i.postimg.cc/8Py5tGkw/FRIMAGE.png",
+    src: "/home/client-logos/ofr.webp",
+    width: 220,
+    height: 220,
     alt: "OFR logo",
   },
   {
     name: "Gamma",
-    src: "https://i.postimg.cc/3xdwqqdh/GAMMAIMAGE.png",
+    src: "/home/client-logos/gamma.webp",
+    width: 568,
+    height: 220,
     alt: "Gamma logo",
   },
   {
     name: "Happy Techies",
-    src: "https://i.postimg.cc/wTxMXMz7/HTIMAGE.png",
+    src: "/home/client-logos/happy-techies.webp",
+    width: 633,
+    height: 220,
     alt: "Happy Techies logo",
   },
   {
     name: "KALM",
-    src: "https://i.postimg.cc/DfPm4st9/KALMIMAGE.png",
+    src: "/home/client-logos/kalm.webp",
+    width: 640,
+    height: 178,
     alt: "KALM logo",
   },
   {
     name: "Spectres",
-    src: "https://i.postimg.cc/YCZSBxWW/SPECTRESIMAGE.png",
+    src: "/home/client-logos/spectres.webp",
+    width: 640,
+    height: 83,
     alt: "Spectres logo",
   },
   {
     name: "Rebuildit",
-    src: "https://i.postimg.cc/QFtgCR0r/rebuildit-logo-uniform-gold.png",
+    src: "/home/client-logos/rebuildit.webp",
+    width: 180,
+    height: 45,
     alt: "Rebuildit logo",
   },
   {
     name: "Bishop",
-    src: "https://i.postimg.cc/VS9XVmNW/image-%2812%29.png",
+    src: "/home/client-logos/bishop.webp",
+    width: 180,
+    height: 44,
     alt: "Bishop logo",
   },
   {
     name: "OddsMate",
-    src: "https://i.postimg.cc/sBP5Ns2p/image-%2814%29.png",
+    src: "/home/client-logos/oddsmate.webp",
+    width: 180,
+    height: 87,
     alt: "OddsMate logo",
   },
   {
     name: "Rich & Pour",
-    src: "https://i.postimg.cc/d7RGxw09/Rich-and-Pour-RGB-03-clear.avif",
+    src: "/home/client-logos/rich-and-pour.webp",
+    width: 170,
+    height: 102,
     alt: "Rich and Pour logo",
   },
   {
     name: "Resolution, Inc.",
-    src: "https://i.postimg.cc/jW6yFtjc/Screenshot-2026-03-22-at-19-27-33-removebg-preview.png",
+    src: "/home/client-logos/resolution.webp",
+    width: 179,
+    height: 51,
     alt: "Resolution, Inc. logo",
   },
   {
     name: "airbo",
-    src: "https://i.postimg.cc/8js9QnW2/AIRBO.png",
+    src: "/home/client-logos/airbo.webp",
+    width: 179,
+    height: 52,
     alt: "airbo logo",
   },
 ];
@@ -69,53 +90,15 @@ const DEFAULT_LOGOS = [
 export default function TrustedByGrid({
     eyebrow = "",
     title = "Scalable marketing and custom software development.",
-    subtitle = "For the last half-decade, Usatii has helped hundreds of businesses and creators build efficient operations software and a solid marketing reputation with hands-on creative work.",
+    subtitle = "For the last half-decade, Usatii has helped hundreds of businesses and creators build efficient operations software and a solid marketing reputation with hands-on work.",
     logos = DEFAULT_LOGOS,
     className = "",
   }) {
-    const shouldReduceMotion = useReducedMotion();
-  
-    const container = {
-      hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 10 },
-      show: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.8,
-          ease: [0.16, 1, 0.3, 1],
-        },
-      },
-    };
-  
-    const item = {
-      hidden: {
-        opacity: 0,
-        y: shouldReduceMotion ? 0 : 10,
-        filter: "blur(4px)",
-      },
-      show: {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        transition: {
-          duration: 0.7,
-          delay: 0.08,
-          ease: [0.16, 1, 0.3, 1],
-        },
-      },
-    };
-  
     return (
       <section className={`relative w-full overflow-hidden border-b border-neutral-200 bg-white text-neutral-950 ${className}`}>
   
         <div className="relative mx-auto w-full max-w-6xl px-6 py-24 sm:px-8">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-            className="mx-auto max-w-3xl text-center"
-          >
+          <div className="mx-auto max-w-3xl text-center">
             <div className="text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500">
               {eyebrow}
             </div>
@@ -136,31 +119,28 @@ export default function TrustedByGrid({
                 Operations work ↗
               </Link>
             </div>
-          </motion.div>
+          </div>
   
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-            className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4"
-          >
+          <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
             {logos.map((logo) => (
-              <motion.div
+              <div
                 key={logo.name}
-                variants={item}
                 className="flex min-h-[72px] items-center justify-center"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt || logo.name}
+                  width={logo.width}
+                  height={logo.height}
                   className="h-8 w-auto max-w-[160px] object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
                   loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                   draggable={false}
                 />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
     );

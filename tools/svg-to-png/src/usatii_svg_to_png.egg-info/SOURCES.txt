@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/svg_to_png/__init__.py
+src/svg_to_png/cli.py
+src/usatii_svg_to_png.egg-info/PKG-INFO
+src/usatii_svg_to_png.egg-info/SOURCES.txt
+src/usatii_svg_to_png.egg-info/dependency_links.txt
+src/usatii_svg_to_png.egg-info/entry_points.txt
+src/usatii_svg_to_png.egg-info/top_level.txt

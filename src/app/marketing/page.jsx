@@ -28,7 +28,7 @@ export default function MarketingHubPage() {
       "Marketing systems for contractors by USATII in Rochester, NY.",
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Marketing", path: PATH },
     ],
     serviceType: "Contractor Marketing Systems",

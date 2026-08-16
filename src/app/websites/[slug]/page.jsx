@@ -49,7 +49,7 @@ export default async function WebsiteDetailPage({ params }) {
     description: page.description,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Websites", path: "/websites" },
       { name: page.title, path: `/websites/${page.slug}` },
     ],

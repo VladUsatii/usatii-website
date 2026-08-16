@@ -58,7 +58,7 @@ export default async function SoftwareDetailPage({ params }) {
     description: page.description,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Software", path: "/software" },
       { name: page.title, path: `/software/${page.slug}` },
     ],

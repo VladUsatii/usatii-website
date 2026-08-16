@@ -28,7 +28,7 @@ export default function WebsitesHubPage() {
       "Contractor website design services by USATII in Rochester, NY.",
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Websites", path: PATH },
     ],
     serviceType: "Contractor Website Design",
@@ -46,7 +46,7 @@ export default function WebsitesHubPage() {
         "Marketing and operations signal in one system",
       ]}
       primaryCta={{ label: "Book free software waste audit", href: TRADE_AUDIT_BOOKING_URL }}
-      secondaryCta={{ label: "Trades hub", href: "/trades" }}
+      secondaryCta={{ label: "Usatii for Construction", href: "/construction" }}
       showRecentWork
     >
       <SchemaScripts schemas={schemas} />

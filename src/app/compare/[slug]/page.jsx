@@ -64,7 +64,7 @@ export default async function CompareDetailPage({ params }) {
     description: page.description,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Compare", path: "/compare" },
       { name: page.title, path: `/compare/${page.slug}` },
     ],

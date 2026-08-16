@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { softwareVideoTranscript } from "./software-video-transcript";
 
 const platforms = [
   {
@@ -257,7 +258,14 @@ export default function SoftwarePageClient() {
             onPlay={() => setHeroPlaying(true)}
             onPause={() => setHeroPlaying(false)}
             className="h-full w-full object-cover"
-          />
+          >
+            <track
+              kind="captions"
+              src="/software-hero.en.vtt"
+              srcLang="en"
+              label="English"
+            />
+          </video>
 
           {!heroStarted ? (
             <button
@@ -302,6 +310,19 @@ export default function SoftwarePageClient() {
             </div>
           ) : null}
         </motion.div>
+
+        <details className="group mt-5 border-b border-neutral-200 pb-5">
+          <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950 [&::-webkit-details-marker]:hidden">
+            Video transcript
+            <span aria-hidden="true" className="text-lg font-light text-neutral-400 group-open:hidden">+</span>
+            <span aria-hidden="true" className="hidden text-lg font-light text-neutral-400 group-open:inline">−</span>
+          </summary>
+          <div className="mt-5 max-w-3xl space-y-4 text-sm leading-6 text-neutral-600">
+            {softwareVideoTranscript.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </details>
       </section>
 
       <section className="mx-auto w-full max-w-6xl border-t border-neutral-200 px-6 py-20 lg:px-8 lg:py-28">

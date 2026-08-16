@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usatii-svg-to-png"
+version = "1.0.0"
+description = "A small macOS-friendly command-line tool for converting SVG files to PNG."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+svg-to-png = "svg_to_png.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

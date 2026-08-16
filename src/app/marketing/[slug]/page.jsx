@@ -49,7 +49,7 @@ export default async function MarketingDetailPage({ params }) {
     description: page.description,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Marketing", path: "/marketing" },
       { name: page.title, path: `/marketing/${page.slug}` },
     ],

@@ -83,7 +83,7 @@ export default async function ResourceDetailPage({ params }) {
     description: page.description,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Resources", path: "/resources" },
       { name: page.title, path: `/resources/${page.slug}` },
     ],

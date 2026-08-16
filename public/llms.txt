@@ -5,7 +5,7 @@ brand: USATII Media
 focus: Rochester-based custom software systems for trade businesses
 
 ## Primary pages
-- https://usatii.com/trades
+- https://usatii.com/construction
 - https://usatii.com/software/custom-software-for-contractors
 - https://usatii.com/software/software-waste-audit
 - https://usatii.com/software/contractor-operating-system

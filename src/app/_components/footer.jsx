@@ -2,7 +2,7 @@ import React from "react";
 import { Linkedin, Instagram } from "lucide-react";
 
 const productTiles = [
-  { id: 1, title: "Trades Hub", href: "/trades" },
+  { id: 1, title: "Usatii for Construction", href: "/construction" },
   { id: 2, title: "Software", href: "/software" },
   { id: 3, title: "Industries", href: "/industries" },
   { id: 4, title: "Locations", href: "/locations" },

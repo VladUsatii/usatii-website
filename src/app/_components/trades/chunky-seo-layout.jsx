@@ -399,7 +399,7 @@ export default function ChunkySeoLayout({
   ];
 
   const ctaPrimary = primaryCta ?? { label: "Get Started", href: "/quote-request" };
-  const ctaSecondary = secondaryCta ?? { label: "Learn More", href: "/trades" };
+  const ctaSecondary = secondaryCta ?? { label: "Learn More", href: "/construction" };
   const primaryIsExternal = ctaPrimary.href.startsWith("http");
 
   const keywordText = [eyebrow, title, intro, ...proofPoints].join(" ").toLowerCase();

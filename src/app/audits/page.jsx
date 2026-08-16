@@ -24,7 +24,7 @@ export default function AuditsHubPage() {
       "Software audit services for trade businesses in Rochester, NY.",
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Audits", path: PATH },
     ],
     serviceType: "Software Waste Audit",

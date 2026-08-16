@@ -28,7 +28,7 @@ export default function CompareHubPage() {
       "Comparison pages for contractor software decisions by USATII.",
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Compare", path: PATH },
     ],
     serviceType: "Contractor Software Comparison and Audit",
@@ -46,7 +46,7 @@ export default function CompareHubPage() {
         "Clear decision framework for build vs buy",
       ]}
       primaryCta={{ label: "Book free software waste audit", href: TRADE_AUDIT_BOOKING_URL }}
-      secondaryCta={{ label: "View trades hub", href: "/trades" }}
+      secondaryCta={{ label: "Usatii for Construction", href: "/construction" }}
     >
       <SchemaScripts schemas={schemas} />
 

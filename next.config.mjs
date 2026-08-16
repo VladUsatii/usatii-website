@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  async redirects() {
+    return [
+      {
+        source: '/trades',
+        destination: '/construction',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {
@@ -15,6 +24,15 @@ const nextConfig = {
       },
       {
         source: '/media/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/home/client-logos/:path*',
         headers: [
           {
             key: 'Cache-Control',

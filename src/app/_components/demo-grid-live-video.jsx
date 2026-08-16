@@ -25,7 +25,7 @@ export default function DemoGridWithLiveVideo() {
   return (
     <section className="w-full bg-white px-6 py-24 text-left lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-8 border-t border-neutral-200 pt-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">We still execute real marketing work.</h2>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600">Real published content built with our marketing software and edited by our team. Companies that build marketing software must prove that their software allows scalable execution.</p>
@@ -39,7 +39,7 @@ export default function DemoGridWithLiveVideo() {
 
         <div className="mt-10 grid min-h-[420px] gap-8 border-t border-neutral-200 bg-white py-8 md:grid-cols-[300px_minmax(0,1fr)] md:items-end lg:grid-cols-[340px_minmax(0,1fr)] lg:py-10">
           <div className="h-[380px] overflow-hidden bg-neutral-950 sm:h-[420px]">
-            <iframe key={active.src} src={active.src} className="h-full w-full" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen title={`${active.title} short-form video`} />
+            <iframe key={active.src} src={active.src} className="h-full w-full" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin" title={`${active.title} short-form video`} />
           </div>
           <div className="pb-2 md:max-w-md">
             <p className="text-sm text-neutral-500">Currently viewing</p>

@@ -4,7 +4,7 @@ import { getAllCaseStudySlugs } from "@/lib/case-studies";
 
 export function getSitemapPriority(path) {
   if (path === "/") return 1;
-  if (path === "/trades") return 0.95;
+  if (path === "/construction") return 0.95;
   if (path === "/software/software-waste-audit") return 0.95;
   if (path.startsWith("/software/")) return 0.9;
   if (path === "/services") return 0.92;

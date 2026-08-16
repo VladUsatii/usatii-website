@@ -58,7 +58,7 @@ export default async function LocationDetailPage({ params }) {
     description: page.intro,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Locations", path: "/locations" },
       { name: `${page.city}, ${page.state}`, path: `/locations/${page.slug}` },
     ],

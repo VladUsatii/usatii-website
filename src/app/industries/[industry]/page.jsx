@@ -56,7 +56,7 @@ export default async function IndustryDetailPage({ params }) {
     description: page.opening,
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Industries", path: "/industries" },
       { name: page.trade, path: `/industries/${page.slug}` },
     ],

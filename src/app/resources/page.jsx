@@ -28,7 +28,7 @@ export default function ResourcesHubPage() {
       "People-first resources and calculators for contractor software planning.",
     breadcrumbs: [
       { name: "Home", path: "/" },
-      { name: "Trades", path: "/trades" },
+      { name: "Construction", path: "/construction" },
       { name: "Resources", path: PATH },
     ],
     serviceType: "Contractor Software Education",

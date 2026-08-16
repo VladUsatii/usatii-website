@@ -1,743 +1,234 @@
+import Image from "next/image";
 import Link from "next/link";
-import { GOOGLE_REVIEWS } from "@/lib/google-reviews";
+import { ArrowRight } from "lucide-react";
+import Header from "@/app/_components/header";
+import Footer from "@/app/_components/footer";
 import { SITE_URL } from "@/lib/services-seo";
-import {
-  ConstructionOperationsStack,
-  ConstructionQuoteForm,
-  ConstructionViewportEffects,
-} from "./_components/construction-client";
 
 const PATH = "/construction";
-const BOOK_CALL_URL = "https://cal.com/usatii/onboarding";
-const SCOPE_URL = "/quote-request";
-const CAPABILITY_URL = "/documentation";
-const HERO_VIDEO_SRC = "/media/usatii-media-banner-backdrop.d9f2e409.mp4";
-const HERO_VIDEO_POSTER = "/media/usatii-media-banner-backdrop-poster.jpg";
+const BOOK_URL = "https://cal.com/usatii/onboarding";
 
 export const metadata = {
-  title: {
-    absolute: "Construction Operations Software | USATII MEDIA",
-  },
+  title: { absolute: "Usatii for Construction | Operations Software and AI" },
   description:
-    "USATII builds custom operations software for construction companies, contractors, industrial service businesses, and field teams: calls, jobs, crews, materials, documents, costs, dashboards, and AI-assisted administration.",
-  alternates: {
-    canonical: `${SITE_URL}${PATH}`,
-  },
+    "Custom operating systems for construction companies: estimating, jobs, crews, materials, equipment, subcontractors, costs, documents, reporting, and controlled AI automation.",
+  alternates: { canonical: `${SITE_URL}${PATH}` },
   openGraph: {
-    title: "Construction Operations Software | USATII MEDIA",
+    title: "Usatii for Construction",
     description:
-      "Custom operations software for construction companies, contractors, industrial service businesses, and field teams.",
+      "A connected operating layer for construction decisions, field execution, and back-office control.",
     url: `${SITE_URL}${PATH}`,
     siteName: "USATII MEDIA",
     type: "website",
   },
 };
 
-const problemItems = [
-  "Missed calls and weak intake",
-  "Untracked materials and job costs",
-  "Scattered vendor and contractor records",
-  "Manual field updates",
-  "Slow approvals",
-  "Disconnected reporting",
-  "Too many tools that do not talk to each other",
+const systems = [
+  ["Estimating", "Takeoff intake, bid records, scope review, historical pricing, and approval trails."],
+  ["Project control", "Jobs, schedules, work orders, change control, daily logs, punch lists, and closeout."],
+  ["Labor and field", "Crew assignments, time capture, field updates, blockers, photos, and supervisor review."],
+  ["Materials", "Requests, purchasing, deliveries, inventory, job usage, shortages, and cost attribution."],
+  ["Equipment", "Location, assignment, condition, utilization, maintenance, downtime, and service history."],
+  ["Subcontractors", "Scope, compliance documents, insurance, invoices, releases, and performance records."],
+  ["Finance", "Job costs, budget drift, purchase controls, billing blockers, margin exposure, and exports."],
+  ["AI administration", "Search, classification, summaries, drafting, and risk flags with human review."],
 ];
 
-const operatingRows = [
-  {
-    label: "INPUTS",
-    body: "Calls / Forms / Emails / Field Updates / Vendor Docs / Receipts",
-  },
-  {
-    label: "CORE RECORDS",
-    body: "Clients / Jobs / Work Orders / Crews / Materials / Vendors / Costs",
-    active: true,
-  },
-  {
-    label: "CONTROLS",
-    body: "Roles / Permissions / Approvals / Audit Logs / Human Review",
-  },
-  {
-    label: "OUTPUTS",
-    body: "Dashboards / Reports / Notifications / Closeout Records / Management Views",
-  },
-];
-
-const useCases = [
-  [
-    "Renovation and restoration companies",
-    "Calls, clients, estimates, jobs, crews, materials, invoices, photos, and closeout records",
-  ],
-  [
-    "General contractors",
-    "Subcontractors, schedules, change orders, documents, approvals, job costs, and reporting",
-  ],
-  [
-    "Specialty contractors",
-    "Intake, dispatch, work orders, technicians, inventory, client communication, and repeat service",
-  ],
-  [
-    "Industrial service businesses",
-    "Assets, field work, parts, service records, vendors, approvals, and management reporting",
-  ],
-  [
-    "Facilities and maintenance teams",
-    "Requests, work orders, inspections, vendors, equipment, recurring tasks, and reports",
-  ],
-  [
-    "Public works and housing operators",
-    "Service requests, units, assets, crews, contractors, documents, board reports, and audit trails",
-  ],
-];
-
-const rebuilditScope = [
-  "PBX and call routing",
-  "Internal operations dashboard",
-  "Materials inventory",
-  "Task tracking",
-  "Employee productivity workflows",
-  "Training records",
-  "Administrative views",
-  "Role-based workflows",
-];
-
-const rebuilditRecords = [
-  "Jobs",
-  "Clients",
-  "Calls",
-  "Staff",
-  "Materials",
-  "Assets",
-  "Tasks",
-  "Documents",
-  "Payments",
-  "Training records",
+const layers = [
+  ["01", "Signals", "Calls, forms, email, plans, field updates, vendor documents, receipts, and photos."],
+  ["02", "Operational records", "Clients, jobs, crews, materials, vendors, assets, tasks, costs, and documents."],
+  ["03", "Controls", "Roles, permissions, approvals, audit logs, escalation rules, and required review."],
+  ["04", "Decisions", "Assignments, alerts, forecasts, reports, client updates, and management views."],
 ];
 
 const pilots = [
   {
-    title: "Missed call and intake pilot",
-    body: "For businesses losing jobs, response time, or accountability through weak intake.",
-    includes: [
-      "Call routing map",
-      "Intake queue",
-      "Voicemail workflow",
-      "Call tagging",
-      "AI-assisted summaries",
-      "Follow-up tasks",
-      "Basic dashboard",
-    ],
+    title: "Lead Intake & Telephony",
+    body: "Connect routing, missed-call recovery, voicemail, AI-assisted summaries, and follow-up tasks to one client and opportunity record—so every inquiry has an owner and a next action.",
+    href: "/software/custom-software-for-contractors",
+    image: "/construction/lead-intake-telephony.webp",
+    alt: "Construction operations coordinator handling a call beside project plans and a radio",
   },
   {
-    title: "Job and work order pilot",
-    body: "For teams that need better visibility from assignment to completion.",
-    includes: [
-      "Job records",
-      "Work order flow",
-      "Crew assignment",
-      "Status updates",
-      "Field notes/photos",
-      "Completion workflow",
-      "Overdue work report",
-    ],
+    title: "Field Execution",
+    body: "Dispatch work orders, coordinate crews, capture daily logs and photo evidence, surface blockers, and give the office a current completion record without chasing field updates.",
+    href: "/software/contractor-operating-system",
+    image: "/construction/field-execution.webp",
+    alt: "Field superintendent coordinating a steel installation with a rugged tablet",
   },
   {
-    title: "Materials and cost pilot",
-    body: "For companies that need better control over materials, purchases, job costs, and margin leakage.",
-    includes: [
-      "Materials database",
-      "Job-linked usage",
-      "Purchase tracking",
-      "Reorder visibility",
-      "Cost categories",
-      "Exportable reports",
-    ],
+    title: "Inventory & COGS",
+    body: "Track materials from request and purchasing through receipt, storage, job issue, return, and reorder—then connect actual usage to job cost and margin exposure.",
+    href: "/software/contractor-operating-system",
+    image: "/construction/inventory-cogs.webp",
+    alt: "Warehouse lead scanning construction materials in an organized inventory yard",
   },
   {
-    title: "Executive dashboard pilot",
-    body: "For owners and managers who need operational truth without manual spreadsheet work.",
-    includes: [
-      "Data intake map",
-      "Reporting schema",
-      "Live dashboard",
-      "Filters by job, owner, status, date, and cost",
-      "Exportable report",
-    ],
+    title: "Modeling & Estimating",
+    body: "Bring drawings, BIM geometry, takeoff inputs, scope assumptions, revisions, historical costs, and approval history into a reviewable preconstruction record before work reaches the field.",
+    href: "/software/custom-software-for-contractors",
+    image: "/construction/modeling-estimating.webp",
+    alt: "Estimator and project engineer comparing a building model with printed construction plans",
   },
 ];
 
-const controls = [
-  [
-    "Role-based access",
-    "Limit access by role, department, project, or workflow",
-  ],
-  [
-    "Audit logs",
-    "Track important changes by user, time, object, and action",
-  ],
-  [
-    "Approval gates",
-    "Require review for sensitive financial, administrative, or scope-changing actions",
-  ],
-  [
-    "Client-owned records",
-    "Keep operational data exportable and controlled by the client",
-  ],
-  ["Backup planning", "Plan recovery around critical workflow data"],
-  [
-    "AI review",
-    "Keep AI summaries, classifications, and drafts subject to human review",
-  ],
-  [
-    "Exportable reports",
-    "Produce records for management, clients, compliance, or transition",
-  ],
-];
-
-const testimonials = GOOGLE_REVIEWS.map((review, index) => ({
-  index: String(index + 1).padStart(2, "0"),
-  name: review.name,
-  meta: review.meta,
-  text: review.text,
-}));
-
-const constructionSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Construction Operations Software",
-  provider: {
-    "@type": "Organization",
-    name: "USATII MEDIA",
-    legalName: "VAU SOLUTIONS, LLC d/b/a USATII MEDIA",
-    url: SITE_URL,
-  },
-  areaServed: "United States",
-  serviceType: "Custom operations software development",
-  url: `${SITE_URL}${PATH}`,
-  description:
-    "Custom internal operations software for construction companies, contractors, industrial service businesses, and field teams.",
-};
-
-function isExternalHref(href) {
-  return href.startsWith("http");
-}
-
-function ActionLink({ href, children, variant = "primary", className = "" }) {
-  const external = isExternalHref(href);
-  const variantClass =
-    variant === "primary"
-      ? "border-[#6d4dff] bg-[#6d4dff] text-white hover:border-[#5638ea] hover:bg-[#5638ea]"
-      : "border-[#0A0A0A] bg-white text-[#0A0A0A] hover:bg-[#F5F5F5]";
-
+function TextLink({ href, children }) {
+  const external = href.startsWith("http");
   return (
     <Link
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      className={`inline-flex min-h-11 items-center justify-center rounded-[2px] border px-5 py-3 text-sm font-semibold leading-none transition ${variantClass} ${className}`}
+      className="inline-flex items-center gap-2 text-sm font-medium text-neutral-950 transition hover:text-violet-700"
     >
-      {children}
+      {children}<ArrowRight className="h-3.5 w-3.5" />
     </Link>
-  );
-}
-
-function PageSection({ id, children, tone = "white" }) {
-  return (
-    <section
-      id={id}
-      className={`viewport-layer border-t border-[#DADADA] px-5 py-16 md:px-6 md:py-24 ${
-        tone === "gray" ? "bg-[#F5F5F5]" : "bg-white"
-      }`}
-    >
-      <div className="mx-auto w-full max-w-[1180px]">{children}</div>
-    </section>
-  );
-}
-
-function BrandLogo({ tone = "dark", size = "base" }) {
-  const textColor = tone === "light" ? "text-white" : "text-[#0A0A0A]";
-  const orbSize = size === "large" ? "h-9 w-9 md:h-12 md:w-12" : "h-6 w-6";
-  const textSize = size === "large" ? "text-3xl md:text-5xl" : "text-xl";
-
-  return (
-    <Link
-      href="/"
-      className={`inline-flex items-center gap-3 font-black italic tracking-tight ${textColor} ${textSize}`}
-    >
-      <span
-        aria-hidden="true"
-        className={`${orbSize} shrink-0 rounded-full bg-[radial-gradient(circle_at_32%_24%,rgba(255,255,255,0.42),transparent_30%),linear-gradient(135deg,#db37ff_0%,#b91cff_42%,#8b16ef_100%)] shadow-[inset_0.25em_0.2em_0.45em_rgba(255,255,255,0.2),inset_-0.35em_-0.3em_0.6em_rgba(67,0,142,0.34),0_0.25em_0.7em_rgba(168,85,247,0.32)]`}
-      />
-      <span>USATII MEDIA</span>
-    </Link>
-  );
-}
-
-function SectionIntro({ title, children, narrow = false }) {
-  return (
-    <div className={narrow ? "max-w-[820px]" : "max-w-[960px]"}>
-      <h2 className="text-[2rem] font-black leading-[1.04] tracking-normal text-[#0A0A0A] md:text-[2.75rem]">
-        {title}
-      </h2>
-      {children ? (
-        <div className="mt-6 space-y-5 text-[17px] leading-8 text-[#4A4A4A] md:text-[18px]">
-          {children}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function OperatingDiagram() {
-  return (
-    <div className="mt-12 border border-[#DADADA] bg-white">
-      {operatingRows.map((row) => (
-        <div
-          key={row.label}
-          className={`grid gap-4 border-b border-[#DADADA] p-5 last:border-b-0 md:grid-cols-[220px_1fr] md:p-6 ${
-            row.active ? "border-l-4 border-l-[#6d4dff]" : ""
-          }`}
-        >
-          <div
-            className={`font-mono text-xs font-bold tracking-[0.14em] ${
-              row.active ? "text-[#6d4dff]" : "text-[#737373]"
-            }`}
-          >
-            {row.label}
-          </div>
-          <div className="text-[17px] font-semibold leading-7 text-[#0A0A0A]">
-            {row.body}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function BorderList({ items }) {
-  return (
-    <ul className="border border-[#DADADA] bg-white">
-      {items.map((item) => (
-        <li
-          key={item}
-          className="border-b border-[#DADADA] px-4 py-3 text-sm font-semibold leading-6 text-[#0A0A0A] last:border-b-0"
-        >
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function DataTable({ headers, rows }) {
-  return (
-    <div className="mt-10 overflow-x-auto border border-[#DADADA] bg-white">
-      <table className="w-full min-w-[720px] border-collapse text-left">
-        <thead>
-          <tr className="border-b border-[#DADADA] bg-[#F5F5F5]">
-            {headers.map((header) => (
-              <th
-                key={header}
-                className="px-4 py-4 text-xs font-black uppercase tracking-[0.08em] text-[#0A0A0A]"
-              >
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(([first, second]) => (
-            <tr key={first} className="border-b border-[#DADADA] last:border-b-0">
-              <td className="w-[34%] px-4 py-4 align-top text-sm font-bold leading-6 text-[#0A0A0A]">
-                {first}
-              </td>
-              <td className="px-4 py-4 align-top text-sm leading-6 text-[#4A4A4A]">
-                {second}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
   );
 }
 
 export default function ConstructionPage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Construction Operations Software",
+    provider: { "@type": "Organization", name: "USATII MEDIA", url: SITE_URL },
+    areaServed: "United States",
+    serviceType: "Custom construction operations software development",
+    url: `${SITE_URL}${PATH}`,
+  };
+
   return (
-    <div className="construction-page bg-white font-sans text-[#0A0A0A]">
-      <ConstructionViewportEffects />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(constructionSchema) }}
-      />
+    <>
+      <Header />
+      <main className="bg-white text-neutral-950">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
-      <main>
-        <section
-          id="hero"
-          className="viewport-layer relative min-h-[100svh] overflow-hidden bg-[#0A0A0A] px-5 text-white md:px-6"
-        >
-          <video
-            className="absolute inset-0 h-full w-full object-cover opacity-70 grayscale"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster={HERO_VIDEO_POSTER}
-          >
-            <source src={HERO_VIDEO_SRC} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/62" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.82))]" />
-
-          <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[1180px] flex-col">
-            <header className="flex items-center justify-between border-b border-white/25 py-7 md:py-9">
-              <BrandLogo tone="light" size="large" />
-              <Link
-                href={BOOK_CALL_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-[2px] border border-white/70 px-4 py-3 text-sm font-black text-white transition hover:border-white hover:bg-white hover:text-[#0A0A0A] md:px-6"
-              >
-                Start Pilot
-              </Link>
-            </header>
-
-            <div className="flex flex-1 items-end py-16 md:py-20">
-              <div className="max-w-[980px]">
-                <h1 className="text-[2.85rem] font-black leading-[0.98] tracking-normal text-white md:text-[4.75rem] lg:text-[7rem]">
-                Usatii for Construction
-                </h1>
-                <div className="mt-8 max-w-[830px] space-y-5 text-[18px] leading-8 text-white/86 md:text-[19px]">
-                  <h3 className="text-[1.5rem] font-black leading-[0.98] tracking-normal text-white/80 md:text-[2rem] lg:text-[3rem]">
-                    Internal Systems and AI-Powered Automation for Every Construction Decision
-                  </h3>
-                  <p>
-                    The operating layer for calls, jobs, crews, materials, contractors, documents, approvals, costs, compliance, and reporting.
-                  </p>
-                </div>
-                <div className="mt-9 flex flex-wrap gap-3">
-                  <ActionLink href={BOOK_CALL_URL}>Start a 30-Day Pilot</ActionLink>
-                  <Link
-                    href={SCOPE_URL}
-                    className="inline-flex min-h-11 items-center justify-center rounded-[2px] border border-white/70 px-5 py-3 text-sm font-semibold leading-none text-white transition hover:bg-white hover:text-[#0A0A0A]"
-                  >
-                    Send Scope / RFQ
-                  </Link>
-                </div>
-                <p className="mt-7 max-w-[800px] border-l-4 border-[#6d4dff] pl-4 text-sm font-semibold leading-6 text-white/78">
-                  Built for contractors, service businesses, field teams, construction
-                  operators, and industrial companies that need better visibility without
-                  enterprise software bloat.
-                </p>
-              </div>
-            </div>
+        <section className="mx-auto max-w-5xl px-6 pb-16 pt-20 text-center lg:px-8 lg:pb-20 lg:pt-24">
+          <p className="text-xs font-medium">Operations software</p>
+          <h1 className="mt-5 text-5xl font-medium tracking-[-0.05em] sm:text-6xl">Usatii for Construction</h1>
+          <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-neutral-600">
+            A connected operating layer for every construction decision, from lead intake to call center infrastructure to scheduling to estimating to modeling to inventory to field execution.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3">
+            <TextLink href={BOOK_URL}>Discuss a pilot</TextLink>
+            <TextLink href="/quote-request">Send a scope or RFQ</TextLink>
           </div>
         </section>
 
-        <PageSection id="problem">
-          <div className="grid gap-12 lg:grid-cols-[1fr_420px]">
-            <SectionIntro title="The work is real. The systems are fragmented.">
-              <p>
-                Construction and industrial businesses usually do not have one clean
-                operating system.
-              </p>
-              <p>
-                Calls are handled in one place. Jobs are tracked somewhere else.
-                Materials live in spreadsheets. Field updates happen through texts.
-                Contractor documents sit in email threads. Reports are built manually
-                after the fact.
-              </p>
-              <p>That is where money leaks.</p>
-              <p>
-                Missed calls become missed revenue. Missing materials become margin
-                loss. Late updates become disputes. Scattered documents delay payment.
-                Manual reporting keeps leadership behind the business instead of ahead
-                of it.
-              </p>
-              <p>USATII builds the system that closes those gaps.</p>
-            </SectionIntro>
-            <div className="lg:pt-3">
-              <BorderList items={problemItems} />
-            </div>
+        <section className="relative h-[72svh] min-h-[520px] w-full overflow-hidden bg-neutral-900">
+          <Image
+            src="/construction/construction-hero-ai.webp"
+            alt="Aerial view of coordinated equipment and crews across a commercial construction site"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/5" />
+          <p className="absolute bottom-8 left-6 max-w-xl text-2xl font-medium leading-tight tracking-[-0.03em] text-white sm:bottom-12 sm:left-10 sm:text-4xl lg:left-[max(2.5rem,calc((100vw-64rem)/2))]">
+            Software should do all the repetitive, manual work so teams can focus on creativity, scale, and relationships.
+          </p>
+        </section>
+
+        <section className="mx-auto grid max-w-4xl gap-12 px-6 py-28 md:grid-cols-[0.72fr_1.28fr] md:items-start lg:px-8">
+          <div className="max-w-xs">
+            <h2 className="text-2xl font-medium leading-tight tracking-[-0.03em]">Bring software intelligence to the physical world.</h2>
           </div>
-        </PageSection>
-
-        <PageSection id="operating-layer" tone="gray">
-          <SectionIntro title="A custom operating layer for the business.">
-            <p>
-              USATII systems are built around the real objects inside the company:
-              clients, jobs, crews, materials, vendors, documents, costs, approvals,
-              calls, and reports.
-            </p>
-            <p>The goal is not another dashboard.</p>
-            <p>
-              The goal is a system where the business can see what is happening, assign
-              responsibility, track changes, control access, and produce records without
-              rebuilding the truth manually every week.
-            </p>
-          </SectionIntro>
-          <OperatingDiagram />
-        </PageSection>
-
-        <PageSection id="what-we-build">
-          <SectionIntro title="Construction operations stack.">
-            <p>
-              Pick the part of the operation that hurts first. USATII maps the
-              workflow, builds the control layer, and expands only after the system
-              proves value.
-            </p>
-          </SectionIntro>
-          <ConstructionOperationsStack />
-        </PageSection>
-
-        <PageSection id="use-cases">
-          <SectionIntro title="Built for companies that operate in the real world.">
-            <p>
-              USATII is focused first on construction and industrial operators because
-              the operational problems are concrete. Crews move. Materials get
-              purchased. Calls come in. Jobs change. Clients ask questions. Documents
-              matter. Costs need to be tracked. Leadership needs the truth.
-            </p>
-          </SectionIntro>
-          <DataTable headers={["Business type", "What the system controls"]} rows={useCases} />
-        </PageSection>
-
-        <PageSection id="rebuildit">
-          <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
-              <h2 className="text-[2rem] font-black leading-[1.04] tracking-normal text-[#0A0A0A] md:text-[2.75rem]">
-                Rebuildit Inc.
-              </h2>
-              <p className="mt-3 text-xl font-semibold text-[#4A4A4A]">
-                Construction operations software in the field.
-              </p>
-              <div className="mt-8 space-y-5 text-[17px] leading-8 text-[#4A4A4A] md:text-[18px]">
-                <p>
-                  USATII built internal operations software for Rebuildit Inc., a
-                  renovation and construction company with service-heavy workflows.
-                </p>
-                <p>
-                  The work focused on turning scattered operations into structured
-                  internal systems.
-                </p>
-                <p className="border-l-4 border-[#6d4dff] pl-4 font-semibold text-[#0A0A0A]">
-                  The system centralized operational visibility, reduced tool sprawl,
-                  and created a structured foundation for managing a construction
-                  operation through software.
-                </p>
-              </div>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              <div>
-                <h3 className="mb-3 text-sm font-black uppercase tracking-[0.08em] text-[#0A0A0A]">
-                  Scope
-                </h3>
-                <BorderList items={rebuilditScope} />
-              </div>
-              <div>
-                <h3 className="mb-3 text-sm font-black uppercase tracking-[0.08em] text-[#0A0A0A]">
-                  Operational records
-                </h3>
-                <BorderList items={rebuilditRecords} />
-              </div>
-            </div>
+          <div className="space-y-5 text-base leading-7 text-neutral-600">
+            <p>Construction businesses typically make calls from specific departments, then make appointments and schedule subcontractors/employees, order from vendors, refresh equipment, model and plan for job sites, collect and parse documents, make hundreds of random approvals, and reconcile financial records. That is a lot to put in one dashboard, but we did it anyways.</p>
+            <p>We map every decision being made within each department, we build an ontology over the business, and build controlled workflows to automate around them. The result is a system that explains what is happening, who owns the next action, and what evidence supports decision-making.</p>
+            <TextLink href="/software">How we build operating systems</TextLink>
           </div>
-        </PageSection>
+        </section>
 
-        <PageSection id="testimonials" tone="gray">
-          <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-            <SectionIntro title="What operators are saying." narrow>
-              <p>
-                Real client feedback, kept in the same controlled format as the rest
-                of the page.
-              </p>
-            </SectionIntro>
-            <div className="flex gap-3 text-[#0A0A0A]">
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[#DADADA] text-2xl">
-                &larr;
-              </span>
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[#0A0A0A] text-2xl">
-                &rarr;
-              </span>
-            </div>
-          </div>
+        <section className="mx-auto max-w-3xl px-6 pb-24 text-center lg:px-8">
+          <h2 className="text-2xl font-medium leading-tight tracking-[-0.03em] md:text-3xl">
+            One operational model connects management, marketing, sales teams, installers, supervisors, suppliers, financers, and accountants.
+          </h2>
+        </section>
 
-          <div className="mt-14 grid gap-6 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
-            {testimonials.map((testimonial) => (
-              <article
-                key={testimonial.name}
-                className="testimonial-card min-h-[360px] border border-[#DADADA] bg-white p-5"
-              >
-                <div className="border-b border-[#DADADA] pb-5">
-                  <p className="font-mono text-sm text-[#737373]">
-                    {testimonial.index}/
-                  </p>
-                  <div className="mt-4 h-4 w-4 rounded-full border-2 border-[#0A0A0A]" />
-                </div>
-                <p className="mt-16 text-[20px] leading-8 text-[#0A0A0A]">
-                  &ldquo;{testimonial.text}&rdquo;
-                </p>
-                <div className="mt-8 border-t border-[#DADADA] pt-4">
-                  <h3 className="text-base font-black text-[#0A0A0A]">
-                    {testimonial.name}
-                  </h3>
-                  <p className="mt-1 text-sm leading-6 text-[#737373]">
-                    {testimonial.meta}
-                  </p>
-                </div>
+        <section className="mx-auto max-w-5xl px-6 pb-28 lg:px-8">
+          <div className="border-y border-neutral-200">
+            {layers.map(([number, title, body]) => (
+              <article key={number} className="grid gap-4 border-b border-neutral-200 py-7 last:border-b-0 sm:grid-cols-[3rem_11rem_1fr] sm:items-start">
+                <p className="text-xs tabular-nums text-neutral-400">{number}</p>
+                <h3 className="text-base font-medium">{title}</h3>
+                <p className="max-w-2xl text-sm leading-6 text-neutral-600">{body}</p>
               </article>
             ))}
           </div>
-        </PageSection>
+        </section>
 
-        <PageSection id="pilot">
-          <SectionIntro title="Start with one workflow.">
-            <p>A USATII pilot should not start with months of vague discovery.</p>
-            <p>
-              It should start with one painful workflow that can be mapped, built,
-              tested, and improved quickly.
-            </p>
-            <p>
-              The pilot proves whether the system creates visibility, reduces manual
-              work, and gives management more control.
-            </p>
-          </SectionIntro>
-          <div className="mt-12 grid border-l border-t border-[#DADADA] md:grid-cols-2 xl:grid-cols-4">
-            {pilots.map((pilot) => (
-              <div
-                key={pilot.title}
-                className="border-b border-r border-[#DADADA] bg-white p-5"
-              >
-                <h3 className="text-xl font-black leading-7 text-[#0A0A0A]">
-                  {pilot.title}
-                </h3>
-                <p className="mt-3 min-h-[96px] text-sm leading-6 text-[#4A4A4A] xl:min-h-[132px]">
-                  {pilot.body}
-                </p>
-                <ul className="mt-5 space-y-2 border-t border-[#DADADA] pt-4">
-                  {pilot.includes.map((item) => (
-                    <li key={item} className="text-sm leading-6 text-[#0A0A0A]">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        <section className="mx-auto max-w-5xl px-6 pb-28 lg:px-8">
+          <div className="grid gap-12 md:grid-cols-[0.72fr_1.28fr] md:items-center">
+            <div className="max-w-xs">
+              <p className="text-xs text-neutral-400">Construction operations stack</p>
+              <h2 className="mt-4 text-2xl font-medium leading-tight tracking-[-0.03em]">Start with the workflow that hurts. Expand only after it proves value.</h2>
+              <p className="mt-5 text-sm leading-6 text-neutral-600">Every module shares the same records, permissions, activity history, and reporting model.</p>
+            </div>
+            <Image
+              src="/construction/rebuildit-operations.webp"
+              alt="Construction operations software interface built by USATII"
+              width={1440}
+              height={776}
+              sizes="(min-width: 768px) 560px, calc(100vw - 3rem)"
+              className="aspect-[8/5] rounded-sm border border-neutral-200 object-cover object-top"
+            />
+          </div>
+          <div className="mt-16 grid border-t border-neutral-200 sm:grid-cols-2 lg:grid-cols-4">
+            {systems.map(([title, body], index) => (
+              <article key={title} className={`border-b border-neutral-200 py-7 sm:min-h-56 ${index % 2 === 0 ? "sm:pr-7" : "sm:border-l sm:pl-7"} ${index % 4 > 1 ? "lg:border-l lg:pl-7" : ""}`}>
+                <p className="text-xs tabular-nums text-neutral-400">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-7 text-lg font-medium tracking-[-0.02em]">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-neutral-600">{body}</p>
+              </article>
             ))}
           </div>
-        </PageSection>
+        </section>
 
-        <PageSection id="security" tone="gray">
-          <SectionIntro title="Built for controlled operations.">
-            <p>
-              USATII systems are designed around visibility, access control,
-              auditability, and human review.
-            </p>
-            <p>
-              The business should know who did what, when it happened, what changed,
-              and which records matter.
-            </p>
-          </SectionIntro>
-          <DataTable headers={["Control", "Purpose"]} rows={controls} />
-          <p className="mt-6 max-w-[860px] border-l-4 border-[#6d4dff] pl-4 text-sm font-semibold leading-6 text-[#4A4A4A]">
-            Security and compliance requirements are reviewed per scope, contract, or
-            solicitation.
+        <section className="mx-auto max-w-4xl px-6 pb-24 text-center lg:px-8">
+          <h2 className="text-2xl font-medium tracking-[-0.03em]">A practical first deployment</h2>
+          <p className="mx-auto mt-5 max-w-lg text-sm leading-6 text-neutral-600">
+            A focused pilot creates one working operational loop, real users, measurable acceptance criteria, and a clear decision about what to expand next.
           </p>
-        </PageSection>
+        </section>
 
-        <PageSection id="contact">
-          <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-            <div>
-              <h2 className="text-[2.6rem] font-black leading-[0.98] tracking-normal text-[#0A0A0A] md:text-[4.75rem]">
-                Build the operating layer for the companies that still build the country.
-              </h2>
-              <div className="mt-8 max-w-[760px] space-y-5 text-[18px] leading-8 text-[#4A4A4A]">
-                <p>
-                  American operators do not need another rented dashboard. They need
-                  controlled systems that make calls, crews, materials, costs, documents,
-                  and decisions visible.
-                </p>
-                <p>
-                  Send USATII a workflow, construction operations problem, RFQ, or pilot
-                  idea. We will scope the first deployment around the records and
-                  decisions that matter.
-                </p>
-              </div>
-            </div>
-            <div>
-              <ConstructionQuoteForm />
+        <section className="mx-auto max-w-6xl px-6 pb-32 lg:px-8">
+          <div className="grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {pilots.map((pilot) => (
+              <article key={pilot.title}>
+                <Image
+                  src={pilot.image}
+                  alt={pilot.alt}
+                  width={900}
+                  height={900}
+                  sizes="(min-width: 1024px) 272px, (min-width: 640px) calc(50vw - 2.25rem), calc(100vw - 3rem)"
+                  loading="lazy"
+                  className="aspect-square rounded-sm object-cover"
+                />
+                <h3 className="mt-4 text-base font-medium leading-snug tracking-[-0.015em]">{pilot.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-neutral-600">{pilot.body}</p>
+                <div className="mt-4"><TextLink href={pilot.href}>Explore the system</TextLink></div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-t border-neutral-200 bg-neutral-50">
+          <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8">
+            <p className="text-xs font-medium">Start with one operational bottleneck</p>
+            <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-medium tracking-[-0.04em] sm:text-5xl">Build a system your construction business can actually own.</h2>
+            <p className="mx-auto mt-6 max-w-lg text-sm leading-6 text-neutral-600">Bring the workflow, the records, and the people who use them. We will define a focused pilot and its acceptance criteria.</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3">
+              <TextLink href={BOOK_URL}>Book a working session</TextLink>
+              <TextLink href="/quote-request">Send project details</TextLink>
+              <TextLink href="/case-studies">View proof</TextLink>
             </div>
           </div>
-        </PageSection>
+        </section>
       </main>
-
-      <footer className="border-t border-[#DADADA] bg-white px-5 py-10 md:px-6">
-        <div className="mx-auto grid w-full max-w-[1180px] gap-8 md:grid-cols-[1fr_2fr]">
-          <div>
-            <BrandLogo />
-            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-[#737373]">
-              VAU SOLUTIONS, LLC d/b/a USATII MEDIA
-            </p>
-          </div>
-          <nav className="grid gap-3 text-sm font-semibold text-[#4A4A4A] sm:grid-cols-5">
-            <Link href="#hero" className="hover:text-[#0A0A0A]">
-              Construction Software
-            </Link>
-            <Link href="#operating-layer" className="hover:text-[#0A0A0A]">
-              Operations Systems
-            </Link>
-            <Link href="#rebuildit" className="hover:text-[#0A0A0A]">
-              Case Studies
-            </Link>
-            <Link href="#security" className="hover:text-[#0A0A0A]">
-              Security
-            </Link>
-            <Link href={CAPABILITY_URL} className="hover:text-[#0A0A0A]">
-              Capability Statement
-            </Link>
-          </nav>
-        </div>
-      </footer>
-
-      <style>{`
-        .construction-page {
-          --construction-ease: cubic-bezier(0.45, 0, 0.15, 1);
-        }
-
-        .construction-page--motion .viewport-layer :is(h1, h2) {
-          opacity: 0;
-          transform: translateY(18px);
-          transition:
-            opacity 900ms var(--construction-ease),
-            transform 900ms var(--construction-ease);
-        }
-
-        .construction-page--motion .viewport-layer :is(h3, p, li, td, th, button, a, form, .fade-slow) {
-          opacity: 0;
-          transform: translateY(24px);
-          transition:
-            opacity 1300ms var(--construction-ease) 160ms,
-            transform 1300ms var(--construction-ease) 160ms;
-        }
-
-        .construction-page--motion .viewport-layer.is-visible :is(h1, h2),
-        .construction-page--motion .viewport-layer.is-visible :is(h3, p, li, td, th, button, a, form, .fade-slow) {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .testimonial-card {
-          clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .construction-page--motion .viewport-layer :is(h1, h2, h3, p, li, td, th, button, a, form, .fade-slow) {
-            opacity: 1;
-            transform: none;
-            transition: none;
-          }
-        }
-      `}</style>
-    </div>
+      <Footer />
+    </>
   );
 }
