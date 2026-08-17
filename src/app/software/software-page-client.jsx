@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Pause, Play, Volume2, VolumeX, X } from "lucide-react";
 import { softwareVideoTranscript } from "./software-video-transcript";
 
 const platforms = [
@@ -178,6 +178,85 @@ function QuoteForm() {
   );
 }
 
+function QrLeadModal() {
+  const [open, setOpen] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState("idle");
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("utm_source") === "qr" || params.get("source") === "qr") setOpen(true);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event) => { if (event.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
+  async function submitLead(event) {
+    event.preventDefault();
+    setSubmitting(true);
+    setMessage("");
+    try {
+      const response = await fetch("/api/qr-leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, phone }),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Unable to submit right now.");
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+      setMessage(error.message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto bg-neutral-950/70 p-3 backdrop-blur-sm sm:p-4" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
+      <div role="dialog" aria-modal="true" aria-labelledby="qr-lead-title" className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-md overflow-y-auto rounded-[1.5rem] bg-white p-5 shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:rounded-[2rem] sm:p-9">
+        <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-neutral-600 transition hover:bg-neutral-200"><X className="h-4 w-4" /></button>
+        <div className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-violet-600 text-sm font-bold text-white sm:mb-7 sm:h-12 sm:w-12 sm:rounded-2xl">U</div>
+        {status === "success" ? (
+          <div>
+            <p className="text-sm font-medium text-violet-700">YOU’RE ALL SET</p>
+            <h2 id="qr-lead-title" className="mt-3 text-2xl font-medium tracking-[-0.04em] text-neutral-950 sm:text-3xl">Thanks, {fullName.split(/\s+/)[0]}.</h2>
+            <p className="mt-4 leading-7 text-neutral-600">We have your information and will help you accordingly.</p>
+            <button type="button" onClick={() => setOpen(false)} className="mt-7 w-full rounded-xl bg-neutral-950 px-5 py-3 font-medium text-white">Explore our software</button>
+          </div>
+        ) : (
+          <form onSubmit={submitLead}>
+            <p className="text-sm font-medium text-violet-700">WELCOME TO USATII</p>
+            <h2 id="qr-lead-title" className="mt-3 text-2xl font-medium tracking-[-0.04em] text-neutral-950 sm:text-3xl">Let’s make this personal.</h2>
+            <p className="mt-3 leading-6 text-neutral-600 sm:mt-4 sm:leading-7">With this info, we’ll know exactly who you are and help you accordingly.</p>
+            <div className="mt-5 grid gap-4 sm:mt-7 sm:gap-5">
+              <label className="grid gap-2 text-sm font-medium text-neutral-700">Your name<input required autoComplete="name" value={fullName} onChange={(event) => setFullName(event.target.value)} className="rounded-xl border border-neutral-300 px-4 py-3 text-base text-neutral-950 outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100" placeholder="Full name" /></label>
+              <label className="grid gap-2 text-sm font-medium text-neutral-700">Phone number<input required type="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} className="rounded-xl border border-neutral-300 px-4 py-3 text-base text-neutral-950 outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100" placeholder="(585) 555-0123" /></label>
+            </div>
+            {message ? <p role="alert" className="mt-4 text-sm text-rose-600">{message}</p> : null}
+            <button type="submit" disabled={submitting} className="mt-5 flex min-h-12 w-full items-center justify-between rounded-xl bg-violet-600 px-5 py-3 font-medium text-white transition hover:bg-violet-700 disabled:opacity-50 sm:mt-7 sm:py-3.5"><span>{submitting ? "Submitting…" : "Continue"}</span><ArrowRight className="h-4 w-4" /></button>
+            <p className="mt-3 text-center text-[11px] leading-4 text-neutral-400 sm:mt-4 sm:text-xs sm:leading-5">Your information is sent securely to USATII and is not shared with third parties.</p>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function SoftwarePageClient() {
   const reducedMotion = useReducedMotion();
   const heroVideoRef = useRef(null);
@@ -214,7 +293,8 @@ export default function SoftwarePageClient() {
 
   return (
     <main className="overflow-hidden bg-white text-neutral-950">
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16 pt-20 lg:px-8 lg:pb-24 lg:pt-28">
+      <QrLeadModal />
+      <section className="mx-auto w-full max-w-6xl px-5 pb-14 pt-14 sm:px-6 sm:pb-16 sm:pt-20 lg:px-8 lg:pb-24 lg:pt-28">
         <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_20rem] md:items-start lg:grid-cols-[minmax(0,1fr)_24rem]">
           <Reveal>
             <SectionLabel>USATII / SOFTWARE</SectionLabel>
@@ -241,7 +321,7 @@ export default function SoftwarePageClient() {
         </div>
 
         <motion.div
-          className="relative mt-14 aspect-[16/9] min-h-[300px] overflow-hidden rounded-[2rem] bg-neutral-100 shadow-[0_24px_70px_rgba(15,23,42,0.14)] md:mt-20 md:min-h-0"
+          className="relative mt-12 aspect-video overflow-hidden rounded-[1.25rem] bg-neutral-100 shadow-[0_18px_50px_rgba(15,23,42,0.14)] sm:mt-14 sm:rounded-[2rem] md:mt-20 md:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
           initial={reducedMotion ? false : { opacity: 0, scale: 0.975 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.18 }}
@@ -257,7 +337,7 @@ export default function SoftwarePageClient() {
             preload="metadata"
             onPlay={() => setHeroPlaying(true)}
             onPause={() => setHeroPlaying(false)}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
           >
             <track
               kind="captions"
@@ -282,11 +362,11 @@ export default function SoftwarePageClient() {
           ) : null}
 
           {heroStarted ? (
-            <div className="absolute bottom-4 right-4 flex items-center gap-2">
+            <div className="absolute bottom-3 right-3 flex items-center gap-2 sm:bottom-4 sm:right-4">
               <button
                 type="button"
                 onClick={toggleHeroPlayback}
-                className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="grid h-12 w-12 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 aria-label={heroPlaying ? "Pause video" : "Play video"}
               >
                 {heroPlaying ? <Pause className="h-5 w-5 fill-current" /> : <Play className="h-5 w-5 fill-current" />}
@@ -301,7 +381,7 @@ export default function SoftwarePageClient() {
                 <button
                   type="button"
                   onClick={toggleHeroAudio}
-                  className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="grid h-12 w-12 place-items-center rounded-full bg-neutral-950/75 text-white shadow-sm backdrop-blur-sm transition hover:bg-neutral-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   aria-label={heroMuted ? "Unmute video" : "Mute video"}
                 >
                   {heroMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
@@ -325,7 +405,7 @@ export default function SoftwarePageClient() {
         </details>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl border-t border-neutral-200 px-6 py-20 lg:px-8 lg:py-28">
+      <section className="mx-auto w-full max-w-6xl border-t border-neutral-200 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
         <Reveal><SectionLabel>01 / IMPACT</SectionLabel></Reveal>
         <Reveal delay={0.05}>
           <h2 className="mt-5 max-w-5xl text-[clamp(2.8rem,6vw,6rem)] font-medium leading-[0.95] tracking-[-0.045em]">
@@ -351,7 +431,7 @@ export default function SoftwarePageClient() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl border-t border-neutral-200 px-6 py-20 lg:px-8 lg:py-24">
+      <section className="mx-auto w-full max-w-6xl border-t border-neutral-200 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <Reveal><SectionLabel>02 / ABSTRACTIONS</SectionLabel></Reveal>
         <Reveal><h2 className="mt-4 text-4xl font-medium tracking-[-0.035em] md:text-6xl">You are not a machine.</h2></Reveal>
 
@@ -366,14 +446,14 @@ export default function SoftwarePageClient() {
             >
               <Link
                 href={platform.href}
-                className="group grid gap-4 border-b border-neutral-200 py-8 transition-colors hover:bg-violet-50/60 md:grid-cols-[1fr_1fr_auto] md:items-center md:px-3"
+                className="group grid gap-4 border-b border-neutral-200 py-7 transition-colors hover:bg-violet-50/60 md:grid-cols-[1fr_1fr_auto] md:items-center md:px-3 md:py-8"
               >
                 <div className="flex items-baseline gap-4">
                   <span className="text-sm tabular-nums text-neutral-400">{platform.index}</span>
                   <h3 className="text-xl font-medium tracking-[-0.025em] md:text-2xl">↳ {platform.name}</h3>
                 </div>
                 <p className="max-w-xs text-sm leading-6 text-neutral-600">{platform.description}</p>
-                <span className="inline-flex items-center gap-8 border-b border-neutral-300 pb-1 text-sm font-medium group-hover:border-violet-700 group-hover:text-violet-700">
+                <span className="inline-flex min-h-11 w-fit items-center gap-8 border-b border-neutral-300 pt-2 text-sm font-medium group-hover:border-violet-700 group-hover:text-violet-700 md:min-h-0 md:pb-1 md:pt-0">
                   Explore <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
@@ -382,7 +462,7 @@ export default function SoftwarePageClient() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl border-t border-neutral-200 px-6 py-20 lg:px-8 lg:py-28">
+      <section className="mx-auto w-full max-w-6xl border-t border-neutral-200 px-5 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
         <Reveal><SectionLabel>03 / NEXT STEP</SectionLabel></Reveal>
         <Reveal delay={0.05}>
           <h2 className="mt-5 max-w-5xl text-[clamp(2.8rem,6vw,6rem)] font-medium leading-[0.95] tracking-[-0.045em]">

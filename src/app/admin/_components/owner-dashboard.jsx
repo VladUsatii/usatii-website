@@ -8,6 +8,7 @@ import AdminPaymentsPane from '@/app/admin/_components/admin-payments-pane';
 import AdminMermaidStudio from '@/app/admin/_components/admin-mermaid-studio';
 import AdminTelemetryPane from '@/app/admin/_components/admin-telemetry-pane';
 import AdminLiveChatPane from '@/app/admin/_components/admin-live-chat-pane';
+import AdminQrLeadsPane from '@/app/admin/_components/admin-qr-leads-pane';
 
 const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
@@ -15,6 +16,7 @@ const ACTIVE_NAV_ITEMS = [
   { id: 'revenue', label: 'Revenue' },
   { id: 'payments', label: 'Payments' },
   { id: 'applications', label: 'Applications' },
+  { id: 'qrLeads', label: 'QR Leads' },
   { id: 'liveChat', label: 'Live Chat' },
   { id: 'education', label: 'Education' },
   { id: 'telemetry', label: 'Telemetry' },
@@ -322,6 +324,8 @@ export default function OwnerDashboard({ adminEmail }) {
   const searchPlaceholder =
     activeNav === 'applications'
       ? 'Search applicants, roles, emails, portfolio links...'
+      : activeNav === 'qrLeads'
+        ? 'Search QR leads by name or phone...'
       : activeNav === 'payments'
         ? 'Search payment IDs, payer emails, statuses...'
       : activeNav === 'education'
@@ -875,6 +879,10 @@ export default function OwnerDashboard({ adminEmail }) {
       return 'Careers / Applications / Inbox';
     }
 
+    if (activeNav === 'qrLeads') {
+      return 'Marketing / QR Leads / Software';
+    }
+
     if (activeNav === 'education') {
       return 'Education / Guides / Assignments';
     }
@@ -905,6 +913,10 @@ export default function OwnerDashboard({ adminEmail }) {
   function getHeaderTitle() {
     if (activeNav === 'applications') {
       return 'Careers Applications Inbox';
+    }
+
+    if (activeNav === 'qrLeads') {
+      return 'Software QR Leads';
     }
 
     if (activeNav === 'education') {
@@ -2089,6 +2101,10 @@ export default function OwnerDashboard({ adminEmail }) {
     return <AdminTelemetryPane />;
   }
 
+  function renderQrLeadsSection() {
+    return <AdminQrLeadsPane />;
+  }
+
   function renderMermaidStudioSection() {
     return <AdminMermaidStudio />;
   }
@@ -2099,6 +2115,7 @@ export default function OwnerDashboard({ adminEmail }) {
     if (activeNav === 'revenue') return renderRevenueSection();
     if (activeNav === 'payments') return renderPaymentsSection();
     if (activeNav === 'applications') return renderApplicationsSection();
+    if (activeNav === 'qrLeads') return renderQrLeadsSection();
     if (activeNav === 'liveChat') return renderLiveChatSection();
     if (activeNav === 'education') return renderEducationSection();
     if (activeNav === 'telemetry') return renderTelemetrySection();
