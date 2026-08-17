@@ -228,28 +228,24 @@ function QrLeadModal() {
 
   return (
     <div className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto bg-neutral-950/70 p-3 backdrop-blur-sm sm:p-4" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
-      <div role="dialog" aria-modal="true" aria-labelledby="qr-lead-title" className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-md overflow-y-auto rounded-[1.5rem] bg-white p-5 shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:rounded-[2rem] sm:p-9">
-        <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-neutral-600 transition hover:bg-neutral-200"><X className="h-4 w-4" /></button>
-        <div className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-violet-600 text-sm font-bold text-white sm:mb-7 sm:h-12 sm:w-12 sm:rounded-2xl">U</div>
+      <div role="dialog" aria-modal="true" aria-labelledby="qr-lead-title" className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:p-10">
+        <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="absolute right-5 top-5 grid h-10 w-10 place-items-center text-neutral-400 transition hover:text-neutral-950"><X className="h-5 w-5" /></button>
         {status === "success" ? (
-          <div>
-            <p className="text-sm font-medium text-violet-700">YOU’RE ALL SET</p>
-            <h2 id="qr-lead-title" className="mt-3 text-2xl font-medium tracking-[-0.04em] text-neutral-950 sm:text-3xl">Thanks, {fullName.split(/\s+/)[0]}.</h2>
-            <p className="mt-4 leading-7 text-neutral-600">We have your information and will help you accordingly.</p>
-            <button type="button" onClick={() => setOpen(false)} className="mt-7 w-full rounded-xl bg-neutral-950 px-5 py-3 font-medium text-white">Explore our software</button>
+          <div className="pt-8">
+            <h2 id="qr-lead-title" className="text-3xl font-medium leading-tight tracking-[-0.04em] text-neutral-950 sm:text-4xl">Thanks, {fullName.split(/\s+/)[0]}.</h2>
+            <p className="mt-5 leading-7 text-neutral-600">We have your information and will be in touch.</p>
+            <button type="button" onClick={() => setOpen(false)} className="mt-9 inline-flex w-full items-center justify-between border-b border-neutral-950 pb-3 text-sm font-medium transition-colors hover:border-violet-700 hover:text-violet-700">Continue to software <ArrowRight className="h-4 w-4" /></button>
           </div>
         ) : (
-          <form onSubmit={submitLead}>
-            <p className="text-sm font-medium text-violet-700">WELCOME TO USATII</p>
-            <h2 id="qr-lead-title" className="mt-3 text-2xl font-medium tracking-[-0.04em] text-neutral-950 sm:text-3xl">Let’s make this personal.</h2>
-            <p className="mt-3 leading-6 text-neutral-600 sm:mt-4 sm:leading-7">With this info, we’ll know exactly who you are and help you accordingly.</p>
-            <div className="mt-5 grid gap-4 sm:mt-7 sm:gap-5">
-              <label className="grid gap-2 text-sm font-medium text-neutral-700">Your name<input required autoComplete="name" value={fullName} onChange={(event) => setFullName(event.target.value)} className="rounded-xl border border-neutral-300 px-4 py-3 text-base text-neutral-950 outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100" placeholder="Full name" /></label>
-              <label className="grid gap-2 text-sm font-medium text-neutral-700">Phone number<input required type="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} className="rounded-xl border border-neutral-300 px-4 py-3 text-base text-neutral-950 outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100" placeholder="(585) 555-0123" /></label>
+          <form onSubmit={submitLead} className="pt-8">
+            <h2 id="qr-lead-title" className="max-w-md text-3xl font-medium leading-[1.05] tracking-[-0.045em] text-neutral-950 sm:text-4xl">We help construction teams unify operations.</h2>
+            <p className="mt-5 max-w-md text-base leading-7 text-neutral-600">Enter your full name and a phone number and our intelligence systems will do the rest.</p>
+            <div className="mt-8 grid gap-6">
+              <label className="grid gap-1 text-sm text-neutral-500">Full name<input required autoComplete="name" value={fullName} onChange={(event) => setFullName(event.target.value)} className="w-full border-b border-neutral-300 bg-transparent py-3 text-base text-neutral-950 outline-none transition placeholder:text-neutral-400 focus:border-violet-600" placeholder="Full name" /></label>
+              <label className="grid gap-1 text-sm text-neutral-500">Phone number<input required type="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} className="w-full border-b border-neutral-300 bg-transparent py-3 text-base text-neutral-950 outline-none transition placeholder:text-neutral-400 focus:border-violet-600" placeholder="(585) 555-0123" /></label>
             </div>
             {message ? <p role="alert" className="mt-4 text-sm text-rose-600">{message}</p> : null}
-            <button type="submit" disabled={submitting} className="mt-5 flex min-h-12 w-full items-center justify-between rounded-xl bg-violet-600 px-5 py-3 font-medium text-white transition hover:bg-violet-700 disabled:opacity-50 sm:mt-7 sm:py-3.5"><span>{submitting ? "Submitting…" : "Continue"}</span><ArrowRight className="h-4 w-4" /></button>
-            <p className="mt-3 text-center text-[11px] leading-4 text-neutral-400 sm:mt-4 sm:text-xs sm:leading-5">Your information is sent securely to USATII and is not shared with third parties.</p>
+            <button type="submit" disabled={submitting} className="mt-9 inline-flex min-h-12 w-full items-center justify-between border-b border-neutral-950 pb-3 text-sm font-medium transition-colors hover:border-violet-700 hover:text-violet-700 disabled:cursor-not-allowed disabled:opacity-50"><span>{submitting ? "Submitting…" : "Submit"}</span><ArrowRight className="h-4 w-4" /></button>
           </form>
         )}
       </div>
