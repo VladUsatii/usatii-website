@@ -35,7 +35,7 @@ export default function HeroSection() {
         <div className="flex min-h-[100svh] flex-col items-center justify-center gap-y-8 py-28 text-center md:py-40">
           <h1 className="max-w-4xl text-5xl font-bold tracking-tight text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.34)] md:text-7xl">
             We build <span className="text-purple-200">systems</span> that power{" "}
-            <u>marketing</u> & <u>operations</u>.
+            {/* <u>marketing</u> & */}<u>operations</u>.
           </h1>
 
           <div className="pointer-events-auto flex flex-row flex-wrap justify-center gap-3 pt-2">

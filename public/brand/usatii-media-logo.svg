@@ -1,0 +1,41 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="880"
+  height="200"
+  viewBox="0 0 880 200"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">USATII MEDIA logo</title>
+  <desc id="description">Purple orb and black italic USATII MEDIA wordmark.</desc>
+
+  <defs>
+    <radialGradient id="orb" cx="30%" cy="24%" r="82%">
+      <stop offset="0" stop-color="#d06bff" />
+      <stop offset="0.46" stop-color="#a83eed" />
+      <stop offset="1" stop-color="#7724ce" />
+    </radialGradient>
+    <linearGradient id="orb-sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24" />
+      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="880" height="200" fill="#f5f5f3" />
+
+  <circle cx="119.5" cy="100" r="48" fill="url(#orb)" />
+  <circle cx="119.5" cy="100" r="47" fill="url(#orb-sheen)" />
+
+  <text
+    x="205.5"
+    y="128"
+    fill="#181818"
+    font-family="Inter, Arial, sans-serif"
+    font-size="90"
+    font-style="italic"
+    font-weight="700"
+    letter-spacing="-4.7"
+    textLength="598"
+    lengthAdjust="spacingAndGlyphs"
+  >USATII MEDIA</text>
+</svg>

@@ -14,9 +14,10 @@ import {
 } from "@/components/ui/dialog";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { Download } from "lucide-react";
+// import { Download } from "lucide-react";
 
 const coreServices = [
+  /* Marketing services hidden from the homepage while USATII leads with custom software.
   {
     name: "Content & Channel Operations",
     price: "Editing from $75",
@@ -54,6 +55,7 @@ const coreServices = [
       ["20%", "Managed ad spend fee"],
     ],
   },
+  */
   {
     name: "Websites",
     price: "Projects from $2,000",
@@ -73,6 +75,7 @@ const coreServices = [
       ["$40,000+", "Enterprise website"],
     ],
   },
+  /*
   {
     name: "Search Engine Optimization",
     price: "From $1,000",
@@ -92,6 +95,8 @@ const coreServices = [
       ["$6,000+/month", "Enterprise SEO"],
     ],
   },
+  */
+  /*
   {
     name: "Community Management",
     price: "From $250/channel/mo",
@@ -110,6 +115,7 @@ const coreServices = [
       ["Custom", "Regulated community operations"],
     ],
   },
+  */
   {
     name: "Custom Software & Operations Systems",
     price: "$45/hr or fixed scope",
@@ -148,6 +154,7 @@ const addOns = [
       ["$250", "Onboarding for managed clients"],
     ],
   },
+  /*
   {
     name: "Growth Consulting",
     price: "$850/hr",
@@ -158,6 +165,7 @@ const addOns = [
       "• Frontier business software and marketing insights",
     ],
   },
+  */
 ];
 
 const cleanFeature = (text) => text.replace(/^•\s*/, "");
@@ -347,9 +355,10 @@ export default function HeroThree() {
           Our systems weave together and work as a feedback lifecycle for businesses at any stage.
         </p> */}
         <p className="mt-4 text-left text-md leading-7 text-slate-500">
-          We build the growth layer for modern businesses: content systems, paid acquisition, and custom software that connects marketing, sales, and operations. Our mission is to create cohesive operating systems where demand, data, follow-up, and execution compound in-house. No more subscription software.
+          We design and build custom websites, dashboards, portals, automations, and operating systems that bring critical workflows in-house. No more disconnected subscription software.
         </p>
       </div>
+        {/* The downloadable guide includes the hidden marketing service catalog.
         <a
           href="/guides/usatii-media-comprehensive-price-guide.pdf"
           download
@@ -357,10 +366,10 @@ export default function HeroThree() {
         >
           <Download className="h-4 w-4" aria-hidden="true" />
           Download full price guide
-        </a>
+        </a> */}
       </div>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
         {coreServices.map((plan, index) => (
           <PlanCard
             key={plan.name}
@@ -379,7 +388,7 @@ export default function HeroThree() {
           </h3>
         </div>
 
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid max-w-3xl gap-5">
           {addOns.map((plan, index) => (
             <PlanCard2
               key={plan.name}

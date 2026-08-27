@@ -12,7 +12,7 @@ const sideStories = [
   },
   {
     title: "Custom projects",
-    description: "We build real marketing and operations software for organizations that need scale, precision, and coordinated action.",
+    description: "We build custom operations software for organizations that need scale, precision, and coordinated action.",
     image: "/home/press/usatii-media.webp",
     href: "/software",
     cta: "See how we build",

@@ -104,17 +104,14 @@ export default function TrustedByGrid({
             </div>
   
             <h2 className="mt-4 text-balance text-3xl font-medium tracking-[-0.045em] text-neutral-950 sm:text-4xl md:text-5xl">
-              {title}
+              Custom software built around your operation.
             </h2>
   
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-neutral-600 sm:text-base">
-              {subtitle}
+              For the last half-decade, Usatii has helped businesses build efficient operations software and bring critical workflows in-house.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link href="/services/short-form-content-creation" className="rounded-full bg-neutral-100 px-4 py-2 text-xs font-medium transition hover:bg-neutral-200">
-                Creative delivery ↗
-              </Link>
               <Link href="/software" className="rounded-full bg-neutral-100 px-4 py-2 text-xs font-medium transition hover:bg-neutral-200">
                 Operations work ↗
               </Link>
