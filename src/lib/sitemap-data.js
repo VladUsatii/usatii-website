@@ -26,6 +26,8 @@ export async function getCanonicalSitemapPaths() {
     ...getApprovedSitemapRoutes(),
     ...getAllTradeRoutes(),
     ...caseStudyRoutes,
+    "/news",
+    "/news/introducing-digital-business-cards",
     "/sitemap",
   ]);
 
