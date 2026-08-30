@@ -7,7 +7,7 @@ import { Suspense } from "react";
 export const metadata = {
   metadataBase: new URL("https://usatii.com"),
   title: {
-    default: "USATII MEDIA | Custom Websites, Marketing Systems & Business Software",
+    default: "USATII MEDIA | Business Software, Custom Websites, & AI Integration",
     template: "%s | USATII",
   },
   description:
