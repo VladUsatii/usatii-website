@@ -9,6 +9,32 @@ function isSessionFresh(payload) {
 
 export async function middleware(request) {
   const { pathname, search } = request.nextUrl;
+
+  if (pathname === '/case-studies') {
+    return new NextResponse('Not Found', {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'X-Robots-Tag': 'noindex, nofollow',
+      },
+    });
+  }
+
+  if (pathname.startsWith('/case-studies/') && pathname !== '/case-studies/rebuildit-inc') {
+    const slug = pathname.slice('/case-studies/'.length);
+    return NextResponse.redirect(new URL(`/marketing-case-studies/${slug}${search}`, request.url), 308);
+  }
+
+  if (pathname === '/apply' || pathname === '/vlad') {
+    return new NextResponse('Not Found', {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'X-Robots-Tag': 'noindex, nofollow',
+      },
+    });
+  }
+
   const cookieValue = request.cookies.get(PORTAL_SESSION_COOKIE)?.value;
   const payload = cookieValue
     ? await verifySignedSessionValue(cookieValue, getPortalAuthSecret())
@@ -42,5 +68,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/portal/:path*', '/admin', '/admin/login'],
+  matcher: ['/apply', '/vlad', '/case-studies', '/case-studies/:path*', '/portal/:path*', '/admin', '/admin/login'],
 };

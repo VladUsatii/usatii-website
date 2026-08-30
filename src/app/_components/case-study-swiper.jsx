@@ -20,7 +20,7 @@ export default function CaseStudySwiper() {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-4xl font-medium tracking-[-0.035em] text-neutral-950 sm:text-6xl">Selected case studies</h2>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-neutral-600">A few examples of focused systems producing measurable outcomes.</p>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-neutral-600">Work at the edge of acquisition and operations, where the systems surrounding the software produced measurable outcomes.</p>
           </div>
           <div className="flex items-center gap-3">
             <span className="mr-2 text-sm tabular-nums text-neutral-500">{String(activeIndex + 1).padStart(2, "0")} / {String(caseStudies.length).padStart(2, "0")}</span>

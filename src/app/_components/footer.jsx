@@ -50,8 +50,16 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/case-studies" className="hover:text-black">
-                Case Studies
+              <a href="/marketing-case-studies" className="hover:text-black">
+                Marketing Archive
+              </a>
+            </li>
+          </ul>
+          <h3 className="mb-3 mt-7 text-sm font-black text-ink">Case Studies</h3>
+          <ul className="space-y-3 text-sm font-medium text-ink-soft">
+            <li>
+              <a href="/case-studies/rebuildit-inc" className="hover:text-black">
+                REBUILDIT INC.
               </a>
             </li>
           </ul>

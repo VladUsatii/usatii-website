@@ -5,9 +5,7 @@ import Link from "next/link";
 import React from "react";
 import AvatarGroup from "./avatar-group";
 import LogoMarquee from "./logo-marquee";
-import CaseStudySwiper from "./case-study-swiper";
 import SystemsBentoGrid from "./bento-systems";
-import DemoGridWithLiveVideo from "./demo-grid-live-video";
 import TrustedByGrid from "./brands";
 import HeroSection from "./top-hero";
 import GoogleReviewGrid from "./google-review-grid";
@@ -20,8 +18,6 @@ export default function Hero() {
       <TrustedByGrid />
       <GoogleReviewGrid />
       <SystemsBentoGrid />
-      <DemoGridWithLiveVideo />
-      <CaseStudySwiper />
     </section>
     </>
   );

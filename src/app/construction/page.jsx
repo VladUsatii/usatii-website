@@ -223,7 +223,7 @@ export default function ConstructionPage() {
             <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3">
               <TextLink href={BOOK_URL}>Book a working session</TextLink>
               <TextLink href="/quote-request">Send project details</TextLink>
-              <TextLink href="/case-studies">View proof</TextLink>
+              <TextLink href="/case-studies/rebuildit-inc">View REBUILDIT INC. case study</TextLink>
             </div>
           </div>
         </section>

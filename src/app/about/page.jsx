@@ -37,7 +37,7 @@ const stories = [
     title: "Technology to improve quality of life",
     subtext: "Why we build systems to reduce nearly all rote work and what to do instead.",
     type: "Perspective",
-    href: "/case-studies",
+    href: "/case-studies/rebuildit-inc",
     color: "from-orange-100 via-rose-50 to-violet-100",
   },
 ];

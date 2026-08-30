@@ -13,10 +13,13 @@ function Referral() {
       </Link>
 
       <h2 className="text-gray-800 my-5 text-4xl font-black bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
-        Referral Program.
+        Software Referral Program.
       </h2>
 
       <div className="grid gap-y-3">
+        <p className="text-gray-600">
+          Help another business replace software sprawl with a system built around how its team actually works.
+        </p>
         <p className="font-bold text-gray-700">When you refer a new client:</p>
         <p className="font-bold text-gray-700">• Earn a <span className="text-indigo-600">$250</span> credit toward our services when they start their first month.
         </p>

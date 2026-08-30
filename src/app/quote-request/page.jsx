@@ -138,7 +138,7 @@ export default function QuoteRequestPage() {
             <h1 className="text-3xl font-semibold tracking-tight text-neutral-950">
               Request a quote
             </h1>
-            <p className='text-neutral-700 text-sm pt-3'><span className='text-purple-500'>We serve clients all over the world</span>. Usatii provides world-class marketing and software builds to new and established businesses looking to scale and move operations in-house. Request a quote here and we'll get back to you within 24 hours.</p>
+            <p className='text-neutral-700 text-sm pt-3'><span className='text-purple-500'>We build software for teams around the world</span>. Tell us about the workflows, tools, and operational problems you want to bring into one reliable system. Request a quote here and we'll get back to you within 24 hours.</p>
           </div>
 
             <div className="grid gap-4 sm:grid-cols-2">

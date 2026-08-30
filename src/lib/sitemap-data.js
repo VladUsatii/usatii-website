@@ -9,7 +9,8 @@ export function getSitemapPriority(path) {
   if (path.startsWith("/software/")) return 0.9;
   if (path === "/services") return 0.92;
   if (path.startsWith("/services/")) return 0.88;
-  if (path === "/case-studies") return 0.9;
+  if (path === "/case-studies/rebuildit-inc") return 0.9;
+  if (path === "/marketing-case-studies") return 0.75;
   if (path.startsWith("/case-studies/")) return 0.85;
   if (path === "/sitemap") return 0.7;
   return 0.8;
@@ -18,8 +19,9 @@ export function getSitemapPriority(path) {
 export async function getCanonicalSitemapPaths() {
   const caseStudySlugs = await getAllCaseStudySlugs();
   const caseStudyRoutes = [
-    "/case-studies",
-    ...caseStudySlugs.map((slug) => `/case-studies/${slug}`),
+    "/case-studies/rebuildit-inc",
+    "/marketing-case-studies",
+    ...caseStudySlugs.map((slug) => `/marketing-case-studies/${slug}`),
   ];
 
   const routes = new Set([

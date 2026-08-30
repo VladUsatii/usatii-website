@@ -33,9 +33,9 @@ export default function HeroSection() {
 
       <div className="pointer-events-none relative z-20 mx-auto max-w-7xl px-6">
         <div className="flex min-h-[100svh] flex-col items-center justify-center gap-y-8 py-28 text-center md:py-40">
-          <h1 className="max-w-4xl text-5xl font-bold tracking-tight text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.34)] md:text-7xl">
-            We build <span className="text-purple-200">systems</span> that power{" "}
-            {/* <u>marketing</u> & */}<u>operations</u>.
+          <h1 className="max-w-6xl text-balance text-[clamp(2.75rem,6.5vw,5.5rem)] font-bold leading-[0.98] tracking-[-0.045em] text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.34)]">
+            Software that <span className="text-purple-200">understands</span> how your{" "}
+            <u>organization</u> works.
           </h1>
 
           <div className="pointer-events-auto flex flex-row flex-wrap justify-center gap-3 pt-2">
@@ -45,7 +45,7 @@ export default function HeroSection() {
               </Button>
             </Link>
 
-            <Link id="casestudies" href="/case-studies" target="_blank">
+            <Link id="casestudies" href="/case-studies/rebuildit-inc">
               <Button className="cursor-pointer rounded-full border border-white/45 bg-white/12 px-7 py-6 text-lg font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-md transition hover:-translate-y-0.5 hover:scale-[1.03] hover:bg-white/20 hover:text-white">
                 Read case studies
               </Button>

@@ -1,0 +1,211 @@
+{"kind":"deck","id":"pr/39a3e7","name":"Deck"}
+{"kind":"layout","layoutId":"bb8e6874-ead0-42fc-af56-5d3f5015f0d3","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"4d6f8f30-fe33-4c62-a81e-9bb8e1df5ed6","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/ptwja1","slide":1,"title":"2026","textShapes":8}
+{"kind":"textbox","id":"sh/t8jytgby","slide":1,"text":"2026","textPreview":"2026","textChars":4,"textLines":1,"bbox":[686,50,70,20]}
+{"kind":"textbox","id":"sh/y18fe1cb","slide":1,"name":"cover-title","text":"Corporate\ncapabilities","textPreview":"Corporate | capabilities","textChars":22,"textLines":2,"bbox":[60,334,650,180]}
+{"kind":"textbox","id":"sh/j2hwn6tw","slide":1,"text":"Custom software built around your operation.","textPreview":"Custom software built around your operation.","textChars":44,"textLines":1,"bbox":[60,570,620,54]}
+{"kind":"shape","id":"sh/k3qxgbuh","slide":1,"bbox":[60,754,696,2]}
+{"kind":"textbox","id":"sh/l4jypgb2","slide":1,"text":"PRODUCT","textPreview":"PRODUCT","textChars":7,"textLines":1,"bbox":[60,786,150,22]}
+{"kind":"textbox","id":"sh/ad8fahcf","slide":1,"text":"DATA + AI","textPreview":"DATA + AI","textChars":9,"textLines":1,"bbox":[236,786,150,22]}
+{"kind":"textbox","id":"sh/behwjmt0","slide":1,"text":"OPERATIONS","textPreview":"OPERATIONS","textChars":10,"textLines":1,"bbox":[438,786,150,22]}
+{"kind":"textbox","id":"sh/nutovilw","slide":1,"text":"GOVERNANCE","textPreview":"GOVERNANCE","textChars":10,"textLines":1,"bbox":[622,786,136,22]}
+{"kind":"textbox","id":"sh/mtkn2dkb","slide":1,"text":"Rochester, New York  ·  usatii.com","textPreview":"Rochester, New York  ·  usatii.com","textChars":34,"textLines":1,"bbox":[60,972,500,20]}
+{"kind":"image","id":"im/ydofm5wv","slide":1,"name":"","alt":"Shareholders and senior leaders discussing financial figures over coffee in a boardroom","bbox":[0,0,816,210]}
+{"kind":"image","id":"im/lgzyh0v6","slide":1,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,38,206,46.82]}
+{"kind":"notes","id":"nt/ptwja1","slide":1,"text":"[Sources]\n- https://www.usatii.com/\n- USATII Media approved logo asset (client brand asset)\n- AI-generated shareholder meeting photograph (OpenAI ImageGen, project asset)"}
+{"kind":"slide","id":"sl/mrxcpc","slide":2,"title":"CORPORATE CAPABILITIES","textShapes":13}
+{"kind":"textbox","id":"sh/s3ql0fmx","slide":2,"text":"CORPORATE CAPABILITIES","textPreview":"CORPORATE CAPABILITIES","textChars":22,"textLines":1,"bbox":[476,40,280,18]}
+{"kind":"textbox","id":"sh/doj29kni","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[60,1013,40,16]}
+{"kind":"textbox","id":"sh/eps32543","slide":2,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[636,1013,120,16]}
+{"kind":"textbox","id":"sh/fq1kba58","slide":2,"text":"00","textPreview":"00","textChars":2,"textLines":1,"bbox":[60,108,82,42]}
+{"kind":"textbox","id":"sh/0ral4fmt","slide":2,"text":"WHAT WE DO","textPreview":"WHAT WE DO","textChars":10,"textLines":1,"bbox":[146,112,420,24]}
+{"kind":"textbox","id":"sh/1sjmdkne","slide":2,"text":"We build systems\nthat power operations.","textPreview":"We build systems | that power operations.","textChars":39,"textLines":2,"bbox":[60,192,680,160]}
+{"kind":"textbox","id":"sh/uto3ql4j","slide":2,"text":"For the last half-decade, Usatii has helped businesses build operations software and bring critical workflows in-house.","textPreview":"For the last half-decade, Usatii has helped businesses build operations software and bring critical workflows in-house.","textChars":119,"textLines":1,"bbox":[288,500,528,118]}
+{"kind":"shape","id":"sh/vuxkzq54","slide":2,"bbox":[60,732,210,176]}
+{"kind":"textbox","id":"sh/n6h43yhs","slide":2,"text":"ONE","textPreview":"ONE","textChars":3,"textLines":1,"bbox":[82,754,160,34]}
+{"kind":"textbox","id":"sh/258nutg7","slide":2,"text":"Operating\npartner","textPreview":"Operating | partner","textChars":17,"textLines":2,"bbox":[82,808,165,72]}
+{"kind":"textbox","id":"sh/p8zm58zy","slide":2,"text":"Learn","textPreview":"Learn","textChars":5,"textLines":1,"bbox":[320,760,180,30]}
+{"kind":"textbox","id":"sh/o7q5w3yd","slide":2,"text":"Document the current process with your team.","textPreview":"Document the current process with your team.","textChars":44,"textLines":1,"bbox":[320,798,190,58]}
+{"kind":"textbox","id":"sh/f2h4zyhg","slide":2,"text":"Ship","textPreview":"Ship","textChars":4,"textLines":1,"bbox":[552,760,180,30]}
+{"kind":"textbox","id":"sh/e1onqtgv","slide":2,"text":"Put working software in front of users.","textPreview":"Put working software in front of users.","textChars":39,"textLines":1,"bbox":[552,798,190,58]}
+{"kind":"image","id":"im/yh8bepgb","slide":2,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,32,154,35]}
+{"kind":"notes","id":"nt/mrxcpc","slide":2,"text":"[Sources]\n- https://www.usatii.com/\n- https://www.usatii.com/software"}
+{"kind":"slide","id":"sl/elyakm","slide":3,"title":"What we build","textShapes":27}
+{"kind":"shape","id":"sh/3mp4369k","slide":3,"bbox":[0,0,212,1056]}
+{"kind":"textbox","id":"sh/po7m5grq","slide":3,"text":"What we build","textPreview":"What we build","textChars":13,"textLines":1,"bbox":[46,196,140,64]}
+{"kind":"textbox","id":"sh/qpg3e18b","slide":3,"text":"Core systems for daily operations.","textPreview":"Core systems for daily operations.","textChars":34,"textLines":1,"bbox":[46,300,130,76]}
+{"kind":"textbox","id":"sh/rq94769w","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[46,1008,32,18]}
+{"kind":"textbox","id":"sh/cbi5gbq1","slide":3,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[262,94,48,32]}
+{"kind":"textbox","id":"sh/dcrm9grm","slide":3,"text":"Products","textPreview":"Products","textChars":8,"textLines":1,"bbox":[326,88,190,38]}
+{"kind":"textbox","id":"sh/6tw32h8r","slide":3,"text":"Customer and employee applications","textPreview":"Customer and employee applications","textChars":34,"textLines":1,"bbox":[326,132,420,24]}
+{"kind":"shape","id":"sh/7u54vm9c","slide":3,"bbox":[262,186,494,1]}
+{"kind":"textbox","id":"sh/nqlgz2po","slide":3,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[262,218,48,32]}
+{"kind":"textbox","id":"sh/m5cf6x83","slide":3,"text":"Integrations","textPreview":"Integrations","textChars":12,"textLines":1,"bbox":[326,212,190,38]}
+{"kind":"textbox","id":"sh/9s3y1c7u","slide":3,"text":"Connections between existing systems","textPreview":"Connections between existing systems","textChars":36,"textLines":1,"bbox":[326,256,420,24]}
+{"kind":"shape","id":"sh/orux87q9","slide":3,"bbox":[262,310,494,1]}
+{"kind":"textbox","id":"sh/z2lgv2ps","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[262,342,48,32]}
+{"kind":"textbox","id":"sh/e1sf2x87","slide":3,"text":"Automation","textPreview":"Automation","textChars":10,"textLines":1,"bbox":[326,336,190,38]}
+{"kind":"textbox","id":"sh/143yxs7i","slide":3,"text":"Approvals, routing, and alerts","textPreview":"Approvals, routing, and alerts","textChars":30,"textLines":1,"bbox":[326,380,420,24]}
+{"kind":"shape","id":"sh/03ux4nqx","slide":3,"bbox":[262,434,494,1]}
+{"kind":"textbox","id":"sh/ry1gripg","slide":3,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[262,466,48,32]}
+{"kind":"textbox","id":"sh/qxsfyd8v","slide":3,"text":"Data","textPreview":"Data","textChars":4,"textLines":1,"bbox":[326,460,190,38]}
+{"kind":"textbox","id":"sh/ut8zadsn","slide":3,"text":"Reporting and decision support","textPreview":"Reporting and decision support","textChars":30,"textLines":1,"bbox":[326,504,420,24]}
+{"kind":"shape","id":"sh/fuhgji98","slide":3,"bbox":[262,558,494,1]}
+{"kind":"textbox","id":"sh/gvahcnat","slide":3,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[262,590,48,32]}
+{"kind":"textbox","id":"sh/hwjylsre","slide":3,"text":"Operations","textPreview":"Operations","textChars":10,"textLines":1,"bbox":[326,584,190,38]}
+{"kind":"textbox","id":"sh/2xszexsz","slide":3,"text":"Project, asset, and workforce tools","textPreview":"Project, asset, and workforce tools","textChars":35,"textLines":1,"bbox":[326,628,420,24]}
+{"kind":"shape","id":"sh/3y1gni9k","slide":3,"bbox":[262,682,494,1]}
+{"kind":"textbox","id":"sh/4zahgna5","slide":3,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[262,714,48,32]}
+{"kind":"textbox","id":"sh/p0jipsrq","slide":3,"text":"Revenue","textPreview":"Revenue","textChars":7,"textLines":1,"bbox":[326,708,190,38]}
+{"kind":"textbox","id":"sh/q1szixsv","slide":3,"text":"Lead and customer workflows","textPreview":"Lead and customer workflows","textChars":27,"textLines":1,"bbox":[326,752,420,24]}
+{"kind":"shape","id":"sh/r210r29g","slide":3,"bbox":[262,806,494,1]}
+{"kind":"textbox","id":"sh/1wn2hwby","slide":3,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[262,838,48,32]}
+{"kind":"textbox","id":"sh/0ve18rud","slide":3,"text":"Governance","textPreview":"Governance","textChars":10,"textLines":1,"bbox":[326,832,190,38]}
+{"kind":"textbox","id":"sh/zu5kfmts","slide":3,"text":"Access control and audit records","textPreview":"Access control and audit records","textChars":32,"textLines":1,"bbox":[326,876,420,24]}
+{"kind":"shape","id":"sh/etcj6hc7","slide":3,"bbox":[262,930,494,1]}
+{"kind":"textbox","id":"sh/9kn2lgbu","slide":3,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[262,962,48,32]}
+{"kind":"textbox","id":"sh/oje1cbu9","slide":3,"text":"Visibility","textPreview":"Visibility","textChars":10,"textLines":1,"bbox":[326,956,190,38]}
+{"kind":"textbox","id":"sh/ni5kj6to","slide":3,"text":"Current status and exceptions","textPreview":"Current status and exceptions","textChars":29,"textLines":1,"bbox":[326,1000,420,24]}
+{"kind":"image","id":"im/1wvit8ry","slide":3,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[42,38,132,30]}
+{"kind":"notes","id":"nt/elyakm","slide":3,"text":"[Sources]\n- USATII Media capability statement (client-supplied source)\n- USATII Media approved logo asset (client brand asset)"}
+{"kind":"slide","id":"sl/u5w8j8","slide":4,"title":"PRODUCT + SOFTWARE","textShapes":16}
+{"kind":"textbox","id":"sh/8ze1w7el","slide":4,"text":"PRODUCT + SOFTWARE","textPreview":"PRODUCT + SOFTWARE","textChars":18,"textLines":1,"bbox":[476,40,280,18]}
+{"kind":"textbox","id":"sh/t0n25cf6","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[60,1013,40,16]}
+{"kind":"textbox","id":"sh/ytcjqdwj","slide":4,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[636,1013,120,16]}
+{"kind":"textbox","id":"sh/jul0zix4","slide":4,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[60,108,82,42]}
+{"kind":"textbox","id":"sh/kve1snep","slide":4,"text":"PRODUCT AND INTERNAL SOFTWARE","textPreview":"PRODUCT AND INTERNAL SOFTWARE","textChars":29,"textLines":1,"bbox":[146,112,420,24]}
+{"kind":"textbox","id":"sh/lwni1sfa","slide":4,"text":"Software designed for\nyour operation.","textPreview":"Software designed for | your operation.","textChars":37,"textLines":2,"bbox":[60,188,660,152]}
+{"kind":"shape","id":"sh/ipgj2hw3","slide":4,"bbox":[60,422,696,246]}
+{"kind":"textbox","id":"sh/3qpkbmdo","slide":4,"text":"CUSTOM APPLICATIONS","textPreview":"CUSTOM APPLICATIONS","textChars":19,"textLines":1,"bbox":[86,448,250,20]}
+{"kind":"textbox","id":"sh/zyxc7axo","slide":4,"text":"Customer-facing products","textPreview":"Customer-facing products","textChars":24,"textLines":1,"bbox":[86,500,290,58]}
+{"kind":"textbox","id":"sh/yxobe5w3","slide":4,"text":"We build portals, forms, quoting tools, and responsive web applications.","textPreview":"We build portals, forms, quoting tools, and responsive web applications.","textChars":72,"textLines":1,"bbox":[86,574,290,76]}
+{"kind":"textbox","id":"sh/l0fu90fu","slide":4,"text":"INTERNAL SYSTEMS","textPreview":"INTERNAL SYSTEMS","textChars":16,"textLines":1,"bbox":[424,448,250,20]}
+{"kind":"textbox","id":"sh/kz6tgve9","slide":4,"text":"Operations software","textPreview":"Operations software","textChars":19,"textLines":1,"bbox":[424,500,290,58]}
+{"kind":"textbox","id":"sh/72xcbax0","slide":4,"text":"We build tools for scheduling, inventory, service work, and project tracking.","textPreview":"We build tools for scheduling, inventory, service work, and project tracking.","textChars":77,"textLines":1,"bbox":[424,574,290,76]}
+{"kind":"textbox","id":"sh/m1obi5wf","slide":4,"text":"Production stack","textPreview":"Production stack","textChars":16,"textLines":1,"bbox":[60,722,180,28]}
+{"kind":"textbox","id":"sh/94zudkfq","slide":4,"text":"Modern web applications backed by Python and SQL.","textPreview":"Modern web applications backed by Python and SQL.","textChars":49,"textLines":1,"bbox":[60,774,650,34]}
+{"kind":"textbox","id":"sh/836dkfel","slide":4,"text":"Deployed in containers with authentication and role-based access.","textPreview":"Deployed in containers with authentication and role-based access.","textChars":65,"textLines":1,"bbox":[60,830,650,58]}
+{"kind":"shape","id":"sh/vqhcfuxw","slide":4,"bbox":[60,922,696,1]}
+{"kind":"textbox","id":"sh/u58vmpwb","slide":4,"text":"We can also work within a client-required stack.","textPreview":"We can also work within a client-required stack.","textChars":48,"textLines":1,"bbox":[60,944,650,38]}
+{"kind":"image","id":"im/2pozmpkb","slide":4,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,32,154,35]}
+{"kind":"notes","id":"nt/u5w8j8","slide":4,"text":"[Sources]\n- USATII Media capability statement (client-supplied source)"}
+{"kind":"slide","id":"sl/9szj5c","slide":5,"title":"WORKFLOW + OPERATIONS","textShapes":18}
+{"kind":"textbox","id":"sh/dsv2pk7y","slide":5,"text":"WORKFLOW + OPERATIONS","textPreview":"WORKFLOW + OPERATIONS","textChars":21,"textLines":1,"bbox":[476,40,280,18]}
+{"kind":"textbox","id":"sh/crmlgf6d","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[60,1013,40,16]}
+{"kind":"textbox","id":"sh/zudkrup4","slide":5,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[636,1013,120,16]}
+{"kind":"textbox","id":"sh/et43ipoj","slide":5,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[60,108,82,42]}
+{"kind":"textbox","id":"sh/1wf2tk7u","slide":5,"text":"OPERATIONAL AUTOMATION","textPreview":"OPERATIONAL AUTOMATION","textChars":22,"textLines":1,"bbox":[146,112,420,24]}
+{"kind":"textbox","id":"sh/0v6lkz6p","slide":5,"text":"Every task has an owner,\na status, and a record.","textPreview":"Every task has an owner, | a status, and a record.","textChars":48,"textLines":2,"bbox":[60,188,650,152]}
+{"kind":"textbox","id":"sh/nyxkvup0","slide":5,"text":"We automate repeatable handoffs while keeping approvals and exceptions visible to the people responsible for them.","textPreview":"We automate repeatable handoffs while keeping approvals and exceptions visible to the people responsible for them.","textChars":114,"textLines":1,"bbox":[304,388,512,96]}
+{"kind":"textbox","id":"sh/mxo3mpof","slide":5,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[60,554,42,26]}
+{"kind":"textbox","id":"sh/cva94be1","slide":5,"text":"Route","textPreview":"Route","textChars":5,"textLines":1,"bbox":[124,552,230,50]}
+{"kind":"textbox","id":"sh/dwjqxgvm","slide":5,"text":"Send work to the right person based on clear rules.","textPreview":"Send work to the right person based on clear rules.","textChars":51,"textLines":1,"bbox":[378,552,378,68]}
+{"kind":"shape","id":"sh/q98r2lwb","slide":5,"bbox":[60,634,696,1]}
+{"kind":"textbox","id":"sh/ruh8vqdg","slide":5,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[60,664,42,26]}
+{"kind":"textbox","id":"sh/0za98ved","slide":5,"text":"Track","textPreview":"Track","textChars":5,"textLines":1,"bbox":[124,662,230,50]}
+{"kind":"textbox","id":"sh/10ja10vy","slide":5,"text":"Show current status, due dates, and blocked work.","textPreview":"Show current status, due dates, and blocked work.","textChars":49,"textLines":1,"bbox":[378,662,378,68]}
+{"kind":"shape","id":"sh/exsr6lw7","slide":5,"bbox":[60,744,696,1]}
+{"kind":"textbox","id":"sh/zy1szqds","slide":5,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[60,774,42,26]}
+{"kind":"textbox","id":"sh/o3u9cfe9","slide":5,"text":"Record","textPreview":"Record","textChars":6,"textLines":1,"bbox":[124,772,230,50]}
+{"kind":"textbox","id":"sh/943a50vu","slide":5,"text":"Keep approval history and supporting evidence together.","textPreview":"Keep approval history and supporting evidence together.","textChars":55,"textLines":1,"bbox":[378,772,378,68]}
+{"kind":"shape","id":"sh/hkzqp0ny","slide":5,"bbox":[60,854,696,1]}
+{"kind":"textbox","id":"sh/wjq9wv6d","slide":5,"text":"CALL WORKFLOWS","textPreview":"CALL WORKFLOWS","textChars":14,"textLines":1,"bbox":[60,910,190,22]}
+{"kind":"textbox","id":"sh/vih8nq5s","slide":5,"text":"Turn calls into assigned follow-up with a transcript, summary, and due date.","textPreview":"Turn calls into assigned follow-up with a transcript, summary, and due date.","textChars":76,"textLines":1,"bbox":[280,904,536,54]}
+{"kind":"image","id":"im/7m1c3utc","slide":5,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,32,154,35]}
+{"kind":"notes","id":"nt/9szj5c","slide":5,"text":"[Sources]\n- USATII Media capability statement (client-supplied source)"}
+{"kind":"slide","id":"sl/adjqmw","slide":6,"title":"DATA + AI","textShapes":18}
+{"kind":"textbox","id":"sh/94zm9cna","slide":6,"text":"DATA + AI","textPreview":"DATA + AI","textChars":9,"textLines":1,"bbox":[476,40,280,18]}
+{"kind":"textbox","id":"sh/83q5gr6p","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[60,1013,40,16]}
+{"kind":"textbox","id":"sh/zex432p8","slide":6,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[636,1013,120,16]}
+{"kind":"textbox","id":"sh/ydo3axon","slide":6,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[60,108,82,42]}
+{"kind":"textbox","id":"sh/l0zm5c7e","slide":6,"text":"DATA AND DECISION INFRASTRUCTURE","textPreview":"DATA AND DECISION INFRASTRUCTURE","textChars":32,"textLines":1,"bbox":[146,112,420,24]}
+{"kind":"textbox","id":"sh/kz6lc76t","slide":6,"text":"Use company data\nin everyday decisions.","textPreview":"Use company data | in everyday decisions.","textChars":39,"textLines":2,"bbox":[60,188,650,152]}
+{"kind":"shape","id":"sh/bax4z2pc","slide":6,"bbox":[520,356,236,236]}
+{"kind":"textbox","id":"sh/a9o36xor","slide":6,"text":"DATA","textPreview":"DATA","textChars":4,"textLines":1,"bbox":[544,382,184,24]}
+{"kind":"textbox","id":"sh/8byp47ih","slide":6,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[544,430,184,88]}
+{"kind":"textbox","id":"sh/9c76dcz2","slide":6,"text":"Collect and organize","textPreview":"Collect and organize","textChars":20,"textLines":1,"bbox":[544,536,184,42]}
+{"kind":"textbox","id":"sh/mpgn2h0r","slide":6,"text":"Bring records from forms, business systems, documents, and calls into one usable data model.","textPreview":"Bring records from forms, business systems, documents, and calls into one usable data model.","textChars":92,"textLines":1,"bbox":[60,402,398,100]}
+{"kind":"textbox","id":"sh/napob21c","slide":6,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[60,648,42,26]}
+{"kind":"textbox","id":"sh/0ny507il","slide":6,"text":"Find","textPreview":"Find","textChars":4,"textLines":1,"bbox":[124,646,230,50]}
+{"kind":"textbox","id":"sh/lo769cj6","slide":6,"text":"Search documents and retrieve the supporting source.","textPreview":"Search documents and retrieve the supporting source.","textChars":52,"textLines":1,"bbox":[378,646,378,68]}
+{"kind":"shape","id":"sh/ylgnyx0f","slide":6,"bbox":[60,728,696,1]}
+{"kind":"textbox","id":"sh/zmpo7210","slide":6,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[60,758,42,26]}
+{"kind":"textbox","id":"sh/4jipcrip","slide":6,"text":"Review","textPreview":"Review","textChars":6,"textLines":1,"bbox":[124,756,230,50]}
+{"kind":"textbox","id":"sh/5kb6lwza","slide":6,"text":"Use AI for a first pass, then route uncertain results to a person.","textPreview":"Use AI for a first pass, then route uncertain results to a person.","textChars":66,"textLines":1,"bbox":[378,756,378,68]}
+{"kind":"shape","id":"sh/d0765wre","slide":6,"bbox":[60,838,696,1]}
+{"kind":"textbox","id":"sh/szy5wrat","slide":6,"text":"Fits your model policy","textPreview":"Fits your model policy","textChars":22,"textLines":1,"bbox":[60,906,230,24]}
+{"kind":"textbox","id":"sh/ry5o3m9o","slide":6,"text":"We can use your approved provider or deploy an open-weight model.","textPreview":"We can use your approved provider or deploy an open-weight model.","textChars":65,"textLines":1,"bbox":[60,944,690,30]}
+{"kind":"image","id":"im/bil0nqtg","slide":6,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,32,154,35]}
+{"kind":"notes","id":"nt/adjqmw","slide":6,"text":"[Sources]\n- USATII Media capability statement (client-supplied source)"}
+{"kind":"slide","id":"sl/nwcor6","slide":7,"title":"SELECTED WORK","textShapes":9}
+{"kind":"textbox","id":"sh/ad0z6p8n","slide":7,"text":"SELECTED WORK","textPreview":"SELECTED WORK","textChars":13,"textLines":1,"bbox":[476,40,280,18]}
+{"kind":"textbox","id":"sh/be90fu98","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[60,1013,40,16]}
+{"kind":"textbox","id":"sh/kj2hcjq5","slide":7,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[636,1013,120,16]}
+{"kind":"textbox","id":"sh/lkbil4ra","slide":7,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[60,108,82,42]}
+{"kind":"textbox","id":"sh/yh0za98z","slide":7,"text":"REBUILDIT INC.","textPreview":"REBUILDIT INC.","textChars":14,"textLines":1,"bbox":[146,112,420,24]}
+{"kind":"textbox","id":"sh/zi90je9k","slide":7,"text":"One system for office\nand field work.","textPreview":"One system for office | and field work.","textChars":37,"textLines":2,"bbox":[60,188,690,152]}
+{"kind":"shape","id":"sh/98biporm","slide":7,"bbox":[60,804,696,2]}
+{"kind":"textbox","id":"sh/x87ulwji","slide":7,"text":"CONSTRUCTION OPERATING SYSTEM","textPreview":"CONSTRUCTION OPERATING SYSTEM","textChars":29,"textLines":1,"bbox":[60,834,240,18]}
+{"kind":"textbox","id":"sh/wnetsbix","slide":7,"text":"Work is tracked from the first inquiry through the active project. The same workspace supports the back office.","textPreview":"Work is tracked from the first inquiry through the active project. The same workspace supports the back office.","textChars":111,"textLines":1,"bbox":[320,826,436,72]}
+{"kind":"textbox","id":"sh/bm5cj61c","slide":7,"text":"REBUILDITINC.COM","textPreview":"REBUILDITINC.COM","textChars":16,"textLines":1,"bbox":[60,940,180,18]}
+{"kind":"image","id":"im/cvehsrm1","slide":7,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,32,154,35]}
+{"kind":"image","id":"im/1o3ytcne","slide":7,"name":"","alt":"REBUILDIT INC. public website created by USATII Media","bbox":[60,390,696,371]}
+{"kind":"notes","id":"nt/nwcor6","slide":7,"text":"[Sources]\n- https://www.usatii.com/\n- https://www.usatii.com/software\n- https://www.rebuilditinc.com/\n- REBUILDIT INC. website image from client repository"}
+{"kind":"slide","id":"sl/dntv2w","slide":8,"title":"PLATFORM + CONTROL","textShapes":15}
+{"kind":"textbox","id":"sh/cfut4bql","slide":8,"text":"PLATFORM + CONTROL","textPreview":"PLATFORM + CONTROL","textChars":18,"textLines":1,"bbox":[476,40,280,18]}
+{"kind":"textbox","id":"sh/xg3udg76","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[60,1013,40,16]}
+{"kind":"textbox","id":"sh/2psby18j","slide":8,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[636,1013,120,16]}
+{"kind":"textbox","id":"sh/nq1s76p4","slide":8,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[60,108,82,42]}
+{"kind":"textbox","id":"sh/orat0bqp","slide":8,"text":"CLOUD, INTEGRATIONS, AND GOVERNANCE","textPreview":"CLOUD, INTEGRATIONS, AND GOVERNANCE","textChars":35,"textLines":1,"bbox":[146,112,420,24]}
+{"kind":"textbox","id":"sh/psja9g7a","slide":8,"text":"Run critical systems\non a controlled foundation.","textPreview":"Run critical systems | on a controlled foundation.","textChars":48,"textLines":2,"bbox":[60,188,650,152]}
+{"kind":"shape","id":"sh/mlwbal8n","slide":8,"bbox":[0,410,304,500]}
+{"kind":"textbox","id":"sh/7m5cjqp8","slide":8,"text":"SECURITY\nCONTROLS","textPreview":"SECURITY | CONTROLS","textChars":17,"textLines":2,"bbox":[60,450,210,64]}
+{"kind":"textbox","id":"sh/3qd8fad4","slide":8,"text":"Sign-in controls\nRole-based access\nRestricted records\nBackups\nAudit logs","textPreview":"Sign-in controls | Role-based access | Restricted records | Backups | Audit logs","textChars":72,"textLines":5,"bbox":[60,548,190,190]}
+{"kind":"textbox","id":"sh/ip4rm5wj","slide":8,"text":"We document these controls so they can be reviewed and maintained.","textPreview":"We document these controls so they can be reviewed and maintained.","textChars":66,"textLines":1,"bbox":[60,818,190,64]}
+{"kind":"textbox","id":"sh/5sfqh0va","slide":8,"text":"Cloud deployment","textPreview":"Cloud deployment","textChars":16,"textLines":1,"bbox":[360,438,396,34]}
+{"kind":"textbox","id":"sh/4r69ovep","slide":8,"text":"Deploy to the cloud environment your team is prepared to operate.","textPreview":"Deploy to the cloud environment your team is prepared to operate.","textChars":65,"textLines":1,"bbox":[360,492,360,90]}
+{"kind":"shape","id":"sh/rux8jadg","slide":8,"bbox":[360,624,396,1]}
+{"kind":"textbox","id":"sh/qtorq5wv","slide":8,"text":"System integration","textPreview":"System integration","textChars":18,"textLines":1,"bbox":[360,662,396,34]}
+{"kind":"textbox","id":"sh/dgfqlkv6","slide":8,"text":"Connect current software through supported APIs and controlled data transfers.","textPreview":"Connect current software through supported APIs and controlled data transfers.","textChars":78,"textLines":1,"bbox":[360,716,360,90]}
+{"kind":"shape","id":"sh/sv69sfel","slide":8,"bbox":[360,848,396,1]}
+{"kind":"textbox","id":"sh/fih8nudc","slide":8,"text":"Management visibility","textPreview":"Management visibility","textChars":21,"textLines":1,"bbox":[360,886,396,34]}
+{"kind":"textbox","id":"sh/ehorupwr","slide":8,"text":"Show current status, blocked work, and items that need attention.","textPreview":"Show current status, blocked work, and items that need attention.","textChars":65,"textLines":1,"bbox":[360,940,360,54]}
+{"kind":"image","id":"im/itkfa5sf","slide":8,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,32,154,35]}
+{"kind":"notes","id":"nt/dntv2w","slide":8,"text":"[Sources]\n- USATII Media capability statement (client-supplied source)"}
+{"kind":"slide","id":"sl/xpjut4","slide":9,"title":"ENGAGEMENT MODEL","textShapes":15}
+{"kind":"textbox","id":"sh/2ho3ad4f","slide":9,"text":"ENGAGEMENT MODEL","textPreview":"ENGAGEMENT MODEL","textChars":16,"textLines":1,"bbox":[476,40,280,18]}
+{"kind":"textbox","id":"sh/nixkji50","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[60,1013,40,16]}
+{"kind":"textbox","id":"sh/0f6l8nm9","slide":9,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[636,1013,120,16]}
+{"kind":"textbox","id":"sh/1gf2hsnu","slide":9,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[60,108,82,42]}
+{"kind":"textbox","id":"sh/ed436d4j","slide":9,"text":"FORWARD-DEPLOYED DELIVERY","textPreview":"FORWARD-DEPLOYED DELIVERY","textChars":25,"textLines":1,"bbox":[146,112,420,24]}
+{"kind":"textbox","id":"sh/fedkfi5o","slide":9,"text":"Prove one workflow\nin 30 days.","textPreview":"Prove one workflow | in 30 days.","textChars":30,"textLines":2,"bbox":[60,188,680,152]}
+{"kind":"shape","id":"sh/kbqlk7mt","slide":9,"bbox":[60,410,696,2]}
+{"kind":"textbox","id":"sh/lczmtc3e","slide":9,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[60,458,120,80]}
+{"kind":"textbox","id":"sh/tc3e1w3i","slide":9,"text":"Operational review","textPreview":"Operational review","textChars":18,"textLines":1,"bbox":[222,466,400,34]}
+{"kind":"textbox","id":"sh/8bux8rmx","slide":9,"text":"Choose the workflow, users, records, access rules, and success measure.","textPreview":"Choose the workflow, users, records, access rules, and success measure.","textChars":71,"textLines":1,"bbox":[222,518,500,68]}
+{"kind":"shape","id":"sh/7qlwz6lc","slide":9,"bbox":[60,628,696,1]}
+{"kind":"textbox","id":"sh/6pcv614r","slide":9,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[60,674,120,80]}
+{"kind":"textbox","id":"sh/lo3exw36","slide":9,"text":"30-day pilot","textPreview":"30-day pilot","textChars":12,"textLines":1,"bbox":[222,682,400,34]}
+{"kind":"textbox","id":"sh/knud4rml","slide":9,"text":"Put a working version into use with a small group and collect direct feedback.","textPreview":"Put a working version into use with a small group and collect direct feedback.","textChars":78,"textLines":1,"bbox":[222,734,500,68]}
+{"kind":"shape","id":"sh/jm1wvmlg","slide":9,"bbox":[60,844,696,1]}
+{"kind":"textbox","id":"sh/ylsv2h4v","slide":9,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[60,884,120,80]}
+{"kind":"textbox","id":"sh/5kne9g3q","slide":9,"text":"Ongoing delivery","textPreview":"Ongoing delivery","textChars":16,"textLines":1,"bbox":[222,892,400,34]}
+{"kind":"textbox","id":"sh/4jexgvm5","slide":9,"text":"Improve the pilot and add the next workflow when the first one is stable.","textPreview":"Improve the pilot and add the next workflow when the first one is stable.","textChars":73,"textLines":1,"bbox":[222,944,500,48]}
+{"kind":"image","id":"im/ore1cze9","slide":9,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,32,154,35]}
+{"kind":"notes","id":"nt/xpjut4","slide":9,"text":"[Sources]\n- USATII Media capability statement (client-supplied source)"}
+{"kind":"slide","id":"sl/4gy8nj","slide":10,"title":"10","textShapes":10}
+{"kind":"shape","id":"sh/2pc3adkz","slide":10,"bbox":[0,0,816,260]}
+{"kind":"textbox","id":"sh/orulcn25","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[686,50,70,34]}
+{"kind":"textbox","id":"sh/be5knilw","slide":10,"text":"Which workflow is\nslowing your team down?","textPreview":"Which workflow is | slowing your team down?","textChars":41,"textLines":2,"bbox":[60,342,670,158]}
+{"kind":"textbox","id":"sh/qtw3exkb","slide":10,"text":"We will scope a pilot and put it into use with your team.","textPreview":"We will scope a pilot and put it into use with your team.","textChars":57,"textLines":1,"bbox":[60,562,590,76]}
+{"kind":"shape","id":"sh/dgn2ps3m","slide":10,"bbox":[60,716,696,2]}
+{"kind":"textbox","id":"sh/cfelgn2h","slide":10,"text":"VLAD USATII","textPreview":"VLAD USATII","textChars":11,"textLines":1,"bbox":[60,762,180,20]}
+{"kind":"textbox","id":"sh/zi54r2ls","slide":10,"text":"Managing Member","textPreview":"Managing Member","textChars":15,"textLines":1,"bbox":[60,804,180,26]}
+{"kind":"textbox","id":"sh/yhw3ixk7","slide":10,"text":"VLAD@USATII.COM","textPreview":"VLAD@USATII.COM","textChars":15,"textLines":1,"bbox":[318,762,220,20]}
+{"kind":"textbox","id":"sh/gby1kjmt","slide":10,"text":"701-864-0782","textPreview":"701-864-0782","textChars":12,"textLines":1,"bbox":[318,804,220,26]}
+{"kind":"textbox","id":"sh/hc72d4ne","slide":10,"text":"USATII.COM","textPreview":"USATII.COM","textChars":10,"textLines":1,"bbox":[602,762,154,20]}
+{"kind":"textbox","id":"sh/u9gji9on","slide":10,"text":"Rochester, NY","textPreview":"Rochester, NY","textChars":13,"textLines":1,"bbox":[602,804,154,26]}
+{"kind":"textbox","id":"sh/fapkbe58","slide":10,"text":"VAU SOLUTIONS, LLC d/b/a USATII MEDIA","textPreview":"VAU SOLUTIONS, LLC d/b/a USATII MEDIA","textChars":37,"textLines":1,"bbox":[60,970,500,18]}
+{"kind":"image","id":"im/0vuhkbqx","slide":10,"name":"","alt":"USATII MEDIA brand lockup with purple orb","bbox":[60,42,198,45]}
+{"kind":"notes","id":"nt/4gy8nj","slide":10,"text":"[Sources]\n- USATII Media capability statement (client-supplied source)\n- USATII Media approved logo asset (client brand asset)"}

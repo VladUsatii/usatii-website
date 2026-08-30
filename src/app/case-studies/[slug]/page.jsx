@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${study.title} | Case Studies`,
+    title: `${study.title} | Marketing Case Studies`,
     description: study.excerpt,
   };
 }
@@ -386,7 +386,7 @@ export default async function CaseStudyPage({ params }) {
           <div className="mx-auto mt-16 grid max-w-5xl gap-4 md:grid-cols-2">
             {previousStudy ? (
               <Link
-                href={`/case-studies/${previousStudy.slug}`}
+                href={`/marketing-case-studies/${previousStudy.slug}`}
                 className="rounded-[24px] border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-sm"
               >
                 <div className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
@@ -402,7 +402,7 @@ export default async function CaseStudyPage({ params }) {
 
             {nextStudy ? (
               <Link
-                href={`/case-studies/${nextStudy.slug}`}
+                href={`/marketing-case-studies/${nextStudy.slug}`}
                 className="rounded-[24px] border border-slate-200 bg-white p-6 text-left transition hover:-translate-y-0.5 hover:shadow-sm"
               >
                 <div className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
