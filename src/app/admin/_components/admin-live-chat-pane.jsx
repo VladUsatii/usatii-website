@@ -57,6 +57,8 @@ export default function AdminLiveChatPane({ globalSearch = '' }) {
   const [error, setError] = useState('')
   const [sendingReply, setSendingReply] = useState(false)
   const [updatingStatus, setUpdatingStatus] = useState(false)
+  const [operationsDraft, setOperationsDraft] = useState({})
+  const [savingOperations, setSavingOperations] = useState(false)
 
   const hasLoadedRef = useRef(false)
   const messagesEndRef = useRef(null)
@@ -81,6 +83,10 @@ export default function AdminLiveChatPane({ globalSearch = '' }) {
       null
     )
   }, [conversations, selectedConversation, selectedConversationId])
+
+  useEffect(() => {
+    setOperationsDraft(resolvedSelectedConversation?.operations || {})
+  }, [resolvedSelectedConversation?.id, resolvedSelectedConversation?.operations])
 
   const loadSnapshot = useCallback(async ({ conversationId = '', silent = false } = {}) => {
     if (!silent) {
@@ -200,6 +206,24 @@ export default function AdminLiveChatPane({ globalSearch = '' }) {
     }
   }
 
+  async function saveOperations(event) {
+    event.preventDefault()
+    if (!selectedConversationId || savingOperations) return
+    setSavingOperations(true)
+    try {
+      await fetchJson('/api/admin/live-chat/conversation', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ conversationId: selectedConversationId, operations: operationsDraft }),
+      })
+      await loadSnapshot({ conversationId: selectedConversationId, silent: true })
+    } catch (caughtError) {
+      setError(String(caughtError?.message || 'Unable to save conversation operations.'))
+    } finally {
+      setSavingOperations(false)
+    }
+  }
+
   return (
     <section className="space-y-4">
       <header className="rounded-3xl border border-violet-200 bg-[linear-gradient(135deg,#faf5ff,#f5f3ff)] p-4">
@@ -228,7 +252,7 @@ export default function AdminLiveChatPane({ globalSearch = '' }) {
         </p>
       ) : null}
 
-      <div className="grid gap-4 xl:grid-cols-[320px_1fr]">
+      <div className="grid gap-4 xl:grid-cols-[300px_minmax(0,1fr)_300px]">
         <aside className="overflow-hidden rounded-3xl border border-neutral-200 bg-white">
           <div className="border-b border-neutral-200 px-4 py-3">
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-neutral-600">
@@ -387,6 +411,29 @@ export default function AdminLiveChatPane({ globalSearch = '' }) {
             </div>
           )}
         </section>
+        <aside className="overflow-hidden rounded-3xl border border-neutral-200 bg-white">
+          <header className="border-b border-neutral-200 px-4 py-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-neutral-600">Conversation operations</p>
+          </header>
+          {resolvedSelectedConversation ? (
+            <form onSubmit={saveOperations} className="space-y-3 p-4">
+              <label className="block text-[11px] font-bold uppercase tracking-wide text-neutral-500">Priority<select value={operationsDraft.priority || 'Normal'} onChange={(event) => setOperationsDraft((current) => ({ ...current, priority: event.target.value }))} className="mt-1 h-9 w-full rounded-lg border px-2 text-sm font-medium normal-case"><option>Low</option><option>Normal</option><option>High</option><option>Urgent</option></select></label>
+              <label className="block text-[11px] font-bold uppercase tracking-wide text-neutral-500">Pipeline stage<select value={operationsDraft.stage || 'New inquiry'} onChange={(event) => setOperationsDraft((current) => ({ ...current, stage: event.target.value }))} className="mt-1 h-9 w-full rounded-lg border px-2 text-sm font-medium normal-case"><option>New inquiry</option><option>Qualified</option><option>Discovery</option><option>Quote requested</option><option>Proposal sent</option><option>Customer</option><option>Not a fit</option></select></label>
+              {[
+                ['assignedTo','Assigned owner'],
+                ['email','Visitor email'],
+                ['company','Company'],
+                ['tags','Tags'],
+                ['nextAction','Next action'],
+                ['followUpAt','Follow-up date'],
+              ].map(([key,label]) => <label key={key} className="block text-[11px] font-bold uppercase tracking-wide text-neutral-500">{label}<input type={key === 'followUpAt' ? 'datetime-local' : key === 'email' ? 'email' : 'text'} value={operationsDraft[key] || ''} onChange={(event) => setOperationsDraft((current) => ({ ...current, [key]: event.target.value }))} className="mt-1 h-9 w-full rounded-lg border px-2 text-sm font-medium normal-case" /></label>)}
+              <label className="block text-[11px] font-bold uppercase tracking-wide text-neutral-500">Qualification summary<textarea value={operationsDraft.summary || ''} onChange={(event) => setOperationsDraft((current) => ({ ...current, summary: event.target.value }))} className="mt-1 min-h-20 w-full rounded-lg border p-2 text-sm font-medium normal-case" /></label>
+              <label className="block text-[11px] font-bold uppercase tracking-wide text-neutral-500">Internal notes<textarea value={operationsDraft.notes || ''} onChange={(event) => setOperationsDraft((current) => ({ ...current, notes: event.target.value }))} className="mt-1 min-h-28 w-full rounded-lg border p-2 text-sm font-medium normal-case" /></label>
+              <div className="grid grid-cols-2 gap-2 rounded-xl bg-neutral-50 p-3 text-xs text-neutral-500"><div><b className="block text-neutral-900">{messages.length}</b>messages</div><div><b className="block text-neutral-900">{resolvedSelectedConversation.createdAt ? Math.max(1, Math.ceil((Date.now() - new Date(resolvedSelectedConversation.createdAt).getTime()) / 86400000)) : '—'}</b>days old</div></div>
+              <button disabled={savingOperations} className="w-full rounded-full bg-neutral-950 px-3 py-2 text-sm font-semibold text-white disabled:opacity-60">{savingOperations ? 'Saving…' : 'Save operations'}</button>
+            </form>
+          ) : <p className="p-4 text-sm text-neutral-500">Select a conversation.</p>}
+        </aside>
       </div>
     </section>
   )

@@ -19,6 +19,8 @@ STRIPE_PRICE_ID_SHORT_FORM=
 PAYPAL_CLIENT_ID=
 PAYPAL_CLIENT_SECRET=
 PAYPAL_ENV=sandbox
+RESEND_API_KEY=
+RESEND_FROM_EMAIL="USATII MEDIA <updates@updates.usatii.com>"
 # optional override:
 # PAYPAL_API_BASE_URL=https://api-m.paypal.com
 ```
@@ -31,6 +33,7 @@ Notes:
 - Existing `BASE_URL` is used for Stripe success/cancel redirect URLs.
 - PayPal revenue sync uses `PAYPAL_CLIENT_ID` + `PAYPAL_CLIENT_SECRET` (with `PAYPAL_ENV=live` for production).
 - If PayPal returns access errors, verify the app mode matches credentials (`sandbox` vs `live`) and that your app/account has invoicing + transaction reporting access.
+- Password reset emails use `RESEND_API_KEY`; `RESEND_FROM_EMAIL` must use a sender or domain verified in the Resend account.
 
 New routes:
 

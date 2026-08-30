@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import PasswordInput from '@/app/_components/password-input';
 
 export default function AdminLoginForm() {
   const router = useRouter();
@@ -68,14 +69,19 @@ export default function AdminLoginForm() {
 
           <div>
             <label className="mb-2 block text-sm font-medium text-neutral-200">Password</label>
-            <input
-              type="password"
+            <PasswordInput
               value={password}
               autoComplete="current-password"
               onChange={(event) => setPassword(event.target.value)}
               className="w-full rounded-xl border border-white/20 bg-black/40 px-4 py-3 text-sm text-white outline-none transition focus:border-white"
+              buttonClassName="text-neutral-400 hover:text-white"
               required
             />
+            <div className="mt-2 text-right">
+              <Link href="/forgot-password?mode=admin" className="text-xs font-medium text-neutral-400 transition hover:text-white">
+                Forgot password?
+              </Link>
+            </div>
           </div>
 
           {error ? (

@@ -1585,7 +1585,7 @@ export function getAllTradeRoutes() {
     "/resources",
     "/audits",
     "/about",
-    "/about/vlad-usatii",
+    "/vlad-usatii",
     "/security",
     "/reviews",
     ...softwareRoutes,

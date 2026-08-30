@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { PRIVACY_EVENT_NAME, readPrivacyPreferences } from '@/lib/privacy-preferences';
 
 const SESSION_KEY = 'usatii_telemetry_session_id';
 const SEEN_KEY = 'usatii_telemetry_seen_events';
@@ -92,45 +93,55 @@ export default function TelemetryTracker() {
   const serializedSearch = useMemo(() => searchParams?.toString() || '', [searchParams]);
 
   useEffect(() => {
-    if (!shouldTrack(pathname)) return;
+    let cancelled = false;
 
-    const sessionId = ensureSessionId();
-    if (!sessionId) return;
+    function trackIfAllowed() {
+      if (cancelled || !shouldTrack(pathname) || readPrivacyPreferences()?.analytics !== true) return;
 
-    const path = pathFromCurrentLocation(pathname, searchParams);
-    const source = deriveSource(searchParams);
-    const referrer = typeof document !== 'undefined' ? document.referrer : '';
+      const sessionId = ensureSessionId();
+      if (!sessionId) return;
 
-    const seenSet = getSeenSet();
-    const pageViewKey = `page_view:${path}`;
-    const contactIntentKey = `contact_intent:${path}`;
+      const path = pathFromCurrentLocation(pathname, searchParams);
+      const source = deriveSource(searchParams);
+      const referrer = typeof document !== 'undefined' ? document.referrer : '';
 
-    if (!seenSet.has(pageViewKey)) {
-      seenSet.add(pageViewKey);
-      void sendEvent({
-        eventType: 'page_view',
-        sessionId,
-        path,
-        source,
-        referrer,
-      });
+      const seenSet = getSeenSet();
+      const pageViewKey = `page_view:${path}`;
+      const contactIntentKey = `contact_intent:${path}`;
+
+      if (!seenSet.has(pageViewKey)) {
+        seenSet.add(pageViewKey);
+        void sendEvent({
+          eventType: 'page_view',
+          sessionId,
+          path,
+          source,
+          referrer,
+        });
+      }
+
+      const isContactIntentPath = pathname === '/quote-request' || pathname === '/website-request';
+      if (isContactIntentPath && !seenSet.has(contactIntentKey)) {
+        seenSet.add(contactIntentKey);
+        void sendEvent({
+          eventType: 'contact_intent',
+          sessionId,
+          path,
+          source,
+          referrer,
+        });
+      }
+
+      persistSeenSet(seenSet);
     }
 
-    const isContactIntentPath = pathname === '/quote-request' || pathname === '/website-request';
-    if (isContactIntentPath && !seenSet.has(contactIntentKey)) {
-      seenSet.add(contactIntentKey);
-      void sendEvent({
-        eventType: 'contact_intent',
-        sessionId,
-        path,
-        source,
-        referrer,
-      });
-    }
-
-    persistSeenSet(seenSet);
+    trackIfAllowed();
+    window.addEventListener(PRIVACY_EVENT_NAME, trackIfAllowed);
+    return () => {
+      cancelled = true;
+      window.removeEventListener(PRIVACY_EVENT_NAME, trackIfAllowed);
+    };
   }, [pathname, searchParams, serializedSearch]);
 
   return null;
 }
-

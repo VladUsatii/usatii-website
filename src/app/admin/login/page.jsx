@@ -10,7 +10,7 @@ export default async function AdminLoginPage() {
   const session = await getCurrentPortalSession();
 
   if (session?.role === 'admin') {
-    redirect('/admin');
+    redirect('/dashboard');
   }
 
   if (session?.role === 'client') {

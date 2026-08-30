@@ -9,10 +9,12 @@ import AdminMermaidStudio from '@/app/admin/_components/admin-mermaid-studio';
 import AdminTelemetryPane from '@/app/admin/_components/admin-telemetry-pane';
 import AdminLiveChatPane from '@/app/admin/_components/admin-live-chat-pane';
 import AdminQrLeadsPane from '@/app/admin/_components/admin-qr-leads-pane';
+import AdminWorkspacePane from '@/app/admin/_components/admin-workspace-pane';
 
 const ACTIVE_NAV_ITEMS = [
   { id: 'command', label: 'Overview' },
   { id: 'clients', label: 'Clients' },
+  { id: 'workspace', label: 'Workspace Tools' },
   { id: 'revenue', label: 'Revenue' },
   { id: 'payments', label: 'Payments' },
   { id: 'applications', label: 'Applications' },
@@ -879,6 +881,10 @@ export default function OwnerDashboard({ adminEmail }) {
       return 'Careers / Applications / Inbox';
     }
 
+    if (activeNav === 'workspace') {
+      return 'Admin / Workspace / Operations';
+    }
+
     if (activeNav === 'qrLeads') {
       return 'Marketing / QR Leads / Software';
     }
@@ -913,6 +919,10 @@ export default function OwnerDashboard({ adminEmail }) {
   function getHeaderTitle() {
     if (activeNav === 'applications') {
       return 'Careers Applications Inbox';
+    }
+
+    if (activeNav === 'workspace') {
+      return 'Workspace Tools';
     }
 
     if (activeNav === 'qrLeads') {
@@ -2109,9 +2119,14 @@ export default function OwnerDashboard({ adminEmail }) {
     return <AdminMermaidStudio />;
   }
 
+  function renderWorkspaceSection() {
+    return <AdminWorkspacePane />;
+  }
+
   function renderMainPanel() {
     if (activeNav === 'command') return renderCommandCenter();
     if (activeNav === 'clients') return renderClientsSection();
+    if (activeNav === 'workspace') return renderWorkspaceSection();
     if (activeNav === 'revenue') return renderRevenueSection();
     if (activeNav === 'payments') return renderPaymentsSection();
     if (activeNav === 'applications') return renderApplicationsSection();

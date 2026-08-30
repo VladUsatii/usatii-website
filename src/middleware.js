@@ -54,7 +54,7 @@ export async function middleware(request) {
     }
   }
 
-  if (pathname === '/admin') {
+  if (pathname === '/admin' || pathname === '/dashboard') {
     if (!hasSession || payload.role !== 'admin') {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
@@ -68,5 +68,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/apply', '/vlad', '/case-studies', '/case-studies/:path*', '/portal/:path*', '/admin', '/admin/login'],
+  matcher: ['/apply', '/vlad', '/case-studies', '/case-studies/:path*', '/portal/:path*', '/admin', '/admin/login', '/dashboard'],
 };

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import PasswordInput from '@/app/_components/password-input';
 
 const PORTAL_BOOKING_URL = 'https://cal.com/usatii/onboarding';
 const BACKGROUND_ROTATION_MS = 30_000;
@@ -135,15 +136,20 @@ export default function PortalLoginForm({ nextPath }) {
 
             <div>
               <label className="mb-2 block text-sm font-medium text-neutral-700">Password</label>
-              <input
-                type="password"
+              <PasswordInput
                 autoComplete="current-password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 className="w-full rounded-xl border border-neutral-300/90 bg-white/95 px-4 py-3 text-sm outline-none transition focus:border-black focus:ring-2 focus:ring-neutral-900/15"
+                buttonClassName="text-neutral-500 hover:text-black"
                 placeholder="••••••••••••"
                 required
               />
+              <div className="mt-2 text-right">
+                <Link href="/forgot-password?mode=client" className="text-xs font-semibold text-neutral-600 underline-offset-4 hover:underline">
+                  Forgot password?
+                </Link>
+              </div>
             </div>
 
             {error ? (

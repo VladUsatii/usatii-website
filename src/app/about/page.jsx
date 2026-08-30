@@ -71,7 +71,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3">
               <TextLink href="/software">Our software</TextLink>
-              <TextLink href="/about/vlad-usatii">Our founder</TextLink>
+              <TextLink href="/vlad-usatii">Our founder</TextLink>
             </div>
           </div>
           <Image

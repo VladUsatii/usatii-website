@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { requirePortalSession } from '@/lib/portal/auth'
 import { getPortalDatabaseConfigPublicMessage, isPortalDatabaseConfigError } from '@/lib/portal/database'
-import { updateConversationStatus } from '@/lib/portal/live-chat'
+import { updateConversationOperations, updateConversationStatus } from '@/lib/portal/live-chat'
 
 export const runtime = 'nodejs'
 
@@ -28,14 +28,13 @@ export async function PATCH(request) {
     const conversationId = String(body?.conversationId || '').trim()
     const status = String(body?.status || '').trim().toLowerCase()
 
-    if (!conversationId || !['open', 'closed'].includes(status)) {
+    if (!conversationId || (!['open', 'closed'].includes(status) && !body?.operations)) {
       return NextResponse.json({ error: 'Invalid status payload.' }, { status: 400 })
     }
 
-    const conversation = await updateConversationStatus({
-      conversationId,
-      status,
-    })
+    const conversation = body?.operations
+      ? await updateConversationOperations({ conversationId, operations: body.operations })
+      : await updateConversationStatus({ conversationId, status })
 
     if (!conversation) {
       return NextResponse.json({ error: 'Conversation not found.' }, { status: 404 })

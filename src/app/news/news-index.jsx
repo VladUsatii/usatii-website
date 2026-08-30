@@ -2,16 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { Grid2X2, List } from "lucide-react";
-
-const categories = ["All"];
+import { useMemo, useState } from "react";
+import { ArrowDownUp, ArrowRight, Check, Grid2X2, List } from "lucide-react";
 
 const stories = [
   {
     title: "Introducing digital business cards",
     category: "Product",
     date: "Aug 28, 2026",
+    dateValue: "2026-08-28",
     image: "/news/digital-business-card.webp",
     href: "/news/introducing-digital-business-cards",
   },
@@ -43,40 +42,51 @@ function StoryCard({ story, listView }) {
 }
 
 export default function NewsIndex() {
-  const [listView, setListView] = useState(false);
+  const [sort, setSort] = useState("newest");
+  const [view, setView] = useState("grid");
+  const [openMenu, setOpenMenu] = useState(null);
+  const sortedStories = useMemo(() => [...stories].sort((a, b) => {
+    const difference = new Date(b.dateValue).getTime() - new Date(a.dateValue).getTime();
+    return sort === "newest" ? difference : -difference;
+  }), [sort]);
 
   return (
     <main className="bg-white">
       <section className="mx-auto w-full max-w-[1180px] px-5 pb-28 pt-16 sm:px-7 lg:pb-36 lg:pt-20">
-        <h1 className="text-[42px] font-medium leading-none tracking-[-0.045em] sm:text-[48px]">News</h1>
+        <div className="flex items-center justify-between gap-6">
+          <h1 className="text-[42px] font-medium leading-none tracking-[-0.045em] sm:text-[48px]">News</h1>
+          <Link href="/events" className="group flex items-center gap-4 text-base font-medium text-neutral-950">
+            <span className="hidden sm:inline">See our upcoming events</span>
+            <span className="sm:hidden">Upcoming events</span>
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
 
-        <div className="mt-8 flex items-end justify-between gap-8 border-b border-neutral-200 pb-4">
-          <nav className="-mb-4 flex min-w-0 flex-1 gap-6 overflow-x-auto pb-4 text-[14px] text-neutral-500 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label="News categories">
-            {categories.map((item) => (
-              <button
-                key={item}
-                type="button"
-                className="shrink-0 cursor-pointer whitespace-nowrap font-medium text-neutral-950"
-              >
-                {item}
-              </button>
-            ))}
-          </nav>
-
-          <div className="hidden shrink-0 items-center gap-5 pb-[1px] text-[12px] font-medium sm:flex">
-            <div className="flex items-center gap-3" aria-label="View style">
-              <button type="button" onClick={() => setListView(false)} aria-label="Grid view" className={listView ? "text-neutral-400" : "text-neutral-950"}>
-                <Grid2X2 className="h-4 w-4" fill={listView ? "none" : "currentColor"} />
-              </button>
-              <button type="button" onClick={() => setListView(true)} aria-label="List view" className={listView ? "text-neutral-950" : "text-neutral-300"}>
-                <List className="h-4 w-4" />
-              </button>
-            </div>
+        <div className="mt-9 flex justify-end gap-2 border-y border-neutral-200 py-4">
+          <div className="relative">
+            <button type="button" aria-label="Sort news" aria-haspopup="menu" aria-expanded={openMenu === "sort"} onClick={() => setOpenMenu(openMenu === "sort" ? null : "sort")} className="flex h-10 w-10 items-center justify-center text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-950">
+              <ArrowDownUp className="h-[18px] w-[18px]" />
+            </button>
+            {openMenu === "sort" && <div role="menu" className="absolute right-0 top-full z-20 mt-2 w-44 border border-neutral-200 bg-white p-1 shadow-lg">
+              {[{ value: "newest", label: "Newest first" }, { value: "oldest", label: "Oldest first" }].map((option) => <button key={option.value} type="button" role="menuitem" onClick={() => { setSort(option.value); setOpenMenu(null); }} className="flex w-full items-center justify-between px-3 py-2 text-left text-sm hover:bg-neutral-100">
+                {option.label}{sort === option.value && <Check className="h-4 w-4" />}
+              </button>)}
+            </div>}
+          </div>
+          <div className="relative">
+            <button type="button" aria-label="Change news view" aria-haspopup="menu" aria-expanded={openMenu === "view"} onClick={() => setOpenMenu(openMenu === "view" ? null : "view")} className="flex h-10 w-10 items-center justify-center text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-950">
+              {view === "grid" ? <Grid2X2 className="h-[18px] w-[18px]" /> : <List className="h-[19px] w-[19px]" />}
+            </button>
+            {openMenu === "view" && <div role="menu" className="absolute right-0 top-full z-20 mt-2 w-40 border border-neutral-200 bg-white p-1 shadow-lg">
+              {[{ value: "grid", label: "Grid view", Icon: Grid2X2 }, { value: "list", label: "List view", Icon: List }].map(({ value, label, Icon }) => <button key={value} type="button" role="menuitem" onClick={() => { setView(value); setOpenMenu(null); }} className="flex w-full items-center gap-3 px-3 py-2 text-left text-sm hover:bg-neutral-100">
+                <Icon className="h-4 w-4" />{label}{view === value && <Check className="ml-auto h-4 w-4" />}
+              </button>)}
+            </div>}
           </div>
         </div>
 
-        <div className={listView ? "mt-8" : "mt-8 grid gap-x-5 gap-y-14 sm:grid-cols-2 md:grid-cols-3 lg:gap-x-6 lg:gap-y-16"}>
-          {stories.map((story) => <StoryCard key={story.title} story={story} listView={listView} />)}
+        <div className={view === "list" ? "mt-8" : "mt-8 grid gap-x-5 gap-y-14 sm:grid-cols-2 md:grid-cols-3 lg:gap-x-6 lg:gap-y-16"}>
+          {sortedStories.map((story) => <StoryCard key={story.title} story={story} listView={view === "list"} />)}
         </div>
       </section>
     </main>

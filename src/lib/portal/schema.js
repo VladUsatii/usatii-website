@@ -97,6 +97,17 @@ export async function ensurePortalTables() {
         `;
 
         await portalSql`
+          CREATE TABLE IF NOT EXISTS portal_password_reset_tokens (
+            id BIGSERIAL PRIMARY KEY,
+            user_id BIGINT NOT NULL REFERENCES portal_users(id) ON DELETE CASCADE,
+            token_hash VARCHAR(64) NOT NULL UNIQUE,
+            expires_at TIMESTAMPTZ NOT NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            used_at TIMESTAMPTZ
+          )
+        `;
+
+        await portalSql`
           CREATE TABLE IF NOT EXISTS video_requests (
             id BIGSERIAL PRIMARY KEY,
             client_user_id BIGINT NOT NULL REFERENCES portal_users(id) ON DELETE CASCADE,
@@ -341,6 +352,11 @@ export async function ensurePortalTables() {
         await portalSql`
           CREATE INDEX IF NOT EXISTS idx_tasks_client_status_due
           ON tasks (client_user_id, status, due_date)
+        `;
+
+        await portalSql`
+          CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_user_created
+          ON portal_password_reset_tokens (user_id, created_at DESC)
         `;
 
         await portalSql`

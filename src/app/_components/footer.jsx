@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-4 md:px-6">
         <div className="space-y-0">
           <p className="text-lg font-black italic tracking-tight text-ink">USATII MEDIA</p>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">marketing and operations software.</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">AI &amp; operations software.</p>
         </div>
 
         <div>
@@ -28,6 +28,19 @@ export default function Footer() {
                 </a>
               </li>
             ))}
+          </ul>
+          <h3 className="mb-3 mt-7 text-sm font-black text-ink">Products</h3>
+          <ul className="space-y-3 text-sm font-medium text-ink-soft">
+            <li>
+              <a href="https://oasis.usatii.com" className="transition-colors hover:text-ink">
+                OASIS
+              </a>
+            </li>
+            <li>
+              <a href="/editor" className="transition-colors hover:text-ink">
+                EDITOR
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -46,7 +59,7 @@ export default function Footer() {
             </li>
             <li>
               <a href="/resources" className="hover:text-black">
-                Guides & Tools
+                Software Capabilities
               </a>
             </li>
             <li>
@@ -79,13 +92,18 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/about/vlad-usatii" className="hover:text-black">
+              <a href="/vlad-usatii" className="hover:text-black">
                 Founder
               </a>
             </li>
             <li>
               <a href="/news" className="hover:text-black">
                 News
+              </a>
+            </li>
+            <li>
+              <a href="/events" className="hover:text-black">
+                Events
               </a>
             </li>
             <li>
@@ -122,6 +140,7 @@ export default function Footer() {
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Legal footer navigation">
             <a href="/sitemap" className="hover:text-ink">Site Map</a>
             <a href="/privacy" className="hover:text-ink">Privacy Policy</a>
+            <a href="/privacy-choices" className="hover:text-ink">Your Privacy Choices</a>
             <a href="/security" className="hover:text-ink">Security</a>
             <a href="/careers" className="hover:text-ink">Careers</a>
           </nav>

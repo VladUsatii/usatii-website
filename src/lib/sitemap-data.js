@@ -1,6 +1,7 @@
 import { SITE_URL, getApprovedSitemapRoutes } from "@/lib/services-seo";
 import { getAllTradeRoutes } from "@/lib/trades-seo-data";
 import { getAllCaseStudySlugs } from "@/lib/case-studies";
+import { events } from "@/lib/events";
 
 export function getSitemapPriority(path) {
   if (path === "/") return 1;
@@ -28,8 +29,14 @@ export async function getCanonicalSitemapPaths() {
     ...getApprovedSitemapRoutes(),
     ...getAllTradeRoutes(),
     ...caseStudyRoutes,
+    "/editor",
+    "/editor/changelog",
     "/news",
     "/news/introducing-digital-business-cards",
+    "/events",
+    ...events.map(({ slug }) => `/events/${slug}`),
+    "/vlad-usatii",
+    "/vlad-usatii/your-company-should-do-the-least-work-possible",
     "/sitemap",
   ]);
 

@@ -62,6 +62,7 @@ focus: Rochester-based custom software systems for trade businesses
 
 ## Reputation pages
 - https://usatii.com/about
-- https://usatii.com/about/vlad-usatii
+- https://usatii.com/vlad-usatii
+- https://usatii.com/vlad-usatii/your-company-should-do-the-least-work-possible
 - https://usatii.com/security
 - https://usatii.com/reviews

@@ -1,6 +1,7 @@
 import "./globals.css";
 import TelemetryTracker from "@/app/_components/telemetry-tracker";
 import GlobalUiOverlays from "@/app/_components/global-ui-overlays";
+import PrivacyConsentBanner from "@/app/_components/privacy-consent-banner";
 import { Suspense } from "react";
 
 export const metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         </Suspense>
         {children}
         <GlobalUiOverlays />
+        <PrivacyConsentBanner />
       </body>
     </html>
   );

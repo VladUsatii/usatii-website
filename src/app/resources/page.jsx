@@ -1,59 +1,11 @@
-import ChunkySeoLayout, {
-  ChunkSection,
-  PageLinkGrid,
-  SchemaScripts,
-} from "@/app/_components/trades/chunky-seo-layout";
-import { RESOURCE_PAGE_DATA, TRADE_AUDIT_BOOKING_URL } from "@/lib/trades-seo-data";
-import { buildPageMetadata, buildStandardSchemas } from "@/lib/trades-page-utils";
+import Header from "@/app/_components/header";
+import Footer from "@/app/_components/footer";
+import ResourcesExplorer from "./resources-explorer";
+import { softwareCapabilities } from "@/lib/software-capabilities";
 
-const PATH = "/resources";
+export const metadata = { title: "Custom Software Capabilities", description: "Explore the operational software features and systems Usatii can design and build.", alternates: { canonical: "/resources" } };
 
-export const metadata = buildPageMetadata({
-  title: "Contractor Software Resources",
-  description:
-    "Contractor software resources from USATII: calculator tools, checklists, dashboard guides, and workflow automation guides.",
-  path: PATH,
-});
-
-export default function ResourcesHubPage() {
-  const links = RESOURCE_PAGE_DATA.map((item) => ({
-    label: item.title,
-    href: `/resources/${item.slug}`,
-  }));
-
-  const schemas = buildStandardSchemas({
-    path: PATH,
-    title: "Contractor Software Resources",
-    description:
-      "People-first resources and calculators for contractor software planning.",
-    breadcrumbs: [
-      { name: "Home", path: "/" },
-      { name: "Construction", path: "/construction" },
-      { name: "Resources", path: PATH },
-    ],
-    serviceType: "Contractor Software Education",
-    areaServed: ["Rochester, NY", "Monroe County, NY", "Western New York"],
-    includeArticle: true,
-  });
-
-  return (
-    <ChunkySeoLayout
-      eyebrow="Resources"
-      title="Contractor Software Resources and Guides"
-      intro="Use these calculators, checklists, and practical guides to evaluate software spend, workflow bottlenecks, and implementation priorities."
-      proofPoints={[
-        "Calculator and checklist lead magnets",
-        "Workflow guides tied to operational outcomes",
-        "Practical decision frameworks for owners and operators",
-      ]}
-      primaryCta={{ label: "Book free software waste audit", href: TRADE_AUDIT_BOOKING_URL }}
-      secondaryCta={{ label: "View compare pages", href: "/compare" }}
-    >
-      <SchemaScripts schemas={schemas} />
-
-      <ChunkSection title="Guides and Tools">
-        <PageLinkGrid links={links} />
-      </ChunkSection>
-    </ChunkySeoLayout>
-  );
+export default function ResourcesPage() {
+  const publicCapabilities = softwareCapabilities.map(({ builtIn: _builtIn, ...feature }) => feature);
+  return <div className="min-h-screen bg-white text-neutral-950"><Header /><main><section className="mx-auto w-full max-w-[1180px] px-5 pb-28 pt-16 sm:px-7 lg:pb-36 lg:pt-24"><h1 className="max-w-5xl text-5xl font-medium leading-[0.96] tracking-[-0.055em] sm:text-7xl">Software we know how to build</h1><p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-600">A catalog of features that we&apos;ve built and have used on the field, across web, cloud, and native mobile platforms. Select a feature to inspect its architecture.</p><ResourcesExplorer features={publicCapabilities} /></section></main><Footer /></div>;
 }

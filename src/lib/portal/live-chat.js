@@ -49,6 +49,9 @@ function mapConversation(row) {
     closedAt: toIsoString(row.closed_at),
     createdAt: toIsoString(row.created_at),
     updatedAt: toIsoString(row.updated_at),
+    operations: row.operational_metadata && typeof row.operational_metadata === 'object'
+      ? row.operational_metadata
+      : {},
   }
 }
 
@@ -217,6 +220,15 @@ export async function ensurePortalLiveChatTables() {
             sender_staff_user_id BIGINT,
             message TEXT NOT NULL,
             created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          )
+        `
+
+        await portalSql`
+          CREATE TABLE IF NOT EXISTS live_chat_conversation_operations (
+            conversation_id BIGINT PRIMARY KEY REFERENCES live_chat_conversations(id) ON DELETE CASCADE,
+            metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
           )
         `
 
@@ -645,26 +657,45 @@ export async function listLiveChatConversations({ limit = 80 } = {}) {
   const normalizedLimit = Math.min(200, Math.max(1, Number(limit) || 80))
   const result = await portalSql`
     SELECT
-      id,
-      visitor_id,
-      session_id,
-      visitor_name,
-      visitor_phone,
-      source,
-      page_path_first_seen,
-      status,
-      unread_for_staff,
-      last_message_at,
-      last_message_preview,
-      closed_at,
-      created_at,
-      updated_at
-    FROM live_chat_conversations
-    ORDER BY unread_for_staff DESC, last_message_at DESC, updated_at DESC
+      c.id,
+      c.visitor_id,
+      c.session_id,
+      c.visitor_name,
+      c.visitor_phone,
+      c.source,
+      c.page_path_first_seen,
+      c.status,
+      c.unread_for_staff,
+      c.last_message_at,
+      c.last_message_preview,
+      c.closed_at,
+      c.created_at,
+      c.updated_at,
+      COALESCE(o.metadata, '{}'::jsonb) AS operational_metadata
+    FROM live_chat_conversations c
+    LEFT JOIN live_chat_conversation_operations o ON o.conversation_id = c.id
+    ORDER BY c.unread_for_staff DESC, c.last_message_at DESC, c.updated_at DESC
     LIMIT ${normalizedLimit}
   `
 
   return result.rows.map(mapConversation).filter(Boolean)
+}
+
+export async function updateConversationOperations({ conversationId, operations }) {
+  const normalizedConversationId = String(conversationId || '').trim()
+  if (!normalizedConversationId || !isBigIntId(normalizedConversationId)) return null
+  const metadata = operations && typeof operations === 'object' && !Array.isArray(operations)
+    ? operations
+    : {}
+  await ensurePortalLiveChatTables()
+  await portalSql`
+    INSERT INTO live_chat_conversation_operations (conversation_id, metadata)
+    VALUES (${normalizedConversationId}, ${JSON.stringify(metadata)}::jsonb)
+    ON CONFLICT (conversation_id)
+    DO UPDATE SET metadata = EXCLUDED.metadata, updated_at = NOW()
+  `
+  const conversations = await listLiveChatConversations({ limit: 200 })
+  return conversations.find((conversation) => conversation.id === normalizedConversationId) || null
 }
 
 export async function getLiveChatInboxSnapshot({ selectedConversationId } = {}) {
