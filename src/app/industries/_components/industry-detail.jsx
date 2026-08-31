@@ -74,7 +74,6 @@ export default function IndustryDetail({ page, relatedIndustries, schemas }) {
             alt=""
             fill
             priority
-            unoptimized
             sizes="100vw"
             className="z-0 object-cover object-center"
           />
