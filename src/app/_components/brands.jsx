@@ -89,8 +89,8 @@ const DEFAULT_LOGOS = [
 
 export default function TrustedByGrid({
     eyebrow = "",
-    title = "Scalable marketing and custom software development.",
-    subtitle = "For the last half-decade, Usatii has helped hundreds of businesses and creators build efficient operations software and a solid marketing reputation with hands-on work.",
+    title = "Custom software development for growing organizations.",
+    subtitle = "For the last half-decade, Usatii has helped businesses and creators build efficient operational systems through hands-on engineering work.",
     logos = DEFAULT_LOGOS,
     className = "",
   }) {

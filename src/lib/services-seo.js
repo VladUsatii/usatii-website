@@ -1,13 +1,8 @@
 export const SITE_URL = "https://usatii.com";
 
 export const SERVICE_SLUGS = [
-  "social-media-management",
-  "organic-social-media-marketing",
-  "short-form-content-creation",
   "website-design",
   "landing-page-design",
-  "marketing-automation",
-  "paid-social-advertising",
 ];
 
 export const POPULAR_LOCATION_SLUGS = [
@@ -45,27 +40,6 @@ export const POPULAR_LOCATION_SLUGS = [
 ];
 
 export const SERVICE_LOCATION_ROLLOUT = {
-  "social-media-management": [
-    "rochester-ny",
-    "new-york-city",
-    "los-angeles",
-    "chicago",
-    "miami",
-  ],
-  "organic-social-media-marketing": [
-    "rochester-ny",
-    "new-york-city",
-    "los-angeles",
-    "austin",
-    "dallas",
-  ],
-  "short-form-content-creation": [
-    "new-york-city",
-    "los-angeles",
-    "miami",
-    "atlanta",
-    "nashville",
-  ],
   "website-design": [
     "rochester-ny",
     "new-york-city",
@@ -79,20 +53,6 @@ export const SERVICE_LOCATION_ROLLOUT = {
     "austin",
     "miami",
     "chicago",
-  ],
-  "marketing-automation": [
-    "new-york-city",
-    "los-angeles",
-    "chicago",
-    "dallas",
-    "boston",
-  ],
-  "paid-social-advertising": [
-    "new-york-city",
-    "los-angeles",
-    "chicago",
-    "houston",
-    "phoenix",
   ],
 };
 
@@ -172,11 +132,11 @@ export const LOCATIONS = {
   dallas: {
     name: "Dallas",
     opening:
-      "For Dallas companies, the strongest use case is building repeatable marketing systems for high-volume sales and multi-market growth.",
+      "For Dallas companies, the strongest use case is building durable web systems for high-volume operations and multi-market growth.",
     marketFocus:
       "enterprise-adjacent firms, home-service groups, and scale-oriented operators",
     deliverablePriority:
-      "operational discipline, measurable funnel steps, and sales-aligned marketing execution",
+      "operational discipline, measurable intake steps, and sales-aligned software workflows",
     faqAngle:
       "supporting growth without losing process control",
     nearbyMajor: ["austin", "houston"],
@@ -220,7 +180,7 @@ export const LOCATIONS = {
   boston: {
     name: "Boston",
     opening:
-      "For Boston companies, the strongest use case is authority-driven marketing for education, healthcare, biotech, and professional services.",
+      "For Boston companies, the strongest use case is credible digital infrastructure for education, healthcare, biotech, and professional services.",
     marketFocus:
       "teams that need technical credibility and clearer paths from awareness to qualified demand",
     deliverablePriority:
@@ -232,7 +192,7 @@ export const LOCATIONS = {
   houston: {
     name: "Houston",
     opening:
-      "For Houston companies, the strongest use case is performance-focused marketing for high-volume service demand.",
+      "For Houston companies, the strongest use case is reliable web infrastructure for high-volume service demand.",
     marketFocus:
       "medical, legal, home-service, and regional operators that need efficient lead flow",
     deliverablePriority:
@@ -770,11 +730,11 @@ export function getApprovedServiceLocationPairs() {
 }
 
 export function getServiceMetaDescription(service) {
-  return `USATII helps businesses build ${service.outcome} through content, systems, analytics, and marketing execution.`;
+  return `USATII helps organizations build ${service.outcome} through custom design, software engineering, and accountable implementation.`;
 }
 
 export function getServiceLocationMetaDescription(service, location) {
-  return `USATII helps ${location.name} businesses build ${service.outcome} through content, systems, analytics, and marketing execution.`;
+  return `USATII helps ${location.name} organizations build ${service.outcome} through custom design, software engineering, and accountable implementation.`;
 }
 
 export function pickRelatedServiceLocationLinks(serviceSlug, locationSlug) {

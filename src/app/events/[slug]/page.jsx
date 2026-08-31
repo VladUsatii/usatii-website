@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { events, getEvent } from "@/lib/events";
 import { notFound } from "next/navigation";
+import { SchemaScripts } from "@/app/_components/trades/chunky-seo-layout";
+import { buildEventSchema, buildFounderPersonSchema, buildOrganizationSchema } from "@/lib/trades-schema";
 
 export function generateStaticParams() { return events.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }) {
@@ -15,7 +17,9 @@ export async function generateMetadata({ params }) {
 export default async function EventPage({ params }) {
   const event = getEvent((await params).slug);
   if (!event) notFound();
+  const schemas = [buildOrganizationSchema(), buildFounderPersonSchema(), buildEventSchema(event)];
   return <div className="min-h-screen bg-white text-neutral-950"><Header /><main>
+    <SchemaScripts schemas={schemas} />
     <section className="mx-auto max-w-[1180px] px-5 pb-28 pt-10 sm:px-7 lg:pb-36 lg:pt-16">
       <Link href="/events" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-600 hover:text-black"><ArrowLeft className="h-4 w-4" />All events</Link>
       <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_330px] lg:gap-20">

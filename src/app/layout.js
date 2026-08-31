@@ -11,7 +11,7 @@ export const metadata = {
     template: "%s | USATII",
   },
   description:
-    "Rochester-based custom software, website, and marketing systems for trade businesses.",
+    "Rochester-based custom software, business websites, and artificial intelligence integration for organizations that want to own their systems.",
 };
 
 export default function RootLayout({ children }) {

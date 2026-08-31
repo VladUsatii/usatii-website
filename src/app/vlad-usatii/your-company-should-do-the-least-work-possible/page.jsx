@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
+import { SchemaScripts } from "@/app/_components/trades/chunky-seo-layout";
+import { buildArticleSchema, buildFounderPersonSchema, buildOrganizationSchema } from "@/lib/trades-schema";
 
 export const metadata = {
   title: "Your company should do the least work possible",
@@ -17,10 +19,23 @@ export const metadata = {
 };
 
 export default function LeastWorkPossibleArticle() {
+  const schemas = [
+    buildOrganizationSchema(),
+    buildFounderPersonSchema(),
+    buildArticleSchema({
+      path: "/vlad-usatii/your-company-should-do-the-least-work-possible",
+      title: "Your company should do the least work possible",
+      description: metadata.description,
+      datePublished: "2026-08-30",
+      dateModified: "2026-08-30",
+      image: "/authors/vladislav-usatii.webp",
+    }),
+  ];
   return (
     <div className="min-h-screen bg-white text-neutral-950">
       <Header />
       <main>
+        <SchemaScripts schemas={schemas} />
         <article className="mx-auto w-full max-w-[1180px] px-5 pb-28 pt-14 sm:px-7 lg:pb-36 lg:pt-18">
           <Link
             href="/vlad-usatii"

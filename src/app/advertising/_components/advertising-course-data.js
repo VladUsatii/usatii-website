@@ -8,8 +8,8 @@ export const REFERRAL_REWARD_CODE = "USATII-REF-500X";
 export const KICKOFF_CALL_URL = "https://cal.com/usatii/onboarding";
 
 export const RELATED_LINKS = [
-  { label: "Paid social advertising", href: "/services/paid-social-advertising" },
-  { label: "Organic social service", href: "/services/organic-social-media-marketing" },
+  { label: "Custom software", href: "/software" },
+  { label: "Website design", href: "/services/website-design" },
   { label: "Website design", href: "/services/website-design" },
   { label: "Quote request", href: "/quote-request" },
   { label: "Contact USATII", href: "/quote-request" },

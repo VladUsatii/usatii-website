@@ -10,8 +10,9 @@ function MetaPill({ children }) {
 }
 
 export const metadata = {
-  title: "Marketing Case Studies",
-  description: "Marketing case studies, breakdowns, and system-level growth outcomes at Usatii Media.",
+  title: "Case Studies",
+  description: "Case studies documenting software systems, products, communications infrastructure, and earlier work by Usatii Media.",
+  alternates: { canonical: "/case-studies" },
 };
 
 export default async function CaseStudiesIndexPage() {
@@ -27,11 +28,11 @@ export default async function CaseStudiesIndexPage() {
         </Link>
 
         <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl md:text-6xl">
-          Marketing case studies
+          Case studies
         </h1>
 
         <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-7 text-slate-600 sm:text-lg">
-          Learn how we took creators and businesses from zero to hero quickly by leveraging systems to capture attention through content and design.
+          A record of the software, products, communications systems, and operational work developed by Usatii.
         </p>
       </div>
 
@@ -40,7 +41,7 @@ export default async function CaseStudiesIndexPage() {
           {studies.map((study) => (
             <Link
               key={study.slug}
-              href={`/marketing-case-studies/${study.slug}`}
+              href={`/case-studies/${study.slug}`}
               className="group block overflow-hidden transition duration-300 hover:-translate-y-1 hover:opacity-80"
             >
               <div className="flex flex-col justify-between p-7 md:p-9">

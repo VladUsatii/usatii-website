@@ -5,6 +5,8 @@ import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
 import DepartmentImpactCarousel from "./department-impact-carousel";
 import { SITE_URL } from "@/lib/services-seo";
+import { SchemaScripts } from "@/app/_components/trades/chunky-seo-layout";
+import { buildArticleSchema, buildFounderPersonSchema, buildOrganizationSchema } from "@/lib/trades-schema";
 
 const PATH = "/case-studies/rebuildit-inc";
 
@@ -46,10 +48,21 @@ function TextLink({ href, children }) {
 }
 
 export default function RebuilditCaseStudyPage() {
+  const schemas = [
+    buildOrganizationSchema(),
+    buildFounderPersonSchema(),
+    buildArticleSchema({
+      path: PATH,
+      title: "REBUILDIT INC. Case Study",
+      description: metadata.description,
+      image: "/construction/construction-hero-ai.webp",
+    }),
+  ];
   return (
     <>
       <Header />
       <main className="bg-white text-neutral-950">
+        <SchemaScripts schemas={schemas} />
         <section className="mx-auto max-w-5xl px-6 pb-16 pt-20 text-center lg:px-8 lg:pb-20 lg:pt-24">
           <p className="text-xs font-medium">Construction operating system · Case study</p>
           <h1 className="mt-5 text-5xl font-medium tracking-[-0.05em] sm:text-6xl">REBUILDIT INC.</h1>

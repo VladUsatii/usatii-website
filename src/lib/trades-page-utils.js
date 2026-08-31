@@ -36,6 +36,7 @@ export function buildStandardSchemas({
   serviceType,
   areaServed,
   includeArticle = false,
+  article = {},
 }) {
   const schemas = [buildOrganizationSchema()];
 
@@ -78,6 +79,7 @@ export function buildStandardSchemas({
         path,
         title,
         description,
+        ...article,
       }),
     );
   }

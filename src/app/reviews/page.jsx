@@ -21,7 +21,7 @@ export default function ReviewsPage() {
       { name: "Home", path: "/" },
       { name: "Reviews", path: PATH },
     ],
-    serviceType: "Software and Marketing Systems",
+    serviceType: "Custom Business Software Development",
     areaServed: ["United States"],
     includeArticle: true,
   });

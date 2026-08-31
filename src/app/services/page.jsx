@@ -18,9 +18,9 @@ import { buildPageMetadata, buildStandardSchemas } from "@/lib/trades-page-utils
 const PATH = "/services";
 
 export const metadata = buildPageMetadata({
-  title: "USATII Service Systems",
+  title: "Website Design Services",
   description:
-    "Marketing, website, advertising, and automation services by USATII with clear execution systems and service-specific delivery paths.",
+    "Custom website and landing-page design services by USATII.",
   path: PATH,
 });
 
@@ -73,68 +73,56 @@ export default function ServicesPage() {
   const popularServiceLocationLinks = getPopularServiceLocationLinks();
 
   const architectureBullets = [
-    "Discovery: positioning, audience intent, and funnel constraints",
-    "System design: content, website, ad, and automation alignment",
-    "Execution: weekly production, deployment, and QA loops",
-    "Optimization: reporting tied to lead quality and business outcomes",
-    "Ownership: clear decision logs, priorities, and accountable delivery",
-    "Scale: extend proven systems into new markets or offers",
+    "Discovery: organizational requirements, users, and technical constraints",
+    "Architecture: content structure, application boundaries, and integrations",
+    "Implementation: accessible interfaces, tested components, and secure deployment",
+    "Ownership: documented systems, portable data, and maintainable source code",
+    "Operations: monitoring, updates, and accountable technical support",
+    "Extension: a clear path from the public website into custom business software",
   ];
 
   const startHereTracks = [
     {
-      title: "Demand Foundation",
+      title: "Public website",
       body:
-        "Start with social systems and short-form content when visibility and trust are the first bottleneck.",
-      links: [
-        { label: "Social Media Management", href: "/services/social-media-management" },
-        { label: "Organic Social Media Marketing", href: "/services/organic-social-media-marketing" },
-        { label: "Short-Form Content Creation", href: "/services/short-form-content-creation" },
-      ],
-    },
-    {
-      title: "Conversion Layer",
-      body:
-        "Use website and conversion architecture when traffic is active but lead quality is inconsistent.",
+        "Design and build a complete public website around the organization, its users, and its operational requirements.",
       links: [
         { label: "Website Design", href: "/services/website-design" },
-        { label: "Landing Page Design", href: "/services/landing-page-design" },
       ],
     },
     {
-      title: "Performance Layer",
+      title: "Focused application",
       body:
-        "Add paid acquisition and automation when you need faster demand velocity and cleaner lead follow-through.",
+        "Build a purpose-specific landing page for a program, product, recruitment effort, or operational intake process.",
       links: [
-        { label: "Paid Social Advertising", href: "/services/paid-social-advertising" },
-        { label: "Marketing Automation", href: "/services/marketing-automation" },
+        { label: "Landing Page Design", href: "/services/landing-page-design" },
       ],
     },
   ];
 
   const schemas = buildStandardSchemas({
     path: PATH,
-    title: "USATII Service Systems",
+    title: "Website Design Services",
     description:
-      "Marketing, website, advertising, and automation services delivered through integrated execution systems.",
+      "Custom website and landing-page design services delivered as maintainable technical systems.",
     breadcrumbs: [
       { name: "Home", path: "/" },
       { name: "Services", path: PATH },
     ],
-    serviceType: "Marketing, Website, Advertising, and Automation Services",
+    serviceType: "Custom Website Design and Development",
     areaServed: ["Rochester, NY", "United States"],
   });
 
   return (
     <ChunkySeoLayout
       eyebrow="Services"
-      title="Integrated Service Systems For Growth"
-      intro="USATII runs services as connected systems across content, websites, advertising, and automation so demand generation and conversion operations improve together."
+      title="Website Design and Development"
+      intro="USATII designs and builds public websites and focused web applications as maintainable technical systems owned by the organizations that use them."
       proofPoints={[
-        "Clear service tracks with service-specific delivery pages",
-        "Execution model tied to qualified demand and conversion quality",
-        "City-specific service pages for localized implementation",
-        "Practical scaling path from visibility to performance operations",
+        "Custom design and implementation",
+        "Accessible and responsive interfaces",
+        "Documented ownership and maintainable source code",
+        "Integration with internal software and operational workflows",
       ]}
       primaryCta={{ label: "Book strategy call", href: "https://cal.com/usatii/onboarding" }}
       secondaryCta={{ label: "Request a quote", href: "/quote-request" }}

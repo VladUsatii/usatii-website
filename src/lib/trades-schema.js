@@ -1,6 +1,22 @@
 import { SITE_URL } from "@/lib/services-seo";
 import { ORGANIZATION_PROFILE, TRADE_SERVICE_TYPE } from "@/lib/trades-seo-data";
 
+export const AUTHOR_PROFILE = {
+  "@type": "Person",
+  "@id": `${SITE_URL}/vlad-usatii#person`,
+  name: "Vladislav Usatii",
+  alternateName: "Vlad Usatii",
+  url: `${SITE_URL}/vlad-usatii`,
+  image: `${SITE_URL}/authors/vladislav-usatii.webp`,
+  jobTitle: "Founder",
+  worksFor: { "@id": `${SITE_URL}#organization` },
+  sameAs: [
+    "https://www.linkedin.com/in/vladusatii",
+    "https://github.com/VladUsatii",
+    "https://x.com/vladusatii",
+  ],
+};
+
 export function absoluteUrl(path = "/") {
   return `${SITE_URL}${path}`;
 }
@@ -15,10 +31,7 @@ export function buildOrganizationSchema() {
     url: ORGANIZATION_PROFILE.url,
     logo: ORGANIZATION_PROFILE.logo,
     description: ORGANIZATION_PROFILE.description,
-    founder: {
-      "@type": "Person",
-      name: ORGANIZATION_PROFILE.founder,
-    },
+    founder: { "@id": AUTHOR_PROFILE["@id"] },
     sameAs: ORGANIZATION_PROFILE.sameAs,
     areaServed: ORGANIZATION_PROFILE.areaServed,
     makesOffer: ORGANIZATION_PROFILE.services.map((serviceName) => ({
@@ -34,14 +47,7 @@ export function buildOrganizationSchema() {
 export function buildFounderPersonSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": `${SITE_URL}#vlad-usatii`,
-    name: "Vlad Usatii",
-    url: `${SITE_URL}/vlad`,
-    jobTitle: "Founder",
-    worksFor: {
-      "@id": `${SITE_URL}#organization`,
-    },
+    ...AUTHOR_PROFILE,
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: "Rochester Institute of Technology",
@@ -129,19 +135,44 @@ export function buildBreadcrumbSchema(items = []) {
   };
 }
 
-export function buildArticleSchema({ path, title, description }) {
+export function buildArticleSchema({ path, title, description, datePublished, dateModified, image }) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     "@id": `${absoluteUrl(path)}#article`,
     headline: title,
     description,
-    author: {
-      "@id": `${SITE_URL}#organization`,
-    },
+    author: { "@id": AUTHOR_PROFILE["@id"] },
     publisher: {
       "@id": `${SITE_URL}#organization`,
     },
     mainEntityOfPage: absoluteUrl(path),
+    ...(datePublished ? { datePublished } : {}),
+    ...(dateModified ? { dateModified } : {}),
+    ...(image ? { image: absoluteUrl(image) } : {}),
+  };
+}
+
+export function buildEventSchema(event) {
+  const virtual = event.location === "Virtual";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "@id": `${absoluteUrl(`/events/${event.slug}`)}#event`,
+    name: event.title,
+    description: event.summary,
+    startDate: event.date,
+    endDate: event.endDate,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: virtual
+      ? "https://schema.org/OnlineEventAttendanceMode"
+      : "https://schema.org/OfflineEventAttendanceMode",
+    location: virtual
+      ? { "@type": "VirtualLocation", url: event.sourceUrl }
+      : { "@type": "Place", name: event.location, address: event.location },
+    organizer: { "@type": "Organization", name: event.organizer, url: event.sourceUrl },
+    image: absoluteUrl(event.image),
+    url: absoluteUrl(`/events/${event.slug}`),
+    attendee: { "@id": AUTHOR_PROFILE["@id"] },
   };
 }

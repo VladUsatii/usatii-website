@@ -1,68 +1,57 @@
-# USATII Media - recommended pages for AI crawlers
+# USATII Media
 
-site: https://usatii.com
-brand: USATII Media
-focus: Rochester-based custom software systems for trade businesses
+> USATII is a Rochester, New York software development company. We design and build custom business software, owned operational systems, business websites, and responsible artificial intelligence integrations.
 
-## Primary pages
-- https://usatii.com/construction
-- https://usatii.com/software/custom-software-for-contractors
-- https://usatii.com/software/software-waste-audit
-- https://usatii.com/software/contractor-operating-system
-- https://usatii.com/software/replace-contractor-software-subscriptions
-- https://usatii.com/websites/contractor-websites
-- https://usatii.com/marketing/contractor-marketing-systems
+Legal entity: VAU Solutions, LLC
+Founder and author: Vladislav Usatii
+Canonical website: https://usatii.com
+Primary region: Rochester and Western New York
 
-## High-intent local pages
-- https://usatii.com/locations/rochester-ny
-- https://usatii.com/locations/henrietta-ny
-- https://usatii.com/locations/webster-ny
-- https://usatii.com/locations/greece-ny
-- https://usatii.com/locations/irondequoit-ny
-- https://usatii.com/locations/pittsford-ny
-- https://usatii.com/locations/fairport-ny
-- https://usatii.com/locations/victor-ny
-- https://usatii.com/locations/canandaigua-ny
+## Company
 
-## Industry pages
-- https://usatii.com/industries/hvac-software-rochester-ny
-- https://usatii.com/industries/plumbing-software-rochester-ny
-- https://usatii.com/industries/electrical-contractor-software-rochester-ny
-- https://usatii.com/industries/roofing-software-rochester-ny
-- https://usatii.com/industries/remodeling-contractor-software-rochester-ny
-- https://usatii.com/industries/landscaping-software-rochester-ny
-- https://usatii.com/industries/flooring-contractor-software-rochester-ny
-- https://usatii.com/industries/painting-contractor-software-rochester-ny
-- https://usatii.com/industries/masonry-concrete-software-rochester-ny
-- https://usatii.com/industries/pest-control-software-rochester-ny
-- https://usatii.com/industries/garage-door-company-software-rochester-ny
-- https://usatii.com/industries/fencing-company-software-rochester-ny
+- [About USATII](https://usatii.com/about)
+- [Social impact](https://usatii.com/social-impact)
+- [Vladislav Usatii](https://usatii.com/vlad-usatii)
+- [Security](https://usatii.com/security)
+- [News](https://usatii.com/news)
+- [Events](https://usatii.com/events)
 
-## Comparison pages
-- https://usatii.com/compare/custom-software-vs-jobber
-- https://usatii.com/compare/custom-software-vs-housecall-pro
-- https://usatii.com/compare/custom-software-vs-service-titan
-- https://usatii.com/compare/custom-software-vs-monday-com-for-contractors
-- https://usatii.com/compare/custom-software-vs-hubspot-for-contractors
-- https://usatii.com/compare/custom-software-vs-workday-for-small-business
-- https://usatii.com/compare/custom-contractor-crm-vs-generic-crm
-- https://usatii.com/compare/build-vs-buy-software-for-contractors
+## Custom software
 
-## Resources
-- https://usatii.com/resources/contractor-software-waste-calculator
-- https://usatii.com/resources/contractor-software-stack-checklist
-- https://usatii.com/resources/contractor-operations-dashboard-guide
-- https://usatii.com/resources/how-to-replace-contractor-software-subscriptions
-- https://usatii.com/resources/contractor-crm-requirements
-- https://usatii.com/resources/job-tracking-system-for-contractors
-- https://usatii.com/resources/estimate-to-invoice-automation-for-contractors
-- https://usatii.com/resources/crew-photo-tracking-system
-- https://usatii.com/resources/software-security-for-small-businesses
-- https://usatii.com/resources/what-is-a-software-waste-audit
+- [Business software](https://usatii.com/software)
+- [Custom software for contractors](https://usatii.com/software/custom-software-for-contractors)
+- [Software waste audit](https://usatii.com/software/software-waste-audit)
+- [Contractor operating system](https://usatii.com/software/contractor-operating-system)
+- [Replacing contractor software subscriptions](https://usatii.com/software/replace-contractor-software-subscriptions)
+- [Construction software](https://usatii.com/construction)
+- [Software capabilities](https://usatii.com/resources)
+- [Software comparisons](https://usatii.com/compare)
 
-## Reputation pages
-- https://usatii.com/about
-- https://usatii.com/vlad-usatii
-- https://usatii.com/vlad-usatii/your-company-should-do-the-least-work-possible
-- https://usatii.com/security
-- https://usatii.com/reviews
+## Website development
+
+- [Website design and development](https://usatii.com/services)
+- [Website design](https://usatii.com/services/website-design)
+- [Landing-page design](https://usatii.com/services/landing-page-design)
+
+## Industries and locations
+
+- [Industries](https://usatii.com/industries)
+- [Trade businesses](https://usatii.com/trades)
+- [Locations](https://usatii.com/locations)
+
+## Products and case studies
+
+- [REBUILDIT INC. case study](https://usatii.com/case-studies/rebuildit-inc)
+- [OASIS communications intelligence](https://usatii.com/case-studies/introducing-oasis-communications-intelligence)
+- [USATII Editor](https://usatii.com/editor)
+- [USATII Editor changelog](https://usatii.com/editor/changelog)
+
+## Articles
+
+- [Introducing digital business cards](https://usatii.com/news/introducing-digital-business-cards)
+- [Your company should do the least work possible](https://usatii.com/vlad-usatii/your-company-should-do-the-least-work-possible)
+
+## Discovery
+
+- [XML sitemap](https://usatii.com/sitemap.xml)
+- [Human-readable sitemap](https://usatii.com/sitemap)

@@ -7,7 +7,7 @@ import { buildPageMetadata } from "@/lib/trades-page-utils";
 
 export const metadata = buildPageMetadata({
   title: "About USATII",
-  description: "USATII builds marketing and operations software for organizations ready to own their systems.",
+  description: "USATII builds custom business software, websites, and artificial intelligence integrations for organizations ready to own their systems.",
   path: "/about",
 });
 
@@ -22,7 +22,7 @@ const stories = [
   },
   {
     title: "Communications intelligence for modern teams",
-    subtext: "One platform to dispatch all marketing and announcements.",
+    subtext: "One platform to govern publishing, communications, and organizational announcements.",
     type: "Product",
     href: "https://oasis.usatii.com",
     color: "from-cyan-100 via-emerald-50 to-violet-100",
@@ -87,7 +87,7 @@ export default function AboutPage() {
 
         <section className="mx-auto max-w-3xl px-6 pb-24 text-center lg:px-8">
           <h2 className="text-2xl font-medium leading-tight tracking-[-0.03em] md:text-3xl">
-            We build marketing and operations software, and measure success by how little work people must do for their business.
+            We build custom business software and measure success by how much repetitive work the system removes from the organization.
           </h2>
         </section>
 

@@ -9,8 +9,8 @@ export const ORGANIZATION_PROFILE = {
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.ico`,
   description:
-    "Rochester-based software and marketing systems company that builds in-house operating systems for trade businesses.",
-  founder: "Vlad Usatii",
+    "Rochester-based software development company that builds custom operating systems, business websites, and artificial intelligence integrations for organizations that want to own their technology.",
+  founder: "Vladislav Usatii",
   sameAs: [
     "https://www.linkedin.com/in/vladusatii",
     "https://www.instagram.com/vladusatii_",
@@ -27,9 +27,9 @@ export const ORGANIZATION_PROFILE = {
     "Canandaigua, NY",
   ],
   services: [
-    "Custom Contractor Software Development",
-    "Contractor Website Design",
-    "Contractor Marketing Systems",
+    "Custom Business Software Development",
+    "Business Website Design and Development",
+    "Artificial Intelligence Integration",
     "Software Waste Audit",
   ],
 };
@@ -90,7 +90,7 @@ export const SOFTWARE_PAGE_DATA = {
         body:
           "USATII grew through content systems, paid media execution, and high-output operations. That means we build software that also improves demand generation, not just internal admin.",
         bullets: [
-          "Marketing + operations connection from day one",
+          "Customer intake and operations connected from day one",
           "Founder-led technical strategy and security mindset",
           "Build, iterate, and support in one team",
         ],
@@ -196,7 +196,7 @@ export const SOFTWARE_PAGE_DATA = {
         bullets: [
           "Developer-led architecture",
           "Security-first role controls",
-          "Marketing follow-up built into workflow",
+          "Customer follow-up built into workflow",
         ],
       },
     ],
@@ -1077,7 +1077,7 @@ export const LOCATION_PAGE_DATA = [
     localProof: [
       "Founder-led team based in the Rochester market",
       "Focused on service workflows common to Monroe County trade companies",
-      "Build + marketing experience in trades and service-heavy operations",
+      "Software engineering experience in trades and service-heavy operations",
     ],
     nearbyTrades: ["HVAC", "Plumbing", "Roofing", "Electrical", "Remodeling"],
     serviceAreaLanguage:
@@ -1203,7 +1203,7 @@ export const LOCATION_PAGE_DATA = [
     localProof: [
       "Growing service opportunities across residential developments",
       "Need for clearer route and crew planning",
-      "Strong value from integrated marketing and operations tracking",
+      "Strong value from integrated customer intake and operations tracking",
     ],
     nearbyTrades: ["Plumbing", "Electrical", "Garage Door", "Fencing"],
     serviceAreaLanguage:
@@ -1595,12 +1595,6 @@ export function getAllTradeRoutes() {
   const softwareRoutes = Object.keys(SOFTWARE_PAGE_DATA).map(
     (slug) => `/software/${slug}`,
   );
-  const websiteRoutes = Object.keys(WEBSITE_PAGE_DATA).map(
-    (slug) => `/websites/${slug}`,
-  );
-  const marketingRoutes = Object.keys(MARKETING_PAGE_DATA).map(
-    (slug) => `/marketing/${slug}`,
-  );
   const industryRoutes = INDUSTRY_PAGE_DATA.map(
     (item) => `/industries/${item.slug}`,
   );
@@ -1611,10 +1605,9 @@ export function getAllTradeRoutes() {
   const resourceRoutes = RESOURCE_PAGE_DATA.map((item) => `/resources/${item.slug}`);
 
   return [
+    "/trades",
     "/construction",
     "/software",
-    "/websites",
-    "/marketing",
     "/industries",
     "/locations",
     "/compare",
@@ -1625,8 +1618,6 @@ export function getAllTradeRoutes() {
     "/security",
     "/reviews",
     ...softwareRoutes,
-    ...websiteRoutes,
-    ...marketingRoutes,
     ...industryRoutes,
     ...locationRoutes,
     ...compareRoutes,

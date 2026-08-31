@@ -16,7 +16,7 @@ const groups = [
   { label: "industries", test: (path) => path === "/industries" || path.startsWith("/industries/") },
   { label: "locations", test: (path) => path === "/locations" || path.startsWith("/locations/") },
   { label: "case-studies", test: (path) => path === "/case-studies" || path.startsWith("/case-studies/") },
-  { label: "marketing-case-studies", test: (path) => path === "/marketing-case-studies" || path.startsWith("/marketing-case-studies/") },
+  { label: "case-studies", test: (path) => path === "/case-studies" || path.startsWith("/case-studies/") },
   { label: "resources", test: (path) => path === "/resources" || path.startsWith("/resources/") },
   { label: "compare", test: (path) => path === "/compare" || path.startsWith("/compare/") },
 ];

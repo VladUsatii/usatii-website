@@ -19,9 +19,9 @@ import { buildPageMetadata, buildStandardSchemas } from "@/lib/trades-page-utils
 const PATH = "/trades";
 
 export const metadata = buildPageMetadata({
-  title: "Custom Software, Websites & Marketing Systems for Trade Businesses",
+  title: "Custom Software and Websites for Trade Businesses",
   description:
-    "USATII builds custom in-house software, websites, and marketing systems for Rochester trade businesses to replace software sprawl and improve operations.",
+    "USATII builds custom in-house software and websites for Rochester trade businesses to replace software sprawl and improve operations.",
   path: PATH,
 });
 
@@ -42,14 +42,6 @@ export default function TradesHubPage() {
     {
       label: "Replace Contractor Subscriptions",
       href: "/software/replace-contractor-software-subscriptions",
-    },
-    {
-      label: "Contractor Websites",
-      href: "/websites/contractor-websites",
-    },
-    {
-      label: "Contractor Marketing Systems",
-      href: "/marketing/contractor-marketing-systems",
     },
   ];
 
@@ -75,7 +67,7 @@ export default function TradesHubPage() {
 
   const schemas = buildStandardSchemas({
     path: PATH,
-    title: "Custom Software, Websites & Marketing Systems for Trade Businesses",
+    title: "Custom Software and Websites for Trade Businesses",
     description:
       "USATII builds custom in-house software systems for Rochester trade businesses with lead intake, estimates, scheduling, job tracking, invoicing, and follow-up workflows.",
     breadcrumbs: [
@@ -89,8 +81,8 @@ export default function TradesHubPage() {
   return (
     <ChunkySeoLayout
       eyebrow="Trades Systems"
-      title="Custom Software, Websites & Marketing Systems for Trade Businesses"
-      intro="USATII helps trade companies in Rochester replace software sprawl with one in-house operating system. We improve lead intake, estimates, scheduling, job tracking, invoicing, crew communication, client portals, and marketing follow-up."
+      title="Custom Software and Websites for Trade Businesses"
+      intro="USATII helps trade companies in Rochester replace software sprawl with one in-house operating system. We improve lead intake, estimates, scheduling, job tracking, invoicing, crew communication, client portals, and operational follow-up."
       proofPoints={[
         "Primary offer: custom in-house systems for trades",
         "Secondary proof: high-output content and paid ad execution",
@@ -127,14 +119,14 @@ export default function TradesHubPage() {
         <p>
           USATII builds contractor operating systems that connect lead intake,
           estimating, scheduling, dispatch, invoicing, and follow-up in one
-          workflow. Website and marketing services are implemented to support that
-          system and increase qualified demand.
+          workflow. Business websites are implemented as an owned entry point into
+          that operating system.
         </p>
         <BulletGrid
           items={[
             "Custom software tailored to office and field workflows",
             "Contractor websites built to capture and convert qualified leads",
-            "Marketing systems tied to response speed and pipeline quality",
+            "Business websites connected directly to operational workflows",
             "Rochester-based, founder-led implementation with technical oversight",
           ]}
         />

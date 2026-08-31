@@ -44,3 +44,7 @@ New routes:
 - Admin overview API: `/api/admin/overview`
 - Admin clients APIs: `/api/admin/clients`, `/api/admin/clients/:id`
 - Admin PayPal revenue API: `/api/admin/revenue/paypal`
+
+## Search indexing
+
+After a production deployment, submit the current sitemap to IndexNow with `npm run indexnow`. To submit only selected changes or removals, pass site-relative or absolute URLs, for example `npm run indexnow -- /news /events`. Run `INDEXNOW_DRY_RUN=1 npm run indexnow` to inspect the payload without sending it.

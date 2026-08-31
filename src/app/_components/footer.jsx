@@ -63,8 +63,8 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/marketing-case-studies" className="hover:text-black">
-                Marketing Archive
+              <a href="/case-studies" className="hover:text-black">
+                Case Study Archive
               </a>
             </li>
           </ul>

@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
+import { SchemaScripts } from "@/app/_components/trades/chunky-seo-layout";
+import { buildArticleSchema, buildFounderPersonSchema, buildOrganizationSchema } from "@/lib/trades-schema";
 
 export const metadata = {
   title: "Social impact",
@@ -38,10 +40,23 @@ function ReportSection({ title, image, imageAlt, children }) {
 }
 
 export default function SocialImpactPage() {
+  const schemas = [
+    buildOrganizationSchema(),
+    buildFounderPersonSchema(),
+    buildArticleSchema({
+      path: "/social-impact",
+      title: "Social impact",
+      description: metadata.description,
+      datePublished: "2026-08-31",
+      dateModified: "2026-08-31",
+      image: "/social-impact/stronger-communities.webp",
+    }),
+  ];
   return (
     <div className="min-h-screen bg-white text-neutral-950">
       <Header />
       <main>
+        <SchemaScripts schemas={schemas} />
         <article className="mx-auto w-full max-w-[1180px] px-5 pb-28 pt-14 sm:px-7 lg:pb-36 lg:pt-18">
           <Link href="/about" className="text-[12px] font-medium text-neutral-500 transition hover:text-neutral-950">Company</Link>
 
