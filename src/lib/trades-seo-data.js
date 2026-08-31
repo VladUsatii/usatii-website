@@ -480,8 +480,11 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "hvac-software-rochester-ny",
     trade: "HVAC",
     title: "Custom Software for HVAC Companies in Rochester, NY",
+    heroImage: "/industries/technical-field-service-hero.webp",
+    heroTitle: "Run emergency service, maintenance, and installs from one system.",
+    focusNote: "Priority rules keep emergency work moving while maintenance and installation retain their own commitments.",
     opening:
-      "HVAC companies do not need another generic subscription dashboard. They need a system built around seasonal demand, emergency calls, maintenance plans, dispatch, and quote-to-install handoffs.",
+      "Seasonal demand, emergency calls, maintenance plans, dispatch, and installation produce different queues and timing rules. A shared system connects them while preserving their separate priorities.",
     commonProblems: [
       "Emergency calls get buried behind routine follow-ups",
       "Maintenance agreements are tracked outside the main scheduling flow",
@@ -503,10 +506,10 @@ export const INDUSTRY_PAGE_DATA = [
     workflows: [
       "After-hours emergency lead -> on-call dispatch -> technician ETA updates -> completion notes -> invoice",
       "Maintenance plan reminder -> booking confirmation -> service checklist -> next cycle scheduling",
-      "Replacement quote -> approval -> install date assignment -> crew prep -> post-install review request",
+      "Replacement quote -> approval -> install date assignment -> crew prep -> commissioning record",
     ],
-    websiteIntegration:
-      "HVAC landing pages can route emergency calls differently than maintenance requests so your office team responds with the right urgency.",
+    intakeDesign:
+      "Emergency calls, maintenance requests, and replacement inquiries enter different queues with the urgency, equipment context, and ownership the office needs to act immediately.",
     reportingDashboard:
       "Track first-response time, emergency close rate, maintenance retention, install conversion, and invoice aging in one dashboard.",
     securityNotes:
@@ -514,11 +517,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this support both service and installation teams?",
-        a: "Yes. We separate workflows for service calls and install projects while preserving one customer timeline.",
+        a: "Service calls and installation projects can use separate stages while sharing one customer and equipment history.",
       },
       {
         q: "Can recurring maintenance plans be automated?",
-        a: "Yes. We can automate reminders, appointment prompts, and renewal tracking.",
+        a: "Each agreement can generate its own reminders, booking tasks, service records, and renewal steps.",
       },
     ],
   },
@@ -526,12 +529,15 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "plumbing-software-rochester-ny",
     trade: "Plumbing",
     title: "Custom Software for Plumbing Companies in Rochester, NY",
+    heroImage: "/industries/plumbing-hero.webp",
+    heroTitle: "Give dispatch the full job before the truck rolls.",
+    focusNote: "Urgency, access, diagnosis, and parts readiness belong on the same service record.",
     opening:
-      "Plumbing companies need software that handles urgent calls, estimate approvals, parts coordination, and clear communication between office staff and field technicians.",
+      "Plumbing dispatch depends on urgency, parts readiness, property access, and complete technician notes. The operating system must preserve that context from the first call through invoicing and any return visit.",
     commonProblems: [
       "Urgent leak calls compete with scheduled jobs in the same queue",
       "Technician notes are inconsistent between jobs",
-      "Parts and materials status is not visible during scheduling",
+      "Scheduling proceeds before parts and materials are confirmed",
       "Follow-up for unfinished jobs slips through manually",
     ],
     replaceOrConsolidate: [
@@ -544,15 +550,15 @@ export const INDUSTRY_PAGE_DATA = [
       "Service request triage with urgency tags",
       "Technician checklist templates by job type",
       "Parts-needed checkpoints before scheduling",
-      "Completion workflow tied to invoicing and review requests",
+      "Completion workflow tied to invoicing and warranty records",
     ],
     workflows: [
       "Leak call intake -> urgent dispatch -> photo documentation -> same-day quote -> invoice",
       "Drain issue request -> technician assessment -> parts request -> return visit scheduling -> closeout",
       "Water heater estimate -> approval -> install scheduling -> warranty documentation -> follow-up",
     ],
-    websiteIntegration:
-      "Plumbing service pages can capture structured job details (issue type, urgency, property type) to speed dispatch decisions.",
+    intakeDesign:
+      "Issue type, urgency, property context, access constraints, and available photos are captured before dispatch so the first truck roll starts with better information.",
     reportingDashboard:
       "Monitor urgent response speed, repeat-visit rate, average estimate approval time, and paid-invoice timeline.",
     securityNotes:
@@ -560,11 +566,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this reduce repeat truck rolls?",
-        a: "Yes. Better intake data and field checklists reduce missed information that causes return visits.",
+        a: "Structured intake and job-specific field checklists capture the information required to diagnose, stock, and complete more work on the first visit.",
       },
       {
         q: "Can office staff and technicians use different views?",
-        a: "Yes. We design role-based views so each team sees exactly what they need.",
+        a: "Office staff can work from the dispatch and customer record while technicians receive a focused mobile view for the assigned job.",
       },
     ],
   },
@@ -572,11 +578,14 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "electrical-contractor-software-rochester-ny",
     trade: "Electrical",
     title: "Custom Software for Electrical Companies in Rochester, NY",
+    heroImage: "/industries/electrical-hero.webp",
+    heroTitle: "Control every job from scope through final inspection.",
+    focusNote: "Permits, safety records, approvals, and billing gates advance with the work.",
     opening:
-      "Electrical companies need workflow software that supports project scoping, permit checkpoints, safety documentation, scheduling, and invoice milestones.",
+      "Electrical work spans short service calls, permitted upgrades, and multi-stage commercial projects. Each job needs explicit scope, safety records, approval gates, crew assignments, and billing milestones.",
     commonProblems: [
       "Small service calls and multi-day installs use the same loose process",
-      "Permit and inspection status is not visible to dispatch",
+      "Dispatch lacks current permit and inspection status",
       "Crew notes and panel photos are hard to retrieve later",
       "Change orders are tracked outside the core estimate record",
     ],
@@ -597,8 +606,8 @@ export const INDUSTRY_PAGE_DATA = [
       "Service call intake -> technician assignment -> safety checklist -> completion and notes -> payment request",
       "Commercial estimate -> phased approvals -> crew allocation -> milestone billing",
     ],
-    websiteIntegration:
-      "Electrical service pages can collect project type and scope details that pre-qualify leads before dispatch.",
+    intakeDesign:
+      "Service calls, upgrades, and commercial projects enter distinct intake paths with the scope, site conditions, documentation, and next decision recorded from the start.",
     reportingDashboard:
       "Track permit-cycle delays, change-order frequency, crew utilization, and milestone billing conversion.",
     securityNotes:
@@ -606,11 +615,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this handle both residential and commercial jobs?",
-        a: "Yes. We can split workflows by project type while keeping shared customer and reporting structure.",
+        a: "Residential service, residential projects, and commercial work can use different stages while sharing customer, property, and reporting records.",
       },
       {
         q: "Can permit steps be built into the process?",
-        a: "Yes. Permit, inspection, and approval statuses can be embedded as required workflow gates.",
+        a: "Permit, inspection, and approval records can act as required gates before scheduling or billing advances.",
       },
     ],
   },
@@ -618,12 +627,15 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "roofing-software-rochester-ny",
     trade: "Roofing",
     title: "Custom Software for Roofing Companies in Rochester, NY",
+    heroImage: "/industries/roofing-hero.webp",
+    heroTitle: "Keep evidence, approvals, materials, and crews on one job record.",
+    focusNote: "A job becomes schedulable when evidence, approvals, materials, and weather all support the date.",
     opening:
-      "Roofing companies need software that can handle storm lead bursts, roof inspection photos, insurance coordination, estimate approvals, and crew scheduling across weather windows.",
+      "Storm volume, inspection evidence, insurer correspondence, material availability, and weather windows determine roofing throughput. Those dependencies need to remain attached to each property and job.",
     commonProblems: [
       "Storm lead volume overwhelms intake workflows",
       "Inspection photos are spread across phones and chat threads",
-      "Insurance communication is not tied to job status",
+      "Insurance correspondence sits outside the job timeline",
       "Material orders and crew scheduling are hard to coordinate",
     ],
     replaceOrConsolidate: [
@@ -641,22 +653,22 @@ export const INDUSTRY_PAGE_DATA = [
     workflows: [
       "Storm lead -> inspection booking -> photo capture -> estimate approval -> insurance coordination -> install schedule",
       "Supplement request -> estimate revision -> approval -> material release -> crew dispatch",
-      "Job completion -> final photo package -> invoice -> post-job review request",
+      "Job completion -> final photo package -> warranty record -> invoice release",
     ],
-    websiteIntegration:
-      "Roofing landing pages can separate emergency tarp requests from full replacement estimates to improve response prioritization.",
+    intakeDesign:
+      "Emergency mitigation, inspection requests, repairs, and replacement opportunities enter distinct queues with their own priorities and owners.",
     reportingDashboard:
-      "Measure storm lead response speed, insurance approval cycle time, material-delay risk, and review-request completion rate.",
+      "Measure storm lead response speed, insurance approval cycle time, material-delay risk, and closeout completion rate.",
     securityNotes:
       "Audit logs preserve all estimate revisions, insurance-step updates, and schedule changes for accountability.",
     faqs: [
       {
         q: "Can this handle insurance-heavy roofing workflows?",
-        a: "Yes. We can track documentation and communication checkpoints from inspection through claim-related approvals.",
+        a: "The job record can track inspection evidence, estimate revisions, correspondence, and approval checkpoints through the claim-related process.",
       },
       {
         q: "Can crews see material readiness before dispatch?",
-        a: "Yes. Dispatch views can include materials, permits, and approval dependencies.",
+        a: "Dispatch views can show material, permit, and approval readiness before a crew receives the assignment.",
       },
     ],
   },
@@ -664,13 +676,16 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "remodeling-contractor-software-rochester-ny",
     trade: "Remodeling",
     title: "Custom Software for Remodeling Companies in Rochester, NY",
+    heroImage: "/industries/remodeling-hero.webp",
+    heroTitle: "Carry every project decision into production and billing.",
+    focusNote: "Approved scope, selections, change orders, and milestones remain connected through closeout.",
     opening:
-      "Remodeling companies run longer timelines, more change orders, and denser client communication than typical service calls. Their software must reflect that complexity.",
+      "Remodeling work moves through discovery, design decisions, procurement, production, change orders, and milestone billing. Every approved decision needs to remain visible to the client, project team, and finance.",
     commonProblems: [
       "Discovery, design, and build stages are tracked in separate systems",
       "Change orders are hard to approve and reconcile",
       "Client communication history is fragmented",
-      "Milestone billing is not tied cleanly to project progress",
+      "Milestone billing advances separately from project progress",
     ],
     replaceOrConsolidate: [
       "Disconnected project portals",
@@ -689,20 +704,20 @@ export const INDUSTRY_PAGE_DATA = [
       "Change request -> cost update -> client approval -> schedule adjustment -> crew notification",
       "Milestone completion -> documentation upload -> invoice issue -> payment confirmation",
     ],
-    websiteIntegration:
-      "Remodeling pages can pre-qualify project size, timeline expectations, and service scope before consult scheduling.",
+    intakeDesign:
+      "Project type, expected scope, property constraints, decision makers, and timing are collected before a consultation so discovery begins with useful context.",
     reportingDashboard:
       "Track project stage duration, change-order volume, margin drift, and milestone payment timing.",
     securityNotes:
       "Permission tiers keep client-facing updates polished while internal financial and staffing notes remain controlled.",
     faqs: [
       {
-        q: "Can clients track progress without constant calls?",
-        a: "Yes. A client portal can provide project-stage visibility, approvals, and document access.",
+        q: "Can clients track project progress?",
+        a: "A client portal can expose approved schedules, decisions, documents, invoices, and current project status from the same record used by the team.",
       },
       {
         q: "Can change-order approvals be standardized?",
-        a: "Yes. We can enforce change-order steps so scope and pricing changes are formally tracked before execution.",
+        a: "A change request can require scope, price, schedule impact, and client approval before production updates.",
       },
     ],
   },
@@ -710,11 +725,14 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "landscaping-software-rochester-ny",
     trade: "Landscaping",
     title: "Custom Software for Landscaping Companies in Rochester, NY",
+    heroImage: "/industries/landscaping-hero.webp",
+    heroTitle: "Coordinate routes, seasonal work, and installation crews.",
+    focusNote: "Geography, service cadence, equipment, and crew capacity determine each day’s schedule.",
     opening:
-      "Landscaping teams manage seasonal swings, route density, recurring maintenance contracts, and project installs. Custom software helps coordinate all four.",
+      "Landscaping operations combine recurring route work with seasonal cleanups and installation projects. Scheduling depends on geography, service cadence, weather, equipment, and crew capacity.",
     commonProblems: [
       "Recurring maintenance and project installs are mixed in one queue",
-      "Crew routing is not optimized by geography",
+      "Route planning ignores geography and travel time",
       "Seasonal schedule shifts are handled manually",
       "Photo documentation for completed work is inconsistent",
     ],
@@ -735,8 +753,8 @@ export const INDUSTRY_PAGE_DATA = [
       "Spring cleanup lead -> site assessment -> estimate approval -> crew schedule -> completion and upsell follow-up",
       "Landscape install project -> material planning -> staged execution -> final walkthrough",
     ],
-    websiteIntegration:
-      "Landscaping pages can capture property type, service frequency, and seasonal priorities to improve lead qualification.",
+    intakeDesign:
+      "Property type, service frequency, access details, seasonal priorities, and preferred cadence are captured before routing the request to maintenance or project planning.",
     reportingDashboard:
       "Monitor route efficiency, seasonal booking density, recurring retention, and completion-to-invoice timing.",
     securityNotes:
@@ -744,11 +762,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this support recurring and one-time services together?",
-        a: "Yes. We build separate workflow lanes with shared client and billing records.",
+        a: "Recurring maintenance and installation projects can use separate scheduling rules while sharing client, property, and billing records.",
       },
       {
         q: "Can routes be organized by geography?",
-        a: "Yes. Scheduling can batch jobs by service area to reduce drive time.",
+        a: "Scheduling can batch eligible jobs by service area, crew skills, equipment, and service window.",
       },
     ],
   },
@@ -756,11 +774,14 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "flooring-contractor-software-rochester-ny",
     trade: "Flooring",
     title: "Custom Software for Flooring Companies in Rochester, NY",
+    heroImage: "/industries/interior-project-hero.webp",
+    heroTitle: "Move each flooring job from measure to signed closeout.",
+    focusNote: "Measurements, selections, procurement, readiness, and punch work share one project state.",
     opening:
-      "Flooring companies need software that tracks measure appointments, material selection, estimate approvals, install scheduling, and punch-list completion.",
+      "Flooring projects move from measurement through substrate review, material selection, ordering, installation, punch work, and sign-off. Delays begin when those records live in separate tools.",
     commonProblems: [
       "Measure and install appointments are managed in separate systems",
-      "Material selections are not tied cleanly to estimate revisions",
+      "Material selections drift away from estimate revisions",
       "Install readiness is unclear before crews are dispatched",
       "Punch-list and closeout steps are inconsistently documented",
     ],
@@ -779,10 +800,10 @@ export const INDUSTRY_PAGE_DATA = [
     workflows: [
       "Inbound lead -> measurement booking -> material selection -> estimate approval -> install date",
       "Material change -> estimate update -> client approval -> schedule confirmation",
-      "Install completion -> punch-list review -> final sign-off -> invoice and review request",
+      "Install completion -> punch-list review -> final sign-off -> warranty record -> invoice",
     ],
-    websiteIntegration:
-      "Flooring pages can gather room counts, material preferences, and project timing during intake.",
+    intakeDesign:
+      "Room counts, substrate conditions, material preferences, occupancy constraints, and target timing are collected before the measure appointment is assigned.",
     reportingDashboard:
       "Track measure-to-quote cycle time, approval rate by material category, and install completion quality trends.",
     securityNotes:
@@ -790,11 +811,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this track both residential and commercial flooring jobs?",
-        a: "Yes. We can support different scoping and approval rules for each job type.",
+        a: "Residential and commercial jobs can use different scoping, approval, scheduling, and closeout rules within one operational system.",
       },
       {
         q: "Can material options be tied directly to pricing?",
-        a: "Yes. Material selections can automatically flow into estimate versions and approvals.",
+        a: "Each material selection can update the active estimate version, required approvals, procurement record, and readiness status.",
       },
     ],
   },
@@ -802,11 +823,14 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "painting-contractor-software-rochester-ny",
     trade: "Painting",
     title: "Custom Software for Painting Companies in Rochester, NY",
+    heroImage: "/industries/painting-hero.webp",
+    heroTitle: "Make every surface, crew, and finish ready on schedule.",
+    focusNote: "Preparation evidence and finish decisions travel with the crew assignment.",
     opening:
-      "Painting contractors need fast quoting, job sequencing, crew coordination, and reliable communication around prep, materials, and finish expectations.",
+      "Painting schedules depend on surface conditions, preparation, materials, weather, crew sequence, and finish approval. Readiness and responsibility should be visible before each phase starts.",
     commonProblems: [
       "Quote follow-ups are inconsistent after site visits",
-      "Prep tasks are not tracked before paint day",
+      "Crews arrive before preparation tasks are confirmed",
       "Crew availability and weather constraints are hard to coordinate",
       "Final walkthrough notes are captured in scattered messages",
     ],
@@ -827,8 +851,8 @@ export const INDUSTRY_PAGE_DATA = [
       "Prep checklist completion -> crew dispatch -> progress photos -> walkthrough",
       "Touch-up request -> technician assignment -> completion verification -> invoice",
     ],
-    websiteIntegration:
-      "Painting pages can pre-qualify interior vs exterior scope, timeline, and surface details for better quoting accuracy.",
+    intakeDesign:
+      "Interior or exterior scope, surface conditions, occupancy, access, finish expectations, and timing are captured before estimating begins.",
     reportingDashboard:
       "Track quote turnaround, close rate by job type, schedule adherence, and rework frequency.",
     securityNotes:
@@ -836,11 +860,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this improve quote follow-up consistency?",
-        a: "Yes. Automated follow-up logic can keep quotes from going cold.",
+        a: "The quote pipeline can assign follow-up dates, owners, and escalation rules based on project value and client activity.",
       },
       {
         q: "Can crews log progress from the field?",
-        a: "Yes. Mobile views can capture photos, notes, and completion status in real time.",
+        a: "Mobile views can capture preparation evidence, progress photos, notes, materials used, and completion status from the jobsite.",
       },
     ],
   },
@@ -848,8 +872,11 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "masonry-concrete-software-rochester-ny",
     trade: "Masonry and Concrete",
     title: "Custom Software for Masonry and Concrete Companies in Rochester, NY",
+    heroImage: "/industries/masonry-concrete-hero.webp",
+    heroTitle: "Protect every pour and installation window.",
+    focusNote: "Site readiness, weather, inspections, materials, and crew sequence control schedule eligibility.",
     opening:
-      "Masonry and concrete contractors need stronger workflow control for site prep, pour windows, crew sequencing, inspections, and closeout documentation.",
+      "Concrete and masonry schedules depend on site readiness, weather, material timing, inspection gates, and crew sequence. A missed prerequisite can disrupt the entire pour or installation window.",
     commonProblems: [
       "Weather-dependent schedule changes are communicated too late",
       "Site readiness checks are inconsistent",
@@ -873,8 +900,8 @@ export const INDUSTRY_PAGE_DATA = [
       "Weather risk alert -> schedule shift -> crew notification -> client update",
       "Completion inspection -> photo documentation -> invoice release",
     ],
-    websiteIntegration:
-      "Masonry/concrete pages can capture project type, square footage, and timeline to improve estimate accuracy before site visits.",
+    intakeDesign:
+      "Project type, dimensions, access, existing conditions, site readiness, and schedule constraints are recorded before the assessment is assigned.",
     reportingDashboard:
       "Track schedule reliability, weather-related delays, inspection pass rates, and job gross margin trends.",
     securityNotes:
@@ -882,11 +909,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this handle weather-driven rescheduling?",
-        a: "Yes. Schedule logic can flag weather risk and automate communication when plans change.",
+        a: "Weather thresholds can flag affected work, open a rescheduling task, and issue approved crew and client notifications.",
       },
       {
         q: "Can inspections be logged inside the same system?",
-        a: "Yes. Inspection steps, notes, and approvals can be tied to each job record.",
+        a: "Inspection requirements, evidence, notes, outcomes, and approvals can remain attached to the job record and schedule gates.",
       },
     ],
   },
@@ -894,13 +921,16 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "pest-control-software-rochester-ny",
     trade: "Pest Control",
     title: "Custom Software for Pest Control Companies in Rochester, NY",
+    heroImage: "/industries/pest-control-hero.webp",
+    heroTitle: "Build a complete treatment history for every property.",
+    focusNote: "Every visit updates findings, applications, recommendations, cadence, and re-treatment responsibility.",
     opening:
-      "Pest control companies rely on recurring service plans, technician routing, treatment records, and timely follow-up communication. Custom workflows keep all of it coordinated.",
+      "Pest-control operations depend on treatment history, recurring cadence, route density, technician documentation, product usage, and re-treatment rules. Each visit must update a durable property record.",
     commonProblems: [
       "Recurring treatments are scheduled manually",
       "Technician treatment notes vary by person",
       "Route planning is inefficient across service areas",
-      "Re-treatment requests are not tracked clearly",
+      "Re-treatment requests lose priority and history",
     ],
     replaceOrConsolidate: [
       "Separate recurring reminder platforms",
@@ -919,8 +949,8 @@ export const INDUSTRY_PAGE_DATA = [
       "Daily route generation -> technician logs -> treatment completion -> customer summary",
       "Re-treatment request -> priority scheduling -> completion verification",
     ],
-    websiteIntegration:
-      "Pest control pages can capture pest type, urgency, and property context so dispatch can prioritize correctly.",
+    intakeDesign:
+      "Pest type, observed activity, urgency, property context, prior treatment, and access conditions are captured before the visit enters a route.",
     reportingDashboard:
       "Track recurring-plan retention, route efficiency, first-treatment completion, and re-treatment rate.",
     securityNotes:
@@ -928,11 +958,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this automate recurring service reminders?",
-        a: "Yes. Reminders and follow-up tasks can be automated by treatment cadence.",
+        a: "Each plan can generate visit windows, reminders, technician tasks, completion records, and follow-up actions from its treatment cadence.",
       },
       {
         q: "Can technicians log treatment details from mobile?",
-        a: "Yes. Field logs can be captured in mobile views tied to each service visit.",
+        a: "A mobile visit record can capture findings, products, quantities, application areas, photos, recommendations, and customer acknowledgment.",
       },
     ],
   },
@@ -940,12 +970,15 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "garage-door-company-software-rochester-ny",
     trade: "Garage Door",
     title: "Custom Software for Garage Door Companies in Rochester, NY",
+    heroImage: "/industries/garage-door-hero.webp",
+    heroTitle: "Dispatch repairs and replacements with the right parts ready.",
+    focusNote: "Door configuration, safety risk, diagnosis, and compatible parts guide assignment and scheduling.",
     opening:
-      "Garage door companies need fast response for repairs, clean quote-to-install workflows for replacements, and tighter coordination around parts availability.",
+      "Garage-door service combines urgent safety repairs, parts-dependent return visits, and planned replacements. Dispatch needs the door configuration, symptoms, parts status, and approval state before assigning work.",
     commonProblems: [
       "Repair calls and replacement jobs are mixed together",
       "Parts availability is unclear during scheduling",
-      "Estimate approvals are not tracked with urgency",
+      "Estimate approvals sit outside dispatch priorities",
       "Technician updates are difficult to standardize",
     ],
     replaceOrConsolidate: [
@@ -963,10 +996,10 @@ export const INDUSTRY_PAGE_DATA = [
     workflows: [
       "Emergency repair call -> technician dispatch -> parts diagnosis -> same-day resolution or follow-up",
       "Replacement inquiry -> onsite assessment -> quote approval -> install scheduling -> completion",
-      "Completion photo and notes -> invoice -> review request",
+      "Completion photo and notes -> safety verification -> warranty record -> invoice",
     ],
-    websiteIntegration:
-      "Garage door pages can capture door type, issue urgency, and preferred appointment windows during intake.",
+    intakeDesign:
+      "Door type, symptoms, safety risk, access details, available photos, and appointment constraints are captured before repair or replacement routing.",
     reportingDashboard:
       "Track emergency response time, repair completion rate, replacement close rate, and parts-delay impact.",
     securityNotes:
@@ -974,11 +1007,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this help prioritize emergency repair requests?",
-        a: "Yes. Urgency-based intake and dispatch logic can route emergency calls first.",
+        a: "Intake can score safety risk and operating condition so dispatch receives a clear priority before assigning a technician.",
       },
       {
         q: "Can parts dependencies be tracked before jobs are scheduled?",
-        a: "Yes. Parts-readiness checks can block scheduling until required items are confirmed.",
+        a: "The schedule can require confirmed parts, quantities, and job compatibility before a return visit or installation becomes eligible.",
       },
     ],
   },
@@ -986,11 +1019,14 @@ export const INDUSTRY_PAGE_DATA = [
     slug: "fencing-company-software-rochester-ny",
     trade: "Fencing",
     title: "Custom Software for Fencing Companies in Rochester, NY",
+    heroImage: "/industries/fencing-hero.webp",
+    heroTitle: "Confirm the site, materials, and crew before installation.",
+    focusNote: "Property conditions, measurements, approvals, materials, and crew sequence determine readiness.",
     opening:
-      "Fencing companies need better control across site measurements, estimate approvals, material coordination, crew scheduling, and final walkthrough closeouts.",
+      "Fencing projects move through measurement, property review, material selection, ordering, crew sequencing, installation, sign-off, and warranty records. Scheduling should begin after every prerequisite is confirmed.",
     commonProblems: [
       "Site measurements and estimate updates are disconnected",
-      "Material ordering status is not visible to schedulers",
+      "Schedulers lack a reliable material-readiness state",
       "Install sequencing across crews is manually coordinated",
       "Closeout approvals and warranty notes are hard to standardize",
     ],
@@ -1009,10 +1045,10 @@ export const INDUSTRY_PAGE_DATA = [
     workflows: [
       "Lead capture -> site measurement -> quote approval -> material order -> install schedule",
       "Material delay alert -> schedule adjustment -> customer notification",
-      "Final walkthrough -> sign-off capture -> invoice -> review request",
+      "Final walkthrough -> sign-off capture -> warranty record -> invoice",
     ],
-    websiteIntegration:
-      "Fencing pages can collect fence type, footage, and property context to improve upfront lead qualification.",
+    intakeDesign:
+      "Fence type, approximate footage, terrain, access, property context, and timing are collected before measurement and estimating are scheduled.",
     reportingDashboard:
       "Track measurement-to-quote cycle, material-delay frequency, install throughput, and closeout completion.",
     securityNotes:
@@ -1020,11 +1056,11 @@ export const INDUSTRY_PAGE_DATA = [
     faqs: [
       {
         q: "Can this reduce delays caused by material coordination?",
-        a: "Yes. Material status can be tied directly to schedule eligibility and customer updates.",
+        a: "Material status can control schedule eligibility and trigger approved customer updates when availability changes.",
       },
       {
         q: "Can closeout and warranty steps be standardized?",
-        a: "Yes. We can build repeatable closeout forms and warranty logging inside each job workflow.",
+        a: "Closeout can require walkthrough notes, acceptance, completion photos, warranty details, and unresolved-item ownership before invoicing.",
       },
     ],
   },

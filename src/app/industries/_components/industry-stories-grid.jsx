@@ -68,7 +68,7 @@ export default function IndustryStoriesGrid({ industries }) {
               <h2 className="mt-5 text-base font-medium leading-snug tracking-[-0.02em] transition group-hover:text-violet-700">
                 {storyTitle(industry)}
               </h2>
-              <p className="mt-4 text-xs text-neutral-500">Industry guide</p>
+              <p className="mt-4 text-xs text-neutral-500">Industry</p>
             </article>
           </Link>
         ))}
