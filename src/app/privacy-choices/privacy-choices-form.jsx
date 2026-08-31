@@ -28,22 +28,19 @@ export default function PrivacyChoicesForm() {
   const [preferences, setPreferences] = useState(DEFAULT_PRIVACY_PREFERENCES);
   const [gpc, setGpc] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     const controlEnabled = hasGlobalPrivacyControl();
     setGpc(controlEnabled);
     const stored = readPrivacyPreferences();
     if (stored) setPreferences(stored);
+    setInitialized(true);
   }, []);
 
   function update(key, value) {
-    setSaved(false);
-    setPreferences((current) => ({ ...current, [key]: value }));
-  }
-
-  function save() {
-    const value = savePrivacyPreferences(preferences);
-    setPreferences(value);
+    const stored = savePrivacyPreferences({ ...preferences, [key]: value });
+    setPreferences(stored);
     setSaved(true);
   }
 
@@ -57,9 +54,16 @@ export default function PrivacyChoicesForm() {
     <div>
       {gpc ? (
         <div className="mb-8 rounded-xl border border-violet-200 bg-violet-50 p-4 text-sm leading-6 text-violet-950" role="status">
-          Global Privacy Control is enabled in this browser. Marketing and targeted-advertising use is turned off and cannot be enabled here.
+          Global Privacy Control is enabled in this browser. This site does not use marketing or targeted-advertising trackers.
         </div>
       ) : null}
+
+      <div className="mb-6 flex items-center justify-between gap-6 border-y border-surface-strong py-4 text-sm">
+        <span className="text-ink-soft">Current analytics state</span>
+        <span className={`font-semibold ${preferences.analytics ? 'text-emerald-700' : 'text-ink'}`}>
+          {initialized ? (preferences.analytics ? 'Allowed' : 'Blocked') : 'Loading'}
+        </span>
+      </div>
 
       <div className="rounded-2xl border border-surface-strong bg-white px-6 md:px-8">
         <PreferenceRow
@@ -70,26 +74,15 @@ export default function PrivacyChoicesForm() {
           label="Essential technologies are always active"
         />
         <PreferenceRow
-          title="Analytics"
-          description="Allows us to collect limited information about visits and page usage so we can improve the website."
+          title="First-party usage analytics"
+          description="Allows page-view and contact-intent events to be sent to USATII. We use them to understand which pages are used. Disabling this also clears this browser tab's analytics session state."
           checked={preferences.analytics}
           onChange={(event) => update('analytics', event.target.checked)}
           label="Allow analytics"
         />
-        <PreferenceRow
-          title="Marketing and targeted advertising"
-          description="Allows information to be used to measure campaigns or promote our services on third-party properties. We do not currently sell personal information."
-          checked={gpc ? false : preferences.marketing}
-          disabled={gpc}
-          onChange={(event) => update('marketing', event.target.checked)}
-          label="Allow marketing and targeted advertising"
-        />
       </div>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <button type="button" onClick={save} className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-ink-soft">
-          Save choices
-        </button>
         <button
           type="button"
           onClick={rejectOptional}
@@ -97,7 +90,9 @@ export default function PrivacyChoicesForm() {
         >
           Reject optional
         </button>
-        {saved ? <p className="text-sm font-medium text-emerald-700" role="status">Your choices have been saved.</p> : null}
+        <p className="text-sm font-medium text-ink-soft" role="status">
+          {saved ? `Saved. Analytics are ${preferences.analytics ? 'allowed' : 'blocked'} in this browser.` : 'Changes to analytics apply immediately.'}
+        </p>
       </div>
     </div>
   );

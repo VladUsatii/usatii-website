@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { PRIVACY_EVENT_NAME, readPrivacyPreferences } from '@/lib/privacy-preferences';
+import { PRIVACY_EVENT_NAME, PRIVACY_STORAGE_KEY, readPrivacyPreferences } from '@/lib/privacy-preferences';
 
 const SESSION_KEY = 'usatii_telemetry_session_id';
 const SEEN_KEY = 'usatii_telemetry_seen_events';
@@ -136,10 +136,15 @@ export default function TelemetryTracker() {
     }
 
     trackIfAllowed();
+    function handleStorage(event) {
+      if (event.key === PRIVACY_STORAGE_KEY) trackIfAllowed();
+    }
     window.addEventListener(PRIVACY_EVENT_NAME, trackIfAllowed);
+    window.addEventListener('storage', handleStorage);
     return () => {
       cancelled = true;
       window.removeEventListener(PRIVACY_EVENT_NAME, trackIfAllowed);
+      window.removeEventListener('storage', handleStorage);
     };
   }, [pathname, searchParams, serializedSearch]);
 

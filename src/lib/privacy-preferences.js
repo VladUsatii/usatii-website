@@ -1,6 +1,8 @@
 export const PRIVACY_STORAGE_KEY = 'usatii_privacy_preferences';
 export const PRIVACY_COOKIE_NAME = 'usatii_privacy_choices';
 export const PRIVACY_EVENT_NAME = 'usatii:privacy-preferences-changed';
+const TELEMETRY_SESSION_KEY = 'usatii_telemetry_session_id';
+const TELEMETRY_SEEN_KEY = 'usatii_telemetry_seen_events';
 
 export const DEFAULT_PRIVACY_PREFERENCES = Object.freeze({
   analytics: false,
@@ -34,14 +36,21 @@ export function savePrivacyPreferences(preferences) {
 
   const value = {
     analytics: preferences.analytics === true,
-    marketing: hasGlobalPrivacyControl() ? false : preferences.marketing === true,
+    marketing: false,
     globalPrivacyControl: hasGlobalPrivacyControl(),
     updatedAt: new Date().toISOString(),
     version: 1,
   };
 
   window.localStorage.setItem(PRIVACY_STORAGE_KEY, JSON.stringify(value));
-  document.cookie = `${PRIVACY_COOKIE_NAME}=${encodeURIComponent(JSON.stringify(value))}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;
+  const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie = `${PRIVACY_COOKIE_NAME}=${encodeURIComponent(JSON.stringify(value))}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+
+  if (!value.analytics) {
+    window.sessionStorage.removeItem(TELEMETRY_SESSION_KEY);
+    window.sessionStorage.removeItem(TELEMETRY_SEEN_KEY);
+  }
+
   window.dispatchEvent(new CustomEvent(PRIVACY_EVENT_NAME, { detail: value }));
   return value;
 }

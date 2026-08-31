@@ -4,7 +4,7 @@ import PrivacyChoicesForm from './privacy-choices-form';
 
 export const metadata = {
   title: 'Your Privacy Choices | USATII Media',
-  description: 'Choose how USATII Media may use optional analytics and marketing technologies in this browser.',
+  description: 'Choose whether USATII Media may use optional first-party usage analytics in this browser.',
 };
 
 export default function PrivacyChoicesPage() {
@@ -15,7 +15,7 @@ export default function PrivacyChoicesPage() {
         <section className="mx-auto w-full max-w-4xl px-4 py-14 md:px-6 md:py-24">
           <h1 className="text-5xl font-medium tracking-tight md:text-7xl">Your Privacy Choices</h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-ink-soft">
-            Control optional data use for this browser. Your selection is stored for one year and can be changed whenever you return to this page.
+            Control first-party usage analytics for this browser. Your selection is stored for one year and can be changed whenever you return to this page. We do not use marketing or targeted-advertising trackers.
           </p>
           <div className="mt-12">
             <PrivacyChoicesForm />
