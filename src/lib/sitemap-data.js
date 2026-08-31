@@ -33,6 +33,7 @@ export async function getCanonicalSitemapPaths() {
     "/editor/changelog",
     "/news",
     "/news/introducing-digital-business-cards",
+    "/social-impact",
     "/events",
     ...events.map(({ slug }) => `/events/${slug}`),
     "/vlad-usatii",

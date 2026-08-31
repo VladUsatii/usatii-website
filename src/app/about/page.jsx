@@ -13,11 +13,12 @@ export const metadata = buildPageMetadata({
 
 const stories = [
   {
-    title: "Building software around operator workflows",
-    subtext: "How one operating system can replace over twenty subscriptions and tools.",
-    type: "Software",
-    href: "/software",
-    color: "from-violet-100 via-indigo-50 to-sky-100",
+    title: "Social impact",
+    subtext: "Our commitments to better work, organizational ownership, responsible artificial intelligence, and stronger communities.",
+    type: "Company",
+    href: "/social-impact",
+    image: "/social-impact/stronger-communities.webp",
+    imageAlt: "Employees opening a local business on an active town street",
   },
   {
     title: "Communications intelligence for modern teams",
@@ -125,7 +126,18 @@ export default function AboutPage() {
           <div className="mt-8 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {stories.map((story) => (
               <article key={story.title}>
-                <div className={`aspect-square rounded-sm bg-gradient-to-br ${story.color}`} aria-label="Image placeholder" role="img" />
+                {story.image ? (
+                  <Image
+                    src={story.image}
+                    alt={story.imageAlt}
+                    width={1672}
+                    height={941}
+                    sizes="(min-width: 1024px) 276px, (min-width: 640px) calc(50vw - 34px), calc(100vw - 48px)"
+                    className="aspect-square rounded-sm object-cover grayscale"
+                  />
+                ) : (
+                  <div className={`aspect-square rounded-sm bg-gradient-to-br ${story.color}`} aria-label="Image placeholder" role="img" />
+                )}
                 <h3 className="mt-4 text-base font-medium leading-snug tracking-[-0.015em]">{story.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-neutral-600">{story.subtext}</p>
                 <p className="mt-3 text-xs text-neutral-400">{story.type}</p>
