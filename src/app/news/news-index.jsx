@@ -7,6 +7,15 @@ import { ArrowDownUp, ArrowRight, Check, Grid2X2, List } from "lucide-react";
 
 const stories = [
   {
+    title: "Building better intelligence tools for communication",
+    category: "Company",
+    date: "Sep 2, 2026",
+    dateValue: "2026-09-02",
+    image: "/news/marketing-team-collaboration.webp",
+    imageFit: "cover",
+    href: "/news/building-better-intelligence-tools-for-communication",
+  },
+  {
     title: "Introducing digital business cards",
     category: "Product",
     date: "Aug 28, 2026",
@@ -25,7 +34,7 @@ function StoryCard({ story, listView }) {
           alt=""
           fill
           sizes={listView ? "240px" : "(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 100vw"}
-          className="object-contain p-8 transition duration-500 group-hover:scale-[1.015] sm:p-10"
+          className={`${story.imageFit === "cover" ? "object-cover" : "object-contain p-8 sm:p-10"} transition duration-500 group-hover:scale-[1.015]`}
         />
       </div>
       <div className={listView ? "self-end" : "pt-4"}>

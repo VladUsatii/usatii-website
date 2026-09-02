@@ -32,6 +32,7 @@ export async function getCanonicalSitemapPaths() {
     "/editor",
     "/editor/changelog",
     "/news",
+    "/news/building-better-intelligence-tools-for-communication",
     "/news/introducing-digital-business-cards",
     "/social-impact",
     "/events",
