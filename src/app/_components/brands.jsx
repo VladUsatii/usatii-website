@@ -139,7 +139,11 @@ export default function TrustedByGrid({
             ))}
           </div>
 
-          <div className="mx-auto mt-12 flex max-w-md items-center justify-center gap-6 pb-2 sm:mt-14 sm:gap-8">
+          <section aria-labelledby="community-heading" className="mx-auto mt-20 max-w-2xl pb-8 text-center sm:mt-24">
+            <h3 id="community-heading" className="mx-auto max-w-sm text-balance text-2xl font-medium leading-tight tracking-[-0.035em] text-neutral-950 sm:max-w-none sm:text-3xl">
+              Working together in our community.
+            </h3>
+            <div className="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center justify-items-center gap-6 sm:mt-12 sm:gap-12">
             <a
               href="https://www.greaterrochesterchamber.com/"
               target="_blank"
@@ -152,15 +156,30 @@ export default function TrustedByGrid({
                 alt="Proud Member of the Greater Rochester Chamber of Commerce"
                 width="5576"
                 height="2873"
-                className="h-auto w-28 sm:w-32"
+                className="h-auto w-28 max-w-full sm:w-36"
                 loading="lazy"
                 decoding="async"
               />
             </a>
-            <p className="max-w-[210px] border-l border-neutral-200 pl-6 text-left text-xs leading-5 text-neutral-500 sm:pl-8">
-              Proud member of the Greater Rochester Chamber of Commerce.
-            </p>
-          </div>
+            <a
+              href="https://www.monroeupstatenyapex.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Monroe County Upstate NY APEX Accelerator"
+              className="inline-flex shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-4"
+            >
+              <img
+                src="/images/monroe-upstate-ny-apex-accelerator.png"
+                alt="Monroe County Upstate NY APEX Accelerator"
+                width="1042"
+                height="350"
+                className="h-auto w-36 max-w-full sm:w-52"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            </div>
+          </section>
         </div>
       </section>
     );
