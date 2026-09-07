@@ -97,7 +97,7 @@ export default function TrustedByGrid({
     return (
       <section className={`relative w-full overflow-hidden border-b border-neutral-200 bg-white text-neutral-950 ${className}`}>
   
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-24 sm:px-8">
+        <div className="relative mx-auto w-full max-w-6xl px-6 pb-16 pt-24 sm:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-500">
               {eyebrow}
@@ -137,6 +137,29 @@ export default function TrustedByGrid({
                 />
               </div>
             ))}
+          </div>
+
+          <div className="mx-auto mt-12 flex max-w-md items-center justify-center gap-6 pb-2 sm:mt-14 sm:gap-8">
+            <a
+              href="https://www.greaterrochesterchamber.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Greater Rochester Chamber of Commerce"
+              className="inline-flex shrink-0 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-4"
+            >
+              <img
+                src="/images/greater-rochester-chamber-member.jpg"
+                alt="Proud Member of the Greater Rochester Chamber of Commerce"
+                width="5576"
+                height="2873"
+                className="h-auto w-28 sm:w-32"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <p className="max-w-[210px] border-l border-neutral-200 pl-6 text-left text-xs leading-5 text-neutral-500 sm:pl-8">
+              Proud member of the Greater Rochester Chamber of Commerce.
+            </p>
           </div>
         </div>
       </section>
