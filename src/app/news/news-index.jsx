@@ -11,9 +11,10 @@ const stories = [
     category: "Company",
     date: "Sep 10, 2026",
     dateValue: "2026-09-10",
-    image: "/news/employee-wallet-check-in.webp",
+    image: "/news/automation-stars.png",
     imageFit: "cover",
     href: "/news/the-age-of-automation-is-among-us",
+    tweetPreview: true,
   },
   {
     title: "Building better intelligence tools for communication",
@@ -45,6 +46,13 @@ function StoryCard({ story, listView }) {
           sizes={listView ? "240px" : "(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 100vw"}
           className={`${story.imageFit === "cover" ? "object-cover" : "object-contain p-8 sm:p-10"} transition duration-500 group-hover:scale-[1.015]`}
         />
+        {story.tweetPreview && <div className="absolute inset-0 grid place-items-center p-4 sm:p-5">
+          <div className="w-full max-w-[290px] bg-white px-4 py-3.5 text-left text-neutral-950 shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:px-5 sm:py-4">
+            <div className="flex items-center justify-between text-[11px] font-semibold"><span>kache</span><span className="text-[15px] font-medium">𝕏</span></div>
+            <p className="mt-4 text-[14px] font-medium leading-[1.28] tracking-[-0.01em]">I cannot believe how much work hasn&apos;t been automated</p>
+            <p className="mt-4 text-[10px] text-neutral-500">Sep 10, 2026</p>
+          </div>
+        </div>}
       </div>
       <div className={listView ? "self-end" : "pt-4"}>
         <h2 className="max-w-[30rem] text-[15px] font-medium leading-[1.28] tracking-[-0.012em] text-neutral-950 sm:text-[16px]">

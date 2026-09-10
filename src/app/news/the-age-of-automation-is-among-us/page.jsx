@@ -13,7 +13,7 @@ export const metadata = {
   title,
   description,
   alternates: { canonical: path },
-  openGraph: { title, description, images: ["/news/employee-wallet-check-in.webp"] },
+  openGraph: { title, description, images: ["/news/automation-stars.png"] },
 };
 
 export default function AgeOfAutomationArticle() {
@@ -26,7 +26,7 @@ export default function AgeOfAutomationArticle() {
       description,
       datePublished: "2026-09-10",
       dateModified: "2026-09-10",
-      image: "/news/employee-wallet-check-in.webp",
+      image: "/news/automation-stars.png",
     }),
   ];
 
@@ -45,7 +45,7 @@ export default function AgeOfAutomationArticle() {
               The age of automation is among us.
             </h1>
             <p className="mt-6 max-w-[720px] text-[16px] italic leading-7 text-neutral-700 sm:text-[18px]">
-              The useful question is no longer whether a task can be automated. It is why anyone is still doing it by hand.
+              Software can now carry work across systems. Most organizations have barely begun to redesign around that fact.
             </p>
             <div className="mt-6 flex items-center gap-3 text-[12px]">
               <span className="font-medium">Company</span>
@@ -54,22 +54,26 @@ export default function AgeOfAutomationArticle() {
           </header>
 
           <div className="mx-auto mt-14 max-w-[660px] space-y-6 text-[16px] font-normal leading-[1.75] text-black">
-            <p>There is a particular kind of work that fills up a week without leaving much to show for it: copying information between systems, chasing approvals, naming files, updating a tracker after someone sends an email, and answering the same status question for the tenth time. Most teams recognize it. Plenty have learned to live with it.</p>
+            <p>Automation has crossed a threshold. Software can read an intake form, extract the details that matter, check a record, request a missing approval, create the next task, update the customer, and leave behind an audit trail. Those capabilities are already usable. Yet much of the economy still runs on people carrying information from one screen to another, then proving they carried it.</p>
 
-            <blockquote className="twitter-tweet my-12 sm:my-14">
-              <p lang="en" dir="ltr">I cannot believe how much work hasn&apos;t been automated</p>
-              &mdash; kache (@yacineMTB){" "}
-              <a href="https://x.com/yacineMTB/status/2098051855842509220?ref_src=twsrc%5Etfw">September 10, 2026</a>
-            </blockquote>
+            <div className="my-12 overflow-hidden bg-[url('/news/automation-stars.png')] bg-cover bg-center px-5 py-10 sm:my-14 sm:px-10 sm:py-14">
+              <blockquote className="twitter-tweet mx-auto !mt-0 !mb-0">
+                <p lang="en" dir="ltr">I cannot believe how much work hasn&apos;t been automated</p>
+                &mdash; kache (@yacineMTB){" "}
+                <a href="https://x.com/yacineMTB/status/2098051855842509220?ref_src=twsrc%5Etfw">September 10, 2026</a>
+              </blockquote>
+            </div>
             <Script async src="https://platform.x.com/widgets.js" charSet="utf-8" strategy="afterInteractive" />
 
-            <p>That reaction is fair. The pieces are already here: software that can read an incoming request, route it to the right person, check the details against a record, create the next task, and keep a clean history of what happened. The hard part is rarely the individual step. It is deciding where the handoff should happen, what counts as an exception, and who owns the result when the process breaks.</p>
+            <p>For years, business software digitized the filing cabinet and left the relay race intact. A request arrived by email, someone retyped it into a CRM, another person opened a ticket, and a manager asked for a report on Friday. Each handoff became a job. Each job became a habit. The cost shows up as delayed decisions, dropped context, exhausted teams, and a growing belief that administration is simply the price of doing business.</p>
 
-            <p>Automation is not a reason to remove judgment. It is a reason to stop spending judgment on chores. A coordinator should be able to notice that a client request is unusual instead of manually moving it through five columns. An account manager should spend time fixing a relationship, not building a weekly report from screenshots. Those are different jobs.</p>
+            <p>We reject that bargain. People should own decisions, exceptions, relationships, and consequences. Systems should own repetition. A coordinator should see the request that breaks the rule, with the context needed to act. An account manager should walk into a client conversation prepared, rather than spend Thursday assembling a status update from screenshots. The work becomes more demanding where it should: in judgment, care, and accountability.</p>
 
-            <p>The first candidates are usually obvious. Find the work that is repeated, rules-based, and annoying enough that people invent their own shortcuts. Map it as it really happens, including the strange edge cases. Then automate one reliable path and watch it in use. A bad process running faster is still a bad process.</p>
+            <p>The scale of the change deserves clear eyes. The <a className="underline decoration-neutral-400 underline-offset-4 transition hover:decoration-neutral-950" href="https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure">International Labour Organization&apos;s 2025 task-level study</a> found some degree of generative-AI exposure in one in four jobs worldwide, while placing only 3.3% of global employment in its highest exposure category. Work is made of tasks, and tasks move at different speeds. Treating every role as a unit of inevitable replacement is lazy management and bad analysis.</p>
 
-            <p>There will always be work that needs a person in the middle. The point is to make that person necessary for the part that deserves them. The rest can move on its own.</p>
+            <p>Our standard is simple: automation must earn trust. It needs a named owner, visible rules, permission boundaries, a record of what it did, and a path for a person to intervene. It must work for the person with the least time, the smallest team, and the fewest engineers available to wire it together. Otherwise, automation becomes another advantage reserved for the companies that already have enough.</p>
+
+            <p>The next generation of organizations will be built around leverage that is widely available. Their people will spend less time transferring information and more time making things, fixing what matters, and serving one another well. The technology is here. The responsibility now is to put it to work with intent.</p>
           </div>
         </article>
       </main>
