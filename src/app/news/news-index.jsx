@@ -7,6 +7,15 @@ import { ArrowDownUp, ArrowRight, Check, Grid2X2, List } from "lucide-react";
 
 const stories = [
   {
+    title: "The age of automation is among us.",
+    category: "Company",
+    date: "Sep 10, 2026",
+    dateValue: "2026-09-10",
+    image: "/news/employee-wallet-check-in.webp",
+    imageFit: "cover",
+    href: "/news/the-age-of-automation-is-among-us",
+  },
+  {
     title: "Building better intelligence tools for communication",
     category: "Company",
     date: "Sep 2, 2026",
