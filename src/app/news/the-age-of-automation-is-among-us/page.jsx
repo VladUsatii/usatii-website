@@ -56,13 +56,11 @@ export default function AgeOfAutomationArticle() {
           <div className="mx-auto mt-14 max-w-[660px] space-y-6 text-[16px] font-normal leading-[1.75] text-black">
             <p>Automation has crossed a threshold. Software can read an intake form, extract the details that matter, check a record, request a missing approval, create the next task, update the customer, and leave behind an audit trail. Those capabilities are already usable. Yet much of the economy still runs on people carrying information from one screen to another, then proving they carried it.</p>
 
-            <div className="my-12 overflow-hidden bg-[url('/news/automation-stars.png')] bg-cover bg-center px-5 py-10 sm:my-14 sm:px-10 sm:py-14">
-              <blockquote className="twitter-tweet mx-auto !mt-0 !mb-0">
-                <p lang="en" dir="ltr">I cannot believe how much work hasn&apos;t been automated</p>
-                &mdash; kache (@yacineMTB){" "}
-                <a href="https://x.com/yacineMTB/status/2098051855842509220?ref_src=twsrc%5Etfw">September 10, 2026</a>
-              </blockquote>
-            </div>
+            <blockquote className="twitter-tweet my-12 sm:my-14">
+              <p lang="en" dir="ltr">I cannot believe how much work hasn&apos;t been automated</p>
+              &mdash; kache (@yacineMTB){" "}
+              <a href="https://x.com/yacineMTB/status/2098051855842509220?ref_src=twsrc%5Etfw">September 10, 2026</a>
+            </blockquote>
             <Script async src="https://platform.x.com/widgets.js" charSet="utf-8" strategy="afterInteractive" />
 
             <p>For years, business software digitized the filing cabinet and left the relay race intact. A request arrived by email, someone retyped it into a CRM, another person opened a ticket, and a manager asked for a report on Friday. Each handoff became a job. Each job became a habit. The cost shows up as delayed decisions, dropped context, exhausted teams, and a growing belief that administration is simply the price of doing business.</p>
