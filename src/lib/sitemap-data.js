@@ -5,7 +5,7 @@ import { events } from "@/lib/events";
 
 export function getSitemapPriority(path) {
   if (path === "/") return 1;
-  if (path === "/construction") return 0.95;
+  if (path === "/construction" || path === "/emergency-management") return 0.95;
   if (path === "/software/software-waste-audit") return 0.95;
   if (path.startsWith("/software/")) return 0.9;
   if (path === "/services") return 0.92;
@@ -29,6 +29,7 @@ export async function getCanonicalSitemapPaths() {
     ...getApprovedSitemapRoutes(),
     ...getAllTradeRoutes(),
     ...caseStudyRoutes,
+    "/emergency-management",
     "/editor",
     "/editor/changelog",
     "/news",

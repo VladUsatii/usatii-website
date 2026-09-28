@@ -3,9 +3,10 @@ import { Linkedin, Instagram } from "lucide-react";
 
 const productTiles = [
   { id: 1, title: "Usatii for Construction", href: "/construction" },
-  { id: 2, title: "Software", href: "/software" },
-  { id: 3, title: "Industries", href: "/industries" },
-  { id: 4, title: "Locations", href: "/locations" },
+  { id: 2, title: "Usatii for Emergency Management", href: "/emergency-management" },
+  { id: 3, title: "Software", href: "/software" },
+  { id: 4, title: "Industries", href: "/industries" },
+  { id: 5, title: "Locations", href: "/locations" },
 ];
 
 export default function Footer() {
