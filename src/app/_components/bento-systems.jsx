@@ -4,6 +4,13 @@ import { ArrowUpRight } from "lucide-react";
 
 const sideStories = [
   {
+    title: "DART",
+    description: "Our flagship emergency management system, designed around the people, resources, and institutions that respond to emergencies.",
+    image: "/news/dart.png",
+    href: "/news/introducing-dart",
+    cta: "Explore DART",
+  },
+  {
     title: "REBUILDIT AI",
     description: "Helping construction companies make fast decisions. We organize private and public-sector projects with a data ontology, sovereign AI, and hundreds of features like PBX infrastructure, automated bid mining, 3D building scans, and team/inventory management.",
     image: "/home/press/rebuildit-ai.webp",

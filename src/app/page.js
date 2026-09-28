@@ -14,7 +14,6 @@ import ComparisonTable from "./_components/comparison-table";
 import Roadmap from "./_components/roadmap";
 import WebsiteShowcase from "./_components/websites";
 import EventsCarousel from "./_components/events-carousel";
-import FeaturedBuilds from "./_components/featured-builds";
 import { events } from "@/lib/events";
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <FeaturedBuilds />
         <Roadmap />
         <HeroTwo />
         <CaseStudySwiper />
