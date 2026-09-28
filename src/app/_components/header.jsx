@@ -13,7 +13,7 @@ export default function Header() {
             aria-hidden="true"
             className="h-[1em] w-[1em] shrink-0 rounded-full bg-[radial-gradient(circle_at_32%_24%,rgba(255,255,255,0.42),transparent_30%),linear-gradient(135deg,#db37ff_0%,#b91cff_42%,#8b16ef_100%)] shadow-[inset_0.25em_0.2em_0.45em_rgba(255,255,255,0.2),inset_-0.35em_-0.3em_0.6em_rgba(67,0,142,0.34),0_0.25em_0.7em_rgba(168,85,247,0.32)]"
           />
-          <span>USATII MEDIA</span>
+          <span>USATII</span>
         </Link>
         <nav className="mr-auto hidden items-center gap-1 text-sm font-semibold text-muted-foreground md:flex" aria-label="Primary navigation">
           <Link href="/software" className="rounded-mdx px-2 py-1.5 hover:bg-surface hover:text-ink">Software</Link>

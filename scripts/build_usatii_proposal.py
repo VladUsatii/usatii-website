@@ -156,7 +156,7 @@ def configure_section(section, first_page=False, document_title="Document", date
         p = left.paragraphs[0]
         p.paragraph_format.space_after = Pt(3)
         add_brand_wordmark(p, width=1.55)
-        p = left.add_paragraph("Usatii Media\nusatii.com\nvlad@usatii.com")
+        p = left.add_paragraph("USATII\nusatii.com\nvlad@usatii.com")
         p.paragraph_format.space_after = Pt(0)
         p.paragraph_format.line_spacing = 1.03
         for r in p.runs:
@@ -552,12 +552,12 @@ def build_price_sheet(path):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    build_template(OUT / "USATII_MEDIA_Letterhead_Template.docx")
-    build_proposal(OUT / "USATII_MEDIA_Private_Property_Operations_Proposal.docx")
-    build_price_sheet(OUT / "USATII_MEDIA_Comprehensive_Price_Sheet.docx")
-    print(OUT / "USATII_MEDIA_Letterhead_Template.docx")
-    print(OUT / "USATII_MEDIA_Private_Property_Operations_Proposal.docx")
-    print(OUT / "USATII_MEDIA_Comprehensive_Price_Sheet.docx")
+    build_template(OUT / "USATII_Letterhead_Template.docx")
+    build_proposal(OUT / "USATII_Private_Property_Operations_Proposal.docx")
+    build_price_sheet(OUT / "USATII_Comprehensive_Price_Sheet.docx")
+    print(OUT / "USATII_Letterhead_Template.docx")
+    print(OUT / "USATII_Private_Property_Operations_Proposal.docx")
+    print(OUT / "USATII_Comprehensive_Price_Sheet.docx")
 
 
 if __name__ == "__main__":

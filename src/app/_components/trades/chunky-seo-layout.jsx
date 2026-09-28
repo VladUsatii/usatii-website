@@ -218,7 +218,7 @@ function SeoFooter() {
       <footer className="border-t border-[#d9deea] bg-[#eceff5]">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
           <div>
-            <p className="text-lg font-black tracking-tight text-[#1a2139]">USATII MEDIA</p>
+            <p className="text-lg font-black tracking-tight text-[#1a2139]">USATII</p>
             <div className="mt-4 space-y-2 text-sm text-[#3c4562]">
               <p className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-[#6d4dff]" />
@@ -286,7 +286,7 @@ function SeoFooter() {
               </Link>
             </div>
           </div>
-          <p className="text-lg font-black italic tracking-tight text-[#1a2139]">USATII MEDIA</p>
+          <p className="text-lg font-black italic tracking-tight text-[#1a2139]">USATII</p>
         </div>
       </section>
     </>

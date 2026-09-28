@@ -26,7 +26,7 @@ export default function Index() {
         {/* Brand */}
         <Link href="/">
         <h1 className="font-black text-center text-md text-indigo-600 hover:text-indigo-800 transition-colors">
-        USATII MEDIA
+        USATII
         </h1>
         </Link>
         <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md border-neutral-200 border-[2px] w-80">

@@ -8,7 +8,7 @@ import CaseStudySwiper from "./_components/case-study-swiper";
 import HeroThree from "./_components/hero_three";
 import HeroFour from "./_components/hero_four";
 import Link from "next/link";
-import UsatiiMediaCard from "./_components/usatii-media-card";
+import UsatiiCard from "./_components/usatii-card";
 // import HeroFive from "./_components/hero_five";
 import ComparisonTable from "./_components/comparison-table";
 import Roadmap from "./_components/roadmap";
@@ -32,7 +32,7 @@ export default function Home() {
         <HeroFour />
         {/* <HeroFive /> */}
       </main>
-      <UsatiiMediaCard />
+      <UsatiiCard />
       <Footer />
     </>
   );

@@ -374,7 +374,7 @@ export default async function CaseStudyPage({ params }) {
       <div className="mx-auto max-w-6xl px-6 py-10 md:py-14">
         <Link href="/" className="block">
           <div className="text-center font-black italic tracking-tight hover:opacity-80">
-            USATII MEDIA
+            USATII
           </div>
         </Link>
 

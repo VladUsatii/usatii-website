@@ -4,7 +4,7 @@ import PublicLayout from "./_components/public-layout";
 
 export const metadata = {
   title: "Careers",
-  description: "Build safe, generalized enterprise software with Usatii Media."
+  description: "Build safe, generalized enterprise software with USATII."
 };
 
 const values = [

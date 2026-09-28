@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 export const metadata = {
-  title: 'Admin Portal | USATII MEDIA',
+  title: 'Admin Portal | USATII',
 };
 
 export default function AdminPortalPage() {

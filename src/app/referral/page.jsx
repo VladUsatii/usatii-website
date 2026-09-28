@@ -8,7 +8,7 @@ function Referral() {
       {/* Brand */}
       <Link href="/">
         <h1 className="font-black text-center text-md text-indigo-600 hover:text-indigo-800 transition-colors">
-          USATII MEDIA
+          USATII
         </h1>
       </Link>
 
@@ -29,17 +29,17 @@ function Referral() {
         </p>
         <div className="text-xs text-neutral-600 pt-4">
           <p className="mb-5">
-            Usatii Media Referral Program – Terms and Conditions<br />
+            USATII Referral Program – Terms and Conditions<br />
             Definitions<br />
             1.1. “Referrer” means any individual or entity that submits a referral in accordance with these terms.<br />
-            1.2. “Referred Client” means a new client introduced to Usatii Media by a Referrer, upon whose first contract these terms apply.<br />
+            1.2. “Referred Client” means a new client introduced to USATII by a Referrer, upon whose first contract these terms apply.<br />
 
             Eligibility<br />
             2.1. Referrer and Referred Client must be distinct legal entities or individuals.<br />
-            2.2. Referred Client must not have engaged Usatii Media for any services in the preceding 24 months.<br />
+            2.2. Referred Client must not have engaged USATII for any services in the preceding 24 months.<br />
 
             Referral Credit<br />
-            3.1. Upon execution of a service agreement between Usatii Media and Referred Client, Referrer will receive a <br />non-transferable credit of USD 250, applied toward any subsequent Usatii Media service.<br />
+            3.1. Upon execution of a service agreement between USATII and Referred Client, Referrer will receive a <br />non-transferable credit of USD 250, applied toward any subsequent USATII service.<br />
             3.2. Credit is issued only after full payment by Referred Client of all amounts due under their initial contract.<br />
 
             Referred Client Discount<br />
@@ -52,7 +52,7 @@ function Referral() {
 
             General Provisions<br />
             6.1. Credits and discounts have no cash value and are non-transferable.<br />
-            6.2. Usatii Media reserves the right to amend or terminate this program at any time, with or without notice.<br />
+            6.2. USATII reserves the right to amend or terminate this program at any time, with or without notice.<br />
             6.3. These terms are governed by the laws of the State of New York.
           </p>
         </div>

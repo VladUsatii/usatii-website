@@ -19,7 +19,7 @@ export const metadata = {
     title: "REBUILDIT INC. Case Study",
     description: "One connected operating layer across a construction company.",
     url: `${SITE_URL}${PATH}`,
-    siteName: "USATII MEDIA",
+    siteName: "USATII",
     type: "article",
   },
 };

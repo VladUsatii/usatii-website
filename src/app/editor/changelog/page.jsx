@@ -23,7 +23,7 @@ export default function Page() {
       <div className="sticky top-0 z-40 border-b border-zinc-200 bg-white/70 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3 sm:px-8">
           <a href="/" className="flex items-center gap-2">
-            <span className="text-sm font-black tracking-tight italic">USATII MEDIA</span>
+            <span className="text-sm font-black tracking-tight italic">USATII</span>
             <span className="text-xs text-zinc-500">/ Editor / Changelog</span>
           </a>
 
@@ -53,7 +53,7 @@ export default function Page() {
         >
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Changelog</h1>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-600">
-            Track our progress as we continue to update Usatii Media's flagship editing product.
+            Track our progress as we continue to update USATII's flagship editing product.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">

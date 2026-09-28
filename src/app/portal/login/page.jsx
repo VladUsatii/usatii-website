@@ -3,7 +3,7 @@ import { getCurrentPortalSession } from '@/lib/portal/auth';
 import PortalLoginForm from '@/app/portal/login/portal-login-form';
 
 export const metadata = {
-  title: 'Client Portal Login | USATII MEDIA',
+  title: 'Client Portal Login | USATII',
 };
 
 export default async function PortalLoginPage({ searchParams }) {

@@ -108,7 +108,7 @@ export default function PortalLoginForm({ nextPath }) {
 
       <div className="relative mx-auto flex w-full max-w-md flex-col items-center gap-8">
         <Link href="/" className="text-center text-white font-black tracking-tight">
-          USATII MEDIA
+          USATII
         </Link>
         <section className="w-full rounded-3xl border border-white/20 bg-white/85 p-8 shadow-[0_28px_80px_rgba(15,23,42,0.25)] backdrop-blur-md">
           <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-neutral-500">

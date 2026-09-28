@@ -1,7 +1,7 @@
-# USATII MEDIA Letterhead and Proposal Design Specification
+# USATII Letterhead and Proposal Design Specification
 
 - US Letter portrait, 0.82-inch side and top margins with a compact running header and footer.
-- Text-only USATII MEDIA wordmark; no decorative logo duplication.
+- Text-only USATII wordmark; no decorative logo duplication.
 - Near-black typography, restrained violet accent, soft gray rules and callouts.
 - Header: brand at left, website at right, single violet rule.
 - Footer: email and phone at left, brand and page number at right.

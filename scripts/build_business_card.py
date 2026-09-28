@@ -57,7 +57,7 @@ def prepare_header_logo():
     pad = 14 * scale
     font_size = 18 * scale
     tracking = -0.45 * scale
-    label = "USATII MEDIA"
+    label = "USATII"
 
     font = ImageFont.truetype("/Users/vladusatii/Library/Fonts/Inter-Variable.ttf", font_size)
     font.set_variation_by_name("Black")
@@ -245,7 +245,7 @@ def apply_print_boxes_and_profile():
 
     writer.add_metadata({
         "/Title": "USATII Software QR Business Card - Print Ready",
-        "/Author": "USATII MEDIA",
+        "/Author": "USATII",
         "/Subject": "Two-sided 3.5 x 2 inch business card with 0.125 inch bleed",
         "/GTS_PDFXVersion": "PDF/X-4",
         "/Trapped": "False",
@@ -270,7 +270,7 @@ def main():
         initialFontSize=10,
     )
     c.setTitle("USATII Software QR Business Card - Print Ready")
-    c.setAuthor("USATII MEDIA")
+    c.setAuthor("USATII")
     draw_front(c)
     draw_back(c)
     c.save()

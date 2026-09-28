@@ -21,7 +21,7 @@ I work on computer security with a research focus on program analysis and the se
 
 Currently, I do research on vulnerability classes and have discovered several zero-day vulnerabilities in high-stakes DeFi protocols with millions in LTV. I identified a gap in security systems for Ethereum smart contracts and am currently raising money for [[thrum.sh|https://thrum.sh/]], a research lab that is building a pipeline to detect every class of hidden bugs in protocol code. The goal is to abstract towards traditional financial tooling and collaborate on payment rails and government payment systems.
 
-Outside of research, I run [[usatii.com|https://usatii.com/]] (Usatii Media), a custom software company that builds owned operational systems, business websites, and artificial intelligence integrations.
+Outside of research, I run [[usatii.com|https://usatii.com/]] (USATII), a custom software company that builds owned operational systems, business websites, and artificial intelligence integrations.
 
 My past clients include the CEO of [[Gamma|https://gamma.app/]] (Series B), [[Airbo|https://www.airbo.com/]], [[SciSpace|https://www.scispace.com/]], [[TheCPADude|https://thecpadude.com/]], [[UNWD|https://feelkalm.com/]], [[Bishop3DO|https://bishop3do.com/]], [[Rich & Pour Teas|https://richandpourco.com/]], [[Spectres|https://spectres.io/]], [[Kerja.io|https://kerja.io/]], [[MotionElements|https://www.motionelements.com/]], [[Rebuildit Inc.|https://www.rebuilditinc.com/]], and over 150 other companies. I've worked with multiple celebrities as well (email for details).
 

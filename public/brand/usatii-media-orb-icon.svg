@@ -6,8 +6,8 @@
   role="img"
   aria-labelledby="title description"
 >
-  <title id="title">USATII MEDIA purple orb icon</title>
-  <desc id="description">The purple USATII MEDIA orb centered on the brand's light gray background.</desc>
+  <title id="title">USATII purple orb icon</title>
+  <desc id="description">The purple USATII orb centered on the brand's light gray background.</desc>
 
   <defs>
     <radialGradient id="orb" cx="30%" cy="24%" r="82%">

@@ -11,12 +11,12 @@ const privacySections = [
   ["security", "Security", "We use administrative, technical, and organizational safeguards designed to protect personal information. No method of transmission or storage is completely secure."],
   ["children", "Children", "Oasis is intended for organizations and is not directed to children. We do not knowingly collect personal information from children through this website."],
   ["changes", "Changes to this policy", "We may update this policy as our services and legal obligations change. The updated date above shows when this version became effective."],
-  ["contact", "Contact us", "For privacy questions or requests, contact Usatii Media through our contact page and include enough detail for us to understand and respond to your request."],
+  ["contact", "Contact us", "For privacy questions or requests, contact USATII through our contact page and include enough detail for us to understand and respond to your request."],
 ];
 
 export const metadata = {
-  title: "Privacy Policy | USATII Media",
-  description: "How USATII Media collects, uses, shares, and protects personal information.",
+  title: "Privacy Policy | USATII",
+  description: "How USATII collects, uses, shares, and protects personal information.",
 };
 
 export default function PrivacyPage() {
@@ -38,8 +38,8 @@ export default function PrivacyPage() {
               ))}
             </nav>
             <div>
-              <p className="text-xl leading-9 md:text-2xl md:leading-10">Usatii Media builds Oasis for organizations managing social operations. This policy explains what information we collect through our public website and services, why we use it, and the choices available to you.</p>
-              <p className="mt-8 text-base leading-8 text-muted-foreground">This policy covers information for which Usatii Media determines the purposes and means of processing. Customer content processed on behalf of an organization is governed by that organization’s agreement with Usatii Media.</p>
+              <p className="text-xl leading-9 md:text-2xl md:leading-10">USATII builds Oasis for organizations managing social operations. This policy explains what information we collect through our public website and services, why we use it, and the choices available to you.</p>
+              <p className="mt-8 text-base leading-8 text-muted-foreground">This policy covers information for which USATII determines the purposes and means of processing. Customer content processed on behalf of an organization is governed by that organization’s agreement with USATII.</p>
               <div className="mt-16 space-y-14">
                 {privacySections.map(([id, title, body], index) => (
                   <section key={id} id={id} className="scroll-mt-24 border-t border-surface pt-8">
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
                     <h2 className="mt-2 text-3xl font-medium tracking-tight">{title}</h2>
                     <p className="mt-4 text-base leading-8 text-ink-soft">{body}</p>
                     {id === "choices" ? <a href="/privacy-choices" className="mt-4 inline-flex text-sm font-semibold underline underline-offset-4">Open Your Privacy Choices</a> : null}
-                    {id === "contact" ? <a href="/quote-request" className="mt-4 inline-flex text-sm font-semibold underline underline-offset-4">Contact Usatii Media</a> : null}
+                    {id === "contact" ? <a href="/quote-request" className="mt-4 inline-flex text-sm font-semibold underline underline-offset-4">Contact USATII</a> : null}
                   </section>
                 ))}
               </div>

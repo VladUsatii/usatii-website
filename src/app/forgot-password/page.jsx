@@ -1,7 +1,7 @@
 import ForgotPasswordForm from './forgot-password-form';
 
 export const metadata = {
-  title: 'Forgot Password | USATII MEDIA',
+  title: 'Forgot Password | USATII',
   robots: { index: false, follow: false },
 };
 

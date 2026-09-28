@@ -167,7 +167,7 @@ function BrandMark() {
       </div>
       <div className="min-w-0">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/55">USATII</p>
-        <p className="truncate text-sm font-semibold text-white sm:text-base">USATII MEDIA</p>
+        <p className="truncate text-sm font-semibold text-white sm:text-base">USATII</p>
       </div>
     </Link>
   );

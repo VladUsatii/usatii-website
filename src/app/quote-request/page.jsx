@@ -125,7 +125,7 @@ export default function QuoteRequestPage() {
               href="/"
               className="text-sm font-black tracking-tight text-neutral-950 transition hover:opacity-70"
             >
-              USATII MEDIA
+              USATII
             </Link>
           </div>
 

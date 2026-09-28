@@ -66,7 +66,7 @@ export async function POST(req) {
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//USATII MEDIA//Booking//EN',
+    'PRODID:-//USATII//Booking//EN',
     'BEGIN:VEVENT',
     `UID:${ev.data.id}`,
     `DTSTAMP:${fmt(new Date().toISOString())}`,

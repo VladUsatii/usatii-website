@@ -1,4 +1,4 @@
-# USATII Media
+# USATII
 
 > USATII is a Rochester, New York software development company. We design and build custom business software, owned operational systems, business websites, and responsible artificial intelligence integrations.
 

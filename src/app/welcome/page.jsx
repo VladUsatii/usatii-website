@@ -9,14 +9,14 @@ export default function WelcomePage() {
     <main className="min-h-screen bg-white px-4 py-10">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-8">
         <h1 className="text-sm font-black tracking-tight italic text-black sm:text-base">
-          USATII MEDIA
+          USATII
         </h1>
 
         <div className="w-full text-left">
           <h2 className="text-3xl font-bold tracking-tight text-black">Say hello to the future of content marketing.</h2>
           <p className="mt-3 max-w-3xl text-base leading-7 text-neutral-700">
             This video walks through our video editing packs and shows how our content marketing workflow runs
-            end-to-end at Usatii Media. You will get a clear picture of how we plan, edit, and ship content
+            end-to-end at USATII. You will get a clear picture of how we plan, edit, and ship content
             in a repeatable system.
           </p>
         </div>

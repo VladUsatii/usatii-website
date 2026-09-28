@@ -39,7 +39,7 @@ export default function ResetPasswordForm({ token }) {
   return (
     <main className="grid min-h-screen place-items-center bg-neutral-950 px-6 py-16 text-neutral-100">
       <section className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_24px_70px_rgba(2,6,23,0.35)] sm:p-8">
-        <Link href="/" className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-400">USATII MEDIA</Link>
+        <Link href="/" className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-400">USATII</Link>
         <h1 className="mt-5 text-3xl font-bold tracking-tight">Choose a new password</h1>
 
         {redirectTo ? (

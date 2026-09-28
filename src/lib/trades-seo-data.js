@@ -4,7 +4,7 @@ export const TRADE_AUDIT_CTA_HREF = "/software/software-waste-audit";
 export const TRADE_AUDIT_BOOKING_URL = "https://cal.com/usatii/onboarding";
 
 export const ORGANIZATION_PROFILE = {
-  name: "USATII Media",
+  name: "USATII",
   legalName: "VAU Solutions, LLC",
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.ico`,

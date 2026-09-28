@@ -3,7 +3,7 @@ import Footer from "@/app/_components/footer";
 import ContactPageClient from "./contact-page-client";
 
 export const metadata = {
-  title: "Contact Us | USATII Media",
+  title: "Contact Us | USATII",
   description: "Contact USATII about custom business software, websites, and artificial intelligence integration.",
 };
 

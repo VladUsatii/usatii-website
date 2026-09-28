@@ -11,7 +11,7 @@ export default function BookPage() {
       {/* Brand */}
       <Link href="/">
         <h1 className="font-black text-center text-md text-indigo-600 hover:text-indigo-800 transition-colors">
-          USATII MEDIA
+          USATII
         </h1>
       </Link>
     {/* <BookingProvider>

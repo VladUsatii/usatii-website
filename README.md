@@ -20,7 +20,7 @@ PAYPAL_CLIENT_ID=
 PAYPAL_CLIENT_SECRET=
 PAYPAL_ENV=sandbox
 RESEND_API_KEY=
-RESEND_FROM_EMAIL="USATII MEDIA <updates@updates.usatii.com>"
+RESEND_FROM_EMAIL="USATII <updates@updates.usatii.com>"
 # optional override:
 # PAYPAL_API_BASE_URL=https://api-m.paypal.com
 ```

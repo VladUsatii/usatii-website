@@ -18,7 +18,7 @@ export const metadata = {
     description:
       "A connected operating layer for construction decisions, field execution, and back-office control.",
     url: `${SITE_URL}${PATH}`,
-    siteName: "USATII MEDIA",
+    siteName: "USATII",
     type: "website",
   },
 };
@@ -91,7 +91,7 @@ export default function ConstructionPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Construction Operations Software",
-    provider: { "@type": "Organization", name: "USATII MEDIA", url: SITE_URL },
+    provider: { "@type": "Organization", name: "USATII", url: SITE_URL },
     areaServed: "United States",
     serviceType: "Custom construction operations software development",
     url: `${SITE_URL}${PATH}`,

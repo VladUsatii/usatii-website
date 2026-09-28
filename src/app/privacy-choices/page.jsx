@@ -3,8 +3,8 @@ import Footer from '@/app/_components/footer';
 import PrivacyChoicesForm from './privacy-choices-form';
 
 export const metadata = {
-  title: 'Your Privacy Choices | USATII Media',
-  description: 'Choose whether USATII Media may use optional first-party usage analytics in this browser.',
+  title: 'Your Privacy Choices | USATII',
+  description: 'Choose whether USATII may use optional first-party usage analytics in this browser.',
 };
 
 export default function PrivacyChoicesPage() {

@@ -69,7 +69,7 @@ export default function AdminClientProvisioning({ adminEmail }) {
         <header className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">USATII MEDIA</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">USATII</p>
               <h1 className="mt-3 text-3xl font-black tracking-tight text-neutral-950">Admin</h1>
               <p className="mt-2 text-sm text-neutral-600">Logged in as {adminEmail}</p>
             </div>

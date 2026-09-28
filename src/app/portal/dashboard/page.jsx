@@ -3,7 +3,7 @@ import { getCurrentPortalSession } from '@/lib/portal/auth';
 import DashboardShell from '@/app/portal/dashboard/_components/dashboard-shell';
 
 export const metadata = {
-  title: 'Client Dashboard | USATII MEDIA',
+  title: 'Client Dashboard | USATII',
 };
 
 export default async function PortalDashboardPage({ searchParams }) {

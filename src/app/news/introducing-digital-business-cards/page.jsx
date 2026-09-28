@@ -7,11 +7,11 @@ import { buildArticleSchema, buildFounderPersonSchema, buildOrganizationSchema }
 
 export const metadata = {
   title: "Introducing digital business cards",
-  description: "Usatii Media now supports digital business cards through Apple Wallet.",
+  description: "USATII now supports digital business cards through Apple Wallet.",
   alternates: { canonical: "/news/introducing-digital-business-cards" },
   openGraph: {
     title: "Introducing digital business cards",
-    description: "Usatii Media now supports digital business cards through Apple Wallet.",
+    description: "USATII now supports digital business cards through Apple Wallet.",
     images: ["/news/digital-business-card.webp"],
   },
 };
@@ -54,7 +54,7 @@ export default function DigitalBusinessCardsArticle() {
     buildArticleSchema({
       path: "/news/introducing-digital-business-cards",
       title: "Introducing digital business cards",
-      description: "Usatii Media now supports digital business cards through Apple Wallet.",
+      description: "USATII now supports digital business cards through Apple Wallet.",
       datePublished: "2026-08-28",
       dateModified: "2026-08-28",
       image: "/news/digital-business-card.webp",
@@ -75,7 +75,7 @@ export default function DigitalBusinessCardsArticle() {
               Introducing digital business cards
             </h1>
             <p className="mt-6 max-w-[620px] text-[16px] italic leading-7 text-neutral-700 sm:text-[18px]">
-              Usatii Media now supports digital business cards through Apple Wallet.
+              USATII now supports digital business cards through Apple Wallet.
             </p>
             <div className="mt-6 flex items-center gap-3 text-[12px]">
               <span className="font-medium">Product</span>

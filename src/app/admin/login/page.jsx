@@ -3,7 +3,7 @@ import { getCurrentPortalSession } from '@/lib/portal/auth';
 import AdminLoginForm from '@/app/admin/login/admin-login-form';
 
 export const metadata = {
-  title: 'Admin Login | USATII MEDIA',
+  title: 'Admin Login | USATII',
 };
 
 export default async function AdminLoginPage() {

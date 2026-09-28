@@ -11,7 +11,7 @@ function MetaPill({ children }) {
 
 export const metadata = {
   title: "Case Studies",
-  description: "Case studies documenting software systems, products, communications infrastructure, and earlier work by Usatii Media.",
+  description: "Case studies documenting software systems, products, communications infrastructure, and earlier work by USATII.",
   alternates: { canonical: "/case-studies" },
 };
 
@@ -23,7 +23,7 @@ export default async function CaseStudiesIndexPage() {
       <div className="mx-auto max-w-3xl text-center">
         <Link href="/" className="block">
           <div className="text-center font-black italic tracking-tight hover:opacity-80">
-            USATII MEDIA
+            USATII
           </div>
         </Link>
 

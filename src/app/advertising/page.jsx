@@ -9,7 +9,7 @@ import {
 import { buildStandardSchemas } from "@/lib/trades-page-utils";
 import { absoluteUrl } from "@/lib/trades-schema";
 
-const SEO_TITLE = "Advertising 101 for Business Owners | USATII Media";
+const SEO_TITLE = "Advertising 101 for Business Owners | USATII";
 const SEO_DESCRIPTION =
   "Learn the basics of Google Ads, Meta Ads, organic social media, SEO, ad budgets, CPM, CPC, and conversion tracking before starting a campaign.";
 

@@ -19,7 +19,7 @@ A serious communications team may publish through one system, review drafts in a
 
 That fragmentation is the problem OASIS was built to solve.
 
-OASIS is an enterprise social operations platform developed by USATII MEDIA. It brings governed publishing, engagement, social listening, analytics, provider operations, accessibility evidence, procurement support, and security review into one tenant-scoped command system.
+OASIS is an enterprise social operations platform developed by USATII. It brings governed publishing, engagement, social listening, analytics, provider operations, accessibility evidence, procurement support, and security review into one tenant-scoped command system.
 
 The goal is larger than scheduling posts. OASIS is designed to help an organization understand what it said, why it said it, who approved it, how the public responded, what changed afterward, and what evidence must remain available later.
 

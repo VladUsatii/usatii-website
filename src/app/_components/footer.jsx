@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="border-t border-surface bg-white">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-4 md:px-6">
         <div className="space-y-0">
-          <p className="text-lg font-black italic tracking-tight text-ink">USATII MEDIA</p>
+          <p className="text-lg font-black italic tracking-tight text-ink">USATII</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">AI &amp; operations software.</p>
         </div>
 
@@ -145,7 +145,7 @@ export default function Footer() {
             <a href="/careers" className="hover:text-ink">Careers</a>
           </nav>
         </div>
-        <p className="text-base font-black italic uppercase tracking-tight text-ink">USATII MEDIA</p>
+        <p className="text-base font-black italic uppercase tracking-tight text-ink">USATII</p>
       </div>
       </div>
     </footer>

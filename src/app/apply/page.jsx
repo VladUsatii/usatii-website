@@ -54,7 +54,7 @@ function Apply() {
      <div className="min-h-screen bg-gradient-to-br from-[#0A000B] to-[#1a001d] text-white flex flex-col items-center">
       <div className="min-h-screen  text-white flex flex-col items-center">
       {/* Brand */}
-      <Link href="/"><h1 className="font-black text-center text-md text-white/80 hover:text-white/100 pt-5">USATII MEDIA</h1></Link>
+      <Link href="/"><h1 className="font-black text-center text-md text-white/80 hover:text-white/100 pt-5">USATII</h1></Link>
 
       <div className="transform skew-y-[2deg] skew-x-[1deg] flex flex-row items-center gap-x-4 justify-center w-full mt-10 mb-10">
         <Image

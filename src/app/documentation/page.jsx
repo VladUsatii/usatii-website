@@ -6,7 +6,7 @@ import { getDocumentationPdfs } from "@/lib/documentation";
 export const metadata = {
   title: "Documentation",
   description:
-    "USATII Media documentation library with a fixed in-browser PDF carousel and implementation notes.",
+    "USATII documentation library with a fixed in-browser PDF carousel and implementation notes.",
 };
 
 export const revalidate = 3600;
@@ -20,7 +20,7 @@ export default async function DocumentationPage() {
         <div className="mx-auto flex w-full items-center justify-between px-4 py-3 sm:px-6">
           <Link href="/" className="block">
             <div className="text-center font-black italic tracking-tight hover:opacity-80">
-              USATII MEDIA
+              USATII
             </div>
           </Link>
 

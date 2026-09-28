@@ -6,8 +6,8 @@
   role="img"
   aria-labelledby="title description"
 >
-  <title id="title">USATII MEDIA logo</title>
-  <desc id="description">Purple orb and black italic USATII MEDIA wordmark.</desc>
+  <title id="title">USATII logo</title>
+  <desc id="description">Purple orb and black italic USATII wordmark.</desc>
 
   <defs>
     <radialGradient id="orb" cx="30%" cy="24%" r="82%">
@@ -35,7 +35,7 @@
     font-style="italic"
     font-weight="700"
     letter-spacing="-4.7"
-    textLength="598"
+    textLength="300"
     lengthAdjust="spacingAndGlyphs"
-  >USATII MEDIA</text>
+  >USATII</text>
 </svg>

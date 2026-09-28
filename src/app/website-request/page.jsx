@@ -270,7 +270,7 @@ export default function WebsiteRequestPage() {
 
   return (
     <section className="min-h-screen bg-white">
-        <Link href="/"><h1 className="font-black italic tracking-tight text-xl text-center mt-5 hover:opacity-80">USATII MEDIA</h1></Link>
+        <Link href="/"><h1 className="font-black italic tracking-tight text-xl text-center mt-5 hover:opacity-80">USATII</h1></Link>
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-16">
         <div className="mb-8">
           <h1 className="text-3xl font-medium tracking-tight text-slate-950">

@@ -2145,7 +2145,7 @@ export default function OwnerDashboard({ adminEmail }) {
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
         <div className="flex flex-wrap items-center gap-3 px-4 py-3">
           <div className="min-w-[140px]">
-            <span className="text-sm font-black tracking-tight sm:text-base">USATII MEDIA</span>
+            <span className="text-sm font-black tracking-tight sm:text-base">USATII</span>
           </div>
 
           <select

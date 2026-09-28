@@ -8,12 +8,12 @@ import { buildArticleSchema, buildFounderPersonSchema, buildOrganizationSchema }
 export const metadata = {
   title: "Social impact",
   description:
-    "Usatii Media’s commitments to reducing administrative labor, improving working life, preserving organizational control, and governing artificial intelligence responsibly.",
+    "USATII’s commitments to reducing administrative labor, improving working life, preserving organizational control, and governing artificial intelligence responsibly.",
   alternates: { canonical: "/social-impact" },
   openGraph: {
-    title: "Social impact | Usatii Media",
+    title: "Social impact | USATII",
     description:
-      "Usatii Media’s commitments to reducing administrative labor, improving working life, preserving organizational control, and governing artificial intelligence responsibly.",
+      "USATII’s commitments to reducing administrative labor, improving working life, preserving organizational control, and governing artificial intelligence responsibly.",
     url: "/social-impact",
     type: "article",
   },

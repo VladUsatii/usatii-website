@@ -59,7 +59,7 @@ export function buildFounderPersonSchema() {
       "https://x.com/vladusatii",
     ],
     description:
-      "Founder of USATII Media with a background in software systems and security research.",
+      "Founder of USATII with a background in software systems and security research.",
   };
 }
 

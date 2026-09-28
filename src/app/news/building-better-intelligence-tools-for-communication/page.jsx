@@ -54,11 +54,11 @@ export default function BuildingBetterIntelligenceToolsArticle() {
           </header>
 
           <div className="mx-auto mt-14 max-w-[660px] space-y-6 text-[16px] font-normal leading-[1.75] text-black">
-            <p>In 2023, Usatii Media was founded to help creators and organizations perform social media fulfillment tasks, ranging from Reddit posting to Facebook advertising. We were active on nearly every platform, including Threads, Instagram, TikTok, Facebook, Truth Social, X, MySpace, Reddit, LinkedIn, and more.</p>
+            <p>In 2023, USATII was founded to help creators and organizations perform social media fulfillment tasks, ranging from Reddit posting to Facebook advertising. We were active on nearly every platform, including Threads, Instagram, TikTok, Facebook, Truth Social, X, MySpace, Reddit, LinkedIn, and more.</p>
 
             <p>We exposed a very large problem. Organizations and creators had far too many disorganized workflows for publication. Our company handled anywhere from 200-1000 custom pieces of content per day, sometimes hiring multiple hundred contractors at once to handle work.</p>
 
-            <p>Unfortunately, Usatii Media is vehemently opposed to the underpaid labor involved in content creation, and we suspended our marketing division in June 2026. We pivoted to software development — something we had always been avidly invested in as our employees are engineers by trade — and found a large niche in automating content for teams. Not only was content automation an open problem, but social media management was as well.</p>
+            <p>Unfortunately, USATII is vehemently opposed to the underpaid labor involved in content creation, and we suspended our marketing division in June 2026. We pivoted to software development — something we had always been avidly invested in as our employees are engineers by trade — and found a large niche in automating content for teams. Not only was content automation an open problem, but social media management was as well.</p>
 
             <figure className="my-12 sm:my-14">
               <Image
@@ -75,13 +75,13 @@ export default function BuildingBetterIntelligenceToolsArticle() {
 
             <p>The whole field was led by two players, both of which had outdated platforms, bulky and expensive features, and an unhelpful ticket-based support team for inquiries.</p>
 
-            <p>Usatii Media picked this niche up in 2025 and completed OASIS in 2026. We are now in the process of procurement with several agencies as we (a) acquire, (b) land, and (c) expand our influence in the communications space.</p>
+            <p>USATII picked this niche up in 2025 and completed OASIS in 2026. We are now in the process of procurement with several agencies as we (a) acquire, (b) land, and (c) expand our influence in the communications space.</p>
 
             <p>OASIS has features that incumbents missed, such as a unified data ontology with robust zero-visibility data controls and RBAC, AI integration across the platform, logging, branching, and unique integrations that not many firms get access to. Our platform is easy to use, and our organization-to-company-to-group-to-user hierarchy is expandable, customizable, and easy to understand.</p>
 
             <p>Security is a first-class issue for us, so we maintain SOC 2 and ISO 27001 readiness as we advance to the public sector.</p>
 
-            <p>Usatii Media served as the first case study for OASIS: we used it in real client operations. Tim Wijaya, for example, was a client who got over 1 million views on Instagram content from only one week of our help.</p>
+            <p>USATII served as the first case study for OASIS: we used it in real client operations. Tim Wijaya, for example, was a client who got over 1 million views on Instagram content from only one week of our help.</p>
 
             <p>As we expand, we continue to seek real marketing design partners so we can better understand the industry. If you have a nonprofit, we are more than happy to donate usage of our platform to you and your team perpetually.</p>
           </div>

@@ -23,8 +23,8 @@ from build_usatii_proposal import configure_doc, configure_section, force_inter
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = Path("/Users/vladusatii/Downloads/Proposal _ Jul 30 2026.pdf")
-DOCX_OUT = ROOT / "tmp" / "pdfs" / "USATII_MEDIA_Windmill_Reddit_Intelligence_Proposal.docx"
-PDF_OUT = ROOT / "output" / "pdf" / "USATII_MEDIA_Windmill_Reddit_Intelligence_Proposal.pdf"
+DOCX_OUT = ROOT / "tmp" / "pdfs" / "USATII_Windmill_Reddit_Intelligence_Proposal.docx"
+PDF_OUT = ROOT / "output" / "pdf" / "USATII_Windmill_Reddit_Intelligence_Proposal.pdf"
 INTER = Path("/Users/vladusatii/Library/Fonts/Inter-Regular.ttf")
 INTER_BOLD = Path("/Users/vladusatii/Library/Fonts/Inter-Bold.ttf")
 LOGO = ROOT / "assets" / "usatii-media-header-logo.png"
@@ -38,7 +38,7 @@ SECTION_HEADINGS = {
     "Response drafting workflow. Accepted when:", "Founder response queue. Accepted when:",
     "Support and product routing. Accepted when:", "Founder content. Accepted when:",
     "AMA. Accepted when:", "Reporting. Accepted when:", "Client responsibilities. Windmill will:",
-    "USATII MEDIA will:", "Commercial Terms", "Payment schedule:",
+    "USATII will:", "Commercial Terms", "Payment schedule:",
 }
 
 
@@ -90,7 +90,7 @@ def add_styled_paragraph(doc: Document, text: str) -> None:
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(4)
     match = re.match(r"^([^.!?]{2,55}[.:])\s+(.*)$", text)
-    if match and match.group(1) not in {"USATII MEDIA:", "Windmill:"}:
+    if match and match.group(1) not in {"USATII:", "Windmill:"}:
         r = p.add_run(match.group(1) + " ")
         r.bold = True
         p.add_run(match.group(2))
@@ -167,7 +167,7 @@ def build_pdf() -> Path:
         if d.page == 1:
             canvas.drawImage(str(LOGO), .60*inch, 9.92*inch, width=1.55*inch, height=.28*inch, preserveAspectRatio=True, anchor="sw", mask="auto")
             canvas.setFont("Inter", 8.5); canvas.setFillColor(colors.HexColor("#111318"))
-            for i, text in enumerate(("Usatii Media", "usatii.com", "vlad@usatii.com")):
+            for i, text in enumerate(("USATII", "usatii.com", "vlad@usatii.com")):
                 canvas.drawString(.60*inch, (9.80-i*.16)*inch, text)
             x, y, w, h = 4.22*inch, 9.48*inch, 3.68*inch, .80*inch
             data = [["Date", "Document details"], ["July 30, 2026", "Reddit Intelligence Proposal"],
@@ -234,7 +234,7 @@ def build_positioned_pdf() -> Path:
                 c.drawImage(str(LOGO), .60*inch, 9.92*inch, width=1.55*inch, height=.28*inch,
                             preserveAspectRatio=True, anchor="sw", mask="auto")
                 c.setFillColor(colors.HexColor("#111318")); c.setFont("Inter", 8.5)
-                for i, value in enumerate(("Usatii Media", "usatii.com", "vlad@usatii.com")):
+                for i, value in enumerate(("USATII", "usatii.com", "vlad@usatii.com")):
                     c.drawString(.60*inch, (9.80-i*.16)*inch, value)
                 x, y = 4.22*inch, 9.48*inch
                 table = Table(

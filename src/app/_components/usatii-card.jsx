@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function UsatiiMediaCard() {
+export default function UsatiiCard() {
   return (
     // <div className="relative mx-4 sm:mx-10 md:mx-auto max-w-xl mb-10 ">
     //   {/* blurred gradient background */}
@@ -9,7 +9,7 @@ export default function UsatiiMediaCard() {
     //   {/* frosted-glass foreground */}
     //   <div className="flex flex-col items-center justify-between gap-3 rounded-2xl bg-white/10 px-8 py-6 backdrop-blur-md ring-1 ring-white/20 shadow-lg">
     //     <h3 className="text-xl font-black tracking-tight">
-    //       usatii media — build your audience organically.
+    //       USATII — build your audience organically.
     //     </h3>
 
     //     <p className="text-center text-md">

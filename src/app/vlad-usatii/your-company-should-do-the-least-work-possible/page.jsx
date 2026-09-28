@@ -55,7 +55,7 @@ export default function LeastWorkPossibleArticle() {
           </header>
 
           <div className="mx-auto mt-14 max-w-[660px] space-y-6 text-[16px] font-normal leading-[1.75] text-black">
-            <p>When Usatii Media was a marketing company, we would regularly land some of the most influential clients on the internet. These people were racking up millions, sometimes even billions of views, and had million-dollar brand deals. But they all had one thing in common: their operations were fragmented.</p>
+            <p>When USATII was a marketing company, we would regularly land some of the most influential clients on the internet. These people were racking up millions, sometimes even billions of views, and had million-dollar brand deals. But they all had one thing in common: their operations were fragmented.</p>
 
             <p>Random Indian and Pakistani assistants were hired remotely to copy-paste data from one place to another, and this was particularly bad the farther up the socialite hierarchy we went.</p>
 
@@ -99,7 +99,7 @@ export default function LeastWorkPossibleArticle() {
 
             <p>Our company has a strong no-subscription policy. Nothing we build is rented. You own it all.</p>
 
-            <p>Clearly, there are still third-party costs involved, such as AWS or Cloudflare, but these are modest costs associated with using someone&apos;s internet servers. There is an argument for this: internet costs money because of ongoing maintenance involved in its perpetuity. People pay for gas because it is fundamentally expensive to harvest, and is a rare earth material. There are some unavoidable costs at Usatii Media. This may even include something as simple as cybersecurity maintenance. If Next JS has a critical vulnerability in an early version, we&apos;ll know about it quickly and update your software to reflect the newest safety guidance. These are unavoidable charges associated with owning software.</p>
+            <p>Clearly, there are still third-party costs involved, such as AWS or Cloudflare, but these are modest costs associated with using someone&apos;s internet servers. There is an argument for this: internet costs money because of ongoing maintenance involved in its perpetuity. People pay for gas because it is fundamentally expensive to harvest, and is a rare earth material. There are some unavoidable costs at USATII. This may even include something as simple as cybersecurity maintenance. If Next JS has a critical vulnerability in an early version, we&apos;ll know about it quickly and update your software to reflect the newest safety guidance. These are unavoidable charges associated with owning software.</p>
 
             <p>Hopefully I&apos;ve done a good job at convincing you so far.</p>
 
