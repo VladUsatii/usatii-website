@@ -83,8 +83,7 @@ export default function EmergencyManagementPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
         <section className="mx-auto max-w-5xl px-6 pb-16 pt-20 text-center lg:px-8 lg:pb-20 lg:pt-24">
-          <p className="text-xs font-medium">Federal response operations software</p>
-          <h1 className="mt-5 text-5xl font-medium tracking-[-0.05em] sm:text-6xl">Usatii for Emergency Management</h1>
+          <h1 className="text-5xl font-medium tracking-[-0.05em] sm:text-6xl">Usatii for Emergency Management</h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-neutral-600">
             A governed operating environment for workforce readiness, incident staffing, deployment, responder accountability, equipment, learning, and reporting.
           </p>
@@ -106,8 +105,7 @@ export default function EmergencyManagementPage() {
         </section>
 
         <section className="mx-auto max-w-3xl px-6 pb-24 text-center lg:px-8">
-          <p className="text-xs font-medium text-neutral-500">One operational model</p>
-          <h2 className="mt-5 text-2xl font-medium leading-tight tracking-[-0.03em] md:text-3xl">Readiness is not a flag. It is an explained result based on current evidence, policy, dates, access, and operational conflicts.</h2>
+          <h2 className="text-2xl font-medium leading-tight tracking-[-0.03em] md:text-3xl">Readiness is not a flag. It is an explained result based on current evidence, policy, dates, access, and operational conflicts.</h2>
         </section>
 
         <section className="mx-auto max-w-5xl px-6 pb-28 lg:px-8">
@@ -119,7 +117,7 @@ export default function EmergencyManagementPage() {
         <section className="bg-neutral-950 text-white">
           <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8 lg:py-28">
             <div className="grid gap-10 md:grid-cols-[0.72fr_1.28fr]">
-              <div><p className="text-xs text-white/45">Deployment lifecycle</p><h2 className="mt-4 max-w-xs text-3xl font-medium tracking-[-0.04em]">One chain of custody for people, decisions, and evidence.</h2></div>
+              <div><h2 className="max-w-xs text-3xl font-medium tracking-[-0.04em]">One chain of custody for people, decisions, and evidence.</h2></div>
               <div className="border-t border-white/15">
                 {deploymentFlow.map(([title, body], index) => <article key={title} className="grid gap-3 border-b border-white/15 py-6 sm:grid-cols-[2.5rem_7rem_1fr]"><p className="text-xs tabular-nums text-white/35">{String(index + 1).padStart(2, "0")}</p><h3 className="text-sm font-medium">{title}</h3><p className="text-sm leading-6 text-white/55">{body}</p></article>)}
               </div>
@@ -129,7 +127,7 @@ export default function EmergencyManagementPage() {
 
         <section className="mx-auto max-w-5xl px-6 py-28 lg:px-8">
           <div className="grid gap-12 md:grid-cols-[0.72fr_1.28fr] md:items-end">
-            <div><p className="text-xs text-neutral-400">Emergency management stack</p><h2 className="mt-4 max-w-xs text-2xl font-medium leading-tight tracking-[-0.03em]">Deploy one operational lane. Expand across the mission.</h2></div>
+            <div><h2 className="max-w-xs text-2xl font-medium leading-tight tracking-[-0.03em]">Deploy one operational lane. Expand across the mission.</h2></div>
             <p className="max-w-xl text-sm leading-6 text-neutral-600">Every module shares scoped identity, effective dates, record versions, policy references, audit history, and reporting boundaries. The result is a system that can explain not only what happened, but what facts and authority supported the decision.</p>
           </div>
           <div className="mt-16 grid border-t border-neutral-200 sm:grid-cols-2 lg:grid-cols-5">
@@ -147,8 +145,7 @@ export default function EmergencyManagementPage() {
         </section>
 
         <section className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8 lg:py-28">
-          <p className="text-xs font-medium">Start with a consequential operational loop</p>
-          <h2 className="mx-auto mt-5 max-w-3xl text-3xl font-medium tracking-[-0.04em] sm:text-5xl">Build response infrastructure your organization can inspect, govern, and evolve.</h2>
+          <h2 className="mx-auto max-w-3xl text-3xl font-medium tracking-[-0.04em] sm:text-5xl">Build response infrastructure your organization can inspect, govern, and evolve.</h2>
           <p className="mx-auto mt-6 max-w-xl text-sm leading-6 text-neutral-600">Bring the mission workflow, governing rules, source systems, security boundary, and acceptance criteria. We will define a focused implementation path.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3"><TextLink href={BOOK_URL}>Book a working session</TextLink><TextLink href="/quote-request">Send project details</TextLink><TextLink href="/resources">View all capabilities</TextLink></div>
           <p className="mx-auto mt-12 max-w-2xl text-xs leading-5 text-neutral-400">The system described here is a working software build with synthetic test data. Production use requires customer-approved rules, integrations, infrastructure, security authorization, accessibility review, and operational acceptance. USATII is not claiming FEMA endorsement or production authorization.</p>
