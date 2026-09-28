@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
+import InteractiveResponseHero from "./_components/interactive-response-hero";
 import { SITE_URL } from "@/lib/services-seo";
 
 const PATH = "/emergency-management";
@@ -94,21 +94,7 @@ export default function EmergencyManagementPage() {
           </div>
         </section>
 
-        <section className="relative h-[72svh] min-h-[520px] w-full overflow-hidden bg-slate-900">
-          <Image
-            src="/emergency-management/emergency-response-hero.webp"
-            alt="Coordinated emergency response staging area with mobile command units, rescue boats, utility crews, and field logistics"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-black/5" />
-          <p className="absolute bottom-8 left-6 max-w-2xl text-2xl font-medium leading-tight tracking-[-0.03em] text-white sm:bottom-12 sm:left-10 sm:text-4xl lg:left-[max(2.5rem,calc((100vw-64rem)/2))]">
-            The operation should stay coordinated when the environment does not.
-          </p>
-        </section>
+        <InteractiveResponseHero />
 
         <section className="mx-auto grid max-w-4xl gap-12 px-6 py-28 md:grid-cols-[0.72fr_1.28fr] md:items-start lg:px-8">
           <div className="max-w-xs"><h2 className="text-2xl font-medium leading-tight tracking-[-0.03em]">Build the operational record before the emergency.</h2></div>
