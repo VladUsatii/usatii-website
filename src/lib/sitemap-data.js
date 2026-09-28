@@ -33,6 +33,7 @@ export async function getCanonicalSitemapPaths() {
     "/editor",
     "/editor/changelog",
     "/news",
+    "/news/introducing-dart",
     "/news/the-age-of-automation-is-among-us",
     "/news/building-better-intelligence-tools-for-communication",
     "/news/introducing-digital-business-cards",
