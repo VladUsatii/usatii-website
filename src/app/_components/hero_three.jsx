@@ -8,117 +8,26 @@ import {
   DialogHeader,
   DialogOverlay,
   DialogTitle,
-  DialogDescription,
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-// import { Download } from "lucide-react";
 
 const coreServices = [
-  /* Marketing services hidden from the homepage while USATII leads with custom software.
-  {
-    name: "Content & Channel Operations",
-    price: "Editing from $75",
-    badge: "Core service",
-    summary:
-      "A modular content system for brands that need dependable creative production, publishing, and channel operations.",
-    features: [
-      "• Short-form editing: 1, 10, 20, or 30-video packages",
-      "• Strategy and scripting support from $300/month",
-      "• Multi-platform publishing and channel operations",
-      "• Custom scopes for 31+ videos and mixed deliverables",
-    ],
-    prices: [
-      ["$75", "1 short-form video edit"],
-      ["$650", "10 short-form video edits"],
-      ["$1,100", "20 short-form video edits"],
-      ["$1,500", "30 short-form video edits"],
-      ["Custom", "31+ videos, channel operations, or mixed deliverables"],
-    ],
-  },
-  {
-    name: "Paid Marketing",
-    price: "$450/mo + 20% of ad spend",
-    badge: "Core service",
-    summary:
-      "Performance-driven paid acquisition for brands that need immediate reach, deterministic demand capture, and controlled spend options.",
-    features: [
-      "• Meta ads",
-      "• Campaign setup, management, and reporting",
-      "• A/B testing and budget optimization",
-      "• Creative production scoped separately when needed",
-    ],
-    prices: [
-      ["$450/month", "Base management fee"],
-      ["20%", "Managed ad spend fee"],
-    ],
-  },
-  */
   {
     name: "Websites",
-    price: "Projects from $2,000",
     badge: "Core service",
     summary:
       "Conversion-focused websites ranging from focused landing pages to full public platforms, with optional ongoing care.",
     features: [
       "• Landing pages and dynamic business websites",
       "• Full-stack public platforms and enterprise builds",
-      "• Website care from $150/month",
-      "• Open development support at $45/hour",
-    ],
-    prices: [
-      ["$2,000", "Landing page"],
-      ["$4,000", "Dynamic business website"],
-      ["$12,000", "Full-stack public platform"],
-      ["$40,000+", "Enterprise website"],
+      "• Website care and ongoing development support",
     ],
   },
-  /*
-  {
-    name: "Search Engine Optimization",
-    price: "From $1,000",
-    badge: "Core service",
-    summary:
-      "Technical, local, and multi-market search programs designed around durable organic growth.",
-    features: [
-      "• Technical SEO audits and implementation planning",
-      "• Local, growth, and multi-market monthly programs",
-      "• Location pages, keyword maps, and editorial content",
-    ],
-    prices: [
-      ["$1,000", "Technical SEO audit — one time"],
-      ["$1,250/month", "Local SEO"],
-      ["$2,500/month", "Growth SEO"],
-      ["$4,000/month", "Multi-market SEO"],
-      ["$6,000+/month", "Enterprise SEO"],
-    ],
-  },
-  */
-  /*
-  {
-    name: "Community Management",
-    price: "From $250/channel/mo",
-    badge: "Core service",
-    summary:
-      "Structured monitoring, engagement, moderation, and escalation for branded communities.",
-    features: [
-      "• Monitoring and response support",
-      "• Managed engagement and moderation",
-      "• High-volume and regulated programs available",
-    ],
-    prices: [
-      ["$250/channel/month", "Monitoring"],
-      ["$500/channel/month", "Managed community"],
-      ["$1,000+/channel/month", "High-volume community"],
-      ["Custom", "Regulated community operations"],
-    ],
-  },
-  */
   {
     name: "Custom Software & Operations Systems",
-    price: "$45/hr or fixed scope",
     badge: "Core service",
     summary:
       "Purpose-built dashboards, portals, automations, and operating systems that connect your growth stack.",
@@ -127,77 +36,21 @@ const coreServices = [
       "• CRM, analytics, workflow, and portal modules",
       "• Fixed-scope foundations and custom development",
     ],
-    prices: [
-      ["$45/hour", "Open software development"],
-      ["$1,500", "Systems mapping"],
-      ["$7,500", "Operations-system foundation"],
-      ["Custom", "Modules and larger system classes"],
-    ],
   }
 ];
 
 const addOns = [
   {
     name: "OASIS Platform",
-    price: "From $200/mo",
     summary: "A managed operating layer for teams that need connected growth and execution workflows.",
     features: [
-      "• Two-user minimum",
-      "• Additional users are $100/user/month",
-      "• Reduced onboarding for managed clients",
-    ],
-    prices: [
-      ["$200/month", "2 users"],
-      ["$500/month", "5 users"],
-      ["$1,000/month", "10 users"],
-      ["$750", "Standard onboarding"],
-      ["$250", "Onboarding for managed clients"],
+      "• Flexible team access",
+      "• Onboarding support for managed clients",
     ],
   },
-  /*
-  {
-    name: "Growth Consulting",
-    price: "$850/hr",
-    summary: "Expert advisory for teams needing strategy.",
-    features: [
-      "• Custom growth roadmaps for established enterprises and stakeholders",
-      "• Weekly strategy calls that compound clarity and creativity",
-      "• Frontier business software and marketing insights",
-    ],
-  },
-  */
 ];
 
 const cleanFeature = (text) => text.replace(/^•\s*/, "");
-
-const PriceTable = ({ prices }) => (
-  <div className="mt-6 overflow-hidden border-t border-slate-200 bg-white">
-    <table className="min-w-full">
-      <thead className="bg-slate-50">
-        <tr>
-          <th className="border-b border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-700">
-            Price
-          </th>
-          <th className="border-b border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-700">
-            What you get
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {prices.map(([cost, desc]) => (
-          <tr key={`${cost}-${desc}`} className="hover:bg-slate-50/80">
-            <td className="whitespace-nowrap border-b border-slate-100 px-4 py-3 font-medium text-slate-900">
-              {cost}
-            </td>
-            <td className="border-b border-slate-100 px-4 py-3 text-slate-700">
-              {desc}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
 
 function PlanCard({ plan, index, onSelect, featured = false, compact = false }) {
   const reduceMotion = useReducedMotion();
@@ -224,10 +77,6 @@ function PlanCard({ plan, index, onSelect, featured = false, compact = false }) 
         >
           {plan.name}
         </h3>
-
-        <p className="mt-2 text-2xl font-bold tracking-tight text-indigo-600">
-          {plan.price}
-        </p>
 
         {plan.summary && (
           <p className="mt-3 text-sm leading-6 text-slate-600">{plan.summary}</p>
@@ -292,10 +141,6 @@ function PlanCard2({ plan, index, onSelect, featured = false, compact = false })
           {plan.name}
         </h3>
 
-        <p className="mt-2 text-2xl font-bold tracking-tight text-indigo-600">
-          {plan.price}
-        </p>
-
         {plan.summary && (
           <p className="mt-3 text-sm leading-6 text-slate-600">{plan.summary}</p>
         )}
@@ -358,15 +203,6 @@ export default function HeroThree() {
           We design and build custom websites, dashboards, portals, automations, and operating systems that bring critical workflows in-house. No more disconnected subscription software.
         </p>
       </div>
-        {/* The downloadable guide includes the hidden marketing service catalog.
-        <a
-          href="/guides/usatii-media-comprehensive-price-guide.pdf"
-          download
-          className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm font-medium text-neutral-950 shadow-sm transition-colors hover:border-neutral-950 hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2"
-        >
-          <Download className="h-4 w-4" aria-hidden="true" />
-          Download full price guide
-        </a> */}
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -431,9 +267,6 @@ export default function HeroThree() {
                     <DialogTitle className="text-2xl font-bold tracking-tight text-slate-900">
                       {selectedPlan.name}
                     </DialogTitle>
-                    <DialogDescription className="mt-2 text-lg font-semibold text-indigo-600">
-                      {selectedPlan.price}
-                    </DialogDescription>
                   </DialogHeader>
 
                   {selectedPlan.summary && (
@@ -455,8 +288,6 @@ export default function HeroThree() {
                       </li>
                     ))}
                   </ul>
-
-                  {selectedPlan.prices && <PriceTable prices={selectedPlan.prices} />}
 
                   <DialogFooter className="mt-7 flex justify-end gap-2">
                     <DialogClose asChild>
