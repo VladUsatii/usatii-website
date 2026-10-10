@@ -7,6 +7,15 @@ import { ArrowDownUp, ArrowRight, Check, Grid2X2, List } from "lucide-react";
 
 const stories = [
   {
+    title: "Introducing Usatii for Construction",
+    category: "Product",
+    date: "Oct 9, 2026",
+    dateValue: "2026-10-09",
+    image: "/news/construction-introduction.svg",
+    imageFit: "cover",
+    href: "/news/introducing-usatii-for-construction",
+  },
+  {
     title: "Introducing DART",
     category: "Product",
     date: "Sep 28, 2026",

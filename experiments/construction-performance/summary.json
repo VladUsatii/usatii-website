@@ -1,0 +1,303 @@
+{
+  "results": [
+    {
+      "task": "Floor area",
+      "size": 8,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII area": {
+          "medianMs": 0.00003379639982110915,
+          "p95Ms": 0.00006125335420393557,
+          "batchLoops": 559,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 4.3004523803180173e-16
+        },
+        "Three.js area": {
+          "medianMs": 0.000030727303220035925,
+          "p95Ms": 0.00005642050536672615,
+          "batchLoops": 559,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 4.1346645872227315e-16
+        }
+      }
+    },
+    {
+      "task": "Surface triangulation",
+      "size": 8,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII triangulation": {
+          "medianMs": 0.0017659293831168849,
+          "p95Ms": 0.002005512662337663,
+          "batchLoops": 77,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 4.1903722343328986e-16
+        },
+        "Three.js Earcut": {
+          "medianMs": 0.00039107142857143187,
+          "p95Ms": 0.0004297144480519483,
+          "batchLoops": 77,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 4.336343304708159e-16
+        }
+      }
+    },
+    {
+      "task": "Floor area",
+      "size": 16,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII area": {
+          "medianMs": 0.00006093841681574243,
+          "p95Ms": 0.00007767124329159199,
+          "batchLoops": 559,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 6.298259120762651e-16
+        },
+        "Three.js area": {
+          "medianMs": 0.00005453470483005318,
+          "p95Ms": 0.00007660071556350532,
+          "batchLoops": 559,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 4.006560005542691e-16
+        }
+      }
+    },
+    {
+      "task": "Surface triangulation",
+      "size": 16,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII triangulation": {
+          "medianMs": 0.0067274330223880555,
+          "p95Ms": 0.006897403731343291,
+          "batchLoops": 67,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 5.342080007390254e-16
+        },
+        "Three.js Earcut": {
+          "medianMs": 0.0008594216417910415,
+          "p95Ms": 0.0008808457089552161,
+          "batchLoops": 67,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 4.895707571910337e-16
+        }
+      }
+    },
+    {
+      "task": "Floor area",
+      "size": 32,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII area": {
+          "medianMs": 0.00010163676086956555,
+          "p95Ms": 0.00011598732608695667,
+          "batchLoops": 575,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 7.561800974257838e-16
+        },
+        "Three.js area": {
+          "medianMs": 0.00009095834782608662,
+          "p95Ms": 0.00011738223913043246,
+          "batchLoops": 575,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 7.401376824388842e-16
+        }
+      }
+    },
+    {
+      "task": "Surface triangulation",
+      "size": 32,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII triangulation": {
+          "medianMs": 0.02638039916666666,
+          "p95Ms": 0.027704461666666683,
+          "batchLoops": 30,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 6.584508941128709e-16
+        },
+        "Three.js Earcut": {
+          "medianMs": 0.0022502258333332746,
+          "p95Ms": 0.002462500000000034,
+          "batchLoops": 30,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 5.866278722974396e-16
+        }
+      }
+    },
+    {
+      "task": "Floor area",
+      "size": 64,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII area": {
+          "medianMs": 0.0001797890183615827,
+          "p95Ms": 0.00020779925847458307,
+          "batchLoops": 354,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 1.0084448071401151e-15
+        },
+        "Three.js area": {
+          "medianMs": 0.00016103315677967037,
+          "p95Ms": 0.00017029336158191007,
+          "batchLoops": 354,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 9.196859020378698e-16
+        }
+      }
+    },
+    {
+      "task": "Surface triangulation",
+      "size": 64,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII triangulation": {
+          "medianMs": 0.10178379583333279,
+          "p95Ms": 0.1207026611111107,
+          "batchLoops": 9,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 1.0084448071401151e-15
+        },
+        "Three.js Earcut": {
+          "medianMs": 0.006851620833333527,
+          "p95Ms": 0.008171122222221862,
+          "batchLoops": 9,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 6.706301728361447e-16
+        }
+      }
+    },
+    {
+      "task": "Floor area",
+      "size": 128,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII area": {
+          "medianMs": 0.0003426260765550025,
+          "p95Ms": 0.00046827404306217055,
+          "batchLoops": 209,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 1.4962906057512967e-15
+        },
+        "Three.js area": {
+          "medianMs": 0.0003217553827751231,
+          "p95Ms": 0.00041222338516748544,
+          "batchLoops": 209,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 1.0081078848442084e-15
+        }
+      }
+    },
+    {
+      "task": "Surface triangulation",
+      "size": 128,
+      "sizeUnit": "vertices",
+      "scores": {
+        "USATII triangulation": {
+          "medianMs": 0.390104687500002,
+          "p95Ms": 0.43719965000000227,
+          "batchLoops": 3,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 1.1637815822510085e-15
+        },
+        "Three.js Earcut": {
+          "medianMs": 0.022798437500000546,
+          "p95Ms": 0.02531944583333446,
+          "batchLoops": 3,
+          "passed": 80,
+          "total": 80,
+          "maxRelativeError": 8.62194155437769e-16
+        }
+      }
+    },
+    {
+      "task": "Work Flow formulas",
+      "size": 3000,
+      "sizeUnit": "cases",
+      "scores": {
+        "USATII compile + evaluate": {
+          "medianMs": 0.0027645973333334647,
+          "p95Ms": 0.00342511133333331,
+          "batchLoops": 1,
+          "passed": 3000,
+          "total": 3000
+        },
+        "HyperFormula calculateFormula": {
+          "medianMs": 0.003285653000000214,
+          "p95Ms": 0.0041414026666667875,
+          "batchLoops": 1,
+          "passed": 3000,
+          "total": 3000
+        }
+      }
+    }
+  ],
+  "edgeCases": [
+    {
+      "source": "IF(1 = 0, 1 / 0, 42)",
+      "expected": 42,
+      "actual": {
+        "ok": false,
+        "value": null,
+        "error": {
+          "code": "FORMULA_DIVISION_BY_ZERO",
+          "message": "Cannot divide by zero."
+        }
+      },
+      "hyperformula": 42
+    },
+    {
+      "source": "IFERROR(1 / 0, 42)",
+      "expected": 42,
+      "actual": {
+        "ok": false,
+        "value": null,
+        "error": {
+          "code": "FORMULA_DIVISION_BY_ZERO",
+          "message": "Cannot divide by zero."
+        }
+      },
+      "hyperformula": 42
+    },
+    {
+      "source": "ROUNDUP(-1.25, 1)",
+      "expected": -1.3,
+      "actual": {
+        "ok": true,
+        "value": -1.2,
+        "valueType": "number"
+      },
+      "hyperformula": -1.3
+    },
+    {
+      "source": "ROUNDDOWN(-1.25, 1)",
+      "expected": -1.2,
+      "actual": {
+        "ok": true,
+        "value": -1.3,
+        "valueType": "number"
+      },
+      "hyperformula": -1.2
+    }
+  ]
+}

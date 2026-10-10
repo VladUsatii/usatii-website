@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  outputFileTracingIncludes: {
+    '/api/site-search': ['./src/app/**/page.js', './src/app/**/page.jsx', './public/case-studies/*.md'],
+  },
   async redirects() {
     return [
       {

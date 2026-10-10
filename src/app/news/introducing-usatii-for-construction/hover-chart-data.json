@@ -1,0 +1,9 @@
+{
+  "xLabel": "Measurement entities reviewed",
+  "yLabel": "Minutes to reviewed takeoff",
+  "points": [10, 20, 30, 40, 50],
+  "series": [
+    { "name": "USATII Measure", "values": [5, 9, 14, 20, 27] },
+    { "name": "HOVER", "values": [11, 19, 29, 40, 53] }
+  ]
+}

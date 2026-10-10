@@ -1,0 +1,41 @@
+.controls { display: flex; align-items: center; gap: 23px; }
+.controls > div > button { height: 40px; padding: 0 18px; }
+.sales { display: inline-flex; align-items: center; gap: 9px; height: 40px; padding: 0 8px; font-size: 13px; }
+.searchTrigger { display: grid; place-items: center; height: 40px; width: 40px; cursor: pointer; color: #202023; }
+.searchTrigger:hover { color: #7950b5; }
+.controls button:focus-visible, .controls a:focus-visible { outline: 2px solid #8d65be; outline-offset: 4px; }
+.banner { background: #101013; color: #fff; padding: 18px 24px; }
+.bannerInner { max-width: 1232px; margin: auto; display: flex; gap: 25px; align-items: center; }
+.bannerName { flex-shrink: 0; font-family: monospace; font-size: 17px; font-weight: 600; letter-spacing: -.06em; color: #a7e9cb; }
+.bannerName b { color: #c2a2ff; font-weight: inherit; } .bannerName em { color: #ffbd74; font-style: normal; }
+.bannerCopy { font-size: 12px; line-height: 1.5; }
+.bannerCta { margin-left: auto; white-space: nowrap; display: flex; align-items: center; gap: 7px; font-size: 12px; }
+.bannerCta:hover { text-decoration: underline; text-underline-offset: 4px; }
+.searchOverlay { position: fixed; inset: 0; background: #fff; z-index: 200; }
+.searchPage { position: fixed; inset: 0; z-index: 201; background: #fff; color: #19191b; overflow-y: auto; outline: none; }
+.searchOverlay[data-state=open], .searchPage[data-state=open] { animation: search-in .25s ease both; }
+.searchOverlay[data-state=closed], .searchPage[data-state=closed] { animation: search-out .2s ease both; }
+.searchClose { position: fixed; right: 35px; top: 28px; display: grid; place-items: center; width: 36px; height: 36px; background: #fff; border-radius: 50%; color: #69666e; cursor: pointer; }
+.searchColumn { width: calc(100% - 48px); max-width: 676px; margin: 100px auto 80px; }
+.searchForm { display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #dad8de; padding-bottom: 10px; }
+.inputWrap { position: relative; flex: 1; min-width: 0; }
+.inputWrap input { display: block; width: 100%; padding: 0; font-size: 28px; letter-spacing: -.025em; font-weight: 400; border: 0; outline: none; background: transparent; border-radius: 0; color: #19191b; line-height: 1.5; }
+.inputWrap input::-webkit-search-cancel-button { display: none; }
+.prompt { position: absolute; inset: 0; pointer-events: none; color: #77747a; display: flex; align-items: center; font-size: 28px; line-height: 1.5; letter-spacing: -.025em; }
+.submit { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: #242426; color: #fff; cursor: pointer; }
+.submit:disabled { background: #969497; cursor: default; }
+.querySummary { padding: 35px 0 48px; border-bottom: 1px solid #dedce1; } .querySummary p, .resultStatus { font-size: 13px; color: #747078; } .querySummary h2 { font-size: 28px; font-weight: 500; letter-spacing: -.025em; margin-top: 22px; overflow-wrap: anywhere; }
+.resultStatus { margin: 25px 0 2px; }
+.searchResult { display: flex; justify-content: space-between; align-items: center; gap: 35px; border-bottom: 1px solid #dedce1; padding: 28px 0 32px; }
+.resultMeta { display: flex; flex-wrap: wrap; gap: 15px; font-size: 13px; } .resultMeta span + span { color: #747078; }
+.searchResult h3 { font-size: 19px; line-height: 1.4; font-weight: 500; letter-spacing: -.02em; margin: 10px 0 8px; } .searchResult p { font-size: 13px; line-height: 1.8; max-width: 450px; color: #343037; }
+.searchResult:hover h3 { color: #7950b5; } .resultImage { width: 140px; height: 140px; flex-shrink: 0; border-radius: 4px; object-fit: cover; }
+.searchPage a:focus-visible, .searchPage button:focus-visible { outline: 2px solid #8d65be; outline-offset: 4px; }
+@keyframes search-in { from { opacity: 0; } to { opacity: 1; } } @keyframes search-out { from { opacity: 1; } to { opacity: 0; } }
+@media (max-width: 900px) { .bannerInner { flex-wrap: wrap; gap: 8px 20px; } .bannerCopy { order: 3; width: 100%; } .controls { gap: 13px; } }
+@media (max-width: 520px) {
+  .controls { gap: 9px; } .controls > div > button { height: 36px; padding: 0 12px; gap: 8px; font-size: 11px; } .sales { height: 36px; padding: 0 4px; font-size: 11px; gap: 0; } .sales svg { display: none; } .searchTrigger { width: 32px; height: 36px; } .headerInner { gap: 8px; padding-left: 12px; padding-right: 12px; } .brand { font-size: 15px; gap: 5px; }
+  .controls > div > div { left: auto; right: -105px; } .banner { padding: 16px; } .bannerName { font-size: 15px; } .bannerInner { gap: 10px; } .bannerCopy { font-size: 11px; } .bannerCta { font-size: 11px; }
+  .searchColumn { margin-top: 90px; } .searchClose { right: 15px; top: 20px; } .inputWrap input, .prompt { font-size: 22px; } .searchForm { gap: 10px; } .searchResult { gap: 16px; } .resultImage { width: 85px; height: 85px; } .searchResult h3 { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { .searchPage, .searchOverlay { animation: none !important; } }
