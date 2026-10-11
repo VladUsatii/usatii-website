@@ -1,4 +1,5 @@
 import "server-only";
+import { isHiddenPublicPath } from "./public-route-visibility";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { getCanonicalSitemapPaths } from "./sitemap-data";
@@ -27,7 +28,7 @@ async function buildIndex() {
   }
   for (const study of studies) dynamic.set(`/case-studies/${study.slug}`, { ...study, image: study.cover, description: study.summary || study.excerpt, body: study.content });
   for (const event of events) dynamic.set(`/events/${event.slug}`, { ...event, description: event.description || event.location });
-  return Promise.all(Array.from(new Set([...paths, "/careers", "/contact", "/quote-request", "/documentation", "/ai", "/about/vlad-usatii", "/privacy", "/referral"])).filter(href => href !== "/sitemap" && href !== "/trades" && !href.includes("privacy-choices")).map(async href => {
+  return Promise.all(Array.from(new Set([...paths, "/careers", "/contact", "/quote-request", "/documentation", "/ai", "/about/vlad-usatii", "/privacy", "/referral"])).filter(href => !isHiddenPublicPath(href) && href !== "/sitemap" && href !== "/trades" && !href.includes("privacy-choices")).map(async href => {
     let source = "";
     const directory = path.join(process.cwd(), "src", "app", href);
     for (const extension of ["jsx", "js"]) {

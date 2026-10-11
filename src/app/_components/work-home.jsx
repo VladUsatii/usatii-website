@@ -19,10 +19,10 @@ const logos = [
   ["spectres", "Spectres"], ["ofr", "OFR"], ["oddsmate", "OddsMate"], ["rich-and-pour", "Rich & Pour"],
 ];
 const verticals = [
-  { name: "Engineering", description: "Streamline jobs, installations, clients, estimating, modeling, calls and appointments, documentation, and project management.", href: "/construction", src: "/construction/modeling-estimating.webp", caption: "From first estimate to final installation." },
-  { name: "Marketing", description: "Teams can access mass social media posting, advertisements, automatic alerting, social listening, and data analytics tasks, all powered by AI and custom automations.", href: "/advertising", src: "/news/marketing-team-collaboration.webp", caption: "More creativity. Less busywork." },
-  { name: "Sales", description: "Access advanced AI coaching, analysis, CRMs, and more.", href: "/ai", src: "/construction/lead-intake-telephony.webp", caption: "Turn every conversation into opportunity." },
-  { name: "Operations", description: "Customize how your organization speaks across departments with our robust set of software capabilities. Integrate from hundreds of platforms or migrate data in-house.", href: "/software", src: "/construction/rebuildit-operations.webp", caption: "Every department. One connected operation." },
+  { name: "Engineering", description: "Streamline jobs, installations, clients, estimating, modeling, calls and appointments, documentation, and project management.", href: "/news/introducing-usatii-for-construction", src: "/construction/modeling-estimating.webp", caption: "From first estimate to final installation." },
+  { name: "Marketing", description: "Teams can access mass social media posting, advertisements, automatic alerting, social listening, and data analytics tasks, all powered by AI and custom automations.", href: "/news/introducing-usatii-for-communications", src: "/news/marketing-team-collaboration.webp", caption: "More creativity. Less busywork." },
+  { name: "Sales", description: "Access advanced AI coaching, analysis, CRMs, and more.", href: "/news/introducing-usatii-for-sales", src: "/construction/lead-intake-telephony.webp", caption: "Turn every conversation into opportunity." },
+  { name: "Operations", description: "Customize how your organization speaks across departments with our robust set of software capabilities. Integrate from hundreds of platforms or migrate data in-house.", href: "/news/introducing-usatii-for-operations", src: "/construction/rebuildit-operations.webp", caption: "Every department. One connected operation." },
 ];
 
 function ClientLoop() {

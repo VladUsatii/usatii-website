@@ -30,7 +30,6 @@ const FALLBACK_POINTS = [
 
 const FOOTER_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
   { label: "Software", href: "/software" },
   { label: "Industries", href: "/industries" },
   { label: "Locations", href: "/locations" },

@@ -1,6 +1,7 @@
 import { SITE_URL, getApprovedSitemapRoutes } from "@/lib/services-seo";
 import { getAllTradeRoutes } from "@/lib/trades-seo-data";
 import { getAllCaseStudySlugs } from "@/lib/case-studies";
+import { isHiddenPublicPath } from "./public-route-visibility";
 import { events } from "@/lib/events";
 
 export function getSitemapPriority(path) {
@@ -46,7 +47,7 @@ export async function getCanonicalSitemapPaths() {
     "/sitemap",
   ]);
 
-  return Array.from(routes).sort();
+  return Array.from(routes).filter((path) => !isHiddenPublicPath(path)).sort();
 }
 
 export async function getCanonicalSitemapEntries() {

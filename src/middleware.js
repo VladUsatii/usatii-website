@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { isHiddenPublicPath } from '@/lib/public-route-visibility';
 import { PORTAL_SESSION_COOKIE, getPortalAuthSecret } from '@/lib/portal/constants';
 import { verifySignedSessionValue } from '@/lib/portal/session-cookie';
 
@@ -10,7 +11,7 @@ function isSessionFresh(payload) {
 export async function middleware(request) {
   const { pathname, search } = request.nextUrl;
 
-  if (pathname === '/case-studies') {
+  if (isHiddenPublicPath(pathname) || pathname === '/case-studies') {
     return new NextResponse('Not Found', {
       status: 404,
       headers: {
@@ -68,5 +69,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/apply', '/vlad', '/case-studies', '/case-studies/:path*', '/portal/:path*', '/admin', '/admin/login', '/dashboard'],
+  matcher: ['/advertising/:path*', '/ai/:path*', '/services/:path*', '/compare/:path*', '/resources/:path*', '/apply', '/vlad', '/case-studies', '/case-studies/:path*', '/portal/:path*', '/admin', '/admin/login', '/dashboard'],
 };

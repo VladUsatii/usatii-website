@@ -54,11 +54,6 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/compare" className="hover:text-black">
-                Compare
-              </a>
-            </li>
-            <li>
               <a href="/resources" className="hover:text-black">
                 Software Capabilities
               </a>
