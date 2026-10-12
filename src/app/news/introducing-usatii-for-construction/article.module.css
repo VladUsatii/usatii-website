@@ -28,7 +28,7 @@
 .prose a[href*="poly.cam"]::before,.sources a[href*="poly.cam"]::before{background-image:url("https://www.google.com/s2/favicons?domain=poly.cam&sz=32")}
 .prose a[href*="apple.com"]::before,.sources a[href*="apple.com"]::before{background-image:url("https://www.google.com/s2/favicons?domain=apple.com&sz=32")}
 .articleLayout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:54px;align-items:start;padding-top:8px}
-.articleBody{min-width:0}
+.articleBody{width:100%;min-width:0}
 .sidePicker{position:sticky;top:92px;padding-top:12px;font-size:13px;color:#666}
 .sidePicker details{border:0}
 .sidePicker summary{list-style:none;cursor:pointer;font-size:12px;font-weight:550;color:#222;margin-bottom:16px}
@@ -126,4 +126,4 @@
 .plotResult{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px solid #eee;padding-top:18px}.plotResult strong{font-size:23px;font-weight:550;letter-spacing:-.04em}.plotResult span,.plotResult a{font-size:11px;color:#666}.plotResult a{margin-left:auto;text-decoration:underline;text-underline-offset:3px}
 .plotComparison{margin-left:auto}
 @media(max-width:900px){.articleLayout{grid-template-columns:145px minmax(0,1fr);gap:30px}}
-@media(max-width:640px){.article{padding:0 20px 90px}.introCopy{margin-top:34px}.articleLayout{display:flex;flex-direction:column;gap:30px;padding-top:8px}.sidePicker{position:relative;top:auto;width:100%;padding:12px 0;border-bottom:1px solid #e8e8e8}.sidePicker summary{margin:0}.sidePicker details[open] summary{margin-bottom:12px}.sidePicker nav{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}.masthead{padding:30px 0 24px}.ontologyModel{overflow-x:auto;margin-bottom:48px}.ontologyModel svg{min-width:700px}.prose{font-size:16px}.prose h2{font-size:28px}.section{margin-top:92px}.comparison th,.comparison td{padding:11px 9px}.geometryGrid{gap:10px;padding-inline:0}.geometryHeading{font-size:8px}.geometryGrid h3{font-size:14px}.geometryGrid p{font-size:10px}.sources ol{columns:1}.pullquote{margin:90px auto}.contents{gap:12px 20px;margin-bottom:60px}}
+@media(max-width:640px){.article{padding:0 20px 90px}.introCopy{margin-top:34px}.articleLayout{display:flex;flex-direction:column;gap:30px;padding-top:8px}.sidePicker{position:relative;top:auto;width:100%;padding:12px 0;border-bottom:1px solid #e8e8e8}.sidePicker summary{margin:0}.sidePicker details[open] summary{margin-bottom:12px}.sidePicker nav{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}.masthead{padding:30px 0 24px}.ontologyModel{margin-bottom:48px}.prose{font-size:16px}.prose h2{font-size:28px}.section{margin-top:92px}.comparison th,.comparison td{padding:11px 9px}.geometryGrid{gap:10px;padding-inline:0}.geometryHeading{font-size:8px}.geometryGrid h3{font-size:14px}.geometryGrid p{font-size:10px}.sources ol{columns:1}.pullquote{margin:90px auto}.contents{gap:12px 20px;margin-bottom:60px}}
