@@ -57,7 +57,9 @@ export async function middleware(request) {
 
   if (pathname === '/admin' || pathname === '/dashboard') {
     if (!hasSession || payload.role !== 'admin') {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+      const loginUrl = new URL('/admin/login', request.url);
+      loginUrl.searchParams.set('next', `${pathname}${search}`);
+      return NextResponse.redirect(loginUrl);
     }
   }
 

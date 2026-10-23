@@ -7,6 +7,8 @@ import {
   portalSql,
 } from '@/lib/portal/database';
 
+import { deliverPendingCareerNotifications } from '@/lib/careers/notifications';
+
 export const runtime = 'nodejs';
 
 const DEFAULT_LIMIT = 120;
@@ -52,6 +54,8 @@ function toApplication(row) {
     notes: cleanMultilineText(row.notes),
     notesPreview: toPreview(row.notes),
     resumeName: String(row.resume_name || '').trim(),
+    answers: row.answers && typeof row.answers === 'object' && !Array.isArray(row.answers) ? row.answers : {},
+    resumeAvailable: Number(row.resume_size || 0) > 0,
     ipAddress: String(row.ip_address || '').trim(),
     submittedAt: toIso(row.submitted_at),
   };
@@ -79,14 +83,18 @@ function buildSummary(applications) {
 
   return {
     total: applications.length,
-    withResume: applications.filter((application) => Boolean(application.resumeName)).length,
+    withResume: applications.filter((application) => application.resumeAvailable).length,
     withPortfolioLink: applications.filter((application) => Boolean(application.linkedin)).length,
     latestSubmittedAt: applications[0]?.submittedAt || null,
     roleBreakdown,
   };
 }
 
-async function listApplications({ query, limit }) {
+async function listApplications({ query, limit, id }) {
+  if (id) {
+    const result = await portalSql`SELECT id, full_name, email, role_id, role_title, location, linkedin, notes, resume_name, answers, resume_size, ip_address, submitted_at FROM career_applications WHERE id = ${id}`;
+    return result.rows.map(toApplication);
+  }
   if (!query) {
     const result = await portalSql`
       SELECT
@@ -99,6 +107,8 @@ async function listApplications({ query, limit }) {
         linkedin,
         notes,
         resume_name,
+        answers,
+        resume_size,
         ip_address,
         submitted_at
       FROM career_applications
@@ -122,6 +132,8 @@ async function listApplications({ query, limit }) {
       linkedin,
       notes,
       resume_name,
+      answers,
+      resume_size,
       ip_address,
       submitted_at
     FROM career_applications
@@ -148,6 +160,8 @@ export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const query = String(searchParams.get('q') || '').trim().slice(0, 200);
   const limit = parseLimit(searchParams.get('limit'));
+  const id = searchParams.get('id');
+  if (id && !/^\d{1,18}$/.test(id)) return NextResponse.json({ error: 'Invalid application ID.' }, { status: 400 });
 
   if (Number.isNaN(limit)) {
     return NextResponse.json(
@@ -158,7 +172,8 @@ export async function GET(request) {
 
   try {
     await ensureCareerApplicationsTable();
-    const applications = await listApplications({ query, limit });
+    const applications = await listApplications({ query, limit, id });
+    try { await deliverPendingCareerNotifications(); } catch { console.error('Career notification retry unavailable.'); }
 
     return NextResponse.json(
       {

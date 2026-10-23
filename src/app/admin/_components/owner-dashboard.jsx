@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { APPLICATION_SECTIONS } from '@/lib/careers/application-fields';
 import AdminNotesPane from '@/app/admin/_components/admin-notes-pane';
 import AdminEducationPane from '@/app/admin/_components/admin-education-pane';
 import AdminPaymentsPane from '@/app/admin/_components/admin-payments-pane';
@@ -1804,7 +1805,7 @@ export default function OwnerDashboard({ adminEmail }) {
   function renderApplicationsSection() {
     const summary = applicationsSummary || {
       total: applications.length,
-      withResume: applications.filter((application) => Boolean(application.resumeName)).length,
+      withResume: applications.filter((application) => application.resumeAvailable).length,
       withPortfolioLink: applications.filter((application) => Boolean(application.linkedin)).length,
       latestSubmittedAt: applications[0]?.submittedAt || null,
       roleBreakdown: [],
@@ -1924,8 +1925,8 @@ export default function OwnerDashboard({ adminEmail }) {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <StatusPill tone="blue">{selectedApplication.roleTitle}</StatusPill>
-                    <StatusPill tone={selectedApplication.resumeName ? 'green' : 'gray'}>
-                      {selectedApplication.resumeName ? 'Resume attached' : 'No resume file'}
+                    <StatusPill tone={selectedApplication.resumeAvailable ? 'green' : 'gray'}>
+                      {selectedApplication.resumeAvailable ? 'Resume attached' : 'No resume file'}
                     </StatusPill>
                     <StatusPill tone={selectedApplication.linkedin ? 'blue' : 'gray'}>
                       {selectedApplication.linkedin ? 'Portfolio included' : 'No portfolio link'}
@@ -1962,8 +1963,21 @@ export default function OwnerDashboard({ adminEmail }) {
                     <p className="mt-1 break-all text-sm text-neutral-900">
                       {selectedApplication.resumeName || 'Not provided'}
                     </p>
+                    {selectedApplication.resumeAvailable && <a href={`/api/admin/careers/${selectedApplication.id}/resume`} className="mt-2 inline-block text-sm font-medium text-blue-700 underline underline-offset-4">Download résumé</a>}
                   </div>
                 </div>
+
+                {APPLICATION_SECTIONS.map(section => {
+                  const fields = section.fields.filter(field => selectedApplication.answers?.[field.name]?.length);
+                  if (!fields.length) return null;
+                  return <section key={section.title} className="rounded-lg border border-neutral-200 p-3">
+                    <h3 className="text-sm font-semibold text-neutral-950">{section.title}</h3>
+                    <dl className="mt-3 space-y-4">{fields.map(field => <div key={field.name}>
+                      <dt className="text-xs font-medium text-neutral-500">{field.label}</dt>
+                      <dd className="mt-1 whitespace-pre-wrap break-words text-sm leading-6 text-neutral-800">{Array.isArray(selectedApplication.answers[field.name]) ? selectedApplication.answers[field.name].join(', ') : String(selectedApplication.answers[field.name])}</dd>
+                    </div>)}</dl>
+                  </section>;
+                })}
 
                 <div className="rounded-lg border border-neutral-200 p-3">
                   <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500">Why They Are a Fit</p>

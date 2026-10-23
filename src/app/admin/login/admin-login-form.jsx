@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import PasswordInput from '@/app/_components/password-input';
 
-export default function AdminLoginForm() {
+export default function AdminLoginForm({ returnTo = '/dashboard' }) {
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ export default function AdminLoginForm() {
         throw new Error(payload.error || 'Unable to login right now.');
       }
 
-      router.push('/admin');
+      router.push(returnTo);
       router.refresh();
     } catch (err) {
       setError(err.message || 'Unable to login right now.');

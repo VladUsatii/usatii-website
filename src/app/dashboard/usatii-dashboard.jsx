@@ -20,6 +20,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import AdminLiveChatPane from '@/app/admin/_components/admin-live-chat-pane';
 import AdminTelemetryPane from '@/app/admin/_components/admin-telemetry-pane';
+import ApplicationsTab from '@/app/dashboard/applications-tab';
 import CatalogTab from '@/app/dashboard/catalog-tab';
 import CalendarTab from '@/app/dashboard/calendar-tab';
 import LibraryTab from '@/app/dashboard/library-tab';
@@ -28,6 +29,7 @@ import { AcademyTab as RichAcademyTab, CourseBuilderTab } from '@/app/dashboard/
 
 const TABS = [
   { id: 'overview', label: 'Overview', note: 'Business intelligence', icon: LayoutDashboard },
+  { id: 'applications', label: 'Applications', note: 'Candidate inbox', icon: Users },
   { id: 'customers', label: 'Customers', note: 'Clients and workspaces', icon: Users },
   { id: 'catalog', label: 'Catalog', note: 'Software and pricing', icon: Boxes },
   { id: 'calendar', label: 'Calendar', note: 'Calls and milestones', icon: CalendarClock },
@@ -208,6 +210,7 @@ export default function UsatiiDashboard({ adminEmail }) {
   const activeLabel = TABS.find((tab) => tab.id === activeTab)?.label || 'Overview';
   const content = useMemo(() => {
     if (activeTab === 'overview') return <OverviewTab email={adminEmail} onSelect={selectTab} />;
+    if (activeTab === 'applications') return <ApplicationsTab />;
     if (activeTab === 'customers') return <CustomersTab clients={clients} loading={clientsLoading} onRefresh={loadClients} />;
     if (activeTab === 'catalog') return <CatalogTab />;
     if (activeTab === 'calendar') return <CalendarTab />;

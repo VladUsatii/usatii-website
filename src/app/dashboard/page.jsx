@@ -7,9 +7,10 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function DashboardPage() {
+export default async function DashboardPage({ searchParams }) {
+  const params = new URLSearchParams(await searchParams);
   const session = await getCurrentPortalSession();
-  if (!session) redirect('/admin/login');
+  if (!session) redirect(`/admin/login?next=${encodeURIComponent(`/dashboard${params.size ? `?${params}` : ''}`)}`);
   if (session.role !== 'admin') redirect('/portal/dashboard');
   return <UsatiiDashboard adminEmail={session.email} />;
 }

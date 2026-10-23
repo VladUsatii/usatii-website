@@ -2,6 +2,7 @@ import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
 
 const privacySections = [
+  ["recruiting", "Job applications", "When you apply for a role, we collect the contact details, résumé, employment and education information, profile links, eligibility answers, preferences, and written responses you provide. We use this information to evaluate your candidacy, communicate with you, and maintain recruiting records. Applications and résumé downloads are available through authenticated administration. Optional veteran and disability survey responses are stored separately and are not displayed in the hiring application inbox. We do not share your résumé with prospective delivery partners for recruiting unless you opt in. Optional interview-transcription preferences do not initiate recording or transcription. The application form uses a self-hosted proof-of-work check and limited technical information to prevent abuse. For access, correction, deletion, accommodation, or privacy questions, contact USATII using the contact details on this website."],
   ["information", "Information we collect", "We collect information you provide directly, such as contact details submitted through forms, and limited technical information needed to operate, secure, and understand use of the website."],
   ["use", "How we use information", "We use information to provide and improve Oasis, respond to inquiries, maintain security, prevent abuse, fulfill contractual obligations, and comply with applicable law."],
   ["sharing", "How we share information", "We may share information with service providers that support hosting, communications, security, and business operations. We do not sell personal information."],
@@ -26,7 +27,7 @@ export default function PrivacyPage() {
       <main className="bg-white text-ink">
         <article className="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-20">
           <header className="text-center">
-            <p className="text-sm text-muted-foreground">Updated: August 1, 2026</p>
+            <p className="text-sm text-muted-foreground">Updated: October 22, 2026</p>
             <h1 className="mt-8 text-5xl font-medium tracking-tight md:text-7xl">Privacy Policy</h1>
           </header>
           <div className="mt-20 grid gap-12 lg:grid-cols-[240px_minmax(0,760px)] lg:justify-between">

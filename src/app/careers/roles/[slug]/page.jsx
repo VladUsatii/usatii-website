@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import PublicLayout from '../../_components/public-layout';
 import { roles } from '@/lib/careers/roles';
 import styles from './role-description.module.css';
+import ApplicationForm from '../application-form';
 
 export function generateStaticParams() {
   return roles.map(({ slug }) => ({ slug }));
@@ -32,6 +33,7 @@ export default async function RolePage({ params }) {
         <h1 className="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.045em] md:text-5xl">{role.title}</h1>
         <p className="mt-5 text-sm leading-6 text-neutral-600">{role.displayLocation || `${role.location} (${role.arrangement})`}</p>
         <p className="mt-5 text-xs leading-5 text-neutral-500">{role.status}</p>
+        <a href="#apply" className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-sm bg-neutral-950 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800">Apply for this role <ArrowUpRight size={16} aria-hidden="true" /></a>
       </header>
       <div className="mt-10 grid items-start gap-10">
         <article className="min-w-0 space-y-5 text-sm leading-6 text-neutral-600">
@@ -53,12 +55,8 @@ export default async function RolePage({ params }) {
           <dl className="mt-6 space-y-5 text-sm leading-6">
             {[['Employment', role.employment], ['Compensation', role.compensation], ['Location', role.locationDetails || `${role.location} (${role.arrangement})`], ['Travel', role.travel], ['Openings', role.openings], ['Status', role.status]].filter(([, value]) => value).map(([label, value]) => <div key={label}><dt className="font-medium text-neutral-950">{label}</dt><dd className="mt-1 text-neutral-600">{value}</dd></div>)}
           </dl>
-          <div className="mt-6 border-t border-neutral-200 pt-6">
-            <h3 className="font-medium">Interested in this role?</h3>
-            <p className="mt-2 text-sm leading-6 text-neutral-600">Contact recruiting to express interest in the {role.title} position or request an accommodation.</p>
-            <Link href="/contact" className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 bg-neutral-950 px-4 py-3 text-center text-sm font-medium text-white hover:bg-neutral-800">Contact recruiting <ArrowUpRight size={16} aria-hidden="true" /></Link>
-          </div>
         </aside>
+        <ApplicationForm roleId={role.slug} roleTitle={role.title} />
       </div>
     </div>
   </PublicLayout>;

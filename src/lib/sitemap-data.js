@@ -35,6 +35,7 @@ export async function getCanonicalSitemapPaths() {
     "/editor",
     "/editor/changelog",
     "/news",
+    "/news/how-usatii-approaches-custom-software",
     "/news/introducing-usatii-for-construction",
     "/news/introducing-dart",
     "/news/the-age-of-automation-is-among-us",

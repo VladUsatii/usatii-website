@@ -7,6 +7,15 @@ import { ArrowDownUp, ArrowRight, Check, Grid2X2, List } from "lucide-react";
 
 const stories = [
   {
+    title: "How Usatii approaches custom software",
+    category: "Company",
+    date: "Oct 23, 2026",
+    dateValue: "2026-10-23",
+    image: "/news/custom-software.svg",
+    imageFit: "cover",
+    href: "/news/how-usatii-approaches-custom-software",
+  },
+  {
     title: "Introducing Usatii for Construction",
     category: "Product",
     date: "Oct 9, 2026",
