@@ -1,3 +1,5 @@
+import { sendLeadNotification } from '@/lib/portal/resend';
+import { getQuoteQuality } from '@/lib/quote-quality';
 import { NextResponse } from 'next/server';
 import {
   createQuoteRequest,
@@ -96,6 +98,12 @@ export async function POST(request) {
       source,
       urgency: requestedUrgency,
     });
+
+    await sendLeadNotification({
+      kind: 'quote', id: quoteRequest.id, replyTo: email,
+      suspectedSpam: getQuoteQuality({ fullName, message }).suspectedSpam,
+      details: { Name: fullName, Email: email, Phone: phone, Address: address, 'Customer type': customerType, Message: message, Urgency: requestedUrgency, Source: source, Page: originPath },
+    }).catch((error) => console.error('Quote saved but notification failed', { id: quoteRequest.id, message: error.message }));
 
     const telemetryBase = {
       sessionId,

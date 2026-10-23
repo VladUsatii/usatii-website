@@ -53,3 +53,22 @@ export async function sendPasswordResetEmail({ email, resetUrl }) {
 
   return payload;
 }
+
+// Call only after the correspondence has been saved. Delivery failures must not
+// cause visitors to resubmit an already saved request.
+export async function sendLeadNotification({ kind, id, details, replyTo, suspectedSpam = false }) {
+  const apiKey = String(process.env.RESEND_API_KEY || '').trim();
+  const from = String(process.env.RESEND_FROM_EMAIL || '').trim();
+  const to = String(process.env.LEAD_NOTIFICATION_EMAIL || process.env.PORTAL_OWNER_EMAIL || '').trim();
+  if (!apiKey || !from || !to) throw new Error('Lead notification email is not configured. Set RESEND_API_KEY, RESEND_FROM_EMAIL, and LEAD_NOTIFICATION_EMAIL or PORTAL_OWNER_EMAIL.');
+  const subject = `${suspectedSpam ? '[Suspected spam] ' : ''}${kind === 'chat' ? 'New USATII live chat' : 'New USATII quote request'} #${id}`;
+  const text = Object.entries(details).map(([key, value]) => `${key}: ${value || '—'}`).join('\n\n') + '\n\nDashboard: https://www.usatii.com/admin';
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    signal: AbortSignal.timeout(10000),
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': `lead-${kind}-${id}` },
+    body: JSON.stringify({ from, to: [to], subject, text, ...(replyTo ? { reply_to: replyTo } : {}), html: `<div style="font-family:Arial,sans-serif;white-space:pre-wrap;${suspectedSpam ? 'color:#be123c;text-decoration:line-through;' : ''}">${escapeHtml(text)}</div>` }),
+  });
+  if (!response.ok) throw new Error(`Lead notification delivery failed (${response.status}).`);
+  return response.json();
+}

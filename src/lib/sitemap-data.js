@@ -2,6 +2,7 @@ import { SITE_URL, getApprovedSitemapRoutes } from "@/lib/services-seo";
 import { getAllTradeRoutes } from "@/lib/trades-seo-data";
 import { getAllCaseStudySlugs } from "@/lib/case-studies";
 import { isHiddenPublicPath } from "./public-route-visibility";
+import { roles } from "@/lib/careers/roles";
 import { events } from "@/lib/events";
 
 export function getSitemapPriority(path) {
@@ -40,6 +41,9 @@ export async function getCanonicalSitemapPaths() {
     "/news/building-better-intelligence-tools-for-communication",
     "/news/introducing-digital-business-cards",
     "/social-impact",
+    "/careers",
+    "/careers/roles",
+    ...roles.map(({ slug }) => `/careers/roles/${slug}`),
     "/events",
     ...events.map(({ slug }) => `/events/${slug}`),
     "/vlad-usatii",

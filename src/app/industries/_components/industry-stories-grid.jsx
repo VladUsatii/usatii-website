@@ -20,7 +20,7 @@ const tileStyles = [
 ];
 
 function storyTitle(industry) {
-  return `How ${industry.trade.toLowerCase()} teams can move faster with software built for their work`;
+  return industry.storyTitle || `How ${industry.trade.toLowerCase()} teams can move faster with software built for their work`;
 }
 
 export default function IndustryStoriesGrid({ industries }) {
@@ -55,7 +55,7 @@ export default function IndustryStoriesGrid({ industries }) {
 
       <div className="mt-16 grid gap-x-7 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
         {filteredIndustries.map((industry, index) => (
-          <Link key={industry.slug} href={`/industries/${industry.slug}`} className="group block">
+          <Link key={industry.slug} href={industry.href || `/industries/${industry.slug}`} className="group block">
             <article>
               <div
                 className={`grid aspect-square place-items-center overflow-hidden rounded-sm bg-gradient-to-br ${tileStyles[index % tileStyles.length]} px-6`}

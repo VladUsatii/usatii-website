@@ -9,7 +9,7 @@ import { softwareVideoTranscript } from "./software-video-transcript";
 const platforms = [
   {
     index: "01",
-    name: "OASIS",
+    name: "Usatii for communications",
     description: "Simplify company or government communications, public and private.",
     href: "https://oasis.usatii.com",
   },
@@ -21,10 +21,11 @@ const platforms = [
   },
   {
     index: "03",
-    name: "REBUILDIT AI",
+    name: "Usatii for construction",
     description: "Workspace that unifies and automates every department within construction companies.",
-    href: "https://www.rebuilditinc.com",
+    href: "/construction",
   },
+  { index: "04", name: "Usatii for emergency management", description: "DART connects incident coordination, personnel readiness, and emergency response operations.", href: "/emergency-management" },
 ];
 
 function Reveal({ children, className = "", delay = 0, amount = 0.18 }) {
@@ -293,7 +294,6 @@ export default function SoftwarePageClient() {
       <section className="mx-auto w-full max-w-6xl px-5 pb-14 pt-14 sm:px-6 sm:pb-16 sm:pt-20 lg:px-8 lg:pb-24 lg:pt-28">
         <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_20rem] md:items-start lg:grid-cols-[minmax(0,1fr)_24rem]">
           <Reveal>
-            <SectionLabel>USATII / SOFTWARE</SectionLabel>
             <h1 className="mt-5 max-w-4xl text-[clamp(2.4rem,6vw,5.5rem)] font-medium leading-[0.88] tracking-[-0.055em]">
               Organizations of <span className="text-violet-600">tomorrow.</span>
             </h1>

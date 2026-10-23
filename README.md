@@ -19,6 +19,7 @@ STRIPE_PRICE_ID_SHORT_FORM=
 PAYPAL_CLIENT_ID=
 PAYPAL_CLIENT_SECRET=
 PAYPAL_ENV=sandbox
+LEAD_NOTIFICATION_EMAIL= # optional; defaults to PORTAL_OWNER_EMAIL
 RESEND_API_KEY=
 RESEND_FROM_EMAIL="USATII <updates@updates.usatii.com>"
 # optional override:
@@ -33,6 +34,7 @@ Notes:
 - Existing `BASE_URL` is used for Stripe success/cancel redirect URLs.
 - PayPal revenue sync uses `PAYPAL_CLIENT_ID` + `PAYPAL_CLIENT_SECRET` (with `PAYPAL_ENV=live` for production).
 - If PayPal returns access errors, verify the app mode matches credentials (`sandbox` vs `live`) and that your app/account has invoicing + transaction reporting access.
+- New quote requests and newly created live chats email the notification recipient above. Resumed chats do not send duplicate alerts. Notification failures are logged without discarding the saved correspondence.
 - Password reset emails use `RESEND_API_KEY`; `RESEND_FROM_EMAIL` must use a sender or domain verified in the Resend account.
 
 New routes:

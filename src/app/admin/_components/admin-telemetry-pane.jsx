@@ -1,5 +1,7 @@
 'use client';
 
+import { getQuoteQuality } from '@/lib/quote-quality';
+
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 function pad(value) {
@@ -503,10 +505,12 @@ export default function AdminTelemetryPane() {
               </thead>
               <tbody>
                 {quoteData.rows.map((row) => {
+                  const quality = getQuoteQuality(row);
                   const statusLabel = `${row.status}${row.urgency === 'urgent' ? 'Urgent' : row.urgency === 'low' ? 'Low' : ''}`;
                   return (
-                    <tr key={row.id} className="border-t border-neutral-100 align-top">
+                    <tr key={row.id} className={`border-t border-neutral-100 align-top ${quality.suspectedSpam ? "bg-rose-50 [&_p]:!text-rose-700 [&_p]:line-through" : ""}`} >
                       <td className="px-3 py-2">
+                        {quality.suspectedSpam ? <span className="text-xs font-semibold text-rose-700" title={quality.reasons.join("; ")}>Suspected spam</span> : null}
                         <p className="font-medium text-neutral-900">{row.fullName}</p>
                         <p className="text-xs text-neutral-500">{row.originPath}</p>
                         <p className="text-xs text-neutral-500">Source: {row.source}</p>

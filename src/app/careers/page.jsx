@@ -33,7 +33,7 @@ const operatingPrinciples = [
   }
 ];
 
-const PublicMain = "main";
+const PublicMain = "div";
 
 function PrincipleList({ items }) {
   return (
@@ -54,7 +54,6 @@ export default function CareersPage() {
       <PublicMain className="bg-canvas text-ink">
         <section className="px-4 py-16 md:px-6 md:py-24" aria-labelledby="careers-heading">
           <div className="mx-auto w-full max-w-3xl text-center">
-            <p className="text-sm font-semibold text-accent">Company</p>
             <h1 id="careers-heading" className="mx-auto mt-6 max-w-3xl text-4xl font-semibold leading-none tracking-normal text-ink md:text-6xl">
               Build safe, generalized enterprise software
             </h1>
@@ -62,7 +61,7 @@ export default function CareersPage() {
               We're looking for world-class builders from a range of disciplines.
             </p>
             <div className="mt-8">
-              <a href="#open-roles" className="inline-flex h-11 items-center gap-2 bg-accent px-5 text-sm font-semibold text-white shadow-soft hover:bg-accent-hover">
+              <a href="/careers/roles" className="inline-flex h-11 items-center gap-2 bg-accent px-5 text-sm font-semibold text-white shadow-soft hover:bg-accent-hover">
                 View open roles
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -113,8 +112,8 @@ export default function CareersPage() {
               We are looking for exceptional builders across engineering, design, operations, research, and customer-facing work.
             </p>
             <div className="mt-8">
-              <a href="/contact" className="inline-flex h-11 items-center gap-2 border border-control-border bg-paper px-5 text-sm font-semibold text-ink shadow-soft hover:bg-surface">
-                Contact recruiting
+              <a href="/careers/roles" className="inline-flex h-11 items-center gap-2 border border-control-border bg-paper px-5 text-sm font-semibold text-ink shadow-soft hover:bg-surface">
+                Explore available roles
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>

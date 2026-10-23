@@ -2,6 +2,7 @@ import React from "react";
 import { Linkedin, Instagram } from "lucide-react";
 
 const productTiles = [
+  { id: 6, title: "Usatii for Communications", href: "https://oasis.usatii.com" },
   { id: 1, title: "Usatii for Construction", href: "/construction" },
   { id: 2, title: "Usatii for Emergency Management", href: "/emergency-management" },
   { id: 3, title: "Software", href: "/software" },
@@ -30,19 +31,7 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-          <h3 className="mb-3 mt-7 text-sm font-black text-ink">Products</h3>
-          <ul className="space-y-3 text-sm font-medium text-ink-soft">
-            <li>
-              <a href="https://oasis.usatii.com" className="transition-colors hover:text-ink">
-                OASIS
-              </a>
-            </li>
-            <li>
-              <a href="/editor" className="transition-colors hover:text-ink">
-                EDITOR
-              </a>
-            </li>
-          </ul>
+
         </div>
 
         <div>
@@ -105,11 +94,6 @@ export default function Footer() {
             <li>
               <a href="/security" className="hover:text-black">
                 Security
-              </a>
-            </li>
-            <li>
-              <a href="/reviews" className="hover:text-black">
-                Reviews
               </a>
             </li>
             <li>

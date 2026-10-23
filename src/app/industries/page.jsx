@@ -17,24 +17,16 @@ export const metadata = buildPageMetadata({
 
 const featuredCaseStudies = [
   {
-    name: "Onlock Learning",
-    title: "Building a learning platform around consistent daily progress",
-    href: "https://www.onlocklearning.com/",
-    tile: (
-      <div className="grid aspect-square place-items-center rounded-sm bg-gradient-to-br from-stone-100 via-neutral-200 to-violet-200 px-8">
-        <p className="text-center text-3xl font-medium tracking-[-0.04em] text-neutral-800">Onlock Learning</p>
-      </div>
-    ),
+    name: "DART",
+    title: "Building Better Emergency Management Software for the Federal Government",
+    href: "/marketing-case-studies/building-better-emergency-management-software",
+    tile: <Image src="/industries/dart.png" alt="DART emergency management software" width={1254} height={1254} sizes="(min-width: 1024px) 384px, 100vw" className="aspect-square rounded-sm object-cover" />,
   },
   {
     name: "OASIS",
     title: "From fragmented channels to communications intelligence",
     href: "/case-studies/introducing-oasis-communications-intelligence",
-    tile: (
-      <div className="grid aspect-square place-items-center rounded-sm bg-gradient-to-br from-violet-100 via-violet-300 to-indigo-700 px-8">
-        <p className="text-center text-4xl font-medium tracking-[-0.05em] text-white">OASIS</p>
-      </div>
-    ),
+    tile: <Image src="/industries/communications.png" alt="Usatii for communications" width={1254} height={1254} sizes="(min-width: 1024px) 384px, 100vw" className="aspect-square rounded-sm object-cover" />,
   },
   {
     name: "REBUILDIT INC.",
@@ -95,7 +87,11 @@ export default function IndustriesHubPage() {
           </div>
         </section>
 
-        <IndustryStoriesGrid industries={INDUSTRY_PAGE_DATA} />
+        <IndustryStoriesGrid industries={[
+          { slug: "communications", trade: "Communications", title: "Communications intelligence", opening: "Public and private communications", href: "https://oasis.usatii.com", storyTitle: "Connect public and private communications with shared intelligence" },
+          { slug: "emergency-management", trade: "Emergency management", title: "Emergency response software", opening: "Federal government incident coordination and personnel readiness", href: "/emergency-management", storyTitle: "Coordinate emergency response, personnel readiness, and incident operations" },
+          ...INDUSTRY_PAGE_DATA,
+        ]} />
       </main>
       <Footer />
     </>

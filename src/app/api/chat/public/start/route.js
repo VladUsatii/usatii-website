@@ -1,3 +1,4 @@
+import { sendLeadNotification } from '@/lib/portal/resend'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { resolveLiveChatIdentity } from '@/lib/live-chat-identity'
@@ -88,6 +89,13 @@ export async function POST(request) {
       source: identity.source,
       pagePathFirstSeen: pagePath,
     })
+
+    if (conversationResult.action === 'create') {
+      await sendLeadNotification({
+        kind: 'chat', id: conversationResult.conversation.id,
+        details: { Name: visitorName, Phone: visitorPhone, Page: pagePath, Source: identity.source },
+      }).catch((error) => console.error('Chat saved but notification failed', { id: conversationResult.conversation.id, message: error.message }))
+    }
 
     await seedConversationStarterMessage({
       conversationId: conversationResult.conversation.id,
