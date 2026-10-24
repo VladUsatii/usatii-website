@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import homeStyles from "@/app/_components/work-home.module.css";
+import styles from "./construction.module.css";
 import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
 import { SITE_URL } from "@/lib/services-seo";
@@ -104,14 +106,12 @@ export default function ConstructionPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
         <section className="mx-auto max-w-5xl px-6 pb-16 pt-20 text-center lg:px-8 lg:pb-20 lg:pt-24">
-          <p className="text-xs font-medium">Operations software</p>
-          <h1 className="mt-5 text-5xl font-medium tracking-[-0.05em] sm:text-6xl">Usatii for Construction</h1>
+          <h1 className="text-5xl font-medium tracking-[-0.05em] sm:text-6xl">Usatii for Construction</h1>
           <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-neutral-600">
             A connected operating layer for every construction decision, from lead intake to call center infrastructure to scheduling to estimating to modeling to inventory to field execution.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3">
-            <TextLink href={BOOK_URL}>Discuss a pilot</TextLink>
-            <TextLink href="/quote-request">Send a scope or RFQ</TextLink>
+            <Link href={BOOK_URL} target="_blank" rel="noreferrer" className={homeStyles.primary}>Discuss a Pilot <ArrowUpRight size={16} aria-hidden="true" /></Link>
           </div>
         </section>
 
@@ -163,8 +163,7 @@ export default function ConstructionPage() {
         <section className="mx-auto max-w-5xl px-6 pb-28 lg:px-8">
           <div className="grid gap-12 md:grid-cols-[0.72fr_1.28fr] md:items-center">
             <div className="max-w-xs">
-              <p className="text-xs text-neutral-400">Construction operations stack</p>
-              <h2 className="mt-4 text-2xl font-medium leading-tight tracking-[-0.03em]">Start with the workflow that hurts. Expand only after it proves value.</h2>
+              <h2 className="text-2xl font-medium leading-tight tracking-[-0.03em]">Start with the workflow that hurts. Expand only after it proves value.</h2>
               <p className="mt-5 text-sm leading-6 text-neutral-600">Every module shares the same records, permissions, activity history, and reporting model.</p>
             </div>
             <Image
@@ -196,7 +195,8 @@ export default function ConstructionPage() {
 
         <section className="mx-auto max-w-6xl px-6 pb-32 lg:px-8">
           <div className="grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {pilots.map((pilot) => (
+            {pilots.map((pilot, index) => (
+              // Link each product destination only on its first occurrence.
               <article key={pilot.title}>
                 <Image
                   src={pilot.image}
@@ -207,9 +207,12 @@ export default function ConstructionPage() {
                   loading="lazy"
                   className="aspect-square rounded-sm object-cover"
                 />
-                <h3 className="mt-4 text-base font-medium leading-snug tracking-[-0.015em]">{pilot.title}</h3>
+                <h3 className="mt-4 text-base font-medium leading-snug tracking-[-0.015em]">
+                  {pilots.findIndex(({ href }) => href === pilot.href) === index
+                    ? <Link href={pilot.href} className={styles.productLink}>{pilot.title}</Link>
+                    : pilot.title}
+                </h3>
                 <p className="mt-2 text-sm leading-6 text-neutral-600">{pilot.body}</p>
-                <div className="mt-4"><TextLink href={pilot.href}>Explore the system</TextLink></div>
               </article>
             ))}
           </div>
@@ -217,8 +220,7 @@ export default function ConstructionPage() {
 
         <section className="border-t border-neutral-200 bg-neutral-50">
           <div className="mx-auto max-w-4xl px-6 py-24 text-center lg:px-8">
-            <p className="text-xs font-medium">Start with one operational bottleneck</p>
-            <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-medium tracking-[-0.04em] sm:text-5xl">Build a system your construction business can actually own.</h2>
+            <h2 className="mx-auto max-w-2xl text-3xl font-medium tracking-[-0.04em] sm:text-5xl">Build a system your construction business can actually own.</h2>
             <p className="mx-auto mt-6 max-w-lg text-sm leading-6 text-neutral-600">Bring the workflow, the records, and the people who use them. We will define a focused pilot and its acceptance criteria.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3">
               <TextLink href={BOOK_URL}>Book a working session</TextLink>
