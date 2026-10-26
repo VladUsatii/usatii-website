@@ -34,6 +34,7 @@ export async function getCanonicalSitemapPaths() {
     "/emergency-management",
     "/editor",
     "/editor/changelog",
+    "/documentation",
     "/news",
     "/news/how-usatii-approaches-custom-software",
     "/news/introducing-usatii-for-construction",

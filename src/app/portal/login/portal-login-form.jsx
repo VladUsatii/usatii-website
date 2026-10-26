@@ -111,13 +111,9 @@ export default function PortalLoginForm({ nextPath }) {
           USATII
         </Link>
         <section className="w-full rounded-3xl border border-white/20 bg-white/85 p-8 shadow-[0_28px_80px_rgba(15,23,42,0.25)] backdrop-blur-md">
-          <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-neutral-500">
-            CLIENT
-          </h3>
-
-          <h1 className="mt-5 text-3xl font-bold tracking-tight text-neutral-950">Log In</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-950">Log In</h1>
           <p className="mt-3 text-sm text-neutral-700">
-            Access your workspace, upload footage into your Drive, and request your next video project.
+            Sign in to your account.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-4">

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="1900" viewBox="0 0 460 1900" role="img" aria-labelledby="fde-title fde-description">
+<title id="fde-title">The forward-deployed engineering process</title>
+<desc id="fde-description">Six stages connect the customer team, field observations, pilot selection, engineering, bootcamp evaluation, and production implementation. Each frame shows the activities and resulting deliverable. Production work follows the pilot evaluation under a separate proposal.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L7 4L1 7" fill="none" stroke="#888" stroke-width="1"/></marker></defs>
+<rect width="460" height="1900" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<g fill="none" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"><path d="M226 306V340"/><path d="M226 612V646"/><path d="M226 918V952"/><path d="M226 1224V1258"/><path d="M226 1530V1564"/></g>
+<g transform="translate(20 46)">
+    <path d="M0 0L9 -9H421V251L412 260M412 0L421 -9" fill="none" stroke="#999" stroke-width="1"/>
+    <rect width="412" height="260" fill="white" stroke="#555" stroke-width="1.1"/>
+    <path d="M0 72H412M0 205H412" stroke="#ddd"/>
+    <text x="17" y="30" fill="#171717" font-size="20" font-weight="500">1. Prepare the assessment</text>
+    <text x="17" y="54" fill="#666" font-size="12" font-weight="400">Agree on the problem and the people involved.</text>
+    <rect x="16" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="27" y="111" fill="#171717" font-size="14" font-weight="500">Customer team</text><text x="27" y="135" fill="#555" font-size="12" font-weight="400">Executive sponsor</text><text x="27" y="154" fill="#555" font-size="12" font-weight="400">Department representatives</text><text x="27" y="173" fill="#555" font-size="12" font-weight="400">IT · security · finance</text><rect x="212" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="223" y="111" fill="#171717" font-size="14" font-weight="500">Working materials</text><text x="223" y="135" fill="#555" font-size="12" font-weight="400">Workflows · SOPs · records</text><text x="223" y="154" fill="#555" font-size="12" font-weight="400">Systems and API access</text><text x="223" y="173" fill="#555" font-size="12" font-weight="400">Task volumes and costs</text>
+    <text x="17" y="226" fill="#666" font-size="12" font-weight="400">Assessment inputs</text>
+    <text x="17" y="247" fill="#171717" font-size="13" font-weight="500">People, evidence, and approved access</text>
+  </g><g transform="translate(20 352)">
+    <path d="M0 0L9 -9H421V251L412 260M412 0L421 -9" fill="none" stroke="#999" stroke-width="1"/>
+    <rect width="412" height="260" fill="white" stroke="#555" stroke-width="1.1"/>
+    <path d="M0 72H412M0 205H412" stroke="#ddd"/>
+    <text x="17" y="30" fill="#171717" font-size="20" font-weight="500">2. Observe the operation</text>
+    <text x="17" y="54" fill="#666" font-size="12" font-weight="400">FDEs work alongside the customer’s departments.</text>
+    <rect x="16" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="27" y="111" fill="#171717" font-size="14" font-weight="500">Five dimensions</text><text x="27" y="135" fill="#555" font-size="12" font-weight="400">Workflows · data</text><text x="27" y="154" fill="#555" font-size="12" font-weight="400">Inefficiencies · business logic</text><text x="27" y="173" fill="#555" font-size="12" font-weight="400">Automation opportunities</text><rect x="212" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="223" y="111" fill="#171717" font-size="14" font-weight="500">Field discovery</text><text x="223" y="135" fill="#555" font-size="12" font-weight="400">Observe work and meetings</text><text x="223" y="154" fill="#555" font-size="12" font-weight="400">Capture exceptions</text><text x="223" y="173" fill="#555" font-size="12" font-weight="400">Rotate across departments</text>
+    <text x="17" y="226" fill="#666" font-size="12" font-weight="400">Discovery record</text>
+    <text x="17" y="247" fill="#171717" font-size="13" font-weight="500">Notes, bottlenecks, and baseline measurements</text>
+  </g><g transform="translate(20 658)">
+    <path d="M0 0L9 -9H421V251L412 260M412 0L421 -9" fill="none" stroke="#999" stroke-width="1"/>
+    <rect width="412" height="260" fill="white" stroke="#555" stroke-width="1.1"/>
+    <path d="M0 72H412M0 205H412" stroke="#ddd"/>
+    <text x="17" y="30" fill="#171717" font-size="20" font-weight="500">3. Select and scope the pilot</text>
+    <text x="17" y="54" fill="#666" font-size="12" font-weight="400">A 60–90 minute selection with both teams.</text>
+    <rect x="16" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="27" y="111" fill="#171717" font-size="14" font-weight="500">Selection criteria</text><text x="27" y="135" fill="#555" font-size="12" font-weight="400">Business impact</text><text x="27" y="154" fill="#555" font-size="12" font-weight="400">Feasibility · data readiness</text><text x="27" y="173" fill="#555" font-size="12" font-weight="400">Operational risk</text><rect x="212" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="223" y="111" fill="#171717" font-size="14" font-weight="500">Pilot Charter</text><text x="223" y="135" fill="#555" font-size="12" font-weight="400">Scope and exclusions</text><text x="223" y="154" fill="#555" font-size="12" font-weight="400">Data and responsibilities</text><text x="223" y="173" fill="#555" font-size="12" font-weight="400">Success criteria</text>
+    <text x="17" y="226" fill="#666" font-size="12" font-weight="400">Agreed test</text>
+    <text x="17" y="247" fill="#171717" font-size="13" font-weight="500">One priority workflow and measurable targets</text>
+  </g><g transform="translate(20 964)">
+    <path d="M0 0L9 -9H421V251L412 260M412 0L421 -9" fill="none" stroke="#999" stroke-width="1"/>
+    <rect width="412" height="260" fill="white" stroke="#555" stroke-width="1.1"/>
+    <path d="M0 72H412M0 205H412" stroke="#ddd"/>
+    <text x="17" y="30" fill="#171717" font-size="20" font-weight="500">4. Engineer and test</text>
+    <text x="17" y="54" fill="#666" font-size="12" font-weight="400">Build the proof of value around the agreed scope.</text>
+    <rect x="16" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="27" y="111" fill="#171717" font-size="14" font-weight="500">Pilot development</text><text x="27" y="135" fill="#555" font-size="12" font-weight="400">Approved test data</text><text x="27" y="154" fill="#555" font-size="12" font-weight="400">Workflow and integration</text><text x="27" y="173" fill="#555" font-size="12" font-weight="400">Human review points</text><rect x="212" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="223" y="111" fill="#171717" font-size="14" font-weight="500">Evaluation</text><text x="223" y="135" fill="#555" font-size="12" font-weight="400">Compare with the baseline</text><text x="223" y="154" fill="#555" font-size="12" font-weight="400">Check critical data fields</text><text x="223" y="173" fill="#555" font-size="12" font-weight="400">Document results</text>
+    <text x="17" y="226" fill="#666" font-size="12" font-weight="400">Working pilot</text>
+    <text x="17" y="247" fill="#171717" font-size="13" font-weight="500">Software, test results, and a demonstration</text>
+  </g><g transform="translate(20 1270)">
+    <path d="M0 0L9 -9H421V251L412 260M412 0L421 -9" fill="none" stroke="#999" stroke-width="1"/>
+    <rect width="412" height="260" fill="white" stroke="#555" stroke-width="1.1"/>
+    <path d="M0 72H412M0 205H412" stroke="#ddd"/>
+    <text x="17" y="30" fill="#171717" font-size="20" font-weight="500">5. Review at the bootcamp</text>
+    <text x="17" y="54" fill="#666" font-size="12" font-weight="400">Four hours with leadership and affected staff.</text>
+    <rect x="16" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="27" y="111" fill="#171717" font-size="14" font-weight="500">Demonstration</text><text x="27" y="135" fill="#555" font-size="12" font-weight="400">How the pilot was built</text><text x="27" y="154" fill="#555" font-size="12" font-weight="400">How it was tested</text><text x="27" y="173" fill="#555" font-size="12" font-weight="400">Employees use the solution</text><rect x="212" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="223" y="111" fill="#171717" font-size="14" font-weight="500">Value assessment</text><text x="223" y="135" fill="#555" font-size="12" font-weight="400">Time · accuracy · costs</text><text x="223" y="154" fill="#555" font-size="12" font-weight="400">Feedback and improvements</text><text x="223" y="173" fill="#555" font-size="12" font-weight="400">Capacity and payback</text>
+    <text x="17" y="226" fill="#666" font-size="12" font-weight="400">Joint evaluation</text>
+    <text x="17" y="247" fill="#171717" font-size="13" font-weight="500">Measured value and an implementation decision</text>
+  </g><g transform="translate(20 1576)">
+    <path d="M0 0L9 -9H421V251L412 260M412 0L421 -9" fill="none" stroke="#999" stroke-width="1"/>
+    <rect width="412" height="260" fill="white" stroke="#555" stroke-width="1.1"/>
+    <path d="M0 72H412M0 205H412" stroke="#ddd"/>
+    <text x="17" y="30" fill="#171717" font-size="20" font-weight="500">6. Implement and expand</text>
+    <text x="17" y="54" fill="#666" font-size="12" font-weight="400">Production work is scoped and priced separately.</text>
+    <rect x="16" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="27" y="111" fill="#171717" font-size="14" font-weight="500">Production proposal</text><text x="27" y="135" fill="#555" font-size="12" font-weight="400">Engineering and integration</text><text x="27" y="154" fill="#555" font-size="12" font-weight="400">Testing and deployment</text><text x="27" y="173" fill="#555" font-size="12" font-weight="400">Disclosed ongoing costs</text><rect x="212" y="89" width="184" height="103" fill="white" stroke="#c9c9c9"/><text x="223" y="111" fill="#171717" font-size="14" font-weight="500">Handoff and roadmap</text><text x="223" y="135" fill="#555" font-size="12" font-weight="400">Training and adoption</text><text x="223" y="154" fill="#555" font-size="12" font-weight="400">Support and maintenance</text><text x="223" y="173" fill="#555" font-size="12" font-weight="400">Next-priority workflows</text>
+    <text x="17" y="226" fill="#666" font-size="12" font-weight="400">Operational software</text>
+    <text x="17" y="247" fill="#171717" font-size="13" font-weight="500">Deploy the solution and review the next use case</text>
+  </g>
+</g></svg>

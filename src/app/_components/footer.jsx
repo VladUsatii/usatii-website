@@ -38,6 +38,9 @@ export default function Footer() {
           <h3 className="mb-4 text-sm font-black text-ink">Resources</h3>
           <ul className="space-y-3 text-sm font-medium text-ink-soft">
             <li>
+              <a href="/documentation" className="hover:text-black">Documentation</a>
+            </li>
+            <li>
               <a href="/software/software-waste-audit" className="hover:text-black">
                 Software Waste Audit
               </a>

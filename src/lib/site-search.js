@@ -12,6 +12,7 @@ const friendly = (slug) => slug.split("-").map(word => word[0]?.toUpperCase() + 
 const containsWord = (text, token) => text.split(" ").some(word => word === token || (token.length > 4 && word.startsWith(token)));
 const normalize = (text) => text.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 const overrides = {
+  "/documentation": { title: "Documentation: Free pilot development bootcamp", description: "Prepare for FDE discovery, pilot selection, the Pilot Charter, data protection, and business value evaluation.", image: "/documentation/bootcamp-session.webp" },
   "/": { title: "USATII", description: "Intelligent software everywhere you work. Custom software, communications, construction, emergency management, and AI integration." },
   "/construction": { title: "Construction management software", image: "/construction/rebuildit-operations.webp" },
   "/emergency-management": { title: "DART emergency management software", image: "/emergency-management/emergency-response-hero.webp" },
