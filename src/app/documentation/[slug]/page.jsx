@@ -5,18 +5,18 @@ import { documentationPages, documentationMetadata, getDocumentationPage } from 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return documentationPages.filter((page) => page.draft).map(({ slug }) => ({ slug }));
+  return documentationPages.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const page = documentationPages.find((entry) => entry.slug === slug && entry.draft);
+  const page = documentationPages.find((entry) => entry.slug === slug);
   return page ? documentationMetadata(page) : {};
 }
 
 export default async function DocumentationTopic({ params }) {
   const { slug } = await params;
   const page = await getDocumentationPage(slug);
-  if (!page || !page.draft) notFound();
+  if (!page) notFound();
   return <DocumentationArticle page={page} />;
 }

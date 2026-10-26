@@ -47,7 +47,7 @@ const markdownComponents = {
   </figure>,
 };
 
-export default function DocumentationArticle({ page }) {
+export default function DocumentationArticle({ page, children }) {
   return <div className="min-h-screen bg-white text-neutral-950">
     <Header />
     <main>
@@ -57,6 +57,7 @@ export default function DocumentationArticle({ page }) {
             <details open>
               <summary>Documentation</summary>
               <nav aria-label="Documentation topics">
+                <Link href="/documentation" aria-current={page.slug === "overview" ? "page" : undefined} className={page.slug === "overview" ? "!text-neutral-950 underline decoration-neutral-400 underline-offset-4" : undefined}>Overview</Link>
                 {documentationPages.map((entry) => <Link key={entry.slug} href={entry.href} aria-current={entry.slug === page.slug ? "page" : undefined} className={entry.slug === page.slug ? "!text-neutral-950 underline decoration-neutral-400 underline-offset-4" : undefined}>{entry.label}</Link>)}
               </nav>
             </details>
@@ -75,7 +76,7 @@ export default function DocumentationArticle({ page }) {
               <Image src="/documentation/bootcamp-session.webp" alt="A presenter speaking with a microphone beside a whiteboard and lectern in a lecture room" width={1717} height={989} sizes="(min-width: 1080px) 812px, (min-width: 768px) calc(100vw - 268px), calc(100vw - 40px)" priority className="h-auto w-full" />
             </figure>}
             <div className={styles.prose} style={{ maxWidth: "none", margin: 0 }}>
-              <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>{page.content}</ReactMarkdown>
+              {children || <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>{page.content}</ReactMarkdown>}
             </div>
           </article>
         </div>

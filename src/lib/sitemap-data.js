@@ -35,6 +35,7 @@ export async function getCanonicalSitemapPaths() {
     "/editor",
     "/editor/changelog",
     "/documentation",
+    "/documentation/bootcamp",
     "/news",
     "/news/how-usatii-approaches-custom-software",
     "/news/introducing-usatii-for-construction",

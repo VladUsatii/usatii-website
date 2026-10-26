@@ -5,7 +5,7 @@ import { promises as fs } from "node:fs";
 export const documentationPages = [
   {
     slug: "bootcamp",
-    href: "/documentation",
+    href: "/documentation/bootcamp",
     label: "Free pilot development bootcamp",
     title: "Free pilot development bootcamp",
     description: "How to prepare for Usatii’s free pilot development bootcamp: organizational roles, FDE discovery, pilot selection, data protection, and measurable business value.",
