@@ -35,3 +35,9 @@ The Palantir documentation overview and navigation pages were reviewed as inform
 The documentation describes implemented workflows directly. Hosting authorization, live agency interfaces, approved operational policies, capacity, accessibility acceptance, contractual service levels, staffing, pricing, and delivery dates remain deployment-specific. No federal contract award, FedRAMP authorization, ATO, official qualification policy, or certification is inferred from application code.
 
 Older application README and status sections can be stale. Current guide and service implementations were used for later features, including API connections, Integration Studio, decision replay, offline responder work, and source exchanges. This is a documentation review, not a new functional acceptance test of the FEMA application.
+
+## Direct public references
+
+The public SAM.gov survey download was checked on October 28, 2026. Its capability text matches the survey used for the build. The original workbook remains the mapping basis; public source links are kept in `src/lib/dart/references.js`. The official opportunity is `70FA3126I00000008` (current notice `a0c2acad204f428585857e6a736d179a`). Durable SAM.gov resource URLs are used instead of expiring S3 download URLs.
+
+Each section now introduces the reason for the workflow before its mechanics. References stay inline in the prose. Direct source references are allowed independently of the limit on related DART-topic links, so a source is not silently omitted when a paragraph has several internal links.

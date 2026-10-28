@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {dartHref} from '@/lib/dart/content';
-const references = [{phrase:'OpenID Connect',href:'https://openid.net/specs/openid-connect-core-1_0.html'}, {phrase:'Section 508',href:'https://www.section508.gov/'}];
+import {dartReferences} from '@/lib/dart/references';
+
 const topics = [
  ['core-concepts',['source identifiers','effective time','recorded time']],
  ['personnel',['personnel records','personnel batches','personnel record','source identifier','person links']],
@@ -33,11 +34,11 @@ const topics = [
  ['requirements',['61 capabilities','requirements index','capability index']],
 ];
 export default function LinkedText({text,current}) {
- const terms=[...references, ...topics.filter(([slug])=>slug!==current).flatMap(([slug,phrases])=>phrases.map(phrase=>({slug,phrase})))];
+ const terms=[...dartReferences, ...topics.filter(([slug])=>slug!==current).flatMap(([slug,phrases])=>phrases.map(phrase=>({slug,phrase})))];
  const matches=[];
  for(const term of terms){const pattern=new RegExp(`\\b${term.phrase.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`,'ig');let match;while((match=pattern.exec(text))!==null)matches.push({...term,start:match.index,end:match.index+match[0].length});}
  matches.sort((a,b)=>a.start-b.start||(b.end-b.start)-(a.end-a.start));
- const nodes=[];const used=new Set();let end=0;
- for(const match of matches){const target=match.href||dartHref(match.slug);if(match.start<end||used.has(target)||used.size>=3)continue;nodes.push(text.slice(end,match.start));nodes.push(<Link key={match.start} href={target}>{text.slice(match.start,match.end)}</Link>);end=match.end;used.add(target);}
+ const nodes=[];const used=new Set();let end=0,internalCount=0;
+ for(const match of matches){const target=match.href||dartHref(match.slug);if(match.start<end||used.has(target)||(!match.href&&internalCount>=3))continue;nodes.push(text.slice(end,match.start));nodes.push(<Link key={match.start} href={target}>{text.slice(match.start,match.end)}</Link>);end=match.end;used.add(target);if(!match.href)internalCount++;}
  nodes.push(text.slice(end));return nodes;
 }

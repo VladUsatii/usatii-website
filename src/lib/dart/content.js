@@ -10,10 +10,10 @@ export const dartPages = [
         "id": "platform",
         "title": "How DART works",
         "paragraphs": [
-          "DART is Usatii for Emergency Management. It connects the people who respond to an incident with the work they need to do. A coordinator can follow a responder from training to assignment, then through travel and the return home.",
+          "A response team needs to prepare its people before an incident and keep track of them in the field. DART brings both stages into one workspace. A coordinator can follow a responder from training to assignment, then through travel and the return home.",
           "Before sending someone to an incident, staff need to know whether that person is ready. Do they hold the right qualifications? Are they available for the requested dates? Have they had enough rest? DART brings the evidence together and shows the reason for each result.",
           "Each person works within their assigned role. Responders manage their own work. Supervisors review their teams. Coordinators manage incidents and deployment orders. Other staff manage training, equipment, or the records they are allowed to change.",
-          "DART was built around FEMA’s survey for a new Deployment Tracking System. It also supports other emergency management teams that need to prepare people and coordinate their response."
+          "DART was built around FEMA’s survey for a new Deployment Tracking System. The survey is published with FEMA’s public notice on SAM.gov. DART also supports other emergency management teams that need to prepare people and coordinate their response."
         ],
         "diagram": "platform"
       },
@@ -21,7 +21,7 @@ export const dartPages = [
         "id": "prepare",
         "title": "Prepare the workforce",
         "paragraphs": [
-          "Personnel records give each person a stable ID. The record connects to their employment and position history. Source identifiers show which outside systems supplied the data.",
+          "Preparation begins with knowing who is on the team and what each person can do. Personnel records give each person a stable ID. The record connects to their employment and position history. Source identifiers show which outside systems supplied the data.",
           "Readiness shows whether a person meets the rules for a position. A Position Task Book records the tasks they must complete. Training and certification records show what they have already earned.",
           "People can work with a mentor and follow a development plan. They can take online lessons or attend a scheduled class. Their transcript keeps the results together. Earlier records stay available when a result changes."
         ]
@@ -30,7 +30,7 @@ export const dartPages = [
         "id": "respond",
         "title": "Staff the incident and carry the decision into the field",
         "paragraphs": [
-          "An incident starts with a need for people. The coordinator defines the positions and dates, then compares responders. The selection view shows who meets the requirements and what might block an assignment.",
+          "When an incident needs help, coordinators turn that need into assignments. An incident starts with a need for people. The coordinator defines the positions and dates, then compares responders. The selection view shows who meets the requirements and what might block an assignment.",
           "A deployment order goes to a separate reviewer before it reaches the responder. The responder accepts or declines it. An accepted order starts the deployment record.",
           "During the deployment, DART tracks station visits and daily checks. Supervisors can follow up on missing replies. Equipment stays linked to the person who holds it. Required end steps must be complete before the deployment can finish."
         ],
@@ -40,7 +40,7 @@ export const dartPages = [
         "id": "understand",
         "title": "Plan, report, and reconstruct",
         "paragraphs": [
-          "Surge planning tests whether the workforce can meet several incident needs at once. A coordinator can compare rest policies and see where staffing falls short. Readiness forecasts show gaps that may appear in the coming months.",
+          "A response plan also needs to account for what might happen next. Surge planning tests whether the workforce can meet several incident needs at once. A coordinator can compare rest policies and see where staffing falls short. Readiness forecasts show gaps that may appear in the coming months.",
           "Decision replay shows the facts used for an earlier staffing choice. Saved reports keep a fixed copy of results. Later changes to the source records do not rewrite that copy."
         ]
       },
@@ -48,7 +48,7 @@ export const dartPages = [
         "id": "connect",
         "title": "Connect data without losing its source",
         "paragraphs": [
-          "Integrations bring outside data into DART. Staff map the fields and check the proposed changes before applying them. The original input stays saved so they can trace a problem to its source.",
+          "Useful information often starts in systems the organization already uses. Integrations bring outside data into DART. Staff map the fields and check the proposed changes before applying them. The original input stays saved so they can trace a problem to its source.",
           "Integration Studio lets staff build pages and rules around connected data. For example, a water-level reading can appear beside an incident. A rule can create a task when that reading crosses a set limit.",
           "Permissions control who can see or change each record. Record protection adds handling rules for sensitive data. These checks also apply to reports and background jobs."
         ]
@@ -57,7 +57,7 @@ export const dartPages = [
         "id": "evaluate",
         "title": "Evaluate DART for your organization",
         "paragraphs": [
-          "Start with a real workflow. Follow a qualification request or a training class. Walk through a staffing decision and an accepted order. Inspect the result and the history behind it.",
+          "The clearest way to understand DART is to follow a piece of work from start to finish. Start with a real workflow. Follow a qualification request or a training class. Walk through a staffing decision and an accepted order. Inspect the result and the history behind it.",
           "The federal deployment pages explain hosting and security review. The requirements index maps the 61 capabilities in FEMA’s survey to the work DART supports. It also links to the details needed for an agency evaluation."
         ]
       }
@@ -73,7 +73,7 @@ export const dartPages = [
         "id": "records",
         "title": "Records and relationships",
         "paragraphs": [
-          "DART gives each person a stable ID. An outside system may use a different ID for that same person. Source identifiers keep those records connected without relying on a matching name or email address.",
+          "To follow someone’s work over time, the system needs to recognize the same person across different records. DART gives each person a stable ID. An outside system may use a different ID for that same person. Source identifiers keep those records connected without relying on a matching name or email address.",
           "A person can have several positions over time. Each assignment has its own dates. Their training and qualifications also keep separate records. A change to one fact does not erase the others.",
           "An incident connects people to work. A staffing need says which position must be filled. An order names the person asked to fill it. Once they accept, the deployment tracks their work in the field."
         ],
@@ -83,7 +83,7 @@ export const dartPages = [
         "id": "time",
         "title": "Effective time and recorded time",
         "paragraphs": [
-          "A record can have two important times. Effective time says when something happened. Recorded time says when DART learned about it. A late correction keeps that difference clear.",
+          "Staff sometimes learn about a change after it has already happened. A record can have two important times. Effective time says when something happened. Recorded time says when DART learned about it. A late correction keeps that difference clear.",
           "For example, a visit may have ended on Monday but been corrected on Wednesday. The history preserves both dates. A reviewer can see what the system knew before the correction.",
           "Time zones give dates and times their local meaning. Location reports keep remote work separate from physical visits. Overlapping visits are counted once."
         ]
@@ -92,7 +92,7 @@ export const dartPages = [
         "id": "rules",
         "title": "Published rules and versions",
         "paragraphs": [
-          "A published definition states the rules for a type of work. For example, a task book defines what a responder must complete to earn a qualification. That definition has a version.",
+          "Requirements can change while people are still working toward them. A published definition states the rules for a type of work. For example, a task book defines what a responder must complete to earn a qualification. That definition has a version.",
           "When staff publish a new version, earlier work keeps its original rules. This lets a reviewer understand a decision made before the change.",
           "DART also keeps versions of course content and team templates. Deployment policies can be compared before approval and activation."
         ]
@@ -101,7 +101,7 @@ export const dartPages = [
         "id": "decisions",
         "title": "Saved decisions and reviews",
         "paragraphs": [
-          "A decision is saved with the work it affects. A reviewer can see who made it and why. Earlier decisions remain visible when someone records a correction.",
+          "When a decision is questioned later, staff need to see how it was reached. A decision is saved with the work it affects. A reviewer can see who made it and why. Earlier decisions remain visible when someone records a correction.",
           "Some decisions need a second person. An order author cannot approve the same deployment order. A connection designer needs separate approval for data rights and security.",
           "DART checks for changes before saving. If another person has already updated the record, the old form cannot overwrite it. Retried commands use the same request ID so an uncertain response does not create a second action."
         ]
@@ -110,7 +110,7 @@ export const dartPages = [
         "id": "workspaces",
         "title": "Practice and operational work",
         "paragraphs": [
-          "An exercise workspace separates practice from operational work. Staff can rehearse an incident without issuing a real deployment order. Exercise equipment cannot be assigned to an operational incident.",
+          "Practice should let people try the workflow without changing live operations. An exercise workspace separates practice from operational work. Staff can rehearse an incident without issuing a real deployment order. Exercise equipment cannot be assigned to an operational incident.",
           "Different records also have different effects. A planning simulation estimates staffing. An accepted order starts a deployment. A delivered message shows delivery. It does not show that the person has answered."
         ]
       }
@@ -126,7 +126,7 @@ export const dartPages = [
         "id": "profile",
         "title": "A stable record for each person",
         "paragraphs": [
-          "Personnel records show who a person is and where they work. Staff can search the directory or filter by organization. Opening a record shows its source links and history.",
+          "Before assigning work, a team needs a reliable record of the people who may take part. Personnel records show who a person is and where they work. Staff can search the directory or filter by organization. Opening a record shows its source links and history.",
           "A new person can be entered with a source ID or added through a checked CSV file. If an email address is already shared, staff review the possible conflict. Matching names alone do not merge people."
         ],
         "diagram": "personnel"
@@ -135,7 +135,7 @@ export const dartPages = [
         "id": "organization",
         "title": "Organizations and positions",
         "paragraphs": [
-          "A home organization identifies the person’s regular team. Employment records show when their work started or ended. Position assignments show which roles they hold and for which dates.",
+          "A person’s regular job and their role during an incident may be different. A home organization identifies the person’s regular team. Employment records show when their work started or ended. Position assignments show which roles they hold and for which dates.",
           "An incident duty is separate from the person’s regular position. Someone can serve in different roles at different incidents. Each assignment keeps its own scope and history."
         ]
       },
@@ -143,7 +143,7 @@ export const dartPages = [
         "id": "corrections",
         "title": "Corrections and identity review",
         "paragraphs": [
-          "A correction saves the earlier value and the reason for the change. It also records who made it. An old form cannot overwrite a newer record.",
+          "People change jobs, and records sometimes contain mistakes. A correction saves the earlier value and the reason for the change. It also records who made it. An old form cannot overwrite a newer record.",
           "Staff can review links between duplicate person records. The original records remain available. Linked transcripts and development records can be inspected without losing their source history."
         ]
       },
@@ -151,7 +151,7 @@ export const dartPages = [
         "id": "batches",
         "title": "Check a batch before saving",
         "paragraphs": [
-          "Personnel batches let an editor check many changes before saving them. The preview shows old and new values. It also shows which rows have errors.",
+          "When many records need the same review, editing them one at a time can be slow. Personnel batches let an editor check many changes before saving them. The preview shows old and new values. It also shows which rows have errors.",
           "DART checks the rows again when the editor applies the batch. If a row is invalid or has changed, the correction batch stops. It does not leave half of the changes saved.",
           "Undo creates a new correction from the earlier values. Staff must review it before applying it. Undo cannot overwrite work saved after the original batch.",
           "The manual correction path accepts up to 200 people in a CSV file under 200 KB. Larger source imports use the integration workflow."
@@ -161,7 +161,7 @@ export const dartPages = [
         "id": "access",
         "title": "Separate profile, employment, and document permissions",
         "paragraphs": [
-          "Permissions separate profile edits from other personnel work. A person allowed to change contact details may not be allowed to change employment or assign a position.",
+          "Different staff look after different parts of a person’s record. Permissions separate profile edits from other personnel work. A person allowed to change contact details may not be allowed to change employment or assign a position.",
           "Documents have their own access and file checks. Being able to read a profile does not give someone access to every file attached to it."
         ]
       }
@@ -177,8 +177,9 @@ export const dartPages = [
         "id": "requirements",
         "title": "Positions and their requirements",
         "paragraphs": [
-          "A qualification shows that a person meets the rules for a position. Responders can explore those rules and request the qualifications they want to earn.",
-          "A Position Task Book lists the tasks and training required. A responder can work on several task books at once. Each one keeps the version of the requirements it uses."
+          "A position may require more than a job title or past experience. A qualification shows that a person meets the rules for a position. Responders can explore those rules and request the qualifications they want to earn.",
+          "A Position Task Book lists the tasks and training required. A responder can work on several task books at once. Each one keeps the version of the requirements it uses.",
+          "FEMA’s Position Task Book templates are part of its National Qualification System. They show the tasks a person must demonstrate for a defined position. The organization chooses the approved definitions used in DART."
         ],
         "diagram": "readiness"
       },
@@ -186,7 +187,7 @@ export const dartPages = [
         "id": "evidence",
         "title": "Evidence, evaluation, and certification",
         "paragraphs": [
-          "Responders submit evidence for their tasks. Evaluators review that evidence and record the result. A certifier makes the qualification decision.",
+          "A responder needs a way to show that the required work has been completed. Responders submit evidence for their tasks. Evaluators review that evidence and record the result. A certifier makes the qualification decision.",
           "These roles are separate. Completing one task does not award the whole qualification. A mentor relationship does not grant the right to certify someone.",
           "A repeated attempt keeps the earlier work. Renewals also keep the past credential and its dates. Staff can follow the full path to the current result."
         ]
@@ -195,7 +196,7 @@ export const dartPages = [
         "id": "availability",
         "title": "Availability over the requested interval",
         "paragraphs": [
-          "A responder records when they can and cannot deploy. The dates use their selected time zone. A supervisor reviews changes that need approval.",
+          "Having the right qualification does not always mean someone can take an assignment. A responder records when they can and cannot deploy. The dates use their selected time zone. A supervisor reviews changes that need approval.",
           "A readiness check covers the dates requested for the job. Someone may be ready next week but unavailable today. A credential may also expire during the requested assignment.",
           "An interval without evidence is unknown. A pending request does not mean the person is available. Approved dates cannot overlap."
         ]
@@ -204,7 +205,7 @@ export const dartPages = [
         "id": "explanation",
         "title": "Understand a readiness result",
         "paragraphs": [
-          "The readiness result shows which requirements were met and which were not. Staff can open the training evidence or qualification record behind the result.",
+          "A coordinator needs to understand a readiness result before acting on it. The readiness result shows which requirements were met and which were not. Staff can open the training evidence or qualification record behind the result.",
           "Responder selection also checks availability and other deployments. A saved selection keeps the facts used at the time. A later change does not rewrite that decision."
         ]
       },
@@ -212,7 +213,7 @@ export const dartPages = [
         "id": "history",
         "title": "Keep the history of credential decisions",
         "paragraphs": [
-          "A revoked certification or corrected training result can change readiness. DART keeps the earlier evidence and the later decision. A reviewer can see why the current result differs.",
+          "Evidence that supported an earlier decision may no longer be valid. A revoked certification or corrected training result can change readiness. DART keeps the earlier evidence and the later decision. A reviewer can see why the current result differs.",
           "The organization supplies its approved qualification rules. It also assigns evaluation and certification rights. DART applies those rules and records the decisions."
         ]
       }
@@ -228,7 +229,7 @@ export const dartPages = [
         "id": "mentors",
         "title": "Mentor relationships with dates and history",
         "paragraphs": [
-          "A mentor supports a person’s development. Staff can record when the relationship starts and ends. Meetings and reviews stay attached to that relationship.",
+          "Learning a new role often involves support from someone with experience. A mentor supports a person’s development. Staff can record when the relationship starts and ends. Meetings and reviews stay attached to that relationship.",
           "Earlier mentors remain in history. Assigning a mentor does not give that person the right to award a qualification."
         ]
       },
@@ -236,7 +237,7 @@ export const dartPages = [
         "id": "plans",
         "title": "Individual plans and evidence of progress",
         "paragraphs": [
-          "A development plan states what a person is working toward. Goals can link to courses and milestones. The person records progress and supporting evidence.",
+          "A person working toward a new role needs a clear path to follow. A development plan states what a person is working toward. Goals can link to courses and milestones. The person records progress and supporting evidence.",
           "A reviewer checks the work separately. Linked development records let authorized staff inspect related history."
         ],
         "diagram": "development"
@@ -245,7 +246,7 @@ export const dartPages = [
         "id": "evaluations",
         "title": "Deployment performance reviews",
         "paragraphs": [
-          "Deployment reviews record how a responder performed during an assignment. The review uses the deployment and supervision dates. Incident rules determine when a review is due.",
+          "Time in the field can show how well a responder puts their training into practice. Deployment reviews record how a responder performed during an assignment. The review uses the deployment and supervision dates. Incident rules determine when a review is due.",
           "A correction keeps the submitted review. It adds the changed version and the reason. Staff can inspect both."
         ]
       },
@@ -253,7 +254,7 @@ export const dartPages = [
         "id": "connection",
         "title": "Development connects to readiness",
         "paragraphs": [
-          "Development plans can point to the training a person needs for a new role. Readiness checks whether they have met the qualification requirements.",
+          "Development is easier to follow when goals connect to the work needed to reach them. Development plans can point to the training a person needs for a new role. Readiness checks whether they have met the qualification requirements.",
           "Training-needs reports show where learning is still missing. Program owners can use that information to plan classes and follow progress."
         ]
       }
@@ -269,7 +270,7 @@ export const dartPages = [
         "id": "catalog",
         "title": "Maintain a versioned course catalog",
         "paragraphs": [
-          "The course catalog holds the information people need to find training. Administrators can update a course or mark it inactive. Published versions preserve the content used by earlier classes.",
+          "People need to find the right training before they can register for it. The course catalog holds the information people need to find training. Administrators can update a course or mark it inactive. Published versions preserve the content used by earlier classes.",
           "Shared materials also have versions. Before changing a material used in several places, staff can review the impact. They can then update its uses or retire it."
         ],
         "diagram": "learning"
@@ -278,7 +279,7 @@ export const dartPages = [
         "id": "admissions",
         "title": "Admission, eligibility, and funding review",
         "paragraphs": [
-          "Course registration checks whether a person is eligible. Full classes can use a waitlist. Required forms and funding decisions stay with the request.",
+          "A course may have entry requirements, limited seats, or a funding review. Course registration checks whether a person is eligible. Full classes can use a waitlist. Required forms and funding decisions stay with the request.",
           "Approved rules can enroll new hires or people who need a prerequisite. Each automatic job saves its result. Training alerts can tell people when a course they need becomes available."
         ]
       },
@@ -286,7 +287,7 @@ export const dartPages = [
         "id": "schedule",
         "title": "Schedule instruction and record attendance",
         "paragraphs": [
-          "Classes have scheduled sessions and attendance records. Staff can plan classroom or field training. They can also schedule online and virtual classes.",
+          "Learners and instructors need to know when and where a class will take place. Classes have scheduled sessions and attendance records. Staff can plan classroom or field training. They can also schedule online and virtual classes.",
           "When class times change, affected people can confirm the new schedule. Training time can be reviewed against deployment work. Enrollment by itself does not award course credit."
         ]
       },
@@ -294,7 +295,7 @@ export const dartPages = [
         "id": "instructors",
         "title": "Instructor qualifications and outside requests",
         "paragraphs": [
-          "Instructor records show who may teach a class. Teaching credentials have dates. Outside instructor requests can be reviewed before assignment.",
+          "Before assigning a teacher, staff need to check that the person is eligible to teach. Instructor records show who may teach a class. Teaching credentials have dates. Outside instructor requests can be reviewed before assignment.",
           "If a credential is revoked, DART keeps that decision in history. Later grading checks the instructor’s right to teach. A new credential must cover the class dates."
         ]
       },
@@ -302,7 +303,7 @@ export const dartPages = [
         "id": "materials",
         "title": "Shared materials and controlled files",
         "paragraphs": [
-          "The library holds course files and their versions. Students and instructors can submit files through the related learning task.",
+          "Courses often share files that need to stay current and accessible to the right people. The library holds course files and their versions. Students and instructors can submit files through the related learning task.",
           "Files wait in quarantine until they pass the required scan and release checks. Downloads check access again. The deployment supplies the approved file storage and scanning service."
         ]
       }
@@ -318,7 +319,7 @@ export const dartPages = [
         "id": "delivery",
         "title": "Course content and progress",
         "paragraphs": [
-          "My learning shows a learner’s assigned courses. A course contains lessons and required work. DART saves progress so the learner can return later.",
+          "A learner should be able to leave a course and return to the work they have already started. My learning shows a learner’s assigned courses. A course contains lessons and required work. DART saves progress so the learner can return later.",
           "The package workflow supports single-page SCORM 1.2 lessons. SCORM is a format for sharing online course content and progress. A course ZIP can be imported as a draft before review and publication."
         ],
         "diagram": "assessment"
@@ -327,7 +328,7 @@ export const dartPages = [
         "id": "tests",
         "title": "Tests, test-out opportunities, and assignments",
         "paragraphs": [
-          "A course can use quizzes and scored assignments. It can include a starting test and a final test. A test-out option can let a learner prove knowledge they already have.",
+          "Different kinds of learning need different ways to show understanding. A course can use quizzes and scored assignments. It can include a starting test and a final test. A test-out option can let a learner prove knowledge they already have.",
           "A rubric explains how an assignment is scored. The gradebook brings the results together. Learners can see which parts they missed and receive extra practice."
         ]
       },
@@ -335,7 +336,7 @@ export const dartPages = [
         "id": "grading",
         "title": "Instructor review and controlled corrections",
         "paragraphs": [
-          "Assigned instructors can read and grade student work. Course administrators have their own access. Someone who only approves funding cannot read student answers.",
+          "Student work needs a clear reviewer and a score that can be explained. Assigned instructors can read and grade student work. Course administrators have their own access. Someone who only approves funding cannot read student answers.",
           "A grade correction needs a reason. It keeps the earlier score and comments. The correction uses the original scoring rules.",
           "If the change removes the last passing result, the lesson can reopen. Related course credit can receive a rejected revision. The earlier credit record remains visible."
         ]
@@ -344,7 +345,7 @@ export const dartPages = [
         "id": "completion",
         "title": "Completion and credit are connected",
         "paragraphs": [
-          "The course rules determine which work must be complete. Once those rules are met, the workflow can award course credit.",
+          "Finishing a lesson and earning credit for a course are related but separate steps. The course rules determine which work must be complete. Once those rules are met, the workflow can award course credit.",
           "A corrected passing grade does not automatically restore rejected credit. An authorized administrator must review it. Withdrawn enrollments and cancelled classes also constrain later changes."
         ]
       },
@@ -352,7 +353,7 @@ export const dartPages = [
         "id": "feedback",
         "title": "Feedback and learning outcomes",
         "paragraphs": [
-          "Course evaluations keep learner feedback and learning results. Training reports help staff review outcomes and unmet needs.",
+          "Test scores show part of a course’s effect. Feedback and later observations help explain the rest. Course evaluations keep learner feedback and learning results. Training reports help staff review outcomes and unmet needs.",
           "A needed-training notice points people toward follow-up work. The notice does not change their qualification record.",
           "Evaluation forms support all four Kirkpatrick levels. Each level asks a different question about the training. The form version stays with the response."
         ],
@@ -393,7 +394,7 @@ export const dartPages = [
         "id": "credit",
         "title": "Course credit with evidence",
         "paragraphs": [
-          "Training records show the evidence for course credit. They distinguish a completed course from verified credit. A later correction adds a record rather than erasing the first result.",
+          "Staff need to know what learning a person has earned credit for and why. Training records show the evidence for course credit. They distinguish a completed course from verified credit. A later correction adds a record rather than erasing the first result.",
           "Outside learning can be recorded for review. The source and its evidence stay attached to the result."
         ]
       },
@@ -401,7 +402,7 @@ export const dartPages = [
         "id": "outside",
         "title": "External learning and certificate files",
         "paragraphs": [
-          "An outside certificate can include a supporting file. A reviewer checks the result. File access still depends on its release and protection rules.",
+          "A person may earn a useful credential outside the organization’s own courses. An outside certificate can include a supporting file. A reviewer checks the result. File access still depends on its release and protection rules.",
           "Outside certifications can be verified or renewed. Staff can also suspend or revoke them. Each decision keeps its own date and history."
         ],
         "diagram": "training"
@@ -410,7 +411,7 @@ export const dartPages = [
         "id": "transcript",
         "title": "Unified transcript",
         "paragraphs": [
-          "The transcript brings a person’s training and credential history together. Responders can inspect their own record. Staff need the right scope to inspect another person’s transcript.",
+          "Training is easier to review when its results can be read together. The transcript brings a person’s training and credential history together. Responders can inspect their own record. Staff need the right scope to inspect another person’s transcript.",
           "A qualification reviewer can follow the evidence needed for a task book. Transcript access does not grant access to student answers or every personnel file."
         ]
       },
@@ -418,7 +419,7 @@ export const dartPages = [
         "id": "changes",
         "title": "Revocation, expiry, and downstream impact",
         "paragraphs": [
-          "A qualification may stop being valid when a required credential expires. Revoked certification or rejected training can also affect readiness.",
+          "Training and credentials can change after a qualification has been awarded. A qualification may stop being valid when a required credential expires. Revoked certification or rejected training can also affect readiness.",
           "DART keeps the change and its earlier evidence. Restoring credit has its own review path. Correcting one record does not silently award a new qualification."
         ]
       }
@@ -434,7 +435,7 @@ export const dartPages = [
         "id": "lifecycle",
         "title": "Create and review an incident",
         "paragraphs": [
-          "An incident has its own ID and dates. Coordinators add duty stations and define the work. The setup follows a review process before it is used.",
+          "Before people are assigned, an incident needs a shared record of the work to be done. An incident has its own ID and dates. Coordinators add duty stations and define the work. The setup follows a review process before it is used.",
           "A saved incident template can supply a starting structure. Its version stays with the draft. Creating the draft does not deploy people."
         ],
         "diagram": "incident"
@@ -443,7 +444,7 @@ export const dartPages = [
         "id": "structure",
         "title": "Units, duties, and supervision",
         "paragraphs": [
-          "Units and duty assignments describe who does what at the incident. Assignments have start and end dates. A supervisor can change without losing the earlier relationship.",
+          "Responders need to know where they fit and who supervises their work. Units and duty assignments describe who does what at the incident. Assignments have start and end dates. A supervisor can change without losing the earlier relationship.",
           "Incident organization reports show the structure at a chosen time. Deployment reviews use the dates during which a supervisor was responsible."
         ]
       },
@@ -451,7 +452,7 @@ export const dartPages = [
         "id": "needs",
         "title": "Staffing needs and team requests",
         "paragraphs": [
-          "A staffing need defines the position to fill. It includes the required dates and number of people. Specialties can narrow the requirement.",
+          "A coordinator first needs to describe the help the incident requires. A staffing need defines the position to fill. It includes the required dates and number of people. Specialties can narrow the requirement.",
           "Team templates define positions and leaders for a group. They can represent force packages or force modules. Accepted members stay linked to the template version used."
         ]
       },
@@ -459,7 +460,7 @@ export const dartPages = [
         "id": "coordination",
         "title": "Resources and shared operational work",
         "paragraphs": [
-          "Resource requests ask for personnel, equipment, or supplies. A request can be routine or urgent. Its decisions stay in history.",
+          "An incident may need people and supplies from several teams. Resource requests ask for personnel, equipment, or supplies. A request can be routine or urgent. Its decisions stay in history.",
           "A shared conversation lets staff discuss the incident in context. Sharing a thread does not grant access to records the reader cannot otherwise open."
         ]
       },
@@ -467,7 +468,7 @@ export const dartPages = [
         "id": "closure",
         "title": "Keep the history when work changes",
         "paragraphs": [
-          "Changing incident dates or withdrawing a need leaves a record. The history shows who acted and when.",
+          "Incident plans change as the response develops. Staff still need to understand what happened earlier. Changing incident dates or withdrawing a need leaves a record. The history shows who acted and when.",
           "Ending the incident must account for its open work. Deployment orders and equipment holds remain separate records. A closed screen is not proof that those obligations are complete."
         ]
       }
@@ -483,7 +484,7 @@ export const dartPages = [
         "id": "need",
         "title": "Start from the requirement",
         "paragraphs": [
-          "Start with the position that needs to be filled. Set its required dates and qualification version. Add any specialty the work requires.",
+          "A useful candidate comparison begins with a clear description of the job. Start with the position that needs to be filled. Set its required dates and qualification version. Add any specialty the work requires.",
           "DART then checks people against that need. It uses their qualification evidence and availability. Other deployments can make a person unavailable for the same work."
         ],
         "diagram": "selection"
@@ -492,7 +493,7 @@ export const dartPages = [
         "id": "comparison",
         "title": "Compare candidates and explain eligibility",
         "paragraphs": [
-          "The selection view lets a coordinator compare responders. The eligibility explanation shows why each person meets or fails a condition.",
+          "Several people may appear suitable for the same assignment. The selection view lets a coordinator compare responders. The eligibility explanation shows why each person meets or fails a condition.",
           "Deployment history helps staff review past workload. Missing history can be added with a reason. Corrections preserve the earlier entry."
         ]
       },
@@ -500,7 +501,7 @@ export const dartPages = [
         "id": "decision",
         "title": "Save the selection and its reason",
         "paragraphs": [
-          "Choosing a responder saves the selection and its reason. A reviewer can inspect the decision. The saved checks remain available after the person’s records change.",
+          "A staffing choice needs to remain understandable after the assignment is made. Choosing a responder saves the selection and its reason. A reviewer can inspect the decision. The saved checks remain available after the person’s records change.",
           "Selection does not send an order. The deployment order must still be reviewed. The responder must then accept it."
         ]
       },
@@ -508,7 +509,7 @@ export const dartPages = [
         "id": "fairness",
         "title": "Review how work is assigned",
         "paragraphs": [
-          "Staff need clear rules to distribute work fairly. DART makes the evidence and recorded workload visible for review.",
+          "The way assignments are shared should be open to review. Staff need clear rules to distribute work fairly. DART makes the evidence and recorded workload visible for review.",
           "The program owner approves the selection policy. Reviewers can inspect whether a decision followed that policy and the available evidence."
         ]
       },
@@ -516,7 +517,7 @@ export const dartPages = [
         "id": "planning",
         "title": "Compare demand before issuing orders",
         "paragraphs": [
-          "Surge planning tests competing needs before orders are issued. The planner uses the same workforce snapshot for each need.",
+          "Coordinators may need to check several demands before committing people to any one of them. Surge planning tests competing needs before orders are issued. The planner uses the same workforce snapshot for each need.",
           "Decision replay shows the basis for an earlier choice. A new readiness check uses current facts. Keeping both makes the difference clear."
         ]
       }
@@ -532,7 +533,7 @@ export const dartPages = [
         "id": "orders",
         "title": "Draft, review, and issue an order",
         "paragraphs": [
-          "A coordinator drafts an order for a named responder. A different person must review and approve it. The order then goes to the responder.",
+          "A responder needs a clear, approved assignment before setting out. A coordinator drafts an order for a named responder. A different person must review and approve it. The order then goes to the responder.",
           "The responder can accept or decline. Acceptance sets the dates used by the deployment. A delivered notice does not count as acceptance."
         ],
         "diagram": "deployment"
@@ -541,7 +542,7 @@ export const dartPages = [
         "id": "revisions",
         "title": "Extensions and successive deployments",
         "paragraphs": [
-          "An extension creates a new order revision. It needs review and acceptance again. Until then, the earlier accepted dates stay in force.",
+          "An assignment may need more time, or a person may be asked to take another deployment. An extension creates a new order revision. It needs review and acceptance again. Until then, the earlier accepted dates stay in force.",
           "DART supports standard, virtual, and training deployments. Incident rules control whether work can overlap. The checks also account for successive assignments."
         ]
       },
@@ -549,7 +550,7 @@ export const dartPages = [
         "id": "travel",
         "title": "Travel, arrivals, and duty stations",
         "paragraphs": [
-          "After acceptance, staff can record travel. A responder checks in at the duty station and checks out when leaving. Corrections keep the earlier visit times.",
+          "Once the order is accepted, the record needs to follow what happens in the field. After acceptance, staff can record travel. A responder checks in at the duty station and checks out when leaving. Corrections keep the earlier visit times.",
           "Supervisors can record time away and changes in status. Daily checks continue through the accepted period, including travel."
         ]
       },
@@ -557,7 +558,7 @@ export const dartPages = [
         "id": "demobilization",
         "title": "Demobilization has completion checks",
         "paragraphs": [
-          "Demobilization is the process of ending a deployment. The end plan states when the person is expected to finish. Required steps show what remains to be done.",
+          "Returning from an assignment involves more than reaching the planned end date. Demobilization is the process of ending a deployment. The end plan states when the person is expected to finish. Required steps show what remains to be done.",
           "DART checks due replies and equipment holds before completion. It also requires checkout. Setting a planned end date does not finish the deployment."
         ]
       },
@@ -565,7 +566,7 @@ export const dartPages = [
         "id": "history",
         "title": "Reconstruct the deployment",
         "paragraphs": [
-          "The deployment record follows the accepted order into the field. It connects travel to station visits and supervision. Earlier versions stay available after a correction.",
+          "After a deployment, staff may need to reconstruct the assignment and the changes made along the way. The deployment record follows the accepted order into the field. It connects travel to station visits and supervision. Earlier versions stay available after a correction.",
           "Saved reports use accepted dates. A draft extension does not silently change the reported commitment."
         ]
       }
@@ -581,7 +582,7 @@ export const dartPages = [
         "id": "checks",
         "title": "Daily checks follow the deployment",
         "paragraphs": [
-          "Daily checks let responders confirm their status during a deployment. The incident rules set when a reply is due. Accepted deployment dates determine which days are covered.",
+          "Supervisors need a dependable way to know that deployed people have checked in. Daily checks let responders confirm their status during a deployment. The incident rules set when a reply is due. Accepted deployment dates determine which days are covered.",
           "A sent notification and a saved reply are different facts. Provider delivery shows that a message reached a delivery service. It does not show that the person answered."
         ],
         "diagram": "accountability"
@@ -590,7 +591,7 @@ export const dartPages = [
         "id": "exceptions",
         "title": "Exceptions with reasons",
         "paragraphs": [
-          "A responder may be unable to reply because of travel or another approved reason. The exception workflow records that reason.",
+          "There are times when a person cannot answer a routine check. A responder may be unable to reply because of travel or another approved reason. The exception workflow records that reason.",
           "A supervisor can reply for someone only with a reason. Private reply details stay limited to the responder and authorized supervisors."
         ]
       },
@@ -598,7 +599,7 @@ export const dartPages = [
         "id": "followup",
         "title": "Escalation and due-item work",
         "paragraphs": [
-          "Automatic checks find due work. A missing response can be raised for supervisor follow-up. The history records when that happened.",
+          "A missing reply needs attention, especially when the team is spread across locations. Automatic checks find due work. A missing response can be raised for supervisor follow-up. The history records when that happened.",
           "Staff can report a check-in problem. Reports keep approved exceptions separate from unresolved replies."
         ]
       },
@@ -606,7 +607,7 @@ export const dartPages = [
         "id": "reports",
         "title": "Accountability reporting",
         "paragraphs": [
-          "A daily-check report shows the due time and saved state of each check. It identifies replies and unresolved follow-up. Saved reports preserve the result at the time they were built.",
+          "A supervisor may need to review the whole set of checks rather than open each one. A daily-check report shows the due time and saved state of each check. It identifies replies and unresolved follow-up. Saved reports preserve the result at the time they were built.",
           "Access is checked during the build and download. Permission for one incident does not grant access to another incident’s report."
         ]
       }
@@ -622,7 +623,7 @@ export const dartPages = [
         "id": "places",
         "title": "Permanent and temporary locations",
         "paragraphs": [
-          "DART records duty stations and other places used during deployment. Authorized staff can maintain permanent and temporary location information.",
+          "A person may work at several places during one assignment. DART records duty stations and other places used during deployment. Authorized staff can maintain permanent and temporary location information.",
           "Physical visits are separate from virtual assignments. Remote work does not add time to a physical-location total."
         ]
       },
@@ -630,7 +631,7 @@ export const dartPages = [
         "id": "duration",
         "title": "Cumulative time at a location",
         "paragraphs": [
-          "Location reports add time across a person’s deployments. Overlapping visits are counted once. Corrections retain the earlier times.",
+          "Some decisions depend on the total time spent at a place across more than one deployment. Location reports add time across a person’s deployments. Overlapping visits are counted once. Corrections retain the earlier times.",
           "Staff can inspect the rule version used for a report. They can also view time spent at each place during a deployment."
         ],
         "diagram": "location"
@@ -639,7 +640,7 @@ export const dartPages = [
         "id": "rest",
         "title": "Deployment duration and rest policy",
         "paragraphs": [
-          "Past assignments affect when a responder can work again. Leave and time away also matter. DART keeps these dates in the work history.",
+          "A person’s next assignment needs to account for the work they have just completed. Past assignments affect when a responder can work again. Leave and time away also matter. DART keeps these dates in the work history.",
           "A planning policy sets rest days and maximum deployment duration. Comparing policies shows how those rules affect available staff."
         ]
       },
@@ -647,7 +648,7 @@ export const dartPages = [
         "id": "zones",
         "title": "Interpret dates in the right time zone",
         "paragraphs": [
-          "A time zone tells DART how to interpret a local date or time. Availability uses the selected zone. Scheduled classes and operational work keep their relevant time context.",
+          "A local date or time can mean something different to a team in another region. A time zone tells DART how to interpret a local date or time. Availability uses the selected zone. Scheduled classes and operational work keep their relevant time context.",
           "The agency defines its location and duration rules. DART provides the history used to check them. Acceptance tests confirm the result against the approved examples."
         ]
       }
@@ -663,7 +664,7 @@ export const dartPages = [
         "id": "custody",
         "title": "Follow the item and its holder",
         "paragraphs": [
-          "Equipment records track an item and its holder. Managers can issue or transfer an item within their scope. The saved events show how custody changed.",
+          "Teams need to know who has an item before they can use it or ask for it back. Equipment records track an item and its holder. Managers can issue or transfer an item within their scope. The saved events show how custody changed.",
           "An item can link to a deployment or incident. Responders can see the items they hold. Equipment permissions remain separate from personnel access."
         ],
         "diagram": "equipment"
@@ -672,7 +673,7 @@ export const dartPages = [
         "id": "readiness",
         "title": "Return and inspection are separate",
         "paragraphs": [
-          "A returned item must be inspected before it can be issued again. The inspection records its condition.",
+          "An item arriving back at a store does not mean it is ready for the next responder. A returned item must be inspected before it can be issued again. The inspection records its condition.",
           "A missing item keeps its holder and deployment link. The hold remains until the item is found or a loss review resolves it. DART checks the hold again before the deployment can finish."
         ]
       },
@@ -680,7 +681,7 @@ export const dartPages = [
         "id": "loss",
         "title": "Independent loss review",
         "paragraphs": [
-          "A manager can request a loss review under the published rule. A different reviewer can return the request or approve the loss. The holder cannot approve their own case.",
+          "Missing equipment needs a reviewable decision, not just a change to a status field. A manager can request a loss review under the published rule. A different reviewer can return the request or approve the loss. The holder cannot approve their own case.",
           "Closing the loss retires the item and clears its deployment hold. Supporting files must pass the required checks. The agency supplies its official property rules."
         ]
       },
@@ -688,7 +689,7 @@ export const dartPages = [
         "id": "replacement",
         "title": "Replacement and resource requests",
         "paragraphs": [
-          "A replacement request states what equipment is needed. Review and issue are separate steps. The request stays linked to the work.",
+          "A responder may need another item while the original one is being repaired or reviewed. A replacement request states what equipment is needed. Review and issue are separate steps. The request stays linked to the work.",
           "Incident resource requests can also ask for equipment. Priority and review history stay with the request."
         ]
       },
@@ -696,7 +697,7 @@ export const dartPages = [
         "id": "reports",
         "title": "Current and historical equipment reports",
         "paragraphs": [
-          "Equipment reports can show current custody or the state at a past time. A change report shows the events in a chosen period.",
+          "An equipment manager may need today’s position or a view of what was held earlier. Equipment reports can show current custody or the state at a past time. A change report shows the events in a chosen period.",
           "Each result can be traced to saved events. Exercise equipment stays separate from operational equipment."
         ]
       }
@@ -712,7 +713,7 @@ export const dartPages = [
         "id": "surge",
         "title": "Competing incidents share one workforce",
         "paragraphs": [
-          "A surge simulation tests whether people can cover competing incident needs. The planner defines the positions and number of people required. Each need has dates and an arrival deadline.",
+          "Several incidents can draw on the same people at the same time. A surge simulation tests whether people can cover competing incident needs. The planner defines the positions and number of people required. Each need has dates and an arrival deadline.",
           "The planner chooses which regions may supply staff. The simulation checks qualifications and availability against the selected policy. It does not count a person twice for incompatible work."
         ],
         "diagram": "planning"
@@ -721,7 +722,7 @@ export const dartPages = [
         "id": "policy",
         "title": "Compare deployment policies",
         "paragraphs": [
-          "A policy draft sets rest days and maximum deployment duration. It also identifies the regions in scope. Staff can compare drafts against the same workforce snapshot.",
+          "Rules about rest and assignment length can change how much work the team can cover. A policy draft sets rest days and maximum deployment duration. It also identifies the regions in scope. Staff can compare drafts against the same workforce snapshot.",
           "Approval and activation are separate actions. Both keep their history. Changing a planning policy does not rewrite accepted deployment orders."
         ]
       },
@@ -729,7 +730,7 @@ export const dartPages = [
         "id": "forecast",
         "title": "Look ahead at readiness",
         "paragraphs": [
-          "Readiness forecasts look ahead 30, 60, or 90 days. They show where future needs may exceed the ready workforce. Owners can receive a notice about the result.",
+          "A team that is ready today may have gaps in the weeks ahead. Readiness forecasts look ahead 30, 60, or 90 days. They show where future needs may exceed the ready workforce. Owners can receive a notice about the result.",
           "A saved forecast keeps its inputs and rules. Later workforce changes do not rewrite the earlier result."
         ]
       },
@@ -737,7 +738,7 @@ export const dartPages = [
         "id": "templates",
         "title": "Turn a reviewed template into an incident draft",
         "paragraphs": [
-          "An incident template provides a reviewed starting structure. It defines units and duties. It can also include staffing and equipment requirements.",
+          "Similar incidents often need a familiar starting structure. An incident template provides a reviewed starting structure. It defines units and duties. It can also include staffing and equipment requirements.",
           "Creating an incident from the template produces a draft. The setup still needs submission and approval."
         ]
       },
@@ -745,7 +746,7 @@ export const dartPages = [
         "id": "replay",
         "title": "Reconstruct a staffing decision",
         "paragraphs": [
-          "Decision replay reconstructs a staffing choice from its saved facts. A reviewer can inspect the eligibility explanation.",
+          "An earlier staffing result can be hard to explain once the underlying records have changed. Decision replay reconstructs a staffing choice from its saved facts. A reviewer can inspect the eligibility explanation.",
           "Saved scenarios can also be compared. Replay shows the earlier decision basis. A new assessment uses current facts."
         ]
       }
@@ -761,7 +762,7 @@ export const dartPages = [
         "id": "report-builder",
         "title": "Choose fields, filters, groups, and totals",
         "paragraphs": [
-          "The report builder lets a user choose fields and filters. Results can be grouped and sorted. Totals help answer questions about the selected records.",
+          "Different roles ask different questions about the same operational records. The report builder lets a user choose fields and filters. Results can be grouped and sorted. Totals help answer questions about the selected records.",
           "Report definitions cover operational work and workforce history. A user can inspect current staffing or look at earlier results. Each definition applies the access rules for its records."
         ],
         "diagram": "report"
@@ -770,7 +771,7 @@ export const dartPages = [
         "id": "dashboards",
         "title": "Personal dashboards with operational context",
         "paragraphs": [
-          "My work lets users choose report cards and arrange their dashboard. Filters can limit a view to a region or incident. Available choices depend on the person’s permissions.",
+          "A person needs a quick way to return to the information they use most often. My work lets users choose report cards and arrange their dashboard. Filters can limit a view to a region or incident. Available choices depend on the person’s permissions.",
           "DART checks those choices when the dashboard is saved or refreshed. A saved layout cannot grant broader access."
         ]
       },
@@ -778,7 +779,7 @@ export const dartPages = [
         "id": "snapshots",
         "title": "Save a fixed report result",
         "paragraphs": [
-          "Saving a report creates a background job. The request keeps its filters and scope. The worker checks the owner’s current rights before building and saving the result.",
+          "Staff may need to keep the exact result they used for a decision. Saving a report creates a background job. The request keeps its filters and scope. The worker checks the owner’s current rights before building and saving the result.",
           "The saved file keeps the same contents after source records change. Its hash helps verify that the file has not changed. Downloading the file checks access again.",
           "A user can compare two saved reports. The report history explains when each result was built and which rules it used."
         ]
@@ -787,7 +788,7 @@ export const dartPages = [
         "id": "history",
         "title": "Historical workforce reporting",
         "paragraphs": [
-          "Workforce history reports show counts at a past time and averages over a period. Staff can compare cadres and disasters. Incident organization reports show the structure for a chosen time.",
+          "Looking only at today’s workforce can hide changes that matter over time. Workforce history reports show counts at a past time and averages over a period. Staff can compare cadres and disasters. Incident organization reports show the structure for a chosen time.",
           "The DHS history score has its own report workflow. Agency formulas must be checked against the selected definition. A current name label may differ from a fact saved in the historical record."
         ]
       },
@@ -795,7 +796,7 @@ export const dartPages = [
         "id": "forecasting",
         "title": "Staffing and training needs",
         "paragraphs": [
-          "Staffing forecasts compare demand with workforce evidence. Training-needs reports identify learning gaps. Outcomes reports help staff review what training achieved.",
+          "Reporting can help teams prepare for gaps as well as describe current work. Staffing forecasts compare demand with workforce evidence. Training-needs reports identify learning gaps. Outcomes reports help staff review what training achieved.",
           "A live report can refresh current status. A saved report preserves a fixed result. Users can choose the form that fits the question."
         ]
       }
@@ -811,7 +812,7 @@ export const dartPages = [
         "id": "capture",
         "title": "Keep the original input",
         "paragraphs": [
-          "An integration brings records from another system into DART. Source adapters read the data. Automatic exchanges can import or export defined operational records.",
+          "Personnel and training information may already be held in other systems. An integration brings records from another system into DART. Source adapters read the data. Automatic exchanges can import or export defined operational records.",
           "DART keeps the original input and its source ID. If the same change ID arrives with different data, the conflict is held for review. The later copy does not replace the first without a record."
         ],
         "diagram": "integration"
@@ -820,7 +821,7 @@ export const dartPages = [
         "id": "mapping",
         "title": "Map and check before applying",
         "paragraphs": [
-          "A designer reads a sample and maps its fields. Cleanup steps can convert a value or split a list into records. Extra source fields can be kept under their own names.",
+          "Two systems can describe the same fact with different field names or formats. A designer reads a sample and maps its fields. Cleanup steps can convert a value or split a list into records. Extra source fields can be kept under their own names.",
           "The preview shows what would change. Staff check record matching and source ownership before applying the batch. The original data and review history stay available."
         ]
       },
@@ -828,7 +829,7 @@ export const dartPages = [
         "id": "authority",
         "title": "Review data rights and security",
         "paragraphs": [
-          "Connection setup states which source may supply which facts. It names the service account and its scope. Secrets are stored on the server.",
+          "A working connection needs clear limits on what its source is allowed to change. Connection setup states which source may supply which facts. It names the service account and its scope. Secrets are stored on the server.",
           "A data-authority reviewer and a security reviewer approve the saved setup. Connections start paused. Approval alone does not start them.",
           "Revoked access stops later work. A code change can also require another review before an exchange continues."
         ]
@@ -837,7 +838,7 @@ export const dartPages = [
         "id": "operations",
         "title": "Run jobs and check receipts",
         "paragraphs": [
-          "Workers process saved jobs. Staff can inspect held records and failed attempts through integration health.",
+          "A connection can fail after a request is sent, leaving staff unsure what happened. Workers process saved jobs. Staff can inspect held records and failed attempts through integration health.",
           "A retry uses the same saved input. Wrong source fields need a corrected source record. They are not repaired by repeatedly sending the old one.",
           "Outbound exchanges keep the sent payload and receiver receipt. An uncertain send has a receipt-check path. A receipt is separate from proof that the receiving system applied the data."
         ]
@@ -846,7 +847,7 @@ export const dartPages = [
         "id": "interfaces",
         "title": "Connect agency interfaces during deployment",
         "paragraphs": [
-          "An agency connection is mapped to its real interface. The agreement identifies authoritative fields and stable IDs. It also defines authentication and failure handling.",
+          "A named agency system has its own data rules and connection requirements. An agency connection is mapped to its real interface. The agreement identifies authoritative fields and stable IDs. It also defines authentication and failure handling.",
           "The agency supplies the interface details and access. The delivery team tests the mapping and checks the result. The application tools do not imply that a named government system is already connected."
         ]
       }
@@ -862,7 +863,7 @@ export const dartPages = [
         "id": "types",
         "title": "Describe the connected record",
         "paragraphs": [
-          "Integration Studio defines the kinds of records supplied by an API. An API is a way for systems to exchange data. A custom record type gives the incoming fields a useful structure.",
+          "An outside data source becomes more useful when its records have a clear meaning in DART. Integration Studio defines the kinds of records supplied by an API. An API is a way for systems to exchange data. A custom record type gives the incoming fields a useful structure.",
           "Typed links connect that data to DART records. For example, a weather alert can link to a duty station. The source record stays available behind the link."
         ],
         "diagram": "studio"
@@ -871,7 +872,7 @@ export const dartPages = [
         "id": "pages",
         "title": "Place data in the operational view",
         "paragraphs": [
-          "A custom page chooses which fields to show and how to sort them. Connected data can appear beside an incident or person. It can also appear on an equipment or station page.",
+          "Operators need to see outside information beside the work it affects. A custom page chooses which fields to show and how to sort them. Connected data can appear beside an incident or person. It can also appear on an equipment or station page.",
           "Staff publish an import after checking and applying it. Settings define how old data may be before it is treated as stale. Updates can be paused when needed."
         ]
       },
@@ -879,7 +880,7 @@ export const dartPages = [
         "id": "rules",
         "title": "Rules that create operational work",
         "paragraphs": [
-          "A rule checks a mapped value against a condition. For example, it can test whether a water level is above a set limit.",
+          "Some source changes need attention without waiting for someone to notice them on a page. A rule checks a mapped value against a condition. For example, it can test whether a water level is above a set limit.",
           "The result can create a task or inbox notice for named people. A trigger decides whether it runs once or when a value changes. A limit-crossing trigger acts when the reading passes the boundary."
         ]
       },
@@ -887,7 +888,7 @@ export const dartPages = [
         "id": "actions",
         "title": "Controlled custom actions and outbound sends",
         "paragraphs": [
-          "Designers can create custom actions and API send actions. Sends are queued with their payload and result. Staff can inspect the history.",
+          "A connected workflow may need to send a request back to another system. Designers can create custom actions and API send actions. Sends are queued with their payload and result. Staff can inspect the history.",
           "Connections support OAuth sign-in. They can also receive signed webhooks or event streams. The selected provider supplies the required credentials and access rights."
         ]
       },
@@ -895,7 +896,7 @@ export const dartPages = [
         "id": "examples",
         "title": "Weather and water-level workflows",
         "paragraphs": [
-          "The help tasks include a National Weather Service alert connection. Training guides also include a worked NOAA integration. These examples follow the data from capture to use.",
+          "A worked example helps show how capture, mapping, and rules fit together. The help tasks include a National Weather Service alert connection. Training guides also include a worked NOAA integration. These examples follow the data from capture to use.",
           "A water-level field can be converted from meters to feet. A link places it beside the relevant record. A rule can create a task when the reading crosses a chosen level."
         ]
       }
@@ -911,7 +912,7 @@ export const dartPages = [
         "id": "api",
         "title": "Application APIs",
         "paragraphs": [
-          "DART provides APIs for its main areas of work. They use the same user identity and access rules as the screens.",
+          "Developers may need to work with the same records through code instead of a screen. DART provides APIs for its main areas of work. They use the same user identity and access rules as the screens.",
           "Write commands check their fields before saving. Each intended action has a request ID. Retrying the same request does not create a second action.",
           "Version checks stop old data from overwriting newer work. A command must satisfy the rules for the record it changes.",
           "The operations and readiness write routes require a same-origin request. Each body is limited to 64 KB. Errors include a code and a reference ID for support."
@@ -965,7 +966,7 @@ export const dartPages = [
         "id": "terminal",
         "title": "DART commands and shell work",
         "paragraphs": [
-          "The terminal lets a user run DART commands. It also supports shell files and file transfers. Command history shows what was requested and returned.",
+          "Some users prefer commands for repeated or file-based work. The terminal lets a user run DART commands. It also supports shell files and file transfers. Command history shows what was requested and returned.",
           "Commands use the same application interfaces as the work screens. Opening the terminal does not grant extra permissions."
         ]
       },
@@ -973,7 +974,7 @@ export const dartPages = [
         "id": "mcp",
         "title": "Read-only MCP access",
         "paragraphs": [
-          "MCP lets a compatible tool read DART through a defined set of actions. This interface is read-only. It can search and inspect records the user is allowed to read.",
+          "A compatible assistant or tool can help inspect records without being allowed to change them. MCP lets a compatible tool read DART through a defined set of actions. This interface is read-only. It can search and inspect records the user is allowed to read.",
           "A signed-in user can create a short-lived MCP key. The key is tied to their person and session. It stops working when it expires or is revoked.",
           "The server checks current access for each read. An expired session or inactive sign-in identity blocks the key."
         ],
@@ -983,7 +984,7 @@ export const dartPages = [
         "id": "extension",
         "title": "Define the connection before building it",
         "paragraphs": [
-          "A service exchange uses a reviewed connection and service account. It has different needs from a person using a work-screen API.",
+          "A person using a screen and a service running on a schedule have different access needs. A service exchange uses a reviewed connection and service account. It has different needs from a person using a work-screen API.",
           "Before connecting a system, define its IDs and field ownership. Agree on retry behavior and errors. Keep enough evidence to compare the source with the result."
         ]
       }
@@ -999,7 +1000,7 @@ export const dartPages = [
         "id": "inbox",
         "title": "An inbox for operational notices",
         "paragraphs": [
-          "The inbox collects operational notices. A user can open the related work or save the notice for later. Preferences control the notices they receive.",
+          "An operational message is most useful when it leads to the work that needs attention. The inbox collects operational notices. A user can open the related work or save the notice for later. Preferences control the notices they receive.",
           "A notice may ask for an acknowledgment or written reply. The sender can inspect those responses. Reading it does not accept an order or finish a daily check."
         ],
         "diagram": "communications"
@@ -1008,7 +1009,7 @@ export const dartPages = [
         "id": "groups",
         "title": "Direct, team, and cross-organization conversations",
         "paragraphs": [
-          "Chats can be direct or group conversations. A group can include several teams or organizations. Owners can change membership and close or reopen the group.",
+          "The people who need to discuss a task may span several teams. Chats can be direct or group conversations. A group can include several teams or organizations. Owners can change membership and close or reopen the group.",
           "Messages can include files and pictures. Users can also send links or reply in a thread. File downloads still require the right access."
         ]
       },
@@ -1016,7 +1017,7 @@ export const dartPages = [
         "id": "records",
         "title": "Share the work with its context",
         "paragraphs": [
-          "A shared conversation connects discussion to a record. Staff can share work such as an incident or class. The reader must still have access to the underlying record.",
+          "A conversation is easier to follow when the people in it can open the work being discussed. A shared conversation connects discussion to a record. Staff can share work such as an incident or class. The reader must still have access to the underlying record.",
           "Sharing a link does not make personnel data public. Record protection continues to apply."
         ]
       },
@@ -1024,7 +1025,7 @@ export const dartPages = [
         "id": "calls",
         "title": "Audio and video",
         "paragraphs": [
-          "Users can start or join audio and video calls. Call controls let them mute the microphone or turn off the camera. The GovCloud call path includes caption controls.",
+          "Some work is easier to resolve in a live conversation. Users can start or join audio and video calls. Call controls let them mute the microphone or turn off the camera. The GovCloud call path includes caption controls.",
           "Calls depend on the configured provider and network route. Deployment tests confirm that the intended users can connect and use the required media features."
         ]
       },
@@ -1032,7 +1033,7 @@ export const dartPages = [
         "id": "delivery",
         "title": "Queued email and text with receipts",
         "paragraphs": [
-          "Email and text jobs keep each send attempt. Provider receipts show the delivery result. Duplicate or late receipts remain tied to the right attempt.",
+          "When a notice matters, staff need to know whether delivery failed or a person has yet to answer. Email and text jobs keep each send attempt. Provider receipts show the delivery result. Duplicate or late receipts remain tied to the right attempt.",
           "A failed send has a retry path. Delivery evidence stays separate from the person’s reply. A delivered safety message is not a completed safety check."
         ]
       }
@@ -1048,7 +1049,7 @@ export const dartPages = [
         "id": "identity",
         "title": "Sign in through an approved provider",
         "paragraphs": [
-          "Federated sign-in lets a person use an approved identity provider. DART supports OpenID Connect for this exchange. The provider proves the identity, then DART checks the mapped person.",
+          "Before DART can allow an action, it needs to know who is asking. Federated sign-in lets a person use an approved identity provider. DART supports OpenID Connect for this exchange. The provider proves the identity, then DART checks the mapped person.",
           "The sign-in flow checks state and uses PKCE to protect the exchange. Sessions are held on the server and expire. Logout and identity suspension end access.",
           "The agency chooses its authentication rules. These may include a PIV or CAC card and multi-factor authentication. Changing a contact email does not transfer the sign-in identity."
         ],
@@ -1058,7 +1059,7 @@ export const dartPages = [
         "id": "permissions",
         "title": "Permissions with dates and scope",
         "paragraphs": [
-          "A permission set states what a person may do. An administrator can assign it with dates and scope. Assignments can be changed or revoked.",
+          "Knowing who someone is does not tell the system everything they may do. A permission set states what a person may do. An administrator can assign it with dates and scope. Assignments can be changed or revoked.",
           "Scope limits where the permission applies. It may cover an organization or a single incident. Some readiness roles can be limited to a person or qualification.",
           "Roles remain separate. A task evaluator is not automatically a certifier. An equipment manager is not automatically a loss reviewer."
         ]
@@ -1067,7 +1068,7 @@ export const dartPages = [
         "id": "requests",
         "title": "Access requests and assignment review",
         "paragraphs": [
-          "Staff can request access for review. An authorized person decides the request. The decision and later changes remain in history.",
+          "A person’s responsibilities can change while they are using the system. Staff can request access for review. An authorized person decides the request. The decision and later changes remain in history.",
           "A job title alone does not grant access. DART checks the current permission and the record’s protection rules."
         ]
       },
@@ -1075,7 +1076,7 @@ export const dartPages = [
         "id": "review",
         "title": "Independent approval where the decision requires it",
         "paragraphs": [
-          "Some actions need a different reviewer. An order author cannot approve that order. A person holding missing equipment cannot approve their own loss.",
+          "Some decisions need a second person to check the work before it takes effect. Some actions need a different reviewer. An order author cannot approve that order. A person holding missing equipment cannot approve their own loss.",
           "Reviews apply to the exact saved request. If the request changes, it may need another review. Approval does not start a paused connection or accept an order for someone else."
         ]
       },
@@ -1083,7 +1084,7 @@ export const dartPages = [
         "id": "workers",
         "title": "Access is checked again later",
         "paragraphs": [
-          "DART checks access again when delayed work runs. That includes report builds and source imports. File downloads also check current rights.",
+          "Access can change between a request being made and the work actually running. DART checks access again when delayed work runs. That includes report builds and source imports. File downloads also check current rights.",
           "Revoking a permission can stop a job that was requested earlier. Database setup uses a separate account from the running application."
         ]
       }
@@ -1099,7 +1100,7 @@ export const dartPages = [
         "id": "protection",
         "title": "Labels, access, and export limits",
         "paragraphs": [
-          "Record protection sets handling rules for a record or file. DART can apply CUI labels. CUI means government information that needs special handling.",
+          "Some information needs tighter handling than the rest of a shared work record. Record protection sets handling rules for a record or file. DART can apply CUI labels. CUI means government information that needs special handling.",
           "Protection rules limit who can read or export the data. Those rules also apply to reports and connected data. Dashboard access does not override them."
         ],
         "diagram": "records"
@@ -1108,7 +1109,7 @@ export const dartPages = [
         "id": "aggregation",
         "title": "Control combinations of sensitive data",
         "paragraphs": [
-          "Combining records can reveal information that each record alone does not show. DART can block configured combinations and restrict exports.",
+          "Separate pieces of information can reveal something sensitive when they are brought together. Combining records can reveal information that each record alone does not show. DART can block configured combinations and restrict exports.",
           "The agency defines which combinations are prohibited. It also supplies its handling categories and sharing rules. The application checks the configured policy."
         ]
       },
@@ -1116,7 +1117,7 @@ export const dartPages = [
         "id": "retention",
         "title": "Schedules and holds",
         "paragraphs": [
-          "A retention schedule states how long a record should be kept. Authorized staff can set its retention date.",
+          "Records may need to stay available for a set period or an ongoing review. A retention schedule states how long a record should be kept. Authorized staff can set its retention date.",
           "A hold stops disposal through the removal workflow. Staff can place or release a hold with a reason. The decision remains in history."
         ]
       },
@@ -1124,7 +1125,7 @@ export const dartPages = [
         "id": "disposition",
         "title": "Review removal before applying it",
         "paragraphs": [
-          "Record removal starts with a request. A reviewer checks it before removal can be applied.",
+          "Once a record reaches its disposal date, staff still need to check whether removal is allowed. Record removal starts with a request. A reviewer checks it before removal can be applied.",
           "DART checks the retention conditions and any holds. Removal is not an unrestricted delete action."
         ]
       },
@@ -1132,7 +1133,7 @@ export const dartPages = [
         "id": "files",
         "title": "Private files and release checks",
         "paragraphs": [
-          "A file keeps its owner and access rules. Its hash helps verify that the contents have not changed. Scan and release results stay attached to the file.",
+          "A file needs both a known owner and a clear record of the checks it has passed. A file keeps its owner and access rules. Its hash helps verify that the contents have not changed. Scan and release results stay attached to the file.",
           "Download checks the file again. The deployment supplies private storage and malware scanning. It also defines backups and key handling."
         ]
       }
@@ -1148,7 +1149,7 @@ export const dartPages = [
         "id": "plans",
         "title": "Plan the exercise",
         "paragraphs": [
-          "An exercise plan defines the practice event. Managers assign participants and scenarios. The plan is marked ready before the exercise starts.",
+          "An exercise gives a team a way to rehearse an incident before it happens. An exercise plan defines the practice event. Managers assign participants and scenarios. The plan is marked ready before the exercise starts.",
           "A controller releases each scenario. The exercise keeps its own history and data protection rules."
         ],
         "diagram": "exercise"
@@ -1157,7 +1158,7 @@ export const dartPages = [
         "id": "results",
         "title": "Capture results and follow-up",
         "paragraphs": [
-          "Staff record results for review. Follow-up work can be assigned to named people. Completion stays visible before the exercise closes.",
+          "Practice is useful when its lessons turn into work someone will follow up. Staff record results for review. Follow-up work can be assigned to named people. Completion stays visible before the exercise closes.",
           "The help includes a synthetic Hurricane Isaias exercise. It is a training example. It does not describe a live agency response."
         ]
       },
@@ -1165,7 +1166,7 @@ export const dartPages = [
         "id": "isolation",
         "title": "Keep exercise and operational work apart",
         "paragraphs": [
-          "Exercise workspace access must be assigned. Exercise equipment cannot be linked to operational incidents. The environment and database settings maintain the boundary.",
+          "An exercise must not be mistaken for an operational assignment. Exercise workspace access must be assigned. Exercise equipment cannot be linked to operational incidents. The environment and database settings maintain the boundary.",
           "A simulation estimates an outcome. An exercise rehearses a workflow. Neither action issues a real deployment order."
         ]
       },
@@ -1173,7 +1174,7 @@ export const dartPages = [
         "id": "continuity",
         "title": "Use exercises to test the operating plan",
         "paragraphs": [
-          "An exercise can follow staffing through deployment and return. Staff can test missing replies or equipment problems. The results lead to assigned follow-up work.",
+          "A rehearsal can test how the team responds when the normal workflow is interrupted. An exercise can follow staffing through deployment and return. Staff can test missing replies or equipment problems. The results lead to assigned follow-up work.",
           "Infrastructure recovery needs its own tests. The selected deployment must test backups and provider failures. The exercise workflow records operational practice and its results."
         ]
       }
@@ -1189,7 +1190,7 @@ export const dartPages = [
         "id": "workspace",
         "title": "One workspace, scoped to the user",
         "paragraphs": [
-          "DART uses the same navigation and record controls across its work areas. Search finds records the user may read. Opening a result takes the user to the related work.",
+          "People should be able to move between work areas without learning a new set of controls. DART uses the same navigation and record controls across its work areas. Search finds records the user may read. Opening a result takes the user to the related work.",
           "The available views depend on permissions. A responder sees different actions from a coordinator or instructor."
         ]
       },
@@ -1197,7 +1198,7 @@ export const dartPages = [
         "id": "devices",
         "title": "Responsive access",
         "paragraphs": [
-          "The web screens adapt to desktop and smaller displays. Tables and record dialogs keep the work together. The agency’s supported devices and browsers are tested during acceptance.",
+          "A responder in the field may use a different device from a coordinator at a desk. The web screens adapt to desktop and smaller displays. Tables and record dialogs keep the work together. The agency’s supported devices and browsers are tested during acceptance.",
           "Access from outside the agency network needs an approved route. Identity and provider connections must work across that route."
         ]
       },
@@ -1205,7 +1206,7 @@ export const dartPages = [
         "id": "offline",
         "title": "Scoped offline responder access",
         "paragraphs": [
-          "Optional offline responder access prepares a short-lived copy of permitted deployment data. It supports arrival, availability, and acknowledgment actions. It does not provide the full administration workspace.",
+          "A responder may lose a connection while traveling or working in the field. Optional offline responder access prepares a short-lived copy of permitted deployment data. It supports arrival, availability, and acknowledgment actions. It does not provide the full administration workspace.",
           "A new download retires the earlier active copy. Staff can revoke access for a lost device.",
           "When the device reconnects, DART checks queued actions again. Current access and record versions still apply. A local action cannot bypass the normal rules."
         ],
@@ -1215,7 +1216,7 @@ export const dartPages = [
         "id": "language",
         "title": "Language choices and time zones",
         "paragraphs": [
-          "English is always available. The language selector can use AWS GovCloud Translate for saved interface text. Names and notes remain as written.",
+          "Teams may need help reading the interface in a language they use more comfortably. English is always available. The language selector can use AWS GovCloud Translate for saved interface text. Names and notes remain as written.",
           "The agency reviews translated text for its chosen languages. Time zones remain part of scheduling and availability records."
         ]
       },
@@ -1223,7 +1224,7 @@ export const dartPages = [
         "id": "accessibility",
         "title": "Accessibility in the delivery workflow",
         "paragraphs": [
-          "The interface supports keyboard use and labeled controls. Guided help points to the real work screen.",
+          "Users need to complete their work with the input methods and assistive tools they rely on. The interface supports keyboard use and labeled controls. Guided help points to the real work screen.",
           "Section 508 review tests complete workflows with the required tools. Its report must state which version was tested. Automated checks alone do not establish agency acceptance."
         ]
       }
@@ -1239,7 +1240,7 @@ export const dartPages = [
         "id": "guides",
         "title": "Guidance on the real controls",
         "paragraphs": [
-          "Help & support lets a user search for a task. The guide points to the control they need. They can go back or exit at any time.",
+          "A person learning a task needs help at the point where they are doing the work. Help & support lets a user search for a task. The guide points to the control they need. They can go back or exit at any time.",
           "The user performs the real action. A guide does not submit it for them.",
           "The task library below comes from the application’s help catalog. These steps run inside DART. The controls available to each user depend on their permissions."
         ],
@@ -1249,7 +1250,7 @@ export const dartPages = [
         "id": "documentation",
         "title": "Video and task-based learning",
         "paragraphs": [
-          "The documentation library includes a platform video with chapters. Related help tasks lead from the explanation to the work screen.",
+          "A walkthrough can provide context before a user starts the task themselves. The documentation library includes a platform video with chapters. Related help tasks lead from the explanation to the work screen.",
           "Worked examples cover integrations and exercises. Role-based training can follow the same tasks people will use in their jobs."
         ]
       },
@@ -1257,7 +1258,7 @@ export const dartPages = [
         "id": "requests",
         "title": "Support requests, bugs, and improvements",
         "paragraphs": [
-          "Users can create a support request and follow its progress. They can report a bug or suggest an improvement.",
+          "A user needs a clear route to ask for help when a guide does not solve the problem. Users can create a support request and follow its progress. They can report a bug or suggest an improvement.",
           "Support agents handle requests within their assigned scope. Leads have separate permissions. The support agreement defines coverage and escalation."
         ]
       },
@@ -1265,7 +1266,7 @@ export const dartPages = [
         "id": "changes",
         "title": "From feedback to a controlled release",
         "paragraphs": [
-          "A system change can be an improvement, upgrade, or patch. Staff record tests before approval and release. A rollback has its own history.",
+          "Feedback should lead to a change that can be tested and reviewed. A system change can be an improvement, upgrade, or patch. Staff record tests before approval and release. A rollback has its own history.",
           "User feedback and performance reports help identify the work. The change record connects the issue to its tests and release."
         ]
       }
@@ -1281,7 +1282,7 @@ export const dartPages = [
         "id": "application",
         "title": "The application and database",
         "paragraphs": [
-          "DART uses Next.js and React for its web application. Server-side JavaScript applies the rules. PostgreSQL stores the operational records and their history.",
+          "The screens people use are one part of the system that keeps their work consistent. DART uses Next.js and React for its web application. Server-side JavaScript applies the rules. PostgreSQL stores the operational records and their history.",
           "The main work areas have separate services. Each service checks its own commands and permissions. The database also protects saved versions and events from being overwritten."
         ],
         "diagram": "architecture"
@@ -1290,7 +1291,7 @@ export const dartPages = [
         "id": "work",
         "title": "Saved background jobs",
         "paragraphs": [
-          "Background jobs handle work that can finish after a request returns. A report build is one example. Notification delivery and source capture also use saved jobs.",
+          "Some tasks take longer than the user should need to wait on a page. Background jobs handle work that can finish after a request returns. A report build is one example. Notification delivery and source capture also use saved jobs.",
           "A worker checks the saved request before running it. It checks current access where the workflow requires it. Held jobs remain available for review and retry."
         ]
       },
@@ -1298,7 +1299,7 @@ export const dartPages = [
         "id": "services",
         "title": "Connected services",
         "paragraphs": [
-          "The deployment connects the application to approved services. These include identity and file storage. Communications and translation use their configured providers.",
+          "The application relies on other services for work such as sign-in and message delivery. The deployment connects the application to approved services. These include identity and file storage. Communications and translation use their configured providers.",
           "GovCloud adapters are available for the relevant service paths. Each connection needs the right account and network access. Deployment tests verify the chosen setup."
         ],
         "table": {
@@ -1338,7 +1339,7 @@ export const dartPages = [
         "id": "resilience",
         "title": "Test performance and recovery",
         "paragraphs": [
-          "Performance records show request times and failures. Staff can review them when planning a change. Test results remain attached to the change record.",
+          "An incident can place more demand on the system than an ordinary working day. Performance records show request times and failures. Staff can review them when planning a change. Test results remain attached to the change record.",
           "Load tests measure the chosen deployment. They should cover incident surges and report workloads. Recovery tests confirm that backups can be restored.",
           "The test results establish operating limits. The presence of retry code alone does not prove surge capacity."
         ]
@@ -1347,7 +1348,7 @@ export const dartPages = [
         "id": "ownership",
         "title": "Define the production system",
         "paragraphs": [
-          "The production plan names who operates each service. It states who controls identities and keys. It also defines how software changes are approved.",
+          "A production system needs clear responsibility for both the software and the services around it. The production plan names who operates each service. It states who controls identities and keys. It also defines how software changes are approved.",
           "An agency authorizes a specific system in a specific environment. The application code is one part of that system. The assessment must also cover its hosting and operations."
         ]
       }
@@ -1363,15 +1364,16 @@ export const dartPages = [
         "id": "mission",
         "title": "Built for workforce and deployment work",
         "paragraphs": [
-          "DART was built around FEMA’s workforce and deployment survey. Its requirements index maps all 61 numbered capabilities across the 17 subtask groups.",
-          "An agency evaluation can follow those entries into the working application. Staff can inspect the records and decisions for each workflow."
+          "Federal workforce management needs to connect preparation with the response itself. DART was built around FEMA’s workforce and deployment survey. Its requirements index maps all 61 numbered capabilities across the 17 subtask groups.",
+          "An agency evaluation can follow those entries into the working application. Staff can inspect the records and decisions for each workflow.",
+          "FEMA’s public notice provides the original request. Its survey workbook describes the capabilities used in this guide. The RFI overview gives the program context."
         ]
       },
       {
         "id": "hosting",
         "title": "Government-controlled hosting",
         "paragraphs": [
-          "The survey asks for a FedRAMP High cloud and a government-owned cloud environment. The delivery team must define the selected hosting boundary.",
+          "Government buyers need to know where the system and its information will run. FEMA’s survey asks for a FedRAMP High cloud and a government-owned cloud environment. The delivery team must define the selected hosting boundary.",
           "That boundary states which services are approved and where data flows. It also names the people responsible for operating them.",
           "DART includes GovCloud service adapters. Those adapters do not grant a FedRAMP authorization or Authority to Operate. Authorization applies to the assessed agency system."
         ],
@@ -1381,7 +1383,7 @@ export const dartPages = [
         "id": "security",
         "title": "Access controls and security review",
         "paragraphs": [
-          "DART checks identity and access in its application services. Dated permissions limit where a person may act. Private file checks and independent review protect the related workflows.",
+          "The agency needs to see how an application control works within the wider security plan. DART checks identity and access in its application services. Dated permissions limit where a person may act. Private file checks and independent review protect the related workflows.",
           "The delivery team maps these controls to the agency’s security baseline. The assessment also covers network policy and key handling. Logs and security monitoring must be configured for the environment."
         ]
       },
@@ -1389,7 +1391,7 @@ export const dartPages = [
         "id": "data",
         "title": "CUI, privacy, and records",
         "paragraphs": [
-          "DART supports protected records and CUI labels. It can restrict exports and block configured data combinations. Retention schedules and holds govern record disposal.",
+          "An agency’s information rules continue to apply when records are brought into a new system. DART supports protected records and CUI labels. It can restrict exports and block configured data combinations. Retention schedules and holds govern record disposal.",
           "The agency supplies its handling policy. It identifies which sources own each type of fact. Data migration and integrations are tested against those decisions."
         ]
       },
@@ -1397,7 +1399,7 @@ export const dartPages = [
         "id": "acceptance",
         "title": "Test the agency deployment",
         "paragraphs": [
-          "Agency acceptance tests the selected version and environment. The tests cover real role boundaries and operational workflows.",
+          "The agency must be able to check the delivered system against its agreed requirements. Agency acceptance tests the selected version and environment. The tests cover real role boundaries and operational workflows.",
           "Section 508 review checks accessibility. Load tests examine incident surges and slow connections. Recovery and cutover rehearsals check continuity.",
           "Each result needs a clear expected outcome. The saved evidence shows what was tested and what happened."
         ]
@@ -1406,7 +1408,7 @@ export const dartPages = [
         "id": "engagement",
         "title": "Federal delivery and technical engagement",
         "paragraphs": [
-          "USATII’s federal delivery plan assigns responsibility for engineering and program management. It also covers security review and ongoing support.",
+          "A delivery needs named people who can build the system and support it in use. USATII’s federal delivery plan assigns responsibility for engineering and program management. It also covers security review and ongoing support.",
           "The published DART jobs are anticipated roles. Hiring depends on an award or approved funding. Those postings do not establish an awarded FEMA contract or a fully staffed team.",
           "The engagement defines the named staff and their responsibilities."
         ]
@@ -1423,7 +1425,7 @@ export const dartPages = [
         "id": "discovery",
         "title": "Agree on the work and its rules",
         "paragraphs": [
-          "Start with the agency’s real work. Identify who performs each task and who approves it. Agree on the records and reports needed to support it.",
+          "A successful transition starts with understanding how the agency works today. Start with the agency’s real work. Identify who performs each task and who approves it. Agree on the records and reports needed to support it.",
           "The agency supplies approved rules and source-system details. A data dictionary explains each field. Sample exports let the team inspect the records before migration."
         ]
       },
@@ -1431,7 +1433,7 @@ export const dartPages = [
         "id": "migration",
         "title": "Move and check legacy data",
         "paragraphs": [
-          "Legacy migration moves records from the old system. The mapping must preserve IDs and relationships. Historical dates and status codes need an agreed meaning.",
+          "Moving records also means preserving the relationships that make them useful. Legacy migration moves records from the old system. The mapping must preserve IDs and relationships. Historical dates and status codes need an agreed meaning.",
           "Pilot batches expose missing data and duplicate identities. The team checks the result against the source. Original inputs stay available for review."
         ],
         "diagram": "migration"
@@ -1440,7 +1442,7 @@ export const dartPages = [
         "id": "pilot",
         "title": "Pilot complete workflows",
         "paragraphs": [
-          "A pilot follows a complete workflow. It might start with a staffing need and end with a completed deployment. Users test the actions for their actual roles.",
+          "A small group can check a complete workflow before the agency expands its use. A pilot follows a complete workflow. It might start with a staffing need and end with a completed deployment. Users test the actions for their actual roles.",
           "Tests also try rejected and interrupted work. An old form should not overwrite a newer record. A revoked permission should stop the next protected action.",
           "Reviewers inspect reports and history alongside the visible result."
         ]
@@ -1449,7 +1451,7 @@ export const dartPages = [
         "id": "coexistence",
         "title": "Run both systems during the transition",
         "paragraphs": [
-          "During coexistence, the old and new systems both remain in use. Each type of record needs one agreed writer. The plan defines how changes reach the other system.",
+          "An agency may need to keep the old system running while teams move to DART. During coexistence, the old and new systems both remain in use. Each type of record needs one agreed writer. The plan defines how changes reach the other system.",
           "A phased rollout starts with a limited group or workflow. Expansion follows accepted results. The rollback plan states when to stop and how to recover.",
           "The legacy system is retired after reconciliation and retention decisions. Unresolved conflicts need an owner before cutover."
         ]
@@ -1458,7 +1460,7 @@ export const dartPages = [
         "id": "enablement",
         "title": "Train users and prepare support",
         "paragraphs": [
-          "Training follows the tasks people will perform. Responders practice replies and check-in. Coordinators practice staffing and orders. Specialists practice their review workflows.",
+          "People need to practice the parts of the new system they will actually use. Training follows the tasks people will perform. Responders practice replies and check-in. Coordinators practice staffing and orders. Specialists practice their review workflows.",
           "The support handoff names who handles failures. It also explains how to monitor jobs and restore service. In-app help remains available during daily work."
         ]
       },
@@ -1466,7 +1468,7 @@ export const dartPages = [
         "id": "schedule",
         "title": "Set milestones against actual dependencies",
         "paragraphs": [
-          "Delivery milestones follow accepted results. These include working interfaces and checked migration data. Security review and a cutover rehearsal also need clear completion points.",
+          "A useful schedule shows what must be ready before the next stage can begin. Delivery milestones follow accepted results. These include working interfaces and checked migration data. Security review and a cutover rehearsal also need clear completion points.",
           "The schedule depends on source quality and agency review. Interface access and approved rules affect it too. Dates are set for the actual program."
         ]
       }
@@ -1482,7 +1484,7 @@ export const dartPages = [
         "id": "evaluation",
         "title": "Evaluate the working capability",
         "paragraphs": [
-          "Use the requirements index to choose the workflows to evaluate. Agree on the users and input data. State the expected result before running the test.",
+          "A buyer needs evidence that the system can support the work they plan to move into it. Use the requirements index to choose the workflows to evaluate. Agree on the users and input data. State the expected result before running the test.",
           "DART is a custom platform. Agency delivery includes configuration and integration work. A feature in the application is separate from a live agency connection or accepted deployment."
         ]
       },
@@ -1490,7 +1492,7 @@ export const dartPages = [
         "id": "commercial",
         "title": "Define delivery and ongoing costs",
         "paragraphs": [
-          "The agreement defines what USATII will deliver and operate. It separates the initial work from ongoing costs.",
+          "The cost of a delivered system includes both getting it ready and keeping it running. The agreement defines what USATII will deliver and operate. It separates the initial work from ongoing costs.",
           "A one-time cost may cover data migration or a new connection. Recurring costs may cover hosting and support. One-, five-, and ten-year estimates show how those costs change over time.",
           "Pricing is set for the program. This documentation does not publish a per-user federal price or claim a contract vehicle."
         ],
@@ -1531,7 +1533,7 @@ export const dartPages = [
         "id": "support",
         "title": "Agree on the service model",
         "paragraphs": [
-          "The support agreement defines coverage hours and escalation. It states how incidents are reported and how updates reach the customer.",
+          "Once the system is in use, users need to know who will help and when. The support agreement defines coverage hours and escalation. It states how incidents are reported and how updates reach the customer.",
           "Response and recovery targets need an agreed environment. Tests must show that the setup can support them. Provider and agency responsibilities belong in the same plan."
         ]
       },
@@ -1539,7 +1541,7 @@ export const dartPages = [
         "id": "risk",
         "title": "Resolve delivery risks early",
         "paragraphs": [
-          "Resolve the largest risks early. Poor source data can delay migration. Missing interface access can block integration. Security review can affect activation.",
+          "A delivery plan should address problems while there is still time to respond to them. Resolve the largest risks early. Poor source data can delay migration. Missing interface access can block integration. Security review can affect activation.",
           "Each risk needs an owner and a test or decision. The plan states what happens if the risk becomes a problem."
         ]
       },
@@ -1547,7 +1549,7 @@ export const dartPages = [
         "id": "contact",
         "title": "Discuss a DART evaluation",
         "paragraphs": [
-          "A DART evaluation starts with the mission workflow and expected users. Bring the relevant source systems and intended hosting environment. USATII can then define a demonstration around the work."
+          "A useful demonstration follows a buyer’s own work rather than a general tour. A DART evaluation starts with the mission workflow and expected users. Bring the relevant source systems and intended hosting environment. USATII can then define a demonstration around the work."
         ]
       }
     ]
@@ -1562,15 +1564,16 @@ export const dartPages = [
         "id": "reading",
         "title": "How to use the capability index",
         "paragraphs": [
-          "This index maps the 61 capabilities in FEMA’s survey to DART. Each entry links to the page that explains the related work.",
-          "The short labels summarize the survey. They do not replace its full text. The index describes application behavior, not an agency acceptance decision."
+          "A long requirements list is easier to review when each entry leads to an explanation. This index maps the 61 capabilities in FEMA’s survey to DART. Each entry links to the page that explains the related work.",
+          "The short labels summarize the survey. They do not replace its full text. The index describes application behavior, not an agency acceptance decision.",
+          "The survey workbook is available directly from SAM.gov. FEMA’s public notice includes the attachments and amendments. The RFI overview explains the request and how vendors were asked to respond."
         ]
       },
       {
         "id": "capabilities",
         "title": "Capability-by-capability coverage",
         "paragraphs": [
-          "Open an entry to learn how the workflow works. The federal deployment pages explain the agency services and reviews it needs."
+          "The entries are grouped in the same order as the survey, so readers can move between the two. Open an entry to learn how the workflow works. The federal deployment pages explain the agency services and reviews it needs."
         ],
         "requirements": true
       },
@@ -1578,7 +1581,7 @@ export const dartPages = [
         "id": "beyond-features",
         "title": "Evaluation questions beyond the capability list",
         "paragraphs": [
-          "The survey also asks about architecture and delivery. It asks how costs and risks will be managed. Those answers depend on the actual program.",
+          "A working feature is only one part of choosing and delivering a government system. The survey also asks about architecture and delivery. It asks how costs and risks will be managed. Those answers depend on the actual program.",
           "An engagement-specific response supplies verified company facts. It names the staff and partners. It also sets prices and delivery dates. Contract terms and security commitments must be agreed for that engagement."
         ]
       }
