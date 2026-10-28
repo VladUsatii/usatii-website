@@ -4,6 +4,7 @@ import {FigureReveal} from './motion';
 import styles from './dart.module.css';
 import LearningWorkflow from './learning-workflows';
 import WorkforceWorkflow from './workforce-workflows';
+import OperationsWorkflow from './operations-workflows';
 
 const diagrams = {
   platform: ['model', 'A connected operational record', ['Personnel', 'Qualifications', 'Availability', 'Incident needs', 'Deployment', 'Accountability'], 'Evidence and dates connect the workforce to the incident, accepted deployment, and field record.'],
@@ -71,7 +72,7 @@ function WorkScene({labels,kind,type}){
  </g>;
 }
 export default function DartDiagram({kind}){
- const reduced=useReducedMotion();if(kind.startsWith('learn-'))return <LearningWorkflow kind={kind}/>;if(kind.startsWith('workforce-'))return <WorkforceWorkflow kind={kind}/>;const data=diagrams[kind];if(!data)return null;
+ const reduced=useReducedMotion();if(kind.startsWith('learn-'))return <LearningWorkflow kind={kind}/>;if(kind.startsWith('workforce-'))return <WorkforceWorkflow kind={kind}/>;if(kind.startsWith('ops-'))return <OperationsWorkflow kind={kind}/>;const data=diagrams[kind];if(!data)return null;
  const [type,title,labels,caption]=data,overview=kind==='platform'||kind==='relationships';
  return <FigureReveal className={styles.figure}><svg viewBox={overview?'0 0 1000 820':'130 220 940 610'} role="img" aria-label={title} className={styles.diagram}>
   <title>{title}</title><desc>{caption}</desc>

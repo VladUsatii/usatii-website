@@ -53,3 +53,5 @@ The left navigation now nests section anchors under each topic. The document use
 The first section-level audit covers the three Learning pages. See `docs/dart-learning-review.md` for the 17-section source map, corrected distinctions, nine dedicated workflows, and remaining scope. The earlier shared scenes remain on other topics until those topics receive their own audit.
 
 The second audit covers qualifications/readiness and professional development. See `docs/dart-workforce-review.md` for the 11-section source map and eight dedicated workflows. Technical terms now have optional italic definitions on hover or keyboard focus across DART body prose; this presentation change does not imply that other pages have completed their capability audit.
+
+The third audit covers incidents, responder staffing, and deployment orders/travel. See `docs/dart-operations-review.md` for the 19-section code/guide source map and twelve distinct workflows, including resource authority, history-based ranking, trainee duties, accepted extensions, actual visits, and checked demobilization.

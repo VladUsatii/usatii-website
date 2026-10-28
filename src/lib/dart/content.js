@@ -565,44 +565,67 @@ export const dartPages = [
     "sections": [
       {
         "id": "lifecycle",
-        "title": "Create and review an incident",
+        "title": "Create an incident with rules and dates",
         "paragraphs": [
-          "Before people are assigned, an incident needs a shared record of the work to be done. An incident has its own ID and dates. Coordinators add duty stations and define the work. The setup follows a review process before it is used.",
-          "A saved incident template can supply a starting structure. Its version stays with the draft. Creating the draft does not deploy people."
+          "An incident is the shared record for a response. It names the mission, responsible organization, dates, and time zone. Its saved deployment policy controls the operational checks used for that incident.",
+          "A coordinator can create an incident directly under an approved, effective policy. It begins as Planned. Starting it changes it to Active; an Active incident is required before a deployment order can be drafted.",
+          "The template path adds two separate reviews. A coordinator saves a template version, and a different approver approves that version. The coordinator then saves a dated incident draft from an approved template and submits the setup for review.",
+          "A different incident approver reviews that saved draft. Approval checks that the draft’s author still has coordinator access, then creates the incident, units, and staffing needs together. Saving or submitting the draft creates no orders.",
+          "This template path starts with a remote reporting location in UTC and virtual staffing needs. Coordinators can add the physical stations and other needs required by the response. The saved setup retains the template version and approved structure.",
+          "A parent event can group related incidents of the same kind in the same organization. Exercise workspaces create exercises, so practice does not become an operational incident."
         ],
-        "diagram": "incident"
+        "diagram": "ops-incident-setup"
       },
       {
         "id": "structure",
-        "title": "Units, duties, and supervision",
+        "title": "Connect units, duties, and supervision",
         "paragraphs": [
-          "Responders need to know where they fit and who supervises their work. Units and duty assignments describe who does what at the incident. Assignments have start and end dates. A supervisor can change without losing the earlier relationship.",
-          "Incident organization reports show the structure at a chosen time. Deployment reviews use the dates during which a supervisor was responsible."
+          "A unit describes a part of the incident’s work. It has a mission, operating times, duty station, and supervisor. It can sit under a parent unit in the same incident.",
+          "An incident duty assigns work to someone who already has a deployment. Its dates must fit inside both the accepted order and the unit’s dates. It can also identify the staffing slot and authorized resource request it fills.",
+          "A linked slot triggers another candidate check. The system also adds the person’s other duties and approved training time for each day. A new duty cannot push that total above the incident’s daily work limit.",
+          "Ending a duty saves an end record within its original dates. It does not erase the assignment. A filled shared-duty slot cannot be offered to another person for overlapping dates.",
+          "Deployment supervision is a dated relationship of its own. Changing the supervisor ends the earlier relationship and starts the next one. The supervisor needs incident authority and cannot be the deployed person.",
+          "Incident organization reports reconstruct filled and vacant positions at a chosen past time. They use accepted order revisions and the supervision dates in effect then. Deployment evaluations use those supervision periods, rather than the current supervisor’s name alone."
         ]
       },
       {
         "id": "needs",
-        "title": "Staffing needs and team requests",
+        "title": "Turn a staffing need into positions to fill",
         "paragraphs": [
-          "A coordinator first needs to describe the help the incident requires. A staffing need defines the position to fill. It includes the required dates and number of people. Specialties can narrow the requirement.",
-          "Team templates define positions and leaders for a group. They can represent force packages or force modules. Accepted members stay linked to the template version used."
-        ]
+          "A staffing need states what help is required, before anyone is chosen. It names a qualification version, number of people, dates, duty station, and deployment type. Each person needed gets a separate staffing slot.",
+          "The dates must stay within the incident. A standard deployment needs a physical duty station; a virtual deployment needs a remote one. Added specialties name their own qualification versions and must pass their own checks.",
+          "A personnel resource request can be linked to the need. That request must belong to the incident. Candidate selection later checks its approval and any required supporting-agency acceptance.",
+          "A team template groups position requirements and identifies which positions lead the team. It can represent a Team, Force package, or Module. Each requirement can include specialties, while equipment categories have their own counts.",
+          "Creating a team request saves an incident team instance that names the chosen template version and creates its staffing needs. This does not select people or issue equipment. Accepted orders add members with their accepted dates, revision, and leader flag.",
+          "Equipment requirements keep the distinction between an explicit None and an unknown list. A later template edit does not silently change the team request already created from an earlier version."
+        ],
+        "diagram": "ops-team-needs"
       },
       {
         "id": "coordination",
-        "title": "Resources and shared operational work",
+        "title": "Approve resource requests before committing people",
         "paragraphs": [
-          "An incident may need people and supplies from several teams. Resource requests ask for personnel, equipment, or supplies. A request can be routine or urgent. Its decisions stay in history.",
-          "A shared conversation lets staff discuss the incident in context. Sharing a thread does not grant access to records the reader cannot otherwise open."
-        ]
+          "A resource request asks for personnel, equipment, or supplies. It records the quantity and unit, needed time, priority, and justification. It can name a supporting agency and an outside reference.",
+          "A new request is Submitted. Another authorized person reviews it. If it names a supporting agency, approval needs a mission authorization reference; the supporting agency then records its separate acceptance reference.",
+          "Approval and Agency accepted are different states. A staffing need linked to a request cannot proceed through candidate checks until the required state is reached. A request without a supporting agency needs Approved; one with an agency needs Agency accepted.",
+          "A follow-on request can link to an earlier approved request in the same incident. The link preserves the relationship between the requests. It does not copy an approval onto unrelated work.",
+          "Personnel coverage counts distinct filled slots from accepted orders and dated shared duties active at the chosen time. A draft order or a person’s name on a request does not count as filled coverage.",
+          "Status updates and decisions retain their author, reason, reference, and earlier state. Declining or cancelling a request does not itself cancel a deployment order. Operational records still need their own changes.",
+          "A shared conversation lets people discuss the incident in context. Access to a thread does not grant access to every linked person, order, or protected file."
+        ],
+        "diagram": "ops-resource-authority"
       },
       {
         "id": "closure",
-        "title": "Keep the history when work changes",
+        "title": "Change or close the incident without losing open work",
         "paragraphs": [
-          "Incident plans change as the response develops. Staff still need to understand what happened earlier. Changing incident dates or withdrawing a need leaves a record. The history shows who acted and when.",
-          "Ending the incident must account for its open work. Deployment orders and equipment holds remain separate records. A closed screen is not proof that those obligations are complete."
-        ]
+          "Incident state moves from Planned to Active, then to Winding down. Winding down can return to Active if the response grows again. Closed is the final state in this workflow.",
+          "A date change checks active staffing needs and open orders first. The new incident dates cannot leave their saved work outside the response period. Earlier dates and the reason for the change remain in history.",
+          "Changing a staffing need also checks its open orders and occupied slots. Removing positions, changing location or type, or withdrawing a need can require those orders to be changed or cancelled first. Withdrawal keeps the earlier need and turns off its slots.",
+          "Closing requires every deployment to be Completed. Draft, Submitted, Approved, and Issued orders also block closure. Staff must finish or cancel that work before closing the incident.",
+          "Closure pauses the incident’s automatic due-item jobs. It does not delete orders, accepted team memberships, visits, or review history. Equipment and return checks are handled through each deployment’s completion workflow."
+        ],
+        "diagram": "ops-incident-close"
       }
     ]
   },
@@ -614,43 +637,82 @@ export const dartPages = [
     "sections": [
       {
         "id": "need",
-        "title": "Start from the requirement",
+        "title": "Check a responder against the saved staffing slot",
         "paragraphs": [
-          "A useful candidate comparison begins with a clear description of the job. Start with the position that needs to be filled. Set its required dates and qualification version. Add any specialty the work requires.",
-          "DART then checks people against that need. It uses their qualification evidence and availability. Other deployments can make a person unavailable for the same work."
+          "A candidate check asks whether one person can fill one staffing slot for its requested dates. The slot supplies the qualification version, station, and deployment type. The comparison uses only people and protected records the coordinator may inspect.",
+          "The main qualification and every added specialty must meet readiness requirements over the whole period. Required training and approved availability matter too. A matching job title by itself does not pass the check.",
+          "Scheduling adds checks beyond readiness. Another order or shared duty can already hold the slot. Other deployments can overlap the person’s dates, and a linked person record can reveal a conflict that needs review.",
+          "Overlaps have two outcomes. A prohibited combination or two different physical places is a hard block. A combination allowed by incident policy still needs a separate overlap approval. The maximum number of concurrent deployments also applies.",
+          "Overlapping classes need a matching approved training-time authorization. Other recorded time away can block the dates. Planning policy adds limits for allowed regions, assignment length, and time between assignments.",
+          "The result is Eligible, Needs overlap approval, or Not eligible. A reason for selecting someone cannot override a hard block. Checks are saved with their dates, source evidence, policy versions, and station."
         ],
-        "diagram": "selection"
+        "diagram": "ops-candidate-check"
       },
       {
         "id": "comparison",
-        "title": "Compare candidates and explain eligibility",
+        "title": "Rank only eligible people with confirmed history",
         "paragraphs": [
-          "Several people may appear suitable for the same assignment. The selection view lets a coordinator compare responders. The eligibility explanation shows why each person meets or fails a condition.",
-          "Deployment history helps staff review past workload. Missing history can be added with a reason. Corrections preserve the earlier entry."
+          "Eligibility and ranking answer different questions. Eligibility checks whether a person can do the work. Ranking orders eligible people using the incident’s approved selection rules.",
+          "An approver chooses Less deployment time or Longer since deployment and sets the history period. Less deployment time compares recorded days. Longer since deployment compares the latest recorded deployment time. A fixed draw for the staffing slot breaks ties.",
+          "Only Eligible people with confirmed history receive a rank. People needing overlap approval form a separate group. Unconfirmed history remains unranked; it is never counted as zero deployment time.",
+          "The workload calculation uses actual station visits and saved past-time entries within the comparison period. Overlapping time is counted once. A station visit inside that period still counts when its accepted order dates began earlier.",
+          "A confirmation must cover the displayed history period and match the current facts. Missing visit records prevent confirmation. A later correction or changed evidence can invalidate an earlier history review."
+        ],
+        "diagram": "ops-history-ranking"
+      },
+      {
+        "id": "history",
+        "title": "Review and correct missing deployment history",
+        "paragraphs": [
+          "A missing record can make workload comparisons misleading. A supervisor or approver can inspect someone else’s history, add past deployment time, and name the source used to support it.",
+          "Past-time entries need a start before the end and cannot extend into the future. An entry can point to a saved deployment for that person or record work outside DART. Linked person identities are included in the history check.",
+          "A correction creates a new entry linked to the latest saved one. Removing a wrong entry also adds a revision marked void. Neither action deletes the earlier account or its reason.",
+          "After missing work is resolved, a different reviewer confirms the displayed history. The confirmation saves the source, reason, date range, and a fingerprint of the facts checked. Changed facts or rules require another inspection before confirmation."
         ]
+      },
+      {
+        "id": "trainees",
+        "title": "Supervised trainees and training during duty",
+        "paragraphs": [
+          "A Training deployment can support someone still working on a qualification. It needs an open task book for the same qualification version and a dated trainee authorization for the incident.",
+          "A different approver records the permitted duties and supervisor. The supervisor must have current incident supervision authority, and the trainee cannot supervise themselves. The authorization must cover the proposed dates.",
+          "The candidate check can then set aside only the main qualification reason. Required training, approved availability, added specialties, and schedule checks still apply. Acceptance records the assigned trainee supervisor; it does not award the qualification.",
+          "Permission to attend a class during duty is a different authorization. A supervisor approves a scheduled class for the person, incident, and station, with the class version and teaching times saved.",
+          "That class must fit within one incident-local day. Class hours, other approved training, and assigned duties must fit the daily work limit. The authorization does not enroll the person, finish the class, or waive admission rules."
+        ],
+        "diagram": "ops-trainee-gate"
       },
       {
         "id": "decision",
-        "title": "Save the selection and its reason",
+        "title": "Save the choice and review the current comparison",
         "paragraphs": [
-          "A staffing choice needs to remain understandable after the assignment is made. Choosing a responder saves the selection and its reason. A reviewer can inspect the decision. The saved checks remain available after the person’s records change.",
-          "Selection does not send an order. The deployment order must still be reviewed. The responder must then accept it."
-        ]
+          "Choosing a responder creates a Draft order and saves the comparison that supported the choice. The incident must be Active, selection rules must exist, and the responder cannot be Not eligible. The reply deadline must be in the future.",
+          "The saved comparison includes candidate checks, confirmed history, ranks, and policy versions. It records the chosen person and selection note. Choosing anyone below first rank, or with no rank, needs an explanation.",
+          "Submission runs the candidate checks and comparison again. An approver different from both the order’s creator and its named responder reviews the current comparison. The approval must match the exact comparison displayed.",
+          "If an allowed deployment overlap remains, the approver must explain it separately. A selection note does not remove the overlap rule or permit a prohibited schedule.",
+          "Issue and acceptance compare the current evidence with that approval again. Changed readiness, selection rules, history, or comparison facts can require a new order revision and review. The earlier saved comparison stays available for inspection.",
+          "An approved choice is not a deployment. The order must be issued, and only the named responder can accept it before its reply deadline."
+        ],
+        "diagram": "ops-selection-review"
       },
       {
         "id": "fairness",
-        "title": "Review how work is assigned",
+        "title": "Make the selection policy and exceptions visible",
         "paragraphs": [
-          "The way assignments are shared should be open to review. Staff need clear rules to distribute work fairly. DART makes the evidence and recorded workload visible for review.",
-          "The program owner approves the selection policy. Reviewers can inspect whether a decision followed that policy and the available evidence."
+          "Selection rules are saved for the incident, with a version, approval authority, reason, and approver. New rules add a version instead of replacing the basis of an earlier choice.",
+          "The configured ranking method helps reviewers compare workload. It does not claim that missing records prove a person has had less work. That is why history review and ranking remain separate.",
+          "A coordinator may choose an eligible person below first rank, but must explain the choice. The approver sees the current comparison and records their own selection explanation. Unranked choices need the same explicit review.",
+          "Saved order history keeps the comparison used at selection and approval. Reviewers can follow the evidence behind an exception after the workforce or rules have changed. The system records the decision; the program owner supplies the approved policy."
         ]
       },
       {
         "id": "planning",
-        "title": "Compare demand before issuing orders",
+        "title": "Compare possible staffing before sending orders",
         "paragraphs": [
-          "Coordinators may need to check several demands before committing people to any one of them. Surge planning tests competing needs before orders are issued. The planner uses the same workforce snapshot for each need.",
-          "Decision replay shows the basis for an earlier choice. A new readiness check uses current facts. Keeping both makes the difference clear."
+          "Surge planning explores competing staffing needs before people are committed. It uses a saved workforce snapshot and policy version, so scenarios can be compared on a stated basis.",
+          "A planning result does not hold a slot, issue an order, or promise that someone will still be available. The operational candidate and order checks must run when the coordinator acts.",
+          "Decision replay reconstructs the basis of an earlier staffing choice from saved records. A new candidate check uses current facts. A later record can explain a difference without rewriting the original selection.",
+          "The saved evidence includes its data cutoff. That date matters when comparing a past explanation with a current result. Surge planning and decision replay describe those separate workflows in more detail."
         ]
       }
     ]
@@ -663,43 +725,82 @@ export const dartPages = [
     "sections": [
       {
         "id": "orders",
-        "title": "Draft, review, and issue an order",
+        "title": "Draft, review, issue, and answer an order",
         "paragraphs": [
-          "A responder needs a clear, approved assignment before setting out. A coordinator drafts an order for a named responder. A different person must review and approve it. The order then goes to the responder.",
-          "The responder can accept or decline. Acceptance sets the dates used by the deployment. A delivered notice does not count as acceptance."
+          "A deployment order offers a named responder a position for stated dates and a duty station. The coordinator drafts it from a staffing slot after checking the person and saving the selection comparison. Even a draft can hold the person or slot against competing orders for those dates.",
+          "The order moves from Draft to Submitted, then Approved and Issued. Submission rechecks eligibility. Approval needs a different person from both the creator and the responder, plus the current comparison and any allowed overlap reason.",
+          "Issuing sends the responder a notice that the order is ready for reply. It also rechecks the evidence and comparison against the approval. If the facts have changed, the order needs revision and review instead.",
+          "Only the named responder can accept or decline the Issued order. The reply deadline must not have passed. A delivered notification is not a reply, and an expired offer cannot start a deployment.",
+          "Acceptance saves the accepted revision and creates the deployment on the first acceptance. It also creates the required daily checks and end steps. A team order adds the member against that accepted revision.",
+          "A coordinator can cancel before travel or work starts. Once the deployment has started, cancellation is blocked and the end-deployment workflow must be used. Cancellation keeps the decision and its notice in history."
         ],
-        "diagram": "deployment"
+        "diagram": "ops-order-lifecycle"
       },
       {
         "id": "revisions",
-        "title": "Extensions and successive deployments",
+        "title": "An extension is a proposal until it is accepted",
         "paragraphs": [
-          "An assignment may need more time, or a person may be asked to take another deployment. An extension creates a new order revision. It needs review and acceptance again. Until then, the earlier accepted dates stay in force.",
-          "DART supports standard, virtual, and training deployments. Incident rules control whether work can overlap. The checks also account for successive assignments."
+          "An accepted order and a proposed revision are separate facts. An extension creates a new Draft revision, which must pass submission, separate approval, issue, and the responder’s reply again.",
+          "Until the responder accepts that revision, the earlier accepted dates remain the deployment’s dates. The proposal itself does not change the accepted period used by the deployment or its scheduled checks.",
+          "An accepted order can be extended without changing its original start or station. It cannot be shortened through the amendment form. A station change uses a planned move; an early end uses an end plan.",
+          "If the responder declines an extension, the earlier accepted revision stays in force. The declined proposal and reply remain in history. A Completed deployment cannot be extended. When due-item processing expires an unanswered extension, it also returns the order to its earlier accepted revision.",
+          "Standard, Virtual, and Training deployments still follow their type and scheduling checks. Successive work also checks assignment-length and rest limits. A new revision cannot bypass those limits."
+        ],
+        "diagram": "ops-extension"
+      },
+      {
+        "id": "itinerary",
+        "title": "Review travel plans separately from actual travel",
+        "paragraphs": [
+          "An itinerary records the planned journey, including places, travel mode, departure and arrival, lodging, booking status, and reporting details. A coordinator, supervisor, or travel planner can save it for a deployment.",
+          "Each change adds an itinerary revision with a reason. Arrival cannot precede departure. An old revision number cannot overwrite a newer plan.",
+          "A different approver reviews the latest itinerary. The author cannot approve their own plan, including through a linked person identity. Each plan version can receive only one review decision.",
+          "Itinerary approval does not start travel, record an arrival, or accept a deployment order. Those are separate actions. The earlier journey plans and decisions remain available after a replacement is saved."
         ]
       },
       {
         "id": "travel",
-        "title": "Travel, arrivals, and duty stations",
+        "title": "Record travel and visits in their actual order",
         "paragraphs": [
-          "Once the order is accepted, the record needs to follow what happens in the field. After acceptance, staff can record travel. A responder checks in at the duty station and checks out when leaving. Corrections keep the earlier visit times.",
-          "Supervisors can record time away and changes in status. Daily checks continue through the accepted period, including travel."
-        ]
+          "Actual travel starts from an Accepted deployment and changes it to Traveling. Starting travel creates the relevant daily checks. A responder can also check in directly when no separate travel start is needed.",
+          "Check-in uses the planned duty station and a time within the accepted order dates. It cannot be in the future or before the last checkout. There can be only one open visit for the deployment.",
+          "A physical visit cannot overlap the person’s visit at a different physical place. An open visit must be checked out before another begins. These checks remain separate from an approved order overlap.",
+          "Checking in makes the deployment Active. Checking out closes that visit. Without an end plan, checkout returns the deployment to Traveling; with an end plan, it changes to Returning.",
+          "A coordinator or supervisor can plan a station move of the permitted type. Planning does not close the current visit or claim that the responder has arrived. The responder still checks out and then checks in at the new station.",
+          "A time correction preserves the earlier visit and reason in history. It cannot open a closed visit, close an open one, or create overlapping visits. Check-in and checkout remain the actions that change visit state."
+        ],
+        "diagram": "ops-visit-path"
       },
       {
         "id": "demobilization",
-        "title": "Demobilization has completion checks",
+        "title": "Complete the end plan, not just the end date",
         "paragraphs": [
-          "Returning from an assignment involves more than reaching the planned end date. Demobilization is the process of ending a deployment. The end plan states when the person is expected to finish. Required steps show what remains to be done.",
-          "DART checks due replies and equipment holds before completion. It also requires checkout. Setting a planned end date does not finish the deployment."
+          "Demobilization is the checked process for ending a deployment. A coordinator or supervisor sets a planned end while the person is Active or Ending. The end time must fit inside the accepted period and cannot be in the past.",
+          "The end plan changes the state to Ending. Required end steps must be completed or marked Not needed with a reason. An evaluation-assigned step checks that a review obligation exists unless its exception is recorded.",
+          "Checkout after an end plan changes the state to Returning. When the policy requires return confirmation, staff record the actual return after checkout and no later than now. The planned return is not proof of the actual return.",
+          "Final completion checks outstanding equipment, every open end step, and all daily checks whose reply windows have opened. Required deployment evaluations must also be submitted when the incident policy calls for them.",
+          "An unfinished order revision blocks completion too. The order must be Accepted on its accepted revision. The person must be checked out, have an end plan, and be Returning.",
+          "Passing those checks changes the deployment to Completed and closes its open supervision period. Future pending daily checks are cancelled. Reaching an order’s last date does not perform these actions by itself."
+        ],
+        "diagram": "ops-demobilize"
+      },
+      {
+        "id": "rotation",
+        "title": "Link a replacement without transferring the old order",
+        "paragraphs": [
+          "A replacement connects the outgoing deployment to another person’s order. The outgoing person needs an end plan first. The incoming order must be open and for the same qualification type.",
+          "The incoming person must be different. Their own order still follows selection, review, issue, and acceptance. Linking the replacement does not transfer the old responder’s acceptance or credentials.",
+          "The link records who made it and why. It lets staff follow the handover while preserving the separate orders and deployment histories. The outgoing person’s completion checks still apply."
         ]
       },
       {
         "id": "history",
-        "title": "Reconstruct the deployment",
+        "title": "Keep accepted dates and corrected facts traceable",
         "paragraphs": [
-          "After a deployment, staff may need to reconstruct the assignment and the changes made along the way. The deployment record follows the accepted order into the field. It connects travel to station visits and supervision. Earlier versions stay available after a correction.",
-          "Saved reports use accepted dates. A draft extension does not silently change the reported commitment."
+          "The deployment record connects its accepted order to actual travel, station visits, supervision, duties, and end steps. Each event records who acted and the facts changed. Saved selection comparisons remain attached to their decisions.",
+          "Time away has its own dated status records. A correction or void keeps the earlier entry and affects current scheduling checks. Sensitive status details remain limited to the permitted readers.",
+          "Authorized staff can correct visit times after completion without reopening the deployment. Corrections must still preserve visit state, accepted arrival dates, and non-overlapping visits.",
+          "Reports distinguish accepted commitments from proposed changes and actual visits. Earlier order revisions stay saved after a later acceptance. A draft extension is not evidence that someone accepted more time."
         ]
       }
     ]
