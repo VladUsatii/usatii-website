@@ -1,7 +1,5 @@
 'use client';
-import {useId} from 'react';
-import {FigureReveal} from './motion';
-import styles from './dart.module.css';
+import {Label,Paper,Book,State,Gate,Wire,WorkflowFigure} from './workflow-primitives';
 
 const captions={
  'learn-course-versions':'Classes A and B keep course version 1. A changed lesson creates a new course draft; publication makes version 2 available for a later class.',
@@ -14,12 +12,6 @@ const captions={
  'learn-certification-review':'The certificate file is checked before Pending review. Only permitted state changes are shown. Expired records cannot be verified or restored; renewal is a new linked record.',
  'learn-transcript-evidence':'The transcript combines three kinds of evidence without merging their meanings. In the example, a Verified training row can still be Expired and have a Stale source.',
 };
-function Label({x,y,children,size=18,anchor='middle',color='#333',max=24}){const words=String(children).split(' '),lines=[];let line='';for(const word of words){if((line+' '+word).trim().length>max){lines.push(line);line=word;}else line=(line+' '+word).trim();}if(line)lines.push(line);return <text x={x} y={y} textAnchor={anchor} fill={color} stroke="none" fontSize={size} fontFamily="var(--font-inter)">{lines.map((l,i)=><tspan x={x} dy={i?21:0} key={i}>{l}</tspan>)}</text>;}
-function Paper({x,y,title,detail,color='#477cab',width=170}){return <g stroke={color} strokeWidth="1.3" fill="white"><path d={`M${x} ${y}h${width-18}l18 18v110H${x}Z`}/><path d={`M${x+width-18} ${y}v18h18`} fill="none"/><Label x={x+width/2} y={y+42} size={18} max={16} color={color}>{title}</Label>{detail&&<Label x={x+width/2} y={y+88} size={15} max={22} color="#666">{detail}</Label>}</g>;}
-function Book({x,y,title,detail,color='#8060a8'}){return <g stroke={color} strokeWidth="1.3" fill="white"><path d={`M${x} ${y+8}q42-18 85 0 43-18 85 0v110q-43-18-85 0-43-18-85 0Z`}/><path d={`M${x+85} ${y+8}v110`} fill="none"/><Label x={x+85} y={y+151} color={color}>{title}</Label><Label x={x+85} y={y+179} size={15} max={22} color="#666">{detail}</Label></g>;}
-function State({x,y,label,detail,color='#278575'}){return <g><circle cx={x} cy={y} r="10" fill="white" stroke={color} strokeWidth="2"/><Label x={x} y={y+35} color={color}>{label}</Label>{detail&&<Label x={x} y={y+78} size={15} max={22} color="#666">{detail}</Label>}</g>;}
-function Gate({x,y,label}){return <g><path d={`M${x} ${y-62}l88 62-88 62-88-62Z`} fill="#fcfaf6" stroke="#ac6c29" strokeWidth="1.3"/><Label x={x} y={y-19} size={16} max={17} color="#805522">{label}</Label></g>;}
-function Wire({d,label,x,y,dashed=false}){return <g><path d={d} fill="none" stroke="#8c9992" strokeWidth="1.3" strokeDasharray={dashed?'5 5':undefined} markerEnd="var(--workflow-arrow)"/>{label&&<Label x={x} y={y} size={14} color="#666">{label}</Label>}</g>;}
 function CourseVersions(){return <>
  <Book x={45} y={70} title="Published course v1" detail="Names lesson versions"/>
  <Wire d="M220 120H385V72H440"/><Wire d="M385 120V248H440"/>
@@ -127,6 +119,6 @@ const scenes={
  'learn-transcript-evidence':[TranscriptEvidence,760],
 };
 export default function LearningWorkflow({kind}){
- const id='learning-arrow-'+useId().replaceAll(':','');const entry=scenes[kind];if(!entry)return null;const[Scene,height]=entry;
- return <FigureReveal className={styles.figure}><div className={styles.learningFigureScroll} tabIndex={0} role="region" aria-label="Learning workflow diagram"><svg viewBox={`0 0 1000 ${height}`} className={styles.learningWorkflow} role="img" aria-label={captions[kind]} style={{'--workflow-arrow':`url(#${id})`}}><title>{captions[kind]}</title><defs><marker id={id} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1l6 3-6 3" fill="none" stroke="#8c9992"/></marker></defs><Scene/></svg></div><figcaption>{captions[kind]}</figcaption></FigureReveal>;
+ const entry=scenes[kind];if(!entry)return null;const[Scene,height]=entry;
+ return <WorkflowFigure caption={captions[kind]} height={height}><Scene/></WorkflowFigure>;
 }

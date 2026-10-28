@@ -51,3 +51,5 @@ The left navigation now nests section anchors under each topic. The document use
 ## Deeper workflow audit
 
 The first section-level audit covers the three Learning pages. See `docs/dart-learning-review.md` for the 17-section source map, corrected distinctions, nine dedicated workflows, and remaining scope. The earlier shared scenes remain on other topics until those topics receive their own audit.
+
+The second audit covers qualifications/readiness and professional development. See `docs/dart-workforce-review.md` for the 11-section source map and eight dedicated workflows. Technical terms now have optional italic definitions on hover or keyboard focus across DART body prose; this presentation change does not imply that other pages have completed their capability audit.

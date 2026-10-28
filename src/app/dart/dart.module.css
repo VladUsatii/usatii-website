@@ -54,3 +54,6 @@
 @media(max-width:767px){.navContent{margin-top:20px}.sectionTree a{font-size:12px}}
 
 .learningFigureScroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:12px 0}.learningFigureScroll:focus-visible{outline:2px solid #777;outline-offset:4px}.learningWorkflow{display:block;width:100%;min-width:680px;height:auto}
+
+.definedTerm{font-weight:600;text-decoration-line:underline;text-decoration-style:dotted;text-decoration-color:#888;text-decoration-thickness:1px;text-underline-offset:4px;cursor:help}.definedTerm:focus-visible{outline:1px solid #777;outline-offset:3px;border-radius:1px}.definitionTooltip{position:fixed;z-index:1000;padding:12px 15px;background:#fff;color:#292929;border:1px solid #dedede;box-shadow:0 5px 22px #00000012;font-family:var(--font-inter),Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.6;pointer-events:none}.definitionTooltip i{font-style:italic}
+.section p a.definedTerm{text-decoration-style:dotted;text-underline-offset:4px;font-weight:600}

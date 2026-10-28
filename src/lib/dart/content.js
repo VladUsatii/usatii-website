@@ -176,47 +176,67 @@ export const dartPages = [
     "sections": [
       {
         "id": "requirements",
-        "title": "Positions and their requirements",
+        "title": "Request a position and open its task book",
         "paragraphs": [
-          "A position may require more than a job title or past experience. A qualification shows that a person meets the rules for a position. Responders can explore those rules and request the qualifications they want to earn.",
-          "A Position Task Book lists the tasks and training required. A responder can work on several task books at once. Each one keeps the version of the requirements it uses.",
-          "FEMA’s Position Task Book templates are part of its National Qualification System. They show the tasks a person must demonstrate for a defined position. The organization chooses the approved definitions used in DART."
+          "A qualification is a recorded decision that a person meets the rules for a position. Before earning it, the person works through a Position Task Book. The task book names the tasks and training they must complete.",
+          "FEMA’s Position Task Book templates describe tasks for defined positions. They are part of the National Qualification System. The organization chooses the approved rules used in DART; a template alone does not grant anyone a qualification.",
+          "A responder can request up to twenty different qualifications together. Each request names a current, published version and starts as Pending. A different qualification administrator reviews it. Approval opens the task book; it does not award a credential.",
+          "A reviewer can return a request for changes or deny it. The responder can resubmit a returned request or withdraw an open one. Each decision stays in history. Staff with the right authority can also assign task books directly.",
+          "Each task book keeps its assigned version. A later template cannot change its tasks. A person can work on books for different positions at the same time, but cannot open competing books for the same position. Linked person records are checked for duplicates too."
         ],
-        "diagram": "readiness"
+        "diagram": "workforce-request"
       },
       {
         "id": "evidence",
-        "title": "Evidence, evaluation, and certification",
+        "title": "From task evidence to a certification decision",
         "paragraphs": [
-          "A responder needs a way to show that the required work has been completed. Responders submit evidence for their tasks. Evaluators review that evidence and record the result. A certifier makes the qualification decision.",
-          "These roles are separate. Completing one task does not award the whole qualification. A mentor relationship does not grant the right to certify someone.",
-          "A repeated attempt keeps the earlier work. Renewals also keep the past credential and its dates. Staff can follow the full path to the current result."
-        ]
+          "Task evidence describes what the responder did and when it was observed. The responder or an authorized qualification administrator adds it to an open or returned task book. The task must belong to that book’s saved version.",
+          "An observation cannot be dated in the future. An optional attachment must belong to the person and be released for use. Quarantine holds a file until its required checks pass, so it cannot support the task yet.",
+          "An evaluator checks each piece of evidence and marks it Verified or Returned, with a reason. The evaluator needs authority for that person and qualification. They cannot be the responder or the person who wrote the evidence.",
+          "A reviewed item is not overwritten. A correction needs new evidence, so the earlier account and review remain visible. A returned task book can receive the work needed to address its review.",
+          "Every task needs verified evidence before the packet can be submitted. Required training must also be verified and current. Submission saves the requirements and evidence used for that check, then changes the book to Submitted.",
+          "A certifier makes the separate Approved, Returned, or Denied decision. The certifier cannot be the responder. Approval checks the tasks and training again: a source that became stale after submission can still stop the award.",
+          "Approval creates an Active credential: the saved award and its dates. Its expiry must follow the saved qualification rules. Evaluator and certifier are separate permissions; one does not grant the other. Verified tasks alone do not create the credential."
+        ],
+        "diagram": "workforce-evidence"
       },
       {
         "id": "availability",
-        "title": "Availability over the requested interval",
+        "title": "Availability must cover the whole assignment",
         "paragraphs": [
-          "Having the right qualification does not always mean someone can take an assignment. A responder records when they can and cannot deploy. The dates use their selected time zone. A supervisor reviews changes that need approval.",
-          "A readiness check covers the dates requested for the job. Someone may be ready next week but unavailable today. A credential may also expire during the requested assignment.",
-          "An interval without evidence is unknown. A pending request does not mean the person is available. Approved dates cannot overlap."
-        ]
+          "Availability states when a person can take an assignment. A request records a start date, end date, and time zone. The person chooses Available, Unavailable, or Nondeployable and a reason category.",
+          "New requests begin as Pending. A different supervisor must approve or deny them. The person can withdraw a pending request. A pending request does not confirm that they can deploy.",
+          "Approved intervals cannot overlap. To change part of an approved interval, the new request must stay inside its dates and use the same time zone. Approval replaces that part and keeps the unchanged dates on either side.",
+          "The readiness check compares actual times, using each interval’s time zone. Approved Available intervals must cover the entire requested period without a gap. Any overlapping approved Unavailable or Nondeployable interval blocks availability.",
+          "Availability also has a freshness limit set by the qualification rules. Old availability becomes Stale. A period with no full approved coverage is Unknown, or Pending when a request awaits review. None of those states is treated as Available."
+        ],
+        "diagram": "workforce-availability"
       },
       {
         "id": "explanation",
-        "title": "Understand a readiness result",
+        "title": "Read the reasons behind a readiness result",
         "paragraphs": [
-          "A coordinator needs to understand a readiness result before acting on it. The readiness result shows which requirements were met and which were not. Staff can open the training evidence or qualification record behind the result.",
-          "Responder selection also checks availability and other deployments. A saved selection keeps the facts used at the time. A later change does not rewrite that decision."
-        ]
+          "Readiness answers a question for particular dates: does this person meet the rules for this position over this whole period? The check names a qualification version, start and end dates, and time zone.",
+          "The credential must be Active and cover the full period. A credential that starts later is Not yet effective. One that expires before the assignment ends is Expired during interval. The requirement version must also be effective by the requested start.",
+          "Each required course is checked separately. DART uses the latest source revision for a provider record. Training must be Verified, completed by the start, and valid through the end. Applicable minimum course-version rules also matter.",
+          "Outside training needs a sufficiently recent successful source update. An old feed can make training Stale even when the recorded completion is recent. Missing, rejected, or earlier-version training appears as a reason rather than being counted as a pass.",
+          "The result includes the credential, task evidence, training checks, and availability used. Meets readiness requirements requires all the readiness checks to pass. Inaccessible linked records or conflicting linked credentials can also leave readiness Not confirmed.",
+          "Readiness does not issue an order or reserve a staffing slot. Responder selection also checks deployment conflicts and other staffing rules. Its saved decision keeps the facts used at that time."
+        ],
+        "diagram": "workforce-readiness"
       },
       {
         "id": "history",
-        "title": "Keep the history of credential decisions",
+        "title": "Corrections, repeat attempts, and renewal",
         "paragraphs": [
-          "Evidence that supported an earlier decision may no longer be valid. A revoked certification or corrected training result can change readiness. DART keeps the earlier evidence and the later decision. A reviewer can see why the current result differs.",
-          "The organization supplies its approved qualification rules. It also assigns evaluation and certification rights. DART applies those rules and records the decisions."
-        ]
+          "A credential’s history shows the award and later decisions. A different authorized certifier can suspend or revoke it with a reason. These actions keep the earlier award instead of deleting it.",
+          "A Suspended credential can return to Active only while it is unexpired and its required training is current. A Revoked or Superseded credential has no direct restore path. An Active label alone does not bypass the date checks used for readiness.",
+          "A denied task book has a separate repeat-attempt path. A different qualification administrator starts the next attempt under the same saved rules. The earlier book stays linked, and the new attempt starts without copying its task evidence.",
+          "Renewal is different from repeating a denial. A qualification administrator starts a new task-book cycle from an eligible prior credential. DART selects the latest current, published, non-retired qualification version. Another open book for that position blocks a competing renewal.",
+          "The old credential stays in history while the renewal work is completed. Approval of the renewal creates a new linked credential and marks the old one Superseded, meaning the new award replaces it for current use. A prior credential that was revoked or superseded before the award stops that renewal.",
+          "A later training correction can change a new readiness result without rewriting an earlier certification snapshot. Staff can follow both the original decision and the evidence that now prevents deployment."
+        ],
+        "diagram": "workforce-renewal"
       }
     ]
   },
@@ -228,35 +248,70 @@ export const dartPages = [
     "sections": [
       {
         "id": "mentors",
-        "title": "Mentor relationships with dates and history",
+        "title": "Mentoring has its own people, dates, and reviews",
         "paragraphs": [
-          "Learning a new role often involves support from someone with experience. A mentor supports a person’s development. Staff can record when the relationship starts and ends. Meetings and reviews stay attached to that relationship.",
-          "Earlier mentors remain in history. Assigning a mentor does not give that person the right to award a qualification."
-        ]
+          "A mentor helps a person develop their skills. A mentor administrator records the relationship’s goals and dates. The mentor must be a different person in the same organization. The same pair cannot have overlapping assignments.",
+          "The person or their assigned mentor can record a meeting. Its time must be in the past and inside that relationship’s dates. A new mentor does not inherit the earlier mentor’s private meeting notes.",
+          "Only the assigned mentor can write that relationship’s mentor review. It records an observation time, strengths, and next steps. The observation must also fall within the saved assignment dates.",
+          "A correction creates a new review linked to the previous one, with a reason. It must correct the latest review rather than branching from an older version. Earlier observations remain available to authorized readers.",
+          "Ending the relationship cannot cut off a meeting or review already recorded after the proposed end. Extending an ended relationship needs a new assignment. Mentor access does not by itself grant plan-review or qualification-certification rights."
+        ],
+        "diagram": "workforce-mentoring"
       },
       {
         "id": "plans",
-        "title": "Individual plans and evidence of progress",
+        "title": "Agree on a plan before recording progress",
         "paragraphs": [
-          "A person working toward a new role needs a clear path to follow. A development plan states what a person is working toward. Goals can link to courses and milestones. The person records progress and supporting evidence.",
-          "A reviewer checks the work separately. Linked development records let authorized staff inspect related history."
+          "A development plan sets a goal for a person’s growth and a target date. The person or an authorized reviewer can create a draft. Each goal has its own date within the plan’s target.",
+          "A goal can name a course or a particular qualification version. It can also be a general goal with neither link. One goal cannot use both kinds of link, because each needs different evidence.",
+          "The person submits a plan with at least one goal. A different reviewer approves it or returns it for changes. Progress is recorded only after the plan is Approved.",
+          "Goals can be added or changed while the plan is Draft or Returned. A goal with reported work cannot be rewritten. Saved changes keep their earlier values and reasons, and a stale plan version cannot overwrite newer work.",
+          "Approval agrees on the planned work. It does not finish the goals, award course credit, or grant a qualification. Those outcomes need their own evidence and decisions."
         ],
-        "diagram": "development"
+        "diagram": "workforce-plan"
       },
       {
-        "id": "evaluations",
-        "title": "Deployment performance reviews",
+        "id": "milestones",
+        "title": "Use milestones to report smaller steps",
         "paragraphs": [
-          "Time in the field can show how well a responder puts their training into practice. Deployment reviews record how a responder performed during an assignment. The review uses the deployment and supervision dates. Incident rules determine when a review is due.",
-          "A correction keeps the submitted review. It adds the changed version and the reason. Staff can inspect both."
+          "A milestone is a smaller dated step inside a goal. Its target cannot be later than the goal’s target. Staff can change planned milestones while the plan is Draft or Returned and the goal has not started.",
+          "Once the plan is Approved, only the person reports their milestone progress. A step can be In progress or Reported done. The history records each update and its reason.",
+          "Every milestone must be Reported done before the person can report the whole goal done. The reviewer checks that condition again before verifying the goal.",
+          "A set of completed milestones is still a progress report. It does not replace the independent evidence check for the goal."
         ]
       },
       {
-        "id": "connection",
-        "title": "Development connects to readiness",
+        "id": "evidence",
+        "title": "Match the evidence to the goal",
         "paragraphs": [
-          "Development is easier to follow when goals connect to the work needed to reach them. Development plans can point to the training a person needs for a new role. Readiness checks whether they have met the qualification requirements.",
-          "Training-needs reports show where learning is still missing. Program owners can use that information to plan classes and follow progress."
+          "Verifying a goal means checking that the result matches what was planned. The person first reports the goal done. A different authorized reviewer then selects the evidence and records the verification.",
+          "A course goal needs a training record for that course and person. It must be the latest provider revision, be Verified, and be valid on the review date. An outside source must also meet its freshness limit.",
+          "A qualification goal needs the person’s Active credential for the exact qualification ID and version named in the goal. The credential must cover the review date. A course completion cannot stand in for that credential.",
+          "A general goal can use a released document belonging to the person. A file cannot replace the matching training or credential needed by a linked goal. The verification keeps the selected evidence in the development history.",
+          "Only an Approved plan with every goal Verified can be Closed by a different reviewer. A closed plan cannot take more work; further development needs a new plan."
+        ]
+      },
+      {
+        "id": "evaluations",
+        "title": "Review work performed during a deployment",
+        "paragraphs": [
+          "A deployment performance review records how someone worked under an assigned supervisor. It is separate from a mentor review or a course evaluation. Each uses a different relationship and evidence.",
+          "Incident rules set the required supervision time for a review obligation. The operations workflow creates an obligation for a qualifying supervisor assignment. Its due date is seven days after that supervision threshold. The assigned supervisor needs current incident supervision rights to write and submit it.",
+          "The supervisor chooses a published review form. Its rubric lists the review items and allowed ratings. Every item needs an answer. The review period must stay within their supervision dates and cannot extend into the future.",
+          "Saving creates a Draft. Draft ratings and comments stay private to the assigned author. The responder and development reviewers see Submitted revisions, not unfinished edits.",
+          "Submitting preserves that version and marks the obligation Submitted. A later correction creates a new draft revision under the original form version. The earlier submitted review stays visible until the corrected version is submitted.",
+          "A reviewer cannot replace a newer revision using an old form. Each saved or submitted revision retains its period, ratings, narrative, reason, and author. Writing a review does not itself certify a qualification."
+        ],
+        "diagram": "workforce-evaluation"
+      },
+      {
+        "id": "connection",
+        "title": "Keep development progress separate from readiness",
+        "paragraphs": [
+          "A plan points toward future work. Readiness checks the evidence a person holds for an assignment now. Keeping those questions separate prevents a reported goal from being mistaken for an earned credential.",
+          "A course link can connect a goal to the training the person needs. The learning workflow awards course credit. A qualification link points to a saved requirement version; the task-book and certification workflow awards its credential.",
+          "Training-needs reports help staff find missing learning and plan classes. A report or plan approval does not enroll the person automatically or waive a class’s admission rules.",
+          "Authorized staff can inspect development records linked through reviewed person identities. Each linked record still needs its own access check. A link does not grant access to every plan, meeting, or private draft review."
         ]
       }
     ]
