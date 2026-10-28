@@ -3,10 +3,13 @@ import { getAllTradeRoutes } from "@/lib/trades-seo-data";
 import { getAllCaseStudySlugs } from "@/lib/case-studies";
 import { isHiddenPublicPath } from "./public-route-visibility";
 import { roles } from "@/lib/careers/roles";
+import { dartPages, dartHref } from "./dart/content";
 import { events } from "@/lib/events";
 
 export function getSitemapPriority(path) {
   if (path === "/") return 1;
+  if (path === "/dart") return 0.95;
+  if (path.startsWith("/dart/")) return 0.9;
   if (path === "/construction" || path === "/emergency-management") return 0.95;
   if (path === "/software/software-waste-audit") return 0.95;
   if (path.startsWith("/software/")) return 0.9;
@@ -32,6 +35,7 @@ export async function getCanonicalSitemapPaths() {
     ...getAllTradeRoutes(),
     ...caseStudyRoutes,
     "/emergency-management",
+    ...dartPages.map(({ slug }) => dartHref(slug)),
     "/documentation",
     "/documentation/bootcamp",
     "/news",

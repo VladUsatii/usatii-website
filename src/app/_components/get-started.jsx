@@ -8,7 +8,7 @@ import styles from "./work-home.module.css";
 const products = [
   { label: "For Communications & Social Media", href: "https://oasis.usatii.com", icon: Megaphone, color: "#9457d8" },
   { label: "For Construction Management", href: "/construction", icon: Construction, color: "#b87b26" },
-  { label: "For Emergency Management", href: "/emergency-management", icon: Radio, color: "#407c73" },
+  { label: "For Emergency Management", href: "/dart", icon: Radio, color: "#407c73" },
   { label: "For Custom Software Needs", href: "/software", icon: Code2, color: "#597ca6" },
 ];
 export default function GetStarted({ label = "Get started", align = "left" }) {

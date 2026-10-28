@@ -6,6 +6,7 @@ import { getCanonicalSitemapPaths } from "./sitemap-data";
 import { getAllCaseStudies } from "./case-studies";
 import { SOFTWARE_PAGE_DATA, INDUSTRY_PAGE_DATA, LOCATION_PAGE_DATA, COMPARE_PAGE_DATA, RESOURCE_PAGE_DATA } from "./trades-seo-data";
 import { SERVICES } from "./services-seo";
+import { dartPages, dartHref } from "./dart/content";
 import { events } from "./events";
 
 const friendly = (slug) => slug.split("-").map(word => word[0]?.toUpperCase() + word.slice(1)).join(" ");
@@ -25,6 +26,7 @@ let cachedIndex;
 async function buildIndex() {
   const [paths, studies] = await Promise.all([getCanonicalSitemapPaths(), getAllCaseStudies()]);
   const dynamic = new Map();
+  for (const page of dartPages) dynamic.set(dartHref(page.slug), { title: page.slug ? `${page.title} | DART` : "DART emergency management software", description: page.description, body: page.sections.flatMap(section => [section.title, ...section.paragraphs]).join(" ") });
   for (const [prefix, entries] of [["software", Object.values(SOFTWARE_PAGE_DATA)], ["industries", INDUSTRY_PAGE_DATA], ["locations", LOCATION_PAGE_DATA], ["compare", COMPARE_PAGE_DATA], ["resources", RESOURCE_PAGE_DATA]]) {
     for (const entry of entries) dynamic.set(`/${prefix}/${entry.slug}`, entry);
   }

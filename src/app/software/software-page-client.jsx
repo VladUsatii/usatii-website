@@ -25,7 +25,7 @@ const platforms = [
     description: "Workspace that unifies and automates every department within construction companies.",
     href: "/construction",
   },
-  { index: "04", name: "Usatii for emergency management", description: "DART connects incident coordination, personnel readiness, and emergency response operations.", href: "/emergency-management" },
+  { index: "04", name: "Usatii for emergency management", description: "DART connects incident coordination, personnel readiness, and emergency response operations.", href: "/dart" },
 ];
 
 function Reveal({ children, className = "", delay = 0, amount = 0.18 }) {

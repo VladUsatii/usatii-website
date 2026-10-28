@@ -88,6 +88,7 @@ export default function EmergencyManagementPage() {
             A governed operating environment for workforce readiness, incident staffing, deployment, responder accountability, equipment, learning, and reporting.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-3">
+            <TextLink href="/dart">Explore DART capabilities</TextLink>
             <TextLink href={BOOK_URL}>Discuss a response system</TextLink>
             <TextLink href="/quote-request">Send requirements or an RFI</TextLink>
           </div>

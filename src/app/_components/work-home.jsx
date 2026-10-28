@@ -11,7 +11,7 @@ import styles from "./work-home.module.css";
 const cards = [
   { name: "OASIS", src: "/news/marketing-team-collaboration.webp", href: "https://oasis.usatii.com", action: "Explore OASIS" },
   { name: "REBUILDIT", src: "/about/construction.webp", href: "/news/introducing-usatii-for-construction", action: "Read case study" },
-  { name: "DART", src: "/emergency-management/emergency-response-hero.webp", href: "/emergency-management", action: "Explore DART" },
+  { name: "DART", src: "/emergency-management/emergency-response-hero.webp", href: "/dart", action: "Explore DART" },
 ];
 const logos = [
   ["rebuildit", "Rebuildit"], ["kalm", "KALM"], ["bishop", "Bishop"], ["resolution", "Resolution, Inc."],
