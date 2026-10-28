@@ -23,7 +23,7 @@ The application source is the neighboring FEMA repository. No application data, 
 | Communications | `lib/chats.js`, `lib/chat-calls.js`, `lib/notification-delivery.js`, `lib/notification-receipts.js`, communications help |
 | Permissions and protection | `lib/auth.js`, `lib/permission-catalog.js`, `lib/permissions.js`, `lib/record-protection.js`, `lib/records-management.js` |
 | Exercises | `lib/exercises.js`, `lib/exercise-database.js`, exercise and Isaias guides |
-| Offline, languages, support, changes | `lib/offline-responder.js`, `lib/offline-vault.js`, `app/api/translate/route.js`, `lib/support.js`, `lib/system-changes.js` |
+| Offline, languages, support, changes | `lib/offline-responder.js`, `public/offline/vault.js`, `app/api/translate/route.js`, `lib/support.js`, `lib/system-changes.js` |
 | Federal and delivery | `RFI_REVIEW.md` (including October 16 update), `REFERENCE.md`, README deployment boundary; current USATII federal job postings |
 | 61-capability index | `TOS_RFI Survey DTS 2.0_Finalized.xlsx`, Necessary Capabilities C2:C62; other survey sheets for architecture, cost, schedule, and risk |
 | Public help index | `lib/help-guides.js` and its imported task modules, excluding `developmentTest` tasks (388 tasks in this snapshot) |
@@ -46,12 +46,14 @@ Each section now introduces the reason for the workflow before its mechanics. Re
 
 The evaluation page publishes a selected summary of saved October 14–18 application checks at `/dart/evaluation-results.json`. The summary preserves the initial broad-run failures and the focused follow-up scope. The chart counts service, HTTP, database, and browser tests; it is not a speed or concurrency benchmark. NOAA and USGS examples identify their separate test workspaces and live public sources. No private production records or raw internal logs were published.
 
-The left navigation now nests section anchors under each topic. The document uses one content width and no separate right-side contents list. Wireframes use the construction article’s shared 30-degree projection. The evaluation figure reuses the article’s chart styles.
+The left navigation now nests section anchors under each topic. The document uses one content width and no separate right-side contents list. Section workflow figures use shared SVG record, decision, and outcome primitives; the earlier generic scenes have been removed. The evaluation figure reuses the article’s chart styles.
 
 ## Deeper workflow audit
 
-The first section-level audit covers the three Learning pages. See `docs/dart-learning-review.md` for the 17-section source map, corrected distinctions, nine dedicated workflows, and remaining scope. The earlier shared scenes remain on other topics until those topics receive their own audit.
+The first section-level audit covers the three Learning pages. See `docs/dart-learning-review.md` for the 17-section source map, corrected distinctions, nine dedicated workflows, and remaining scope. Later audit chunks below complete the remaining topics.
 
 The second audit covers qualifications/readiness and professional development. See `docs/dart-workforce-review.md` for the 11-section source map and eight dedicated workflows. Technical terms now have optional italic definitions on hover or keyboard focus across DART body prose; this presentation change does not imply that other pages have completed their capability audit.
 
 The third audit covers incidents, responder staffing, and deployment orders/travel. See `docs/dart-operations-review.md` for the 19-section code/guide source map and twelve distinct workflows, including resource authority, history-based ranking, trainee duties, accepted extensions, actual visits, and checked demobilization.
+
+The fourth audit covers the remaining 23 pages and 114 sections. See `docs/dart-remaining-review.md` for the source and guide map, workflow corrections, and validation boundaries. Thirty-six distinct figures replace the remaining shared scenes. Together, the four audits cover all 31 topic pages; this completes the section-level documentation audit, not application or agency acceptance testing.
