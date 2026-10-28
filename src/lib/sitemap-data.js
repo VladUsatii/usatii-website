@@ -32,8 +32,6 @@ export async function getCanonicalSitemapPaths() {
     ...getAllTradeRoutes(),
     ...caseStudyRoutes,
     "/emergency-management",
-    "/editor",
-    "/editor/changelog",
     "/documentation",
     "/documentation/bootcamp",
     "/news",
