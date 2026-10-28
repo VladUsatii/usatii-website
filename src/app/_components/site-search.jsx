@@ -44,7 +44,7 @@ export default function SiteSearch() {
     } catch (error) { if (error.name !== "AbortError") setStatus("error"); }
   };
   return <Dialog.Root open={open} onOpenChange={changeOpen}>
-    <Dialog.Trigger asChild><button className={styles.searchTrigger} aria-label="Search website"><Search size={19} strokeWidth={1.7} aria-hidden="true" /></button></Dialog.Trigger>
+    <Dialog.Trigger asChild><button className={styles.searchTrigger} aria-label="Search website"><Search size={15} strokeWidth={1.7} aria-hidden="true" /></button></Dialog.Trigger>
     <Dialog.Portal>
       <Dialog.Overlay className={styles.searchOverlay} />
       <Dialog.Content className={styles.searchPage} onOpenAutoFocus={event => { event.preventDefault(); input.current?.focus(); }}>

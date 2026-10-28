@@ -3,6 +3,7 @@ import {dartHref} from '@/lib/dart/content';
 import {dartReferences} from '@/lib/dart/references';
 
 const topics = [
+ ['evaluation',['evaluation results','saved evaluation records']],
  ['core-concepts',['source identifiers','effective time','recorded time']],
  ['personnel',['personnel records','personnel batches','personnel record','source identifier','person links']],
  ['readiness',['Position Task Books','Position Task Book','task books','task book','readiness','qualifications','availability']],
@@ -39,6 +40,6 @@ export default function LinkedText({text,current}) {
  for(const term of terms){const pattern=new RegExp(`\\b${term.phrase.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`,'ig');let match;while((match=pattern.exec(text))!==null)matches.push({...term,start:match.index,end:match.index+match[0].length});}
  matches.sort((a,b)=>a.start-b.start||(b.end-b.start)-(a.end-a.start));
  const nodes=[];const used=new Set();let end=0,internalCount=0;
- for(const match of matches){const target=match.href||dartHref(match.slug);if(match.start<end||used.has(target)||(!match.href&&internalCount>=3))continue;nodes.push(text.slice(end,match.start));nodes.push(<Link key={match.start} href={target}>{text.slice(match.start,match.end)}</Link>);end=match.end;used.add(target);if(!match.href)internalCount++;}
+ for(const match of matches){const target=match.href||dartHref(match.slug);if(match.start<end||used.has(target)||(!match.href&&internalCount>=3))continue;nodes.push(text.slice(end,match.start));nodes.push(<Link key={match.start} href={target} style={target.startsWith("https://")?{"--source-icon":`url("https://www.google.com/s2/favicons?domain=${new URL(target).hostname}&sz=32")`}:undefined}>{text.slice(match.start,match.end)}</Link>);end=match.end;used.add(target);if(!match.href)internalCount++;}
  nodes.push(text.slice(end));return nodes;
 }

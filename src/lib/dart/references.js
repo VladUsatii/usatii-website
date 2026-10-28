@@ -2,6 +2,9 @@
 const survey = 'https://sam.gov/api/prod/opps/v3/opportunities/resources/files/07c6ef77d049424985762b532d98dffa/download';
 const notice = 'https://sam.gov/opp/a0c2acad204f428585857e6a736d179a/view';
 export const dartReferences = [
+  { phrase: 'downloadable evaluation summary', href: '/dart/evaluation-results.json' },
+  { phrase: 'Wikimedia', href: 'https://stream.wikimedia.org/' },
+  { phrase: 'USGS', href: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php' },
   ...['FEMA’s survey', 'FEMA’s workforce and deployment survey', 'survey workbook'].map(phrase => ({ phrase, href: survey })),
   { phrase: 'FEMA’s public notice', href: notice },
   { phrase: 'RFI overview', href: 'https://sam.gov/api/prod/opps/v3/opportunities/resources/files/d4f4fd5a31c141a294922a79fc1bc317/download' },

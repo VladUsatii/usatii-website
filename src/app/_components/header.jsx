@@ -23,11 +23,12 @@ export default function Header() {
           <Link href="/software" className="flex h-10 items-center rounded-mdx px-2 hover:bg-surface hover:text-ink">Software</Link>
           <Link href="/industries" className="flex h-10 items-center rounded-mdx px-2 hover:bg-surface hover:text-ink">Industries</Link>
           <Link href="/about" className="flex h-10 items-center rounded-mdx px-2 hover:bg-surface hover:text-ink">Company</Link>
+          <SiteSearch />
         </nav>
         <div className={styles.controls}>
+          <span className={styles.mobileSearch}><SiteSearch /></span>
           <GetStarted label="Try Usatii" align="right" />
           <Link href="/quote-request" className={`${homeStyles.sales} ${styles.sales}`}>Contact sales <ArrowUpRight size={16} aria-hidden="true" /></Link>
-          <SiteSearch />
         </div>
       </div>
     </header>

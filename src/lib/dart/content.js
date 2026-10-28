@@ -41,7 +41,8 @@ export const dartPages = [
         "title": "Plan, report, and reconstruct",
         "paragraphs": [
           "A response plan also needs to account for what might happen next. Surge planning tests whether the workforce can meet several incident needs at once. A coordinator can compare rest policies and see where staffing falls short. Readiness forecasts show gaps that may appear in the coming months.",
-          "Decision replay shows the facts used for an earlier staffing choice. Saved reports keep a fixed copy of results. Later changes to the source records do not rewrite that copy."
+          "Decision replay shows the facts used for an earlier staffing choice. Saved reports keep a fixed copy of results. Later changes to the source records do not rewrite that copy.",
+          "Evaluation results show how DART has been checked with saved tests and live public data. The evidence includes receipt handling and repeat-safe publication."
         ]
       },
       {
@@ -798,6 +799,110 @@ export const dartPages = [
         "paragraphs": [
           "Reporting can help teams prepare for gaps as well as describe current work. Staffing forecasts compare demand with workforce evidence. Training-needs reports identify learning gaps. Outcomes reports help staff review what training achieved.",
           "A live report can refresh current status. A saved report preserves a fixed result. Users can choose the form that fits the question."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "evaluation",
+    "group": "Analysis and planning",
+    "title": "Evaluation and results",
+    "description": "Review recorded tests and live-data examples from the DART application. See what was checked and what the results show.",
+    "sections": [
+      {
+        "id": "evidence",
+        "title": "What these evaluations cover",
+        "paragraphs": [
+          "A capable system needs to show that its workflows work under review, retries, and changing records. DART has saved evaluations for those cases. This page explains selected results recorded in October 2026.",
+          "The saved evaluation records include automated tests and live public-data examples. Each result belongs to a dated run and a defined setup. The downloadable evaluation summary retains the counts and the limits of those runs.",
+          "These are application evaluations. They do not establish an agency production authorization or a measured capacity for a disaster-scale deployment."
+        ]
+      },
+      {
+        "id": "integration-checks",
+        "title": "Imports, exports, and delivery receipts",
+        "paragraphs": [
+          "A connection needs to behave correctly when a reply is lost or the same message arrives again. The October 16 evaluation checked automatic data exchanges and provider receipt handling.",
+          "The final focused runs passed 56 service checks and 21 HTTP checks. Four native PostgreSQL checks and seven browser checks also passed. Each layer tested a different part of the workflow.",
+          "The earlier broad run had three failures and one skipped check across 594 tests. The three failures were fixed and passed in focused follow-up runs. The entire broad suite was not rerun. The evidence summary preserves this distinction."
+        ],
+        "evaluation": "checks"
+      },
+      {
+        "id": "live-data",
+        "title": "Live source data through the operational workflow",
+        "paragraphs": [
+          "A source is useful when operators can trace its data through mapping and into the work screen. An October 18 example read a live NOAA water-level record. The source value of 1.31 meters was mapped to 4.298 feet.",
+          "The record was applied and published to a page in a separate test workspace. Repeating application retained the Applied result. The same evaluation also captured 91 Wikimedia stream events and published 91 records while retaining the last event ID.",
+          "A separate USGS example combined eight records from two public requests. Table, map, chart, and card views each exposed the eight records. Repeated publication added no duplicate records. An exact record match could be undone without discarding the source.",
+          "These examples used real public sources with separate local test accounts. They demonstrate data capture and use. They do not claim a live FEMA interface."
+        ]
+      },
+      {
+        "id": "guided-work",
+        "title": "Guided work and recovery",
+        "paragraphs": [
+          "Guidance needs to help someone continue when they return to an unfinished task. The October 18 NOAA walkthrough record contains 509 steps across 21 parts. It records recovery checks for a wrong account and a wrong work view.",
+          "The workflow reopened a saved API and selected its saved full capture. It also linked records and completed a task. An outbound test reached an HTTP echo service in one attempt.",
+          "The source values were real NOAA readings. Limit-crossing tests used clearly marked controlled values in a separate review. The echo result proves HTTP delivery to the test service, not completion of an agency case."
+        ]
+      },
+      {
+        "id": "incident-exercise",
+        "title": "An incident through deployment and return",
+        "paragraphs": [
+          "An incident workflow needs to reach the end without losing the people or equipment it tracks. A saved October 14 Hurricane Isaias exercise finished with the incident Closed. It recorded 35 completed deployments and 35 returned deployments.",
+          "The same run checked access boundaries. An ordinary person could not run the bulk exercise action. Cross-origin writes were rejected. The exercise case was hidden from the main workspace.",
+          "The exercise used synthetic records and bulk controls to advance the scenario. This result demonstrates the saved workflow outcome. It does not measure 35 people using the system at once."
+        ],
+        "table": {
+          "headers": [
+            "Recorded check",
+            "Result"
+          ],
+          "rows": [
+            [
+              "Completed deployments",
+              "35"
+            ],
+            [
+              "Returned deployments",
+              "35"
+            ],
+            [
+              "Incident state",
+              "Closed"
+            ],
+            [
+              "Bulk action without the required role",
+              "403 — denied"
+            ],
+            [
+              "Cross-origin write",
+              "403 — denied"
+            ],
+            [
+              "Exercise case in the main workspace",
+              "404 — hidden"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "browser-checks",
+        "title": "Browser and accessibility checks",
+        "paragraphs": [
+          "People need the same work controls to remain usable across their supported browsers. The October 14 record reports ten accessibility/browser checks passing in each of Chromium, Firefox, and WebKit.",
+          "The saved work also includes course and notice regression checks. An order-to-return workflow passed in the recorded regression run. These checks used fresh local test databases.",
+          "Automated checks do not replace complete screen-reader testing or Section 508 acceptance. The agency evaluation needs to test its actual devices and assisted workflows."
+        ]
+      },
+      {
+        "id": "deployment-evaluation",
+        "title": "Evaluate the intended deployment",
+        "paragraphs": [
+          "The next evaluation should use the organization’s work and its selected services. Follow the accepted order through field activity and return. Inspect the saved history and the reports used to make decisions.",
+          "Load and recovery tests must use the intended environment. Set the expected surge and measure the response. Test lost connections, delayed jobs, and backup restoration against agreed outcomes."
         ]
       }
     ]
@@ -1588,7 +1693,6 @@ export const dartPages = [
     ]
   }
 ];
-
 export const dartGroups = ["Start here","Workforce","Learning","Response operations","Analysis and planning","Data and development","Platform operations","Federal and delivery"];
 export const dartHref = (slug = '') => slug ? `/dart/${slug}` : '/dart';
 export const getDartPage = (slug = '') => dartPages.find(page => page.slug === slug);

@@ -1,0 +1,159 @@
+{
+  "title": "DART saved evaluation results",
+  "reviewed_on": "2026-10-28",
+  "scope": "Selected saved application evaluations. These checks were recorded on the dates below and were not rerun for this documentation update.",
+  "integration_checks": {
+    "recorded_at": "2026-10-16T18:24:12.381Z",
+    "scope": "October 16 RFI build gaps: automatic outbound data, four source adapters, email and text delivery receipts",
+    "checks": {
+      "focused": {
+        "passed": 56,
+        "failed": 0,
+        "exit_code": 0
+      },
+      "http": {
+        "passed": 21,
+        "failed": 0,
+        "exit_code": 0
+      },
+      "native_postgres": {
+        "passed": 4,
+        "failed": 0,
+        "exit_code": 0
+      },
+      "browser": {
+        "passed": 7,
+        "failed": 0,
+        "exit_code": 0
+      }
+    },
+    "initial_broad_run": {
+      "tests": 594,
+      "passed": 590,
+      "failed": 3,
+      "skipped": 1,
+      "follow_up": "All three failures were fixed and passed in the final focused run. The broad suite was not rerun in full."
+    },
+    "limits": [
+      "Approve and supply government endpoints and source mappings.",
+      "Set up credentials, network routes, provider accounts, runtime grants, and scheduled workers.",
+      "Run deployment acceptance checks with approved live services."
+    ]
+  },
+  "browser_checks": {
+    "recorded_on": "2026-10-14",
+    "checks": {
+      "chromium": 10,
+      "firefox": 10,
+      "webkit": 10
+    },
+    "scope": "Automated accessibility/browser checks in local test databases. These do not establish full assistive-technology testing or federal acceptance."
+  },
+  "live_data": {
+    "recorded_at": "2026-10-18T06:29:47.350Z",
+    "scope": "Separate local test accounts and workspace. Live public source data; not an agency production interface.",
+    "noaa": {
+      "source_url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=8658163&product=water_level&datum=MLLW&time_zone=gmt&units=metric&format=json",
+      "source": {
+        "t": "2026-10-18 06:24",
+        "v": "1.31",
+        "s": "0.036",
+        "f": "1,0,0,0",
+        "q": "p"
+      },
+      "mapped": {
+        "name": "2026-10-18 06:24",
+        "level_ft": 4.298,
+        "observed_at": "2026-10-18T06:24:00.000Z"
+      },
+      "custom_records": 1,
+      "applied": true,
+      "published": true,
+      "page_records": 1,
+      "repeated_apply_state": "Applied"
+    },
+    "stream": {
+      "source_url": "https://stream.wikimedia.org/v2/stream/recentchange",
+      "events": 91,
+      "page_records": 91,
+      "applied": true,
+      "published": true,
+      "last_event_id_saved": true
+    }
+  },
+  "studio": {
+    "recorded_at": "2026-10-18T07:14:59.642Z",
+    "sources": [
+      {
+        "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson",
+        "records": 7
+      },
+      {
+        "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventid=ci41348807",
+        "records": 1
+      }
+    ],
+    "record_count": 8,
+    "pages": [
+      {
+        "id": "table",
+        "layout": "table",
+        "count": 8
+      },
+      {
+        "id": "map",
+        "layout": "map",
+        "count": 8
+      },
+      {
+        "id": "chart",
+        "layout": "chart",
+        "count": 8
+      },
+      {
+        "id": "cards",
+        "layout": "cards",
+        "count": 8
+      }
+    ],
+    "automatic_action_runs": 8,
+    "source_records_preserved": true,
+    "repeated_publish_added_records": false,
+    "match_initial": "Linked",
+    "match_after_undo": "Undone"
+  },
+  "walkthrough": {
+    "recorded_at": "2026-10-18T19:50:49.984Z",
+    "steps": 509,
+    "parts": 21,
+    "recovery_checks": [
+      "wrong account",
+      "wrong view",
+      "reopen saved API",
+      "select saved full capture"
+    ],
+    "test_workspace": true,
+    "note": "NOAA source values are real. Rule test values 0 and 3 are clearly marked controlled inputs on a separate review. Echo confirms HTTP delivery, not an agency case."
+  },
+  "source_records": [
+    "FEMA/artifacts/rfi-gaps/test-proof.json",
+    "FEMA/artifacts/accessibility/test-proof.json",
+    "FEMA/artifacts/compatibility/api-delivery-live-proof.json",
+    "FEMA/artifacts/compatibility/integration-lego-live-proof.json",
+    "FEMA/artifacts/compatibility/noaa-guide-full-proof.json",
+    "FEMA/artifacts/isaias/demo-http-proof.json"
+  ],
+  "incident_exercise": {
+    "recorded_at": "2026-10-14T17:49:54.111Z",
+    "incident_state": "Closed",
+    "completed_deployments": 35,
+    "returned_deployments": 35,
+    "access_checks": {
+      "ordinaryPersonBulkDenied": 403,
+      "crossOriginWriteDenied": 403,
+      "mainWorkspaceCaseHidden": 404,
+      "pathTraversalDenied": 422
+    },
+    "scope": "Synthetic Hurricane Isaias exercise advanced with bulk controls. This is not a concurrent-browser or government production benchmark."
+  }
+}
