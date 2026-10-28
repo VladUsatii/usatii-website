@@ -6,7 +6,7 @@ export function DartNavigation({pages,groups,current}) {
   const [query,setQuery]=useState(''),[open,setOpen]=useState(false);
   const filtered=pages.filter(p=>`${p.title} ${p.description}`.toLowerCase().includes(query.trim().toLowerCase()));
   return <aside className={styles.sidebar}>
-    <Link className={styles.productName} href="/dart"><span>DART<small>Usatii for Emergency Management</small></span></Link>
+    <Link className={styles.productName} href="/dart"><img src="/brand/dart-logo.webp" width="400" height="103" alt="DART" className={styles.productLogo} /></Link>
     <button className={styles.mobileToggle} onClick={()=>setOpen(!open)} aria-expanded={open} aria-controls="dart-navigation">Explore DART</button>
     <div id="dart-navigation" className={`${styles.navContent} ${open?styles.navOpen:''}`}>
       <label className={styles.search}><span className={styles.srOnly}>Find DART documentation</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Find a capability…"/></label>
