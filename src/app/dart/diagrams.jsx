@@ -2,6 +2,7 @@
 import {motion,useReducedMotion} from 'framer-motion';
 import {FigureReveal} from './motion';
 import styles from './dart.module.css';
+import LearningWorkflow from './learning-workflows';
 
 const diagrams = {
   platform: ['model', 'A connected operational record', ['Personnel', 'Qualifications', 'Availability', 'Incident needs', 'Deployment', 'Accountability'], 'Evidence and dates connect the workforce to the incident, accepted deployment, and field record.'],
@@ -69,7 +70,7 @@ function WorkScene({labels,kind,type}){
  </g>;
 }
 export default function DartDiagram({kind}){
- const data=diagrams[kind];const reduced=useReducedMotion();if(!data)return null;
+ const reduced=useReducedMotion();if(kind.startsWith('learn-'))return <LearningWorkflow kind={kind}/>;const data=diagrams[kind];if(!data)return null;
  const [type,title,labels,caption]=data,overview=kind==='platform'||kind==='relationships';
  return <FigureReveal className={styles.figure}><svg viewBox={overview?'0 0 1000 820':'130 220 940 610'} role="img" aria-label={title} className={styles.diagram}>
   <title>{title}</title><desc>{caption}</desc>

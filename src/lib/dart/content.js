@@ -269,43 +269,60 @@ export const dartPages = [
     "sections": [
       {
         "id": "catalog",
-        "title": "Maintain a versioned course catalog",
+        "title": "Courses, lessons, and scheduled classes",
         "paragraphs": [
-          "People need to find the right training before they can register for it. The course catalog holds the information people need to find training. Administrators can update a course or mark it inactive. Published versions preserve the content used by earlier classes.",
-          "Shared materials also have versions. Before changing a material used in several places, staff can review the impact. They can then update its uses or retire it."
+          "A course defines what someone needs to learn. A class is a particular delivery of that course, with its own dates and enrollment. Keeping these separate lets the same course run more than once without mixing the learners’ records.",
+          "An administrator builds a course from named lesson versions. Lessons can be reading, quizzes, assignments, live instruction, or SCORM 1.2 content. The course also names its prerequisites and required teaching credentials.",
+          "Publishing releases a particular course version. A scheduled class refers to that published version. Later edits do not replace the lessons used by people already enrolled.",
+          "A course can be made inactive without deleting its history. Retiring a lesson prevents new use while preserving work in existing classes. Shared-update settings can create new course drafts when a followed lesson changes. Those drafts still need publication.",
+          "A newly published course version does not make earlier credit disappear. Requiring people to complete a newer version is a separate request with an effective date. Another authorized person must approve that requirement."
         ],
-        "diagram": "learning"
+        "diagram": "learn-course-versions"
       },
       {
         "id": "admissions",
-        "title": "Admission, eligibility, and funding review",
+        "title": "Applications, approvals, and seat selection",
         "paragraphs": [
-          "A course may have entry requirements, limited seats, or a funding review. Course registration checks whether a person is eligible. Full classes can use a waitlist. Required forms and funding decisions stay with the request.",
-          "Approved rules can enroll new hires or people who need a prerequisite. Each automatic job saves its result. Training alerts can tell people when a course they need becomes available."
-        ]
+          "Applying for a class is different from holding a seat. A draft saves the applicant’s answers without creating an enrollment. Submission checks the application against the class’s saved admission rules. A denied application needs a new attempt; its earlier decision stays saved.",
+          "Those rules set the application window and eligible audience. They also identify the required form versions and approval steps. A document answer must refer to a checked file; an old approval cannot bypass a changed or withdrawn file.",
+          "Application approval and funding are separate decisions. A class may require no funding decision, local approval, or a recorded outside authorization. The authorization must cover the class dates and meet any configured deadline.",
+          "Once the required decisions are complete, the class uses its configured seat-selection method. Options include first-in order, a qualified draw, ranked priority, manual selection, and a recorded outside decision. The draw waits until applications close and pending reviews are resolved.",
+          "Capacity still limits the result. People who are not selected can move to the waitlist. Promotion checks the saved application again. A failed check moves it to Needs review instead of quietly enrolling the person.",
+          "Automatic sign-up rules can find people with needed training, sourced new-hire dates, or matching positions. They do not remove the class’s form, approval, funding, or capacity checks. Training alerts notify people about suitable classes; an alert does not reserve a seat."
+        ],
+        "diagram": "learn-admissions"
       },
       {
         "id": "schedule",
-        "title": "Schedule instruction and record attendance",
+        "title": "Class dates, sessions, and attendance",
         "paragraphs": [
-          "Learners and instructors need to know when and where a class will take place. Classes have scheduled sessions and attendance records. Staff can plan classroom or field training. They can also schedule online and virtual classes.",
-          "When class times change, affected people can confirm the new schedule. Training time can be reviewed against deployment work. Enrollment by itself does not award course credit."
+          "The class sets the overall teaching period. Sessions describe the individual meetings for a lesson, including their times and place. DART offers self-paced, classroom, field, virtual, hybrid, and external class modes.",
+          "Changing class times keeps the earlier dates in history. Affected active sign-ups can move to Needs review. Confirmation rechecks the class and admission rules; it does not restore a seat without checking capacity.",
+          "A live lesson uses its scheduled sessions as attendance evidence. An assigned instructor records attendance after a session ends. The learner cannot record their own attendance decision.",
+          "Before an instructor marks that lesson complete, each current, non-cancelled session must have ended and have a present attendance record. Correcting attendance to absent can reopen the lesson and reject previously verified course credit.",
+          "A session with saved attendance or finished lesson work cannot simply be rewritten as a new schedule. The recorded workflow preserves those session facts and directs staff to use a new class for a new schedule. External providers use the separate source-result path."
         ]
       },
       {
         "id": "instructors",
-        "title": "Instructor qualifications and outside requests",
+        "title": "Who may teach and review the work",
         "paragraphs": [
-          "Before assigning a teacher, staff need to check that the person is eligible to teach. Instructor records show who may teach a class. Teaching credentials have dates. Outside instructor requests can be reviewed before assignment.",
-          "If a credential is revoked, DART keeps that decision in history. Later grading checks the instructor’s right to teach. A new credential must cover the class dates."
+          "Being listed as an instructor does not grant access to every class. The person needs an active instructor profile and an assignment to the class. Their credentials must meet the course’s teaching requirements for the whole class period.",
+          "An instructor from another organization also needs an approved request for that class. The approval keeps its teaching context. If the relevant course or class facts change, the saved approval must still match.",
+          "Outside instructor requests can be approved, declined, or withdrawn. Assigning and removing an instructor are separate actions. Removing the assignment ends the teaching access tied to it.",
+          "Revoking a teaching credential keeps the earlier credential and the reason. Subsequent grading checks the instructor’s current eligibility. It does not erase grades already recorded.",
+          "Assigned instructors review submissions and attendance for their class. They cannot grade their own enrollment. A person who only approves funding does not gain access to student answers."
         ]
       },
       {
         "id": "materials",
-        "title": "Shared materials and controlled files",
+        "title": "Shared content and file release",
         "paragraphs": [
-          "Courses often share files that need to stay current and accessible to the right people. The library holds course files and their versions. Students and instructors can submit files through the related learning task.",
-          "Files wait in quarantine until they pass the required scan and release checks. Downloads check access again. The deployment supplies the approved file storage and scanning service."
+          "A course can refer to shared material instead of keeping an untracked copy. Each link names the material version used by that course or lesson. Existing class work retains its saved versions.",
+          "The library separates material review from file release. A version may be under review, published, retired, or withdrawn. Its associated file must also satisfy the storage, scanning, and release checks.",
+          "A replacement file has its own identity and hash. The update workflow can carry the replacement through linked lessons and following courses. It creates new versions rather than changing an existing class’s saved content. An open following draft can block the update.",
+          "Access settings distinguish approved readers, enrolled course learners, and administrators. Being waitlisted does not provide the course-learner file access of an enrolled person. An instructor’s access depends on their current class assignment.",
+          "A download checks the linked file and its original identity again. If a file is withdrawn or no longer released, earlier publication does not make it safe to download. The deployment supplies the approved storage and malware-scanning services."
         ]
       }
     ]
@@ -318,67 +335,103 @@ export const dartPages = [
     "sections": [
       {
         "id": "delivery",
-        "title": "Course content and progress",
+        "title": "What a learner can open and complete",
         "paragraphs": [
-          "A learner should be able to leave a course and return to the work they have already started. My learning shows a learner’s assigned courses. A course contains lessons and required work. DART saves progress so the learner can return later.",
-          "The package workflow supports single-page SCORM 1.2 lessons. SCORM is a format for sharing online course content and progress. A course ZIP can be imported as a draft before review and publication."
+          "My learning shows the classes a person is enrolled in and the lessons for each class. The class uses a saved course version. Each lesson therefore has a known kind and a known version of its completion rules.",
+          "The learner needs an active enrollment in a scheduled class. Ordinary course work must fall within the class dates. Admission checks still apply when the learner opens or submits work; a pending application does not grant lesson access.",
+          "DART has two explicit assessment gates. Starting knowledge checks must be completed before other work. Final tests wait until the other course work is complete. This is not a rule that every ordinary lesson must be opened in a single fixed order.",
+          "A starting check saves its actual score and pass result. Completing the attempt satisfies that starting gate even when the score is below the passing mark. The result shows the learner’s starting knowledge rather than silently becoming a pass.",
+          "Opening a lesson saves progress but does not finish it. A reading lesson is finished when the learner marks the opened reading complete. A quiz, assignment, live lesson, or SCORM lesson follows its own completion path."
         ],
-        "diagram": "assessment"
+        "diagram": "learn-assessment-gates"
+      },
+      {
+        "id": "scorm",
+        "title": "SCORM packages, saved progress, and review",
+        "paragraphs": [
+          "A course package can bring several lessons and their assets into DART. The ZIP importer requires a SCORM 1.2 manifest at the archive root. It reads the manifest’s lesson order and creates a draft course for review.",
+          "The importer accepts one to fifty distinct lesson resources. Each launch file must be a local HTML file in the package. A ZIP can be up to 3 MB; unsafe paths and unsupported manifest versions are rejected. This does not claim support for every SCORM edition or extension.",
+          "Each SCORM lesson runs in its own sandboxed player. The player saves supported status and score values, along with a lesson location and suspend data. Those saved values let the learner resume the lesson.",
+          "A package can report passed or completed, but this remains a learner-supplied completion report. Saving it keeps the DART lesson Opened and marks it as needing review. It does not immediately award course credit.",
+          "A different, currently assigned instructor checks the completion report before completing the lesson. Any required current sessions must also have ended with attendance recorded. External classes use a checked provider result instead of this local instructor action."
+        ],
+        "diagram": "learn-scorm-review"
       },
       {
         "id": "tests",
-        "title": "Tests, test-out opportunities, and assignments",
+        "title": "Quizzes, test-out, and scored assignments",
         "paragraphs": [
-          "Different kinds of learning need different ways to show understanding. A course can use quizzes and scored assignments. It can include a starting test and a final test. A test-out option can let a learner prove knowledge they already have.",
-          "A rubric explains how an assignment is scored. The gradebook brings the results together. Learners can see which parts they missed and receive extra practice."
+          "A quiz grades the learner’s answers against the saved lesson’s questions. Each question has choices and a topic. The result records the score and gives feedback for the missed topics. Answer keys are not supplied in the learner’s lesson view.",
+          "The lesson defines its passing score and allowed attempts. A final test follows the post-test gate and needs a passing result to complete. A starting check has the different gate behavior described above.",
+          "A test-out quiz can complete only the reading lessons explicitly named in its saved configuration. The learner must pass. The target reading IDs and versions must match the class’s saved course. Passing does not waive every lesson or award a qualification.",
+          "A scored assignment saves the submitted answer and any released attachments. The learner waits for grading before sending another attempt. An instructor scores every rubric item within its allowed points.",
+          "DART calculates the percentage from the points earned and available. It saves the rubric, pass mark, feedback, and reviewer with the grade. A passing assignment completes that lesson; a failed result remains available for review."
         ]
+      },
+      {
+        "id": "practice",
+        "title": "Extra practice and another attempt",
+        "paragraphs": [
+          "A failed result can lead to focused practice rather than an unexplained extra retry. An assigned instructor chooses a current reading lesson and adds instructions tied to the failed quiz or assignment.",
+          "The learner reads the assigned material and reports what they did. An instructor then reviews that report. An approved review adds one extra attempt beyond the lesson’s original allowance.",
+          "Reporting the practice alone does not grant that attempt. If the review declines another try, the instructor can assign follow-up practice linked to that decision. The failed result and each practice review remain in history.",
+          "Both people need access to the practice material. If access is removed, an earlier assignment does not continue to expose the content. The learner still needs a passing assessment result to complete the original lesson."
+        ],
+        "diagram": "learn-practice-retry"
       },
       {
         "id": "grading",
-        "title": "Instructor review and controlled corrections",
+        "title": "Correct a grade without losing its basis",
         "paragraphs": [
-          "Student work needs a clear reviewer and a score that can be explained. Assigned instructors can read and grade student work. Course administrators have their own access. Someone who only approves funding cannot read student answers.",
-          "A grade correction needs a reason. It keeps the earlier score and comments. The correction uses the original scoring rules.",
-          "If the change removes the last passing result, the lesson can reopen. Related course credit can receive a rejected revision. The earlier credit record remains visible."
-        ]
+          "A grade can be wrong even after a course has been completed. A currently assigned, eligible instructor can correct it with a reason. The correction keeps the earlier score and uses that grade’s original rubric and pass mark.",
+          "DART checks the latest grade and any attached files again. A stale grade reference cannot overwrite a newer correction. A withdrawn or changed attachment can block grading until the file review is resolved.",
+          "The system then checks whether any current passing grade still completes the lesson. If none remains, the lesson becomes Opened. If that leaves the course incomplete, existing verified course credit receives a new Rejected training revision.",
+          "A later passing correction can complete the lesson again. It does not silently restore already rejected credit. A different course administrator must review that credit separately.",
+          "Work submitted within the class period can be graded after the class ends through the review path. That does not reopen the class for new late submissions. Cancelled classes and withdrawn sign-ups cannot create new course credit through a correction."
+        ],
+        "diagram": "learn-grade-correction"
       },
       {
         "id": "completion",
-        "title": "Completion and credit are connected",
+        "title": "When course credit is awarded",
         "paragraphs": [
-          "Finishing a lesson and earning credit for a course are related but separate steps. The course rules determine which work must be complete. Once those rules are met, the workflow can award course credit.",
-          "A corrected passing grade does not automatically restore rejected credit. An authorized administrator must review it. Withdrawn enrollments and cancelled classes also constrain later changes."
+          "DART evaluates the exact lesson versions named in the class’s course. Each must have a Completed progress record. Enrollment, opening lessons, or receiving a package’s completion message is not enough.",
+          "The route to Completed depends on the lesson kind. Reading uses the learner’s completion action. Quizzes and scored assignments use their passing result. Live and local SCORM lessons need the assigned instructor’s check.",
+          "Once all required work is complete, the native course workflow awards credit once. It creates a Verified training record and saves the evidence used for the award. The learner’s enrollment becomes Completed.",
+          "The credit basis includes the saved course and policy versions. It also keeps the class details and completed lesson records. If the course defines a validity period, the resulting training record receives an expiry date.",
+          "Training credit can support a qualification requirement. It does not by itself certify the responder for a position. That remains a separate readiness decision."
         ]
       },
       {
         "id": "feedback",
-        "title": "Feedback and learning outcomes",
+        "title": "Four distinct kinds of training evaluation",
         "paragraphs": [
-          "Test scores show part of a course’s effect. Feedback and later observations help explain the rest. Course evaluations keep learner feedback and learning results. Training reports help staff review outcomes and unmet needs.",
-          "A needed-training notice points people toward follow-up work. The notice does not change their qualification record.",
-          "Evaluation forms support all four Kirkpatrick levels. Each level asks a different question about the training. The form version stays with the response."
+          "A course evaluation asks what the training achieved. DART supports forms for all four Kirkpatrick levels, but the levels collect different evidence from different people. The saved response keeps the version of the form used.",
+          "At Level I, the learner gives feedback without assessment evidence. At Level II, the learner’s response must reference distinct quiz or assignment results from that enrollment. These are not interchangeable survey submissions.",
+          "Level III records an instructor’s observation after the learner completes the course. The observation date cannot precede the credit award. The learner cannot submit their own instructor observation.",
+          "Level IV records an administrator’s result measure for a past period. It is not attached to an individual enrollment. These distinctions let reports separate personal feedback from learning evidence and wider program results."
         ],
         "table": {
           "headers": [
-            "Evaluation level",
-            "What DART records"
+            "Level",
+            "Who supplies the evidence"
           ],
           "rows": [
             [
               "I — Reaction",
-              "The learner’s feedback. Assessment results are kept separate."
+              "The enrolled or completed learner provides feedback."
             ],
             [
               "II — Learning",
-              "The learner’s response with assessment evidence from that enrollment."
+              "The learner links assessment results from the same enrollment."
             ],
             [
               "III — Behavior",
-              "An instructor’s work observation after completion. The learner cannot submit their own observation."
+              "A different instructor records a dated post-completion observation."
             ],
             [
               "IV — Results",
-              "An administrator’s result measure for a past period. It is not attached to an individual learner."
+              "An administrator records a past-period measure without an individual learner."
             ]
           ]
         }
@@ -393,35 +446,58 @@ export const dartPages = [
     "sections": [
       {
         "id": "credit",
-        "title": "Course credit with evidence",
+        "title": "The evidence behind native course credit",
         "paragraphs": [
-          "Staff need to know what learning a person has earned credit for and why. Training records show the evidence for course credit. They distinguish a completed course from verified credit. A later correction adds a record rather than erasing the first result.",
-          "Outside learning can be recorded for review. The source and its evidence stay attached to the result."
+          "A training record states what learning was recognized, not just that someone opened a course. Native course credit is created after every required lesson version is complete. The award keeps the evidence used to reach that result.",
+          "DART creates the credit and a Verified training record together. The saved basis names the course version and policy. It also keeps the class details and the lesson progress used for completion.",
+          "The same enrollment cannot receive a second native credit award when a completion request is repeated. Later corrections add training revisions instead of replacing the original record.",
+          "A course’s validity period determines the award’s expiry date when one is configured. Credit hours and the source of the award remain available for transcript review. A training result still does not grant a position qualification by itself."
+        ],
+        "diagram": "learn-credit-basis"
+      },
+      {
+        "id": "provider-results",
+        "title": "Results received from an outside course",
+        "paragraphs": [
+          "An External class can use results supplied by an outside learning provider. This path records what the provider reported, rather than asking a local instructor to pretend they observed the session.",
+          "An authorized administrator or recorder selects an external training source for the organization. Each result includes the provider record ID and revision. The recorder must be a different person from the learner.",
+          "The result must identify a Live or SCORM lesson in the class’s saved course. Its event time must be inside the class dates and cannot be in the future. A completed result cannot bypass an unfinished starting knowledge check.",
+          "Source revisions keep earlier results available. A correction that removes required completion can withdraw verified credit through a new training revision. Repeating a saved result does not create a separate award."
         ]
       },
       {
         "id": "outside",
-        "title": "External learning and certificate files",
+        "title": "Outside certifications and certificate review",
         "paragraphs": [
-          "A person may earn a useful credential outside the organization’s own courses. An outside certificate can include a supporting file. A reviewer checks the result. File access still depends on its release and protection rules.",
-          "Outside certifications can be verified or renewed. Staff can also suspend or revoke them. Each decision keeps its own date and history."
+          "An outside certification is separate from a course result and a DART qualification. It records the credential a person holds from an issuer, with a certificate number and dates.",
+          "The person or an authorized training recorder submits the certification with that person’s certificate file. The file is required. DART checks its release state and saved hash, then creates the certification as Pending.",
+          "A different person with certification-review authority can verify or reject it. A Pending record does not count as a verified certification. The reviewer must be different from both the certificate holder and the person who submitted it.",
+          "A verified certification may be suspended or revoked. A suspended one can return to Verified if its dates and file checks still permit it. Revoked and rejected records have no direct restore transition.",
+          "Renewal creates a new record linked to the earlier certification with the same code. The earlier record is not replaced just because a renewal was submitted. Verification of the new record records the replacement as Superseded where applicable.",
+          "An expired certification cannot be verified or restored. A new valid certification must be recorded and reviewed. Earlier certificates and decisions remain part of the history."
         ],
-        "diagram": "training"
+        "diagram": "learn-certification-review"
       },
       {
         "id": "transcript",
-        "title": "Unified transcript",
+        "title": "Read the transcript without collapsing its evidence",
         "paragraphs": [
-          "Training is easier to review when its results can be read together. The transcript brings a person’s training and credential history together. Responders can inspect their own record. Staff need the right scope to inspect another person’s transcript.",
-          "A qualification reviewer can follow the evidence needed for a task book. Transcript access does not grant access to student answers or every personnel file."
-        ]
+          "The transcript combines course training, outside certifications, and qualification credentials. Each row keeps its kind so a course result is not mistaken for a qualification decision.",
+          "A course row identifies its source record and revision. The transcript marks it Current or Earlier version. A Verified status remains separate from whether its dates are current, future, or expired.",
+          "Source freshness is separate too. An external source can be Current, Stale, or Unknown according to its last successful update. Local course records are identified as local evidence. A recent completion date does not prove a feed is current.",
+          "Certification rows show the issuer and certificate number. Qualification rows identify their local credential basis. The view sorts the combined records by their start or completion date.",
+          "Responders can inspect their own permitted evidence. Other readers need the appropriate person and domain scope. CSV export does not bypass that access, and reading a transcript does not grant access to student answers or every certificate file."
+        ],
+        "diagram": "learn-transcript-evidence"
       },
       {
         "id": "changes",
-        "title": "Revocation, expiry, and downstream impact",
+        "title": "Corrections, required revisions, and readiness",
         "paragraphs": [
-          "Training and credentials can change after a qualification has been awarded. A qualification may stop being valid when a required credential expires. Revoked certification or rejected training can also affect readiness.",
-          "DART keeps the change and its earlier evidence. Restoring credit has its own review path. Correcting one record does not silently award a new qualification."
+          "A change to evidence needs a traceable effect. Grade or attendance corrections can make a previously completed course incomplete. DART preserves the award and adds a Rejected training revision when verified credit is withdrawn.",
+          "A different course administrator can later review a credit correction. Restoring Verified status requires every required lesson version to be complete. Expired credit cannot be restored; it needs new training.",
+          "Publishing a new course version does not invalidate all earlier training. An administrator can request a minimum required version with an effective date and authority. A different approver must review it. Earlier credit remains saved while the new requirement is communicated.",
+          "Readiness checks use the current evidence and the applicable rules for the requested dates. An expired or rejected dependency can change that result. Correcting training does not erase the earlier qualification decision or silently issue a new one."
         ]
       }
     ]

@@ -52,3 +52,5 @@
 .resultFigure{max-width:none;width:100%}
 .resultFigure figcaption{font-size:12px;line-height:1.8;color:#666;text-align:center;margin-top:20px}
 @media(max-width:767px){.navContent{margin-top:20px}.sectionTree a{font-size:12px}}
+
+.learningFigureScroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:12px 0}.learningFigureScroll:focus-visible{outline:2px solid #777;outline-offset:4px}.learningWorkflow{display:block;width:100%;min-width:680px;height:auto}

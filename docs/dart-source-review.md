@@ -47,3 +47,7 @@ Each section now introduces the reason for the workflow before its mechanics. Re
 The evaluation page publishes a selected summary of saved October 14–18 application checks at `/dart/evaluation-results.json`. The summary preserves the initial broad-run failures and the focused follow-up scope. The chart counts service, HTTP, database, and browser tests; it is not a speed or concurrency benchmark. NOAA and USGS examples identify their separate test workspaces and live public sources. No private production records or raw internal logs were published.
 
 The left navigation now nests section anchors under each topic. The document uses one content width and no separate right-side contents list. Wireframes use the construction article’s shared 30-degree projection. The evaluation figure reuses the article’s chart styles.
+
+## Deeper workflow audit
+
+The first section-level audit covers the three Learning pages. See `docs/dart-learning-review.md` for the 17-section source map, corrected distinctions, nine dedicated workflows, and remaining scope. The earlier shared scenes remain on other topics until those topics receive their own audit.
