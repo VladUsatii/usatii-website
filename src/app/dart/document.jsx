@@ -24,6 +24,7 @@ export default function DartDocument({page}) {
       {section.paragraphs.map((p,i)=><p key={i}><LinkedText text={p} current={page.slug}/></p>)}
       {section.evaluation&&<EvaluationResults kind={section.evaluation}/>}
       {section.diagram&&<DartDiagram kind={section.diagram}/>}
+      {section.screenshots?.map(shot=><figure className={`${styles.figure} ${styles.productScreenshot}`} key={shot.src}><a href={shot.src} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size screenshot: ${shot.alt}`}><img src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} loading="lazy"/></a><figcaption>{shot.caption}</figcaption></figure>)}
       {section.table&&<div className={styles.tableScroll}><table><thead><tr>{section.table.headers.map(h=><th key={h} scope="col">{h}</th>)}</tr></thead><tbody>{section.table.rows.map(([a,b])=><tr key={a}><th scope="row">{a}</th><td>{b}</td></tr>)}</tbody></table></div>}
       {section.requirements&&<Requirements/>}
       {section.guideLibrary&&<GuideLibrary guides={guides}/>}

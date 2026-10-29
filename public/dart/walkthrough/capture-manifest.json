@@ -1,0 +1,109 @@
+{
+  "capturedAt": "2026-10-29T05:39:15.583Z",
+  "incidentId": "INC-32BAA304-5D4",
+  "deploymentId": "DEP-09E51867-3D6",
+  "radioId": "EQ-a8b2ff5e-2e09-435d-ace7-4548ff5cf950",
+  "captures": [
+    {
+      "name": "01-incident",
+      "caption": "Harbor flood response with its field office and logistics need.",
+      "sha256": "a34b4f638bf575ad4f455a8d31d81cd8d8fb6a40080becf863534f44537e73c2",
+      "src": "/dart/walkthrough/01-incident.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "02-readiness",
+      "caption": "Jordan Lee passes the current staffing check.",
+      "sha256": "8a477c3c77fa0f9528f902301876d8bc6379299bd898446b6d10e39ca877becc",
+      "src": "/dart/walkthrough/02-readiness.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "03-review",
+      "caption": "Sam Rivera reviews the saved order comparison before approval.",
+      "sha256": "d8b96915f9c87651a7c49d045f7ffedf86fcabaacc6f195498fc5d6fe135c116",
+      "src": "/dart/walkthrough/03-review.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "04-offer",
+      "caption": "Jordan Lee receives the issued order and can accept or decline it.",
+      "sha256": "c6468cfd06c467e40fb0eecd2da0a4f86cbb3d6dcaf96226eff729c9b22d5af7",
+      "src": "/dart/walkthrough/04-offer.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "05-arrival",
+      "caption": "Jordan Lee is checked in at Harbor field office.",
+      "sha256": "da781878214daa9579f70c2097d62829ccf1c1c65107931d8088b13cd8d5e8c6",
+      "src": "/dart/walkthrough/05-arrival.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "07-radio-issued",
+      "caption": "HARBOR-RADIO-01 is issued to Jordan Lee and linked to this deployment.",
+      "sha256": "0bdb28aa9ba495c898007c355f73560bc5e71dcc62b9cc0eb18e6997310871af",
+      "src": "/dart/walkthrough/07-radio-issued.webp",
+      "route": "/?view=equipment&item=EQ-a8b2ff5e-2e09-435d-ace7-4548ff5cf950"
+    },
+    {
+      "name": "06-daily-check",
+      "caption": "Jordan Lee has replied to the opened daily check.",
+      "sha256": "c301962002503e373ad830fd91aed207366c45e707153af1d2fc64199b819035",
+      "src": "/dart/walkthrough/06-daily-check.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "08-radio-returned",
+      "caption": "Returning the radio clears custody and moves it to Inspection.",
+      "sha256": "0548b4b17a8cb47ea0ce869c7423d6c7d52e77b0e86d4d086f45bab2526a2ea7",
+      "src": "/dart/walkthrough/08-radio-returned.webp",
+      "route": "/?view=equipment&item=EQ-a8b2ff5e-2e09-435d-ace7-4548ff5cf950"
+    },
+    {
+      "name": "09-end-checks",
+      "caption": "The end plan records three checked steps before completion.",
+      "sha256": "38d46faeecde93d7118b0b0595a0e95f90eb70d2e4c62800a21c9547a4ff4a05",
+      "src": "/dart/walkthrough/09-end-checks.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "10-completed",
+      "caption": "Jordan Lee’s deployment is Completed after checkout and end checks.",
+      "sha256": "43b352718fd5a277951775ccc5fa64352f0b027dfb4b61315fa9de28f959aa7f",
+      "src": "/dart/walkthrough/10-completed.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "11-closed",
+      "caption": "Harbor flood response is Closed; its saved work remains available.",
+      "sha256": "42cc6aaee7a7949344c710a52a34a1d7eba904cf6b487d38fe2927e1ba76e2f4",
+      "src": "/dart/walkthrough/11-closed.webp",
+      "route": "/?view=operations&incident=INC-32BAA304-5D4"
+    },
+    {
+      "name": "12-review",
+      "caption": "Jordan Lee can read the submitted review of this same deployment.",
+      "sha256": "0dd2f62bfe93e6d015d3270f6dbc225cc903aaacab67ce7473a70bf7c3d01b01",
+      "src": "/dart/walkthrough/12-review.webp",
+      "route": "/?view=development&person=P-000002"
+    }
+  ],
+  "sourceCommit": "ae8f6331081a7247728cbf334bfbc9449831e65d",
+  "sourceDirty": true,
+  "synthetic": true,
+  "fileLoaderCompatibility": "SQL files resolved from the isolated source tree; SQL and workflow rules unchanged.",
+  "sourceFiles": {
+    "app/operations-workspace.jsx": "464c2d81bb6ca7e8277b33bc1535469d13ffe5bef10beae340e596d9be79123b",
+    "app/equipment-workspace.jsx": "d41bd72412504988f21e2444de68160c243e5f31ba8d42db3a4cb892e69566a1",
+    "app/development-workspace.jsx": "810dd96819986938539c8ba92122f587e72b2691ba3b6bebcfdc315dee742bea",
+    "app/globals.css": "da24010e509a42ed684577b59a2d9080ca8527c7688e1cb2149033cff5744128",
+    "app/responsive-layout.css": "b47e93b562b3b0b212fb3911713830326930657a06ebfaacc190392e691c0add",
+    "app/workspace-spacing.css": "c449766880442f9aaa313a40b0ca010691097d355435d925541bcbd1ece663b0",
+    "lib/operations.js": "c198be1eac4a5fb4289b5982b4434eacb2cbec251ad2e28c36a0ea45f61188dc",
+    "lib/equipment.js": "048d6c1d28278a7c646cca96f59574598de3265dc908be42c90202e0d3d87da4",
+    "lib/readiness.js": "2216558a429b0aacc0af46b70767be217cbd401d29eec8dd701d97fa93b6d156",
+    "lib/development.js": "cd1b32dcd557860d9c7b78b8c8f40d4dfbde72a93795c27cc6c8854600c3c815",
+    "lib/help-guides.js": "03f7edcc2d08573f69edb25b6df730c2c91fbc14eaaa7fd5df81de9c6c468b7d"
+  }
+}

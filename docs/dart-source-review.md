@@ -57,3 +57,7 @@ The second audit covers qualifications/readiness and professional development. S
 The third audit covers incidents, responder staffing, and deployment orders/travel. See `docs/dart-operations-review.md` for the 19-section code/guide source map and twelve distinct workflows, including resource authority, history-based ranking, trainee duties, accepted extensions, actual visits, and checked demobilization.
 
 The fourth audit covers the remaining 23 pages and 114 sections. See `docs/dart-remaining-review.md` for the source and guide map, workflow corrections, and validation boundaries. Thirty-six distinct figures replace the remaining shared scenes. Together, the four audits cover all 31 topic pages; this completes the section-level documentation audit, not application or agency acceptance testing.
+
+## Worked incident walkthrough
+
+On October 29, 2026, `/dart/incident-walkthrough` adds a complete fictional case with twelve screenshots captured from one successful headless run of the actual application. It keeps the same people, order, deployment, and radio throughout. See `docs/dart-incident-walkthrough.md` for source/guide checks, reproduction commands, capture isolation, and the executed test scope. This new page brings the topic count to 32.
