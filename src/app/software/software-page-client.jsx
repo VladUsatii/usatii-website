@@ -7,6 +7,7 @@ import { ArrowRight, Pause, Play, Volume2, VolumeX, X } from "lucide-react";
 import { softwareVideoTranscript } from "./software-video-transcript";
 
 const platforms = [
+  { index: "AI", name: "Enterprise AI", description: "Intelligence engineered into your operations, with governed actions and enterprise control.", href: "/software/enterprise-ai" },
   {
     index: "01",
     name: "Usatii for communications",

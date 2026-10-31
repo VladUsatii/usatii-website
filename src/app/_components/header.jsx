@@ -5,9 +5,9 @@ import SiteSearch from "./site-search";
 import homeStyles from "./work-home.module.css";
 import styles from "./public-header.module.css";
 
-export default function Header() {
+export default function Header({ className = "" }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-surface bg-paper/95 backdrop-blur">
+    <header className={`sticky top-0 z-40 border-b border-surface bg-paper/95 backdrop-blur ${className}`}>
       <div className={`mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6 ${styles.headerInner}`}>
         <Link
           href="/"

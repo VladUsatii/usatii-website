@@ -1,7 +1,8 @@
+import { commercialIntern } from './commercial-intern.js';
 import { federalRoles } from './federal-roles.js';
 import { additionalFederalRoles } from './additional-federal-roles.js';
 
-export const roles = [{
+export const roles = [commercialIntern, {
   slug: 'federal-account-director-dart',
   title: 'Federal Account Director, DART',
   team: 'Federal Programs',

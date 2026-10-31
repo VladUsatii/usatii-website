@@ -1,0 +1,17 @@
+.article{max-width:1280px;margin:0 auto;padding:120px 28px 70px;color:#171717;background:#fff;font-family:var(--font-inter)}
+.masthead{max-width:720px;margin:0 auto 52px;text-align:center}
+.article .title{font-size:clamp(36px,4.4vw,54px);line-height:1.02;letter-spacing:-.055em;font-weight:500;margin:0;scroll-margin-top:110px}
+.prose{max-width:650px;margin:0 auto;font-size:17px;line-height:1.85;letter-spacing:-.012em}
+.article .prose p{font-size:17px;line-height:1.85;letter-spacing:-.012em;margin:0 0 24px}
+.article .prose strong{font-weight:600}
+.article .prose a{color:inherit;text-decoration:underline;text-decoration-color:#aaa;text-underline-offset:3px}
+.article .prose a:hover{text-decoration-color:currentColor}
+.quote{position:relative;left:50%;transform:translateX(-50%);width:min(900px,calc(100vw - 56px));margin:75px 0 80px;padding:0}
+.quote blockquote{margin:0;padding:0;border:0}
+.article .quote p{font-size:clamp(24px,2.5vw,33px);line-height:1.42;letter-spacing:-.035em;font-weight:400;margin:0 0 24px;text-wrap:pretty}
+.quote figcaption{font-size:13px;line-height:1.6;color:#777;letter-spacing:-.01em}
+@media(max-width:767px){.article{padding:85px 22px 45px}.masthead{margin-bottom:38px}.article .prose p{font-size:16px}.quote{width:100%;left:auto;transform:none;margin:48px 0 52px}.article .quote p{font-size:25px;line-height:1.45}.quote figcaption{font-size:12px}}
+
+/* Match the construction news article’s inline source treatment. */
+.article .prose .sourceLink::before{content:"";display:inline-block;width:14px;height:14px;margin:0 5px 0 0;border:1px solid #d9dee6;border-radius:50%;background:#fff var(--source-icon) center/9px no-repeat;vertical-align:-2px;box-shadow:0 1px 3px rgba(15,23,42,.14)}
+.article .prose .sourceLink:focus-visible{outline:2px solid currentColor;outline-offset:3px}

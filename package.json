@@ -27,6 +27,8 @@
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.0",
     "gray-matter": "^4.0.3",
+    "jszip": "^3.10.1",
+    "libphonenumber-js": "^1.12.40",
     "linkify-react": "^4.3.1",
     "lucide-react": "^0.511.0",
     "luxon": "^3.7.1",

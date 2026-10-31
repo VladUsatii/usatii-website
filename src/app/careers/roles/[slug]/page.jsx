@@ -53,7 +53,7 @@ export default async function RolePage({ params }) {
         <aside className="border-t border-neutral-200 pt-6">
           <h2 className="text-lg font-medium">Position details</h2>
           <dl className="mt-6 space-y-5 text-sm leading-6">
-            {[['Employment', role.employment], ['Compensation', role.compensation], ['Location', role.locationDetails || `${role.location} (${role.arrangement})`], ['Travel', role.travel], ['Openings', role.openings], ['Status', role.status]].filter(([, value]) => value).map(([label, value]) => <div key={label}><dt className="font-medium text-neutral-950">{label}</dt><dd className="mt-1 text-neutral-600">{value}</dd></div>)}
+            {[['Department', role.appointment && role.team], ['Employment', role.employment], ['Compensation', role.compensation], ['Initial appointment', role.appointment], ['Schedule', role.schedule], ['Location', role.locationDetails || `${role.location} (${role.arrangement})`], ['Travel', role.travel], ['Openings', role.openings], ['Status', role.status]].filter(([, value]) => value).map(([label, value]) => <div key={label}><dt className="font-medium text-neutral-950">{label}</dt><dd className="mt-1 text-neutral-600">{value}</dd></div>)}
           </dl>
         </aside>
         <ApplicationForm roleId={role.slug} roleTitle={role.title} />

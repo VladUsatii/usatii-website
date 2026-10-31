@@ -1,0 +1,26 @@
+.root { position: relative; display: inline-block; vertical-align: middle; max-width: 100%; min-width: 0; }
+.trigger { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; max-width: 100%; padding: 10px 14px; border: 1px solid #e0e4e9; border-radius: 12px; background: white; color: #172032; font: inherit; font-size: 14px; line-height: 20px; text-align: left; cursor: pointer; transition: border-color .15s, background-color .15s; }
+.trigger>span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trigger:hover:not(:disabled) { border-color: #a58235; background: #fcfbf8; }.trigger:focus-visible { outline: 2px solid #a58235; outline-offset: 3px; }.trigger:disabled { opacity: .5; cursor: default; }
+.trigger[aria-invalid=true] { border-color: #b91c1c; }.chevron { display: flex; flex-shrink: 0; color: #728091; }
+.menu { position: fixed; z-index: 10000; display: flex; flex-direction: column; overflow: hidden; padding: 6px; border: 1px solid #e0e4e9; border-radius: 14px; background: white; color: #172032; box-shadow: 0 8px 24px #17203214; font-family: var(--font-sans), Montserrat, sans-serif; font-size: 14px; transform-origin: top; }
+.list { overflow: auto; overscroll-behavior: contain; min-height: 0; scrollbar-width: thin; }.option { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 9px 10px; border: 0; border-radius: 10px; text-align: left; font: inherit; cursor: pointer; background: transparent; }.option>span { flex: 1; }.option>small { color: #728091; }.option>svg { flex-shrink: 0; color: #a58235; }.option:hover,.active { background: #efe9da; }.option:disabled { opacity: .45; cursor: default; }.option[aria-selected=true] { font-weight: 600; }
+.search { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin: 2px 2px 6px; padding: 8px; border: 1px solid #e6e8ec; border-radius: 10px; color: #728091; }.search input { width: 100%; min-width: 0; border: 0; outline: none; background: white; color: #172032; font: inherit; }.empty { padding: 18px 10px; color: #728091; }
+.formValue { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; opacity: 0; pointer-events: none; clip-path: inset(50%); }.error { display: block; margin-top: 6px; color: #b91c1c; font-size: 11px; }
+.root:has(>.trigger[class*="w-full"]) { width: 100%; }
+label>.root { display: block; width: 100%; } label>.root>.trigger { width: 100%; }
+@media (pointer:coarse) { .trigger,.option { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .trigger { transition: none; } }
+.dateMenu { overflow: auto; padding: 16px; }.dateActions { display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid #e6e8ec; margin-top: 16px; padding-top: 12px; }.dateActions button { min-height: 40px; padding: 8px 12px; border: 1px solid #e0e4e9; border-radius: 12px; cursor: pointer; }.timeField { display: grid; gap: 8px; margin-top: 16px; }.timeField input { padding: 8px; border: 1px solid #e0e4e9; border-radius: 12px; }
+
+.description { display:block; margin-top:4px; color:#728091; font-size:11px; font-weight:400; line-height:1.5; }
+.suggestions { position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:100; max-height:240px; overflow:auto; padding:6px; background:white; color:#172032; border:1px solid #e0e4e9; border-radius:9px; box-shadow:0 8px 24px #17203214; }
+.actionMenu { border-color: #e0e4e9; border-radius: 14px; background: #fff; box-shadow: 0 8px 28px rgb(23 32 50 / 12%); }
+.actionMenu button:not([role="combobox"]),.actionMenu a { min-height: 40px; }
+.actionMenu button:not([role="combobox"]):hover,.actionMenu a:hover { background-color: #efe9da; }
+@media (pointer:coarse) { .actionMenu button:not([role="combobox"]),.actionMenu a { min-height: 44px; } }
+
+.trigger[aria-expanded=true] { border-color: #a58235; box-shadow: 0 0 0 3px #a5823514; }
+.option[aria-selected=true] { background: #f7ecd3; color: #5c471d; }
+.dateActions button:last-child { background: #f7ecd3; border-color: #ead6a8; color: #493a1c; font-weight: 600; }
+.timeField input:focus-visible { outline: 2px solid #a58235; outline-offset: 2px; }

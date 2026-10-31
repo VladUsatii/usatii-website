@@ -35,6 +35,7 @@ export async function getCanonicalSitemapPaths() {
     ...getAllTradeRoutes(),
     ...caseStudyRoutes,
     "/emergency-management",
+    "/software/enterprise-ai",
     ...dartPages.map(({ slug }) => dartHref(slug)),
     "/documentation",
     "/documentation/bootcamp",

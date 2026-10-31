@@ -120,7 +120,7 @@ export default function ApplicationForm({ roleId, roleTitle }) {
       <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden"><label htmlFor="application-company-website">Leave this field empty</label><input id="application-company-website" name="websiteCompany" type="text" tabIndex={-1} autoComplete="off" /></div>
       <fieldset disabled={busy} className="space-y-10">
         <div>
-          <label htmlFor="application-resume" className="text-sm font-medium">Résumé / CV <span aria-hidden="true">*</span><span className="sr-only"> (required)</span></label>
+          <label htmlFor="application-resume" className="text-sm font-medium">{roleId === 'forward-deployed-engineer-intern-commercial' ? 'Résumé / CV or equivalent experience summary' : 'Résumé / CV'} <span aria-hidden="true">*</span><span className="sr-only"> (required)</span></label>
           <input id="application-resume" name="resume" type="file" accept={RESUME_ACCEPT} required aria-invalid={errorField === 'resume' || undefined} aria-describedby="resume-help" className="mt-3 block w-full text-sm text-neutral-600 file:mr-4 file:min-h-11 file:rounded-sm file:border file:border-neutral-300 file:bg-white file:px-4 file:text-sm file:text-neutral-950 hover:file:bg-neutral-50" />
           <p id="resume-help" className="mt-2 text-xs text-neutral-500">PDF, DOC, or DOCX. Maximum 3 MB.</p>
         </div>
