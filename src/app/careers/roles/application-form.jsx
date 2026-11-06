@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { APPLICATION_SECTIONS, DEMOGRAPHIC_FIELDS, LANGUAGES, MAX_RESUME_BYTES, RESUME_ACCEPT } from '@/lib/careers/application-fields';
+import { getApplicationSections, DEMOGRAPHIC_FIELDS, LANGUAGES, MAX_RESUME_BYTES, RESUME_ACCEPT } from '@/lib/careers/application-fields';
 
 const inputClass = 'mt-2 block min-h-11 w-full rounded-sm border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-950 focus:border-neutral-950 focus:outline-2 focus:outline-offset-2 focus:outline-neutral-950 disabled:opacity-60';
 
@@ -124,7 +124,7 @@ export default function ApplicationForm({ roleId, roleTitle }) {
           <input id="application-resume" name="resume" type="file" accept={RESUME_ACCEPT} required aria-invalid={errorField === 'resume' || undefined} aria-describedby="resume-help" className="mt-3 block w-full text-sm text-neutral-600 file:mr-4 file:min-h-11 file:rounded-sm file:border file:border-neutral-300 file:bg-white file:px-4 file:text-sm file:text-neutral-950 hover:file:bg-neutral-50" />
           <p id="resume-help" className="mt-2 text-xs text-neutral-500">PDF, DOC, or DOCX. Maximum 3 MB.</p>
         </div>
-        {APPLICATION_SECTIONS.map(section => <section key={section.title} className="border-t border-neutral-100 pt-7" aria-labelledby={`section-${section.title.replaceAll(' ', '-')}`}>
+        {getApplicationSections(roleId).map(section => <section key={section.title} className="border-t border-neutral-100 pt-7" aria-labelledby={`section-${section.title.replaceAll(' ', '-')}`}>
           <h3 id={`section-${section.title.replaceAll(' ', '-')}`} className="text-base font-medium">{section.title}</h3>
           <div className="mt-5 grid gap-x-5 gap-y-6 sm:grid-cols-2">{section.fields.map(renderField)}</div>
         </section>)}

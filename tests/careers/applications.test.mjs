@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { APPLICATION_FIELDS, MAX_RESUME_BYTES, MAX_APPLICATION_BYTES } from '../../src/lib/careers/application-fields.js';
+import { getApplicationSections, MAX_RESUME_BYTES, MAX_APPLICATION_BYTES } from '../../src/lib/careers/application-fields.js';
 import { ApplicationError, validateApplication, validateResume } from '../../src/lib/careers/application-validation.js';
 import { createCareerApplicationHandler } from '../../src/lib/careers/submit-application.js';
 import { createCareerChallenge, getCareerChallengeSecrets, verifyCareerHuman } from '../../src/lib/careers/human-verification.js';
@@ -10,7 +10,7 @@ import { roles } from '../../src/lib/careers/roles.js';
 
 function formFor(roleId = roles[0].slug) {
   const form = new FormData();
-  for (const field of APPLICATION_FIELDS) {
+  for (const field of getApplicationSections(roleId).flatMap(section => section.fields)) {
     if (!field.required || field.type === 'languages') continue;
     form.set(field.name, field.options?.[0] || (field.type === 'email' ? 'Candidate@Example.com' : 'Candidate response'));
   }
@@ -94,10 +94,20 @@ await test('every published role can submit; persistence receives full answers a
   for (const role of roles) {
     let saved;
     const handler=createCareerApplicationHandler({verifyHuman:async()=>({challengeId:'test',expiresAt:new Date(Date.now()+600000).toISOString()}),saveApplication:async application=>{saved=application;}});
-    const response=await handler(request(formFor(role.slug)));
+    const form = formFor(role.slug);
+    if (role.team === 'Enterprise Delivery') {
+      assert.equal(form.has('activeClearance'), false);
+      form.set('proposalResumeConsent', 'Yes, I opt in');
+    }
+    const response=await handler(request(form));
     assert.equal(response.status,201);
     assert.equal(saved.role.slug,role.slug);
     assert.equal(saved.answers.email,'candidate@example.com');
+    if (role.team === 'Enterprise Delivery') {
+      assert.equal(saved.answers.proposalResumeConsent, 'Yes, I opt in');
+      assert.equal(saved.answers.consultingAvailability, 'Candidate response');
+      assert.equal(saved.answers.activeClearance, undefined);
+    }
     assert.ok(Buffer.isBuffer(saved.resume.bytes));
     assert.equal(saved.verification.challengeId,'test');
   }

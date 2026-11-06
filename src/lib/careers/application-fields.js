@@ -62,3 +62,28 @@ export const DEMOGRAPHIC_FIELDS = [
   { name: 'disabilityStatus', label: 'Disability status', options: ['I have or have had a disability', 'I do not have a disability', 'Prefer not to disclose'] },
 ];
 export const APPLICATION_FIELDS = APPLICATION_SECTIONS.flatMap(section => section.fields);
+
+const leadScreening = { title: 'QAD delivery experience', fields: [
+  { name: 'qadVersions', label: 'Which QAD products and versions have you implemented or upgraded?', type: 'textarea', required: true, max: 1500 },
+  { name: 'qadProject', label: 'Describe one QAD project you personally led through go-live. Include its size, your responsibilities, and the outcome.', type: 'textarea', required: true, max: 4000 },
+] };
+
+const advisorScreening = { title: 'Validation experience', fields: [
+  { name: 'validationPlatforms', label: 'Which enterprise systems and versions have you helped validate?', type: 'textarea', required: true, max: 1500 },
+  { name: 'validationExperience', label: 'Describe the regulated industries and frameworks you worked with and a validation deliverable or readiness review you owned.', type: 'textarea', required: true, max: 4000 },
+  { name: 'futureFractionalWork', label: 'Would you consider future fractional consulting engagements?', options: preference },
+] };
+
+const consulting = { title: 'Consulting availability', fields: [
+  { name: 'consultingAvailability', label: 'When can you start, and how many hours per week can you commit?', required: true, max: 500 },
+  { name: 'hourlyRate', label: 'What hourly rate do you expect in U.S. dollars?', required: true, max: 100 },
+  { name: 'travel', label: 'Can you accommodate occasional client travel?', required: true, options: preference },
+  { name: 'proposalResumeConsent', label: 'May USATII include your résumé in a prospective customer proposal for this role?', options: ['Yes, I opt in', 'No, keep my résumé with USATII'], help: 'Optional. Declining does not affect your application. USATII will confirm with you before sharing your résumé in a specific proposal.' },
+] };
+
+export function getApplicationSections(roleId) {
+  const screening = roleId === 'lead-qad-erp-upgrade-program-manager' ? leadScreening
+    : roleId === 'erp-computerized-systems-validation-advisor' ? advisorScreening : null;
+  if (!screening) return APPLICATION_SECTIONS;
+  return [...APPLICATION_SECTIONS.slice(0, 4), screening, consulting, APPLICATION_SECTIONS.at(-1)];
+}

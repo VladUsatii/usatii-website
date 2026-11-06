@@ -49,7 +49,7 @@ export function createCareerApplicationHandler({ verifyHuman, saveApplication, n
       if (!role) throw new ApplicationError('This role is unavailable. Return to the available roles list.', 400, 'roleId');
       const ipAddress = (request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip') || '').trim().slice(0, 64);
       if (!ipAddress && process.env.NODE_ENV === 'production') throw new ApplicationError('Unable to verify this submission. Please try again.', 400);
-      const application = validateApplication(form);
+      const application = validateApplication(form, role.slug);
       const verification = await verifyHuman({ token: form.get('altcha'), roleId: role.slug });
       const resume = await validateResume(form.get('resume'));
       const id = await saveApplication({ role, ...application, resume, verification, ipAddress: ipAddress || '127.0.0.1' });

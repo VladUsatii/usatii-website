@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { APPLICATION_SECTIONS } from '@/lib/careers/application-fields';
+import { getApplicationSections } from '@/lib/careers/application-fields';
 import AdminNotesPane from '@/app/admin/_components/admin-notes-pane';
 import AdminEducationPane from '@/app/admin/_components/admin-education-pane';
 import AdminPaymentsPane from '@/app/admin/_components/admin-payments-pane';
@@ -1967,7 +1967,7 @@ export default function OwnerDashboard({ adminEmail }) {
                   </div>
                 </div>
 
-                {APPLICATION_SECTIONS.map(section => {
+                {getApplicationSections(selectedApplication.roleId).map(section => {
                   const fields = section.fields.filter(field => selectedApplication.answers?.[field.name]?.length);
                   if (!fields.length) return null;
                   return <section key={section.title} className="rounded-lg border border-neutral-200 p-3">

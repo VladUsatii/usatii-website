@@ -1,4 +1,4 @@
-import { APPLICATION_FIELDS, DEMOGRAPHIC_FIELDS, LANGUAGES, MAX_RESUME_BYTES } from './application-fields.js';
+import { getApplicationSections, DEMOGRAPHIC_FIELDS, LANGUAGES, MAX_RESUME_BYTES } from './application-fields.js';
 
 export class ApplicationError extends Error {
   constructor(message, status = 400, field = null) {
@@ -8,9 +8,9 @@ export class ApplicationError extends Error {
   }
 }
 
-export function validateApplication(form) {
+export function validateApplication(form, roleId) {
   const answers = {};
-  for (const field of [...APPLICATION_FIELDS, ...DEMOGRAPHIC_FIELDS]) {
+  for (const field of [...getApplicationSections(roleId).flatMap(section => section.fields), ...DEMOGRAPHIC_FIELDS]) {
     if (field.type === 'languages') {
       const values = form.getAll(field.name);
       if (!values.length || values.length > LANGUAGES.length || values.some(value => typeof value !== 'string' || !LANGUAGES.includes(value))) {

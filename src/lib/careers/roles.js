@@ -2,7 +2,9 @@ import { commercialIntern } from './commercial-intern.js';
 import { federalRoles } from './federal-roles.js';
 import { additionalFederalRoles } from './additional-federal-roles.js';
 
-export const roles = [commercialIntern, {
+import { enterpriseDeliveryRoles } from './enterprise-delivery.js';
+
+export const roles = [commercialIntern, ...enterpriseDeliveryRoles, {
   slug: 'federal-account-director-dart',
   title: 'Federal Account Director, DART',
   team: 'Federal Programs',
